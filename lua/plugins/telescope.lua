@@ -1,0 +1,110 @@
+local M = {
+  'nvim-telescope/telescope.nvim',
+  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
+  dependencies = {
+    "nvim-telescope/telescope-ui-select.nvim",
+  },
+}
+
+function M.config()
+  local telescope = require("telescope")
+  local actions = require("telescope.actions")
+
+  telescope.setup({
+    extensions = {
+      fzf = {
+        fuzzy = true, -- false will only do exact matching
+        override_generic_sorter = true, -- override the generic sorter
+        override_file_sorter = true, -- override the file sorter
+        case_mode = "smart_case", -- or "ignore_case" or "respect_case" or "smart_case"
+      },
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown({}),
+      },
+    },
+    pickers = {
+      find_files = {
+        hidden = false,
+      },
+      buffers = {
+        ignore_current_buffer = true,
+        sort_lastused = true,
+      },
+      -- find_command = { "fd", "--hidden", "--type", "file", "--follow", "--strip-cwd-prefix" },
+      -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+    },
+    defaults = {
+      file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png" },
+      -- used for grep_string and live_grep
+      vimgrep_arguments = {
+        "rg",
+        "--follow",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--no-ignore",
+        "--trim",
+      },
+      mappings = {
+        i = {
+          -- Close on first esc instead of going to normal mode
+          -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
+          ["<esc>"] = actions.close,
+          ["<C-f>"] = actions.preview_scrolling_up,
+          ["<C-b>"] = actions.preview_scrolling_down,
+          ['<C-u>'] = false,
+          ['<C-d>'] = false,
+        },
+      },
+      initial_mode = "insert",
+      scroll_strategy = "cycle",
+      selection_strategy = "reset",
+      sorting_strategy = "descending",
+      layout_strategy = "vertical",
+      layout_config = {
+        width = 0.95,
+        height = 0.85,
+        -- preview_cutoff = 120,
+        prompt_position = "top",
+        horizontal = {
+          preview_width = function(_, cols, _)
+            if cols > 200 then
+              return math.floor(cols * 0.4)
+            else
+              return math.floor(cols * 0.6)
+            end
+          end,
+        },
+        vertical = { width = 0.9, height = 0.95, preview_height = 0.5 },
+        flex = { horizontal = { preview_width = 0.9 } },
+      },
+      winblend = 0,
+      border = {},
+      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      color_devicons = false,
+      use_less = true,
+    },
+  })
+
+  telescope.load_extension('fzf')
+  telescope.load_extension("ui-select")
+end
+
+vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>s', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>tb', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ht', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope.builtin').jumplist()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>c', [[<cmd>lua require('telescope.builtin').command_history()<CR>]], { noremap = true, silent = true })
+
+return M
