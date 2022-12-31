@@ -66,6 +66,7 @@ function M.config()
       "pyright",
       -- "terraform-ls",
       "yaml-language-server",
+      "jdtls",
       -- Formatter
       "prettier",
       -- Linter
