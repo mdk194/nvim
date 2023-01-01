@@ -5,14 +5,6 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 local home = os.getenv('HOME')
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
-local function java()
-  if OS() == 'linux' then
-    return '/usr/lib/jvm/java-17-openjdk/bin/java'
-  else
-    return '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java'
-  end
-end
-
 -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 -- And search for `interface RuntimeOption`
 -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
@@ -52,8 +44,9 @@ local function mk_config()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   return {
     flags = {
-      debounce_text_changes = 80,
+      debounce_text_changes = 150,
       allow_incremental_sync = true,
+      server_side_fuzzy_completion = true,
     };
     handlers = {},
     capabilities = capabilities;
@@ -92,6 +85,32 @@ end
 local config = mk_config()
 config.settings = {
   java = {
+    maxConcurrentBuilds = 2,
+    configuration = {
+      maven = {
+        globalSettings = home .. '/.m2/settings.xml',
+      },
+    },
+    import = {
+      maven = {
+        enabled = true,
+        offline = { enabled = true },
+      },
+    },
+    jdt = {
+      ls = {
+        lombokSupport = { enabled = true },
+        androidSupport = { enabled = false },
+      },
+    },
+    maven = {
+      downloadSources = true,
+      updateSnapshots = false, -- force updated of Snapshots/Releases
+    },
+    references = {
+      includeAccessors = true,
+      -- includeDecompiledSources = true,
+    },
     format = {
       -- curl -LO https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml
       -- mv eclipse-java-google-style.xml $HOME/.config/
@@ -101,6 +120,12 @@ config.settings = {
     contentProvider = { preferred = 'fernflower' };
     saveActions = {
       organizeImports = true,
+    },
+    implementationsCodeLens = {
+      enabled = true
+    },
+    referencesCodeLens = {
+      enabled = true
     },
     completion = {
       favoriteStaticMembers = {
@@ -144,19 +169,22 @@ config.settings = {
     };
   };
 }
+
+-- local function java()
+--   if OS() == 'linux' then
+--     return '/usr/lib/jvm/java-17-openjdk/bin/java'
+--   else
+--     return '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java'
+--   end
+-- end
+
+-- lombok support
+-- curl -LO https://projectlombok.org/downloads/lombok.jar
+-- mv lombok.jar $HOME/.local/share/eclipse/
 config.cmd = {
-  java(),
-  '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-  '-Dosgi.bundles.defaultStartLevel=4',
-  '-Declipse.product=org.eclipse.jdt.ls.core.product',
-  '-Dlog.protocol=true',
-  '-Dlog.level=ALL',
-  '-Xmx4g',
-  '--add-modules=ALL-SYSTEM',
-  '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-  '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-  '-jar', vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
-  '-configuration', home .. '/.local/share/nvim/mason/packages/jdtls/config_' .. OS(),
+  home .. '/.local/share/nvim/mason/packages/jdtls/bin/jdtls',
+  '--jvm-arg=-javaagent:' .. home .. '/.local/share/eclipse/lombok.jar',
+  '-configuration', home .. '/.cache/jdtls',
   '-data', workspace_folder,
 }
 
