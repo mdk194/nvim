@@ -36,7 +36,7 @@ local autocmds = {
     {'FileType yaml,json setlocal expandtab sw=2 sts=2 ts=2'};
     {'FileType terraform setlocal expandtab sw=2 sts=2 ts=2'};
     {'FileType javascript,typescript setlocal expandtab sw=2 sts=2 ts=2'};
-    {'FileType java setlocal expandtab sw=2 sts=2 ts=2'};
+    {'FileType java setlocal expandtab sw=4 sts=4 ts=4'};
     {'FileType html setlocal expandtab sw=2 sts=2 ts=2'};
     {'FileType lua setlocal expandtab sw=2 sts=2 ts=2'};
     {'FileType qf setlocal colorcolumn=0 nolist nocursorline nowrap tw=0'};

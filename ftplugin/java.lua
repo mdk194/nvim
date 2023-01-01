@@ -5,6 +5,47 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 local home = os.getenv('HOME')
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
+local function java()
+  if OS() == 'linux' then
+    return '/usr/lib/jvm/java-17-openjdk/bin/java'
+  else
+    return '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java'
+  end
+end
+
+-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+-- And search for `interface RuntimeOption`
+-- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
+local function runtimes()
+  if OS() == 'linux' then
+    return {
+      {
+        name = "JavaSE-11",
+        path = "/usr/lib/jvm/java-11-openjdk/",
+      },
+      {
+        name = "JavaSE-17",
+        path = "/usr/lib/jvm/java-17-openjdk/",
+      },
+    }
+  else
+    return {
+      {
+        name = "JavaSE-1.8",
+        path = "/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/",
+      },
+      {
+        name = "JavaSE-11",
+        path = "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/",
+      },
+      {
+        name = "JavaSE-17",
+        path = "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/",
+      },
+    }
+  end
+end
+
 local function mk_config()
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
   capabilities.workspace = { configuration = true }
@@ -41,6 +82,7 @@ local function mk_config()
       -- Remove the option if you do not want that.
       -- You can use the `JdtHotcodeReplace` command to trigger it manually
       jdtls.setup_dap({ hotcodereplace = 'auto' })
+      require('jdtls.setup').add_commands()
 
     end;
     settings = {},
@@ -98,21 +140,12 @@ config.settings = {
       useBlocks = true,
     };
     configuration = {
-      runtimes = {
-        {
-          name = "JavaSE-11",
-          path = "/usr/lib/jvm/java-11-openjdk/",
-        },
-        {
-          name = "JavaSE-17",
-          path = "/usr/lib/jvm/java-17-openjdk/",
-        },
-      }
+      runtimes = runtimes()
     };
   };
 }
 config.cmd = {
-  "/usr/lib/jvm/java-17-openjdk/bin/java",
+  java(),
   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
   '-Dosgi.bundles.defaultStartLevel=4',
   '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -123,7 +156,7 @@ config.cmd = {
   '--add-opens', 'java.base/java.util=ALL-UNNAMED',
   '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
   '-jar', vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
-  '-configuration', home .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+  '-configuration', home .. '/.local/share/nvim/mason/packages/jdtls/config_' .. OS(),
   '-data', workspace_folder,
 }
 

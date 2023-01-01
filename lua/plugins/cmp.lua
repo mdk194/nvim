@@ -49,12 +49,12 @@ function M.config()
         vim_item.kind = string.format('%s', icons.code[vim_item.kind])
         -- Source
         vim_item.menu = ({
-          buffer = "B",
+          buffer = "BUF",
           nvim_lsp = "LSP",
-          luasnip = "Snip",
-          nvim_lua = "Lua",
-          latex_symbols = "LaTeX",
-          nvim_lsp_signature_help = "S",
+          luasnip = "SNP",
+          nvim_lua = "LUA",
+          latex_symbols = "TeX",
+          nvim_lsp_signature_help = "SIG",
           path = "P",
           treesitter = "TS",
         })[entry.source.name]

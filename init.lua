@@ -34,8 +34,8 @@ require("lazy").setup("plugins", {
     icons = {
       cmd = "⌘",
       config = "🛠",
-      event = "🗲",
-      ft = "📂",
+      event = "⚡",
+      ft = "ft",
       init = "⚙",
       keys = "🗝",
       plugin = "🔌",
