@@ -1,8 +1,8 @@
-local M = {'nathanaelkane/vim-indent-guides'}
+vim.g.indent_guides_enable_on_vim_startup = 1
+vim.g.indent_guides_auto_colors = 0
 
-function M.config()
-  vim.g.indent_guides_enable_on_vim_startup = 1
-  vim.g.indent_guides_auto_colors = 0
-end
+local M = {
+  'nathanaelkane/vim-indent-guides',
+}
 
 return M

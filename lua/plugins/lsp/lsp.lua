@@ -4,14 +4,29 @@ local languages = require("plugins.lsp.languages")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+local lsp = {
+  float = {
+    focusable = true,
+    style = "minimal",
+    border = "rounded",
+  },
+  diagnostic = {
+    -- virtual_text = false,
+    virtual_text = { spacing = 4, prefix = "●" },
     underline = false,
-    signs = true,
-    virtual_text = false,
     update_in_insert = false,
-  }
-)
+    severity_sort = true,
+    float = {
+      focusable = true,
+      style = "minimal",
+      border = "rounded",
+    },
+  },
+}
+
+vim.diagnostic.config(lsp.diagnostic)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp.float)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp.float)
 
 local servers = {
   "bashls",

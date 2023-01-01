@@ -68,6 +68,7 @@ function M.config()
       "yaml-language-server",
       "jdtls",
       -- Formatter
+      "gofumpt",
       "prettier",
       -- Linter
       "eslint_d",

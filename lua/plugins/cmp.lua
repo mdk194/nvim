@@ -16,6 +16,16 @@ local M = {
 }
 
 function M.config()
+  local border = {
+      { "╭", "CmpBorder" },
+      { "╌", "CmpBorder" },
+      { "╮", "CmpBorder" },
+      { "╎", "CmpBorder" },
+      { "╯", "CmpBorder" },
+      { "╌", "CmpBorder" },
+      { "╰", "CmpBorder" },
+      { "╎", "CmpBorder" },
+  }
   local cmp = require('cmp')
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   local luasnip = require('luasnip')
@@ -29,6 +39,10 @@ function M.config()
   end
 
   cmp.setup({
+    window = {
+      completion = { border = border },
+      documentation = { border = border },
+    },
     formatting = {
       format = function(entry, vim_item)
         -- Kind icons

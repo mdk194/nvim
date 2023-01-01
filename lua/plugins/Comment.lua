@@ -1,6 +1,9 @@
 local M =  {
   'numToStr/Comment.nvim',
-  dependencies = {'JoosepAlviste/nvim-ts-context-commentstring'},
+  -- keys = {'gc', 'gb'},
+  dependencies = {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
 }
 
 function M.config()
