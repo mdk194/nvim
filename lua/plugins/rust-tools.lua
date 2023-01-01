@@ -1,7 +1,7 @@
 local M = {
-  'simrat39/rust-tools.nvim',
-  ft = 'rust',
-  dependencies = {'rust-lang/rust.vim'}
+  "simrat39/rust-tools.nvim",
+  ft = "rust",
+  dependencies = { "rust-lang/rust.vim" },
 }
 
 function M.config()
@@ -21,7 +21,7 @@ function M.config()
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
     server = {
       on_attach = function(client, bufnr)
-        require('plugins.lsp.utils').custom_lsp_attach(client, bufnr)
+        require("plugins.lsp.utils").custom_lsp_attach(client, bufnr)
       end,
       -- capabilities = capabilities,
       settings = {
@@ -31,14 +31,14 @@ function M.config()
           inlayHints = { locationLinks = false },
           -- enable clippy on save
           checkOnSave = {
-            command = "clippy"
+            command = "clippy",
           },
-        }
-      }
+        },
+      },
     },
   }
 
-  require('rust-tools').setup(rust_tools_opts)
+  require("rust-tools").setup(rust_tools_opts)
 end
 
 return M

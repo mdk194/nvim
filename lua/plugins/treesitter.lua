@@ -14,12 +14,12 @@ local M = {
 
 function M.config()
   require("nvim-treesitter.configs").setup({
-    ensure_installed = {"bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "hcl", "html", "java", "javascript", "json", "make", "typescript", "yaml"},
+    ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "hcl", "html", "java", "javascript", "json", "make", "typescript", "yaml" },
     ignore_install = {},
     highlight = {
       enable = true,
-      disable = function(lang, bufnr)
-          return vim.api.nvim_buf_line_count(bufnr) > 3000
+      disable = function(_, bufnr)
+        return vim.api.nvim_buf_line_count(bufnr) > 3000
       end,
       additional_vim_regex_highlighting = false,
     },

@@ -1,7 +1,7 @@
 local M = {
   {
     "mfussenegger/nvim-dap",
-    ft = {'go', 'rust', 'java', 'python'},
+    ft = { "go", "rust", "java", "python" },
     dependencies = {
       "mfussenegger/nvim-dap-python",
       "leoluz/nvim-dap-go",

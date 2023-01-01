@@ -70,6 +70,7 @@ function M.config()
       -- Formatter
       "gofumpt",
       "prettier",
+      "stylua",
       -- Linter
       "eslint_d",
       "shellcheck",

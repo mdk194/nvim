@@ -1,6 +1,6 @@
 local M = {
-  'olexsmir/gopher.nvim',
-  ft = 'go',
+  "olexsmir/gopher.nvim",
+  ft = "go",
 }
 
 function M.config()

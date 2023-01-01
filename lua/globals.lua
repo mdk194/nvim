@@ -5,9 +5,9 @@ P = function(v)
 end
 
 OS = function()
-  if os.getenv('BREW_PREFIX') == '/opt/homebrew' then
-    return 'mac'
-  else 
-    return 'linux'
+  if os.getenv("BREW_PREFIX") == "/opt/homebrew" then
+    return "mac"
+  else
+    return "linux"
   end
 end

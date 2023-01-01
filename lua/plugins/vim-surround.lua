@@ -1,4 +1,4 @@
-local M = {'tpope/vim-surround'}
+local M = { 'tpope/vim-surround' }
 
 function M.config()
   vim.g.surround_indent = 1

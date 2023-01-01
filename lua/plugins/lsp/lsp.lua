@@ -4,7 +4,7 @@ local languages = require("plugins.lsp.languages")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local lsp = {
+local lsp_ui = {
   float = {
     focusable = true,
     style = "minimal",
@@ -24,9 +24,9 @@ local lsp = {
   },
 }
 
-vim.diagnostic.config(lsp.diagnostic)
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp.float)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp.float)
+vim.diagnostic.config(lsp_ui.diagnostic)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_ui.float)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_ui.float)
 
 local servers = {
   "bashls",
@@ -34,6 +34,7 @@ local servers = {
   "pyright",
   "tsserver",
   "yamlls",
+  "sumneko_lua",
 }
 
 for _, lsp in ipairs(servers) do
@@ -49,6 +50,7 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
     flags = { debounce_text_changes = 150 },
     settings = {
+      Lua = languages.lua,
       json = languages.json,
       redhat = { telemetry = { enabled = false } },
       yaml = languages.yaml,
@@ -56,33 +58,33 @@ for _, lsp in ipairs(servers) do
   })
 end
 
-nvim_lsp.gopls.setup {
-    on_attach = function(client, bufnr)
-      utils.custom_lsp_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-    filetypes = { 'go', 'gomod', 'gotmpl' },
-    message_level = vim.lsp.protocol.MessageType.Error,
-    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
-    settings = {
-        gopls = {
-            codelenses = {
-                tidy = true,
-                upgrade_dependency = true,
-                generate = false,
-                gc_details = false,
-                test = false,
-                vendor = false,
-            },
-        },
+nvim_lsp.gopls.setup({
+  on_attach = function(client, bufnr)
+    utils.custom_lsp_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "go", "gomod", "gotmpl" },
+  message_level = vim.lsp.protocol.MessageType.Error,
+  flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  settings = {
+    gopls = {
+      codelenses = {
+        tidy = true,
+        upgrade_dependency = true,
+        generate = false,
+        gc_details = false,
+        test = false,
+        vendor = false,
+      },
     },
-}
+  },
+})
 
-nvim_lsp.tsserver.setup {
-    on_attach = function(client, bufnr)
-      utils.custom_lsp_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-    filetypes = {"javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact"},
-    cmd = {"typescript-language-server", "--stdio"},
-}
+nvim_lsp.tsserver.setup({
+  on_attach = function(client, bufnr)
+    utils.custom_lsp_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
+  cmd = { "typescript-language-server", "--stdio" },
+})

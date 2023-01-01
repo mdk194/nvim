@@ -5,8 +5,8 @@ return {
     Namespace = "n",
     Package = "📦",
     Class = "∁",
-    Method ="m",
-    Property ="p",
+    Method = "m",
+    Property = "p",
     Field = "⨍",
     Constructor = "👷",
     Enum = "ℰ",
@@ -36,4 +36,3 @@ return {
     Folder = "📂",
   },
 }
-
