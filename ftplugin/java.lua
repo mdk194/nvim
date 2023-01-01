@@ -1,5 +1,5 @@
 local jdtls = require('jdtls')
-local root_markers = {'gradlew', '.git', 'pom.xml', 'mvnw'}
+local root_markers = { 'gradlew', '.git', 'pom.xml', 'mvnw' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
 
 local home = os.getenv('HOME')
@@ -50,11 +50,10 @@ local function mk_config()
     };
     handlers = {},
     capabilities = capabilities;
-    on_init = on_init;
     on_attach = function(client, bufnr)
       require("plugins.lsp.utils").custom_lsp_attach(client, bufnr)
 
-      local opts = { noremap=true, silent=true }
+      local opts = { noremap = true, silent = true }
       vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>di", "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
 
       vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
@@ -86,11 +85,6 @@ local config = mk_config()
 config.settings = {
   java = {
     maxConcurrentBuilds = 2,
-    configuration = {
-      maven = {
-        globalSettings = home .. '/.m2/settings.xml',
-      },
-    },
     import = {
       maven = {
         enabled = true,
@@ -165,6 +159,9 @@ config.settings = {
       useBlocks = true,
     };
     configuration = {
+      maven = {
+        globalSettings = home .. '/.m2/settings.xml',
+      },
       runtimes = runtimes()
     };
   };
