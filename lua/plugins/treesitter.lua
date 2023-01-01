@@ -90,8 +90,8 @@ function M.config()
         enable = true,
         -- border = 'none',
         peek_definition_code = {
-          ["<space>gf"] = "@function.outer",
-          ["<space>gc"] = "@class.outer",
+          ["<leader>f"] = "@function.outer",
+          ["<leader>c"] = "@class.outer",
         },
       },
     },

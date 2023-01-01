@@ -24,18 +24,19 @@ function M.config()
       },
     },
     pickers = {
+      git_files = {
+        git_command = { "fd", "--type", "file", "--follow", "--strip-cwd-prefix", "--size", "-1m" },
+      },
       find_files = {
-        hidden = false,
+        find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "file", "--follow", "--strip-cwd-prefix", "--size", "-1m" },
       },
       buffers = {
         ignore_current_buffer = true,
         sort_lastused = true,
       },
-      -- find_command = { "fd", "--hidden", "--type", "file", "--follow", "--strip-cwd-prefix" },
-      -- find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
     },
     defaults = {
-      file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png" },
+      file_ignore_patterns = { "node_modules", ".terraform", "%.jpg", "%.png", ".git" },
       -- used for grep_string and live_grep
       vimgrep_arguments = {
         "rg",
@@ -51,9 +52,7 @@ function M.config()
       },
       mappings = {
         i = {
-          -- Close on first esc instead of going to normal mode
-          -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
-          ["<esc>"] = actions.close,
+          ["<esc>"] = actions.close, -- Close on first esc instead of going to normal mode
           ["<C-f>"] = actions.preview_scrolling_up,
           ["<C-b>"] = actions.preview_scrolling_down,
           ['<C-u>'] = false,
@@ -94,8 +93,8 @@ function M.config()
   telescope.load_extension("ui-select")
 end
 
-vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
