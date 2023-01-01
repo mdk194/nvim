@@ -1,5 +1,6 @@
 local M = {
   'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     -- "hrsh7th/cmp-buffer',
@@ -7,6 +8,7 @@ local M = {
     -- "hrsh7th/cmp-cmdline',
     -- "lukas-reineke/cmp-rg',
     'hrsh7th/cmp-nvim-lsp-signature-help',
+    'ray-x/cmp-treesitter',
     'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
     {'L3MON4D3/LuaSnip', version = 'v1.*'} -- Snippets plugin
@@ -33,13 +35,14 @@ function M.config()
         vim_item.kind = string.format('%s', icons.code[vim_item.kind])
         -- Source
         vim_item.menu = ({
-          buffer = "[B]",
-          nvim_lsp = "[LSP]",
-          luasnip = "[LSnip]",
-          nvim_lua = "[Lua]",
-          latex_symbols = "[LaTeX]",
-          nvim_lsp_signature_help = "[S]",
-          path = "[P]",
+          buffer = "B",
+          nvim_lsp = "LSP",
+          luasnip = "Snip",
+          nvim_lua = "Lua",
+          latex_symbols = "LaTeX",
+          nvim_lsp_signature_help = "S",
+          path = "P",
+          treesitter = "TS",
         })[entry.source.name]
         return vim_item
       end
@@ -85,8 +88,9 @@ function M.config()
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = "nvim_lsp_signature_help" },
+      { name = 'treesitter' },
       { name = 'luasnip'},
-      { name = "path" },
+      { name = 'path' },
       -- { name = "buffer", keyword_length = 5 },
       -- { name = "rg", keyword_length = 5 },
     })

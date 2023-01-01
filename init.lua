@@ -23,12 +23,28 @@ require('autocmd')
 require("lazy").setup("plugins", {
   -- defaults = { lazy = true },
   install = {
-    missing = false, -- install missing plugins on startup, doesn't increase startup time
+    missing = true, -- install missing plugins on startup, doesn't increase startup time
   },
   change_detection = {
     enabled = false, -- automatically check for config file changes and reload the ui
     notify = true, -- get a notification when changes are found
   },
   debug = false,
+  ui = {
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "🗲",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    },
+  },
 })
 

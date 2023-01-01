@@ -1,7 +1,7 @@
 local M = {
   'nvim-telescope/telescope.nvim',
-  {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
   dependencies = {
+    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
     "nvim-telescope/telescope-ui-select.nvim",
   },
 }
@@ -19,7 +19,7 @@ function M.config()
         case_mode = "smart_case", -- or "ignore_case" or "respect_case" or "smart_case"
       },
       ["ui-select"] = {
-        require("telescope.themes").get_dropdown({}),
+        require("telescope.themes").get_cursor(),
       },
     },
     pickers = {
@@ -66,9 +66,9 @@ function M.config()
       layout_strategy = "vertical",
       layout_config = {
         width = 0.95,
-        height = 0.85,
-        -- preview_cutoff = 120,
-        prompt_position = "top",
+        height = 0.95,
+        preview_cutoff = 1,
+        prompt_position = "bottom",
         horizontal = {
           preview_width = function(_, cols, _)
             if cols > 200 then
@@ -78,8 +78,8 @@ function M.config()
             end
           end,
         },
-        vertical = { width = 0.9, height = 0.95, preview_height = 0.5 },
-        flex = { horizontal = { preview_width = 0.9 } },
+        vertical = { width = 0.95, height = 0.95, preview_height = 0.6 },
+        flex = { horizontal = { preview_width = 0.95 } },
       },
       winblend = 0,
       border = {},
