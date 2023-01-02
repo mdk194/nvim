@@ -1,5 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
+  event = 'VeryLazy',
 }
 
 function M.config()
