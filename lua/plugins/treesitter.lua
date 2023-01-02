@@ -1,13 +1,12 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = 'BufReadPost',
+  -- event = 'BufReadPost',
   version = 'v0.8.0',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter-textobjects',
     'RRethy/nvim-treesitter-endwise',
-    'mfussenegger/nvim-ts-hint-textobject',
     'windwp/nvim-ts-autotag',
   },
 }
