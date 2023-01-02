@@ -37,6 +37,7 @@
   "nvim-ts-autotag": { "branch": "main", "commit": "fdefe46c6807441460f11f11a167a2baf8e4534b" },
   "plenary.nvim": { "branch": "master", "commit": "4b7e52044bbb84242158d977a50c4cbcd85070c7" },
   "prettier.nvim": { "branch": "main", "commit": "918b99f5ddd7a56395fd393767ab6a3c15a50789" },
+  "refactoring.nvim": { "branch": "master", "commit": "2c72385b627e46bb66f23b8a11da40b4bb127506" },
   "rust-tools.nvim": { "branch": "master", "commit": "99fd1238c6068d0637df30b6cee9a264334015e9" },
   "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
   "symbols-outline.nvim": { "branch": "master", "commit": "6a3ed24c5631da7a5d418bced57c16b32af7747c" },

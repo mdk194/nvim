@@ -32,7 +32,7 @@ function M.config()
       },
     },
     endwise = { enable = true },
-    indent = { enable = true },
+    indent = { enable = false },
     autopairs = { enable = true },
     textobjects = {
       select = {
