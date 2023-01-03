@@ -49,7 +49,7 @@ local autocmds = {
     { "InsertLeave", "*", ":set listchars+=trail:˽" },
   },
   markdown = {
-    { "BufRead", "*.{md,markdown,mdown,txt}", "setf markdown" },
+    { "BufRead", "*.{md,markdown,mdown}", "setf markdown" },
   },
   line_return = { -- go to last loc when opening a buffer
     {
