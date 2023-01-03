@@ -15,7 +15,6 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-require('globals')
 require('settings')
 require('mappings')
 require('autocmd')

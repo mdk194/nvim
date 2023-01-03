@@ -24,11 +24,9 @@ function M.config()
       },
     },
     pickers = {
-      git_files = {
-        git_command = { "fd", "--type", "file", "--follow", "--strip-cwd-prefix", "--size", "-1m" },
-      },
       find_files = {
-        find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "file", "--follow", "--strip-cwd-prefix", "--size", "-1m" },
+        -- find_command = { "fd", "--type", "file", "--follow", "--strip-cwd-prefix", "--size", "-1m" },
+        find_command = { "fd", "--type", "file", "--follow", "--strip-cwd-prefix" },
       },
       buffers = {
         ignore_current_buffer = true,
@@ -57,6 +55,8 @@ function M.config()
           ["<C-b>"] = actions.preview_scrolling_down,
           ['<C-u>'] = false,
           ['<C-d>'] = false,
+          -- toggle showing hidden and ignored files while in find_files insert mode
+          ["<C-h>"] = require("functions").telescope("find_files", { hidden = true, no_ignore = true }),
         },
       },
       initial_mode = "insert",
@@ -93,8 +93,8 @@ function M.config()
   telescope.load_extension("ui-select")
 end
 
-vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('functions').telescope('find_files')()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('functions').telescope('git_files')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })

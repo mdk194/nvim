@@ -1,6 +1,7 @@
 local jdtls = require('jdtls')
 local root_markers = { 'gradlew', '.git', 'pom.xml', 'mvnw' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
+local functions = require('functions')
 
 local home = os.getenv('HOME')
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
@@ -9,7 +10,7 @@ local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(
 -- And search for `interface RuntimeOption`
 -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
 local function runtimes()
-  if OS() == 'linux' then
+  if functions.OS() == 'linux' then
     return {
       {
         name = "JavaSE-11",
@@ -168,7 +169,7 @@ config.settings = {
 }
 
 -- local function java()
---   if OS() == 'linux' then
+--   if functions.OS() == 'linux' then
 --     return '/usr/lib/jvm/java-17-openjdk/bin/java'
 --   else
 --     return '/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java'
