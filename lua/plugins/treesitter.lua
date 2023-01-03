@@ -13,7 +13,7 @@ local M = {
 
 function M.config()
   require("nvim-treesitter.configs").setup({
-    ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "hcl", "html", "java", "javascript", "json", "make", "typescript", "yaml" },
+    ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "hcl", "html", "java", "javascript", "json", "make", "typescript", "yaml", "graphql", "css", "diff", "markdown", "markdown_inline", "sql", "toml", "tsx", "regex" },
     ignore_install = {},
     highlight = {
       enable = true,
