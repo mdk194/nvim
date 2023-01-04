@@ -10,7 +10,7 @@ function M.config()
     symbol = '▏',
     draw = {
       -- Delay (in ms) between event and start of drawing scope indicator
-      delay = 25,
+      delay = 100,
       animation = indentscope.gen_animation('none'),
     },
 
