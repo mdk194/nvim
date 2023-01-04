@@ -1,4 +1,15 @@
--- nvim --headless "+Lazy! sync" +qa
+-- file size < 512KiB
+-- use as cond to disable plugins like lsp, null-ls, treesitter
+function IS_SMALL_FILE()
+  local fsize = vim.fn.getfsize(vim.fn.expand("%:p:f"))
+  if fsize > 512 * 1024 then
+    return false
+  end
+
+  return true
+end
+
+-- setup lazy -----------------------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -19,6 +30,7 @@ require('settings')
 require('mappings')
 require('autocmd')
 
+-- load plugins -----------------------------------------------------------------------
 require("lazy").setup("plugins", {
   -- defaults = { lazy = true },
   install = {

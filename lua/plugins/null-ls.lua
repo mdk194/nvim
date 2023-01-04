@@ -1,6 +1,7 @@
 local M = {
   'jose-elias-alvarez/null-ls.nvim',
   event = 'VeryLazy',
+  cond = IS_SMALL_FILE,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/prettier.nvim',

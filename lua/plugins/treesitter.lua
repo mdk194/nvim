@@ -1,8 +1,9 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  -- event = 'BufReadPost',
+  event = 'BufReadPost',
   version = 'v0.8.0',
+  cond = IS_SMALL_FILE,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -100,7 +101,6 @@ function M.config()
 
   vim.cmd [[set foldmethod=expr]]
   vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
-  vim.cmd [[set foldlevelstart=5]]
 end
 
 return M

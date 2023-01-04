@@ -50,6 +50,7 @@ opt("o", "fileformats", "unix,mac,dos")
 opt("o", "pastetoggle", "<F1>")
 opt("o", "autoindent", false)
 opt("o", "updatetime", 250)
+opt("o", "foldlevelstart", 5)
 
 opt("b", "swapfile", false)
 opt("b", "expandtab", true)
