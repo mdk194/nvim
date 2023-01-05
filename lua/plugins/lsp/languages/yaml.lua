@@ -19,7 +19,7 @@ local opts = {
     ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
   },
   -- format = { enabled = false },
-  validate = false,
+  validate = true,
   completion = true,
   hover = true,
 }

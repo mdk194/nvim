@@ -32,7 +32,6 @@ local servers = {
   "bashls",
   "jsonls",
   "pyright",
-  "tsserver",
   "yamlls",
   "sumneko_lua",
 }
