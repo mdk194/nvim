@@ -4,6 +4,7 @@ local M = {
   dependencies = {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     "nvim-telescope/telescope-ui-select.nvim",
+    "jvgrootveld/telescope-zoxide",
   },
 }
 
@@ -92,6 +93,7 @@ function M.config()
 
   telescope.load_extension('fzf')
   telescope.load_extension("ui-select")
+  telescope.load_extension("zoxide")
 end
 
 vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('functions').telescope('find_files')()<CR>]], { noremap = true, silent = true })
@@ -105,8 +107,9 @@ vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin'
 -- vim.api.nvim_set_keymap('n', '<leader>tb', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ht', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>o', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope.builtin').jumplist()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>c', [[<cmd>lua require('telescope.builtin').command_history()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope.builtin').jumplist()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope').extensions.zoxide.list()<CR>]], { noremap = true, silent = true })
 
 return M
