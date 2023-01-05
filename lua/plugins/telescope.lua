@@ -96,8 +96,8 @@ end
 vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('functions').telescope('find_files')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('functions').telescope('git_files')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('grep_string')()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('live_grep')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
@@ -106,5 +106,6 @@ vim.api.nvim_set_keymap('n', '<leader>ht', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>o', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope.builtin').jumplist()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>c', [[<cmd>lua require('telescope.builtin').command_history()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
 
 return M
