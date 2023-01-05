@@ -38,15 +38,16 @@ function M.config()
       -- used for grep_string and live_grep
       vimgrep_arguments = {
         "rg",
-        "--follow",
         "--color=never",
         "--no-heading",
         "--with-filename",
         "--line-number",
         "--column",
         "--smart-case",
-        "--no-ignore",
-        "--trim",
+        "--follow",
+        "--vimgrep",
+        -- "--trim",
+        -- "--no-ignore",
       },
       mappings = {
         i = {
