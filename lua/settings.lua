@@ -82,30 +82,19 @@ vim.opt.wildignore = [[
 */tmp/*,*.so,*.swp,*.zip,**/node_modules/**,**/target/**,**.terraform/**"
 ]]
 
+-- opt("o", "fillchars", "stl:-,stlnc: ")
 function _G.statusline()
-  local quickfix = "%q"
-  local paste = [[%{&paste?' PASTE ':''}]]
-  local buf_fn = [[ %<%f ]]
-  local modified_status = "%m"
-  local readonly = "%r"
-  local preview = "%w"
-  local align_section = "%="
-  local pos = "%l:%c"
-  local warn_not_unix = [[%#warningmsg#%{&ff!='unix'?' '.&ff.' ':''}%*]]
-  local file_type = "%y"
-  return string.format(
-    "%s%s%s%s%s%s%s %s %s%s",
-    quickfix,
-    paste,
-    buf_fn,
-    modified_status,
-    readonly,
-    preview,
-    align_section,
-    pos,
-    warn_not_unix,
-    file_type
-  )
+  local quickfix        = '%q'
+  local paste           = [[%{&paste?'[PASTE]':''}]]
+  local buf_fn          = '[%<%f]'
+  local modified_status = '%m'
+  local readonly        = '%r'
+  local preview         = '%w'
+  local align_section   = '%='
+  local column          = '[%c]'
+  local file_type       = '%y'
+  local not_unix        = [[%{&fileformat!='unix'?[&fileformat]:''}]]
+  return quickfix..paste..buf_fn..modified_status..readonly..preview..align_section..column..file_type..not_unix
 end
 vim.cmd([[set statusline=%!v:lua.statusline()]])
 

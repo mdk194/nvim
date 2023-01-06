@@ -67,8 +67,6 @@ map("n", "J", "mzJ`z")
 -- The normal use of S is covered by cc, so don't worry about shadowing it.
 map("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w")
 
-map("n", "J", "mzJ`z")
-
 -- clean trailing whitespace
 map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
 
