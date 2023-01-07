@@ -109,7 +109,7 @@ vim.api.nvim_set_keymap('n', '<leader>ht', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>o', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>c', [[<cmd>lua require('telescope.builtin').command_history()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope.builtin').jumplist()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope').extensions.zoxide.list()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('telescope.builtin').jumplist()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>j', [[<cmd>lua require('telescope').extensions.zoxide.list()<CR>]], { noremap = true, silent = true })
 
 return M
