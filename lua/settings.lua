@@ -20,7 +20,7 @@ opt("o", "guicursor", "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50") -- block i
 opt("o", "showmatch", true)
 opt("o", "wildmenu", true)
 opt("o", "wildmode", "longest,list,full")
-opt('o', 'showbreak', '↳ ')
+-- opt('o', 'showbreak', '↳ ')
 opt("o", "showcmd", true)
 opt("o", "smarttab", true)
 opt("o", "magic", true)
