@@ -41,21 +41,5 @@ require("lazy").setup("plugins", {
     notify = true, -- get a notification when changes are found
   },
   debug = false,
-  ui = {
-    icons = {
-      cmd = "⌘",
-      config = "🛠",
-      event = "⚡",
-      ft = "ft",
-      init = "⚙",
-      keys = "🗝",
-      plugin = "🔌",
-      runtime = "💻",
-      source = "📄",
-      start = "🚀",
-      task = "📌",
-      lazy = "💤 ",
-    },
-  },
 })
 

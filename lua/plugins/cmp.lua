@@ -30,10 +30,37 @@ function M.config()
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   local luasnip = require("luasnip")
   require("luasnip.loaders.from_vscode").lazy_load()
-  local icons = require("icons")
+  -- https://microsoft.github.io/vscode-codicons/dist/codicon.html
+  -- https://www.nerdfonts.com/cheat-sheet
+  local cmp_kinds = {
+    Text = ' ',
+    Method = ' ',
+    Function = ' ',
+    Constructor = ' ',
+    Field = 'ﰠ',
+    Variable = ' ',
+    Class = ' ',
+    Interface = ' ',
+    Module = ' ',
+    Property = ' ',
+    Unit = '塞',
+    Value = '  ',
+    Enum = ' ',
+    Keyword = ' ',
+    Snippet = ' ',
+    Color = ' ',
+    File = ' ',
+    Reference = ' ',
+    Folder = ' ',
+    EnumMember = ' ',
+    Constant = ' ',
+    Struct = ' ',
+    Event = ' ',
+    Operator = ' ',
+    TypeParameter = ' ',
+  }
 
   local has_words_before = function()
-    unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
@@ -46,7 +73,8 @@ function M.config()
     formatting = {
       format = function(entry, vim_item)
         -- Kind icons
-        vim_item.kind = string.format("%s", icons.code[vim_item.kind])
+        -- vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+        vim_item.kind = (cmp_kinds[vim_item.kind] or '')
         -- Source
         vim_item.menu = ({
           buffer = "BUF",

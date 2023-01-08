@@ -4,7 +4,6 @@ local M = {
 }
 
 function M.config()
-  local icons = require("icons")
   require("symbols-outline").setup({
     highlight_hovered_item = true,
     show_guides = true,
@@ -19,7 +18,6 @@ function M.config()
     preview_bg_highlight = "Pmenu",
     autofold_depth = nil,
     auto_unfold_hover = true,
-    fold_markers = { "🡹", "🡻" },
     keymaps = { -- These keymaps can be a string or a table for multiple keys
       close = { "<Esc>", "K" },
       goto_location = "<Cr>",
@@ -36,34 +34,6 @@ function M.config()
     },
     lsp_blacklist = {},
     symbol_blacklist = {},
-    symbols = {
-      File = { icon = icons.code.File, hl = "TSURI" },
-      Module = { icon = icons.code.Module, hl = "TSNamespace" },
-      Namespace = { icon = icons.code.Namespace, hl = "TSNamespace" },
-      Package = { icon = icons.code.Package, hl = "TSNamespace" },
-      Class = { icon = icons.code.Class, hl = "TSType" },
-      Method = { icon = icons.code.Method, hl = "TSMethod" },
-      Property = { icon = icons.code.Property, hl = "TSMethod" },
-      Field = { icon = icons.code.Field, hl = "TSField" },
-      Constructor = { icon = icons.code.Constructor, hl = "TSConstructor" },
-      Enum = { icon = icons.code.Enum, hl = "TSType" },
-      Interface = { icon = icons.code.Interface, hl = "TSType" },
-      Function = { icon = icons.code.Function, hl = "TSFunction" },
-      Variable = { icon = icons.code.Variable, hl = "TSConstant" },
-      Constant = { icon = icons.code.Constant, hl = "TSConstant" },
-      String = { icon = icons.code.String, hl = "TSString" },
-      Number = { icon = icons.code.Number, hl = "TSNumber" },
-      Boolean = { icon = icons.code.Boolean, hl = "TSBoolean" },
-      Array = { icon = icons.code.Array, hl = "TSConstant" },
-      Object = { icon = icons.code.Object, hl = "TSType" },
-      Key = { icon = icons.code.Key, hl = "TSType" },
-      Null = { icon = icons.code.Null, hl = "TSType" },
-      EnumMember = { icon = icons.code.EnumMember, hl = "TSField" },
-      Struct = { icon = icons.code.Struct, hl = "TSType" },
-      Event = { icon = icons.code.Event, hl = "TSType" },
-      Operator = { icon = icons.code.Operator, hl = "TSOperator" },
-      TypeParameter = { icon = icons.code.TypeParameter, hl = "TSParameter" },
-    },
   })
 end
 
