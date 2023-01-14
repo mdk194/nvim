@@ -12,7 +12,7 @@ function M.config()
     ts_config = {
       lua = { "string" }, -- it will not add pair on that treesitter node
       javascript = { "template_string" },
-      java = true, -- check treesitter on java
+      java = false, -- check treesitter on java
     },
   })
 end
