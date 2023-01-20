@@ -85,13 +85,13 @@ vim.opt.wildignore = [[
 -- opt("o", "fillchars", "stl:-,stlnc: ")
 function _G.statusline()
   local quickfix        = '%q'
-  local paste           = [[%{&paste?'[PASTE]':''}]]
-  local buf_fn          = '[%<%f]'
+  local paste           = [[%{&paste?'[PASTE] ':''}]]
+  local buf_fn          = '%<%f '
   local modified_status = '%m'
   local readonly        = '%r'
   local preview         = '%w'
   local align_section   = '%='
-  local column          = '[%c]'
+  local column          = '%c '
   local file_type       = '%y'
   local not_unix        = [[%{&fileformat!='unix'?[&fileformat]:''}]]
   return quickfix..paste..buf_fn..modified_status..readonly..preview..align_section..column..file_type..not_unix
