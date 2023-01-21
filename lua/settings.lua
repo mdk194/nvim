@@ -35,7 +35,7 @@ opt("o", "incsearch", true)
 opt("o", "formatoptions", "rqnj1")
 opt("o", "autowrite", true)
 opt("o", "laststatus", 2) -- 2 to show statusline
-opt("o", "cmdheight", 0) -- 0 to disable cmd bar
+opt("o", "cmdheight", 1) -- 0 to disable cmd bar
 opt("o", "clipboard", "unnamed,unnamedplus")
 opt("o", "spelllang", "en_us")
 opt("o", "synmaxcol", 200)
