@@ -83,6 +83,7 @@ local function mk_config()
 end
 
 local config = mk_config()
+local rt = runtimes()
 config.settings = {
   java = {
     maxConcurrentBuilds = 2,
@@ -163,7 +164,7 @@ config.settings = {
       maven = {
         globalSettings = home .. '/.m2/settings.xml',
       },
-      runtimes = runtimes()
+      runtimes = rt
     };
   };
 }
@@ -186,6 +187,18 @@ config.cmd = {
   '-data', workspace_folder,
 }
 
+local function j17_home()
+  for _, p in ipairs(rt) do
+    if p.name == "JavaSE-17" then
+      return p.path
+    end
+  end
+end
+
+-- run the jdtls with java 17
+config.cmd_env = {
+  JAVA_HOME = j17_home(),
+}
 
 -- java-debug
 -- git clone git@github.com:microsoft/java-debug.git
