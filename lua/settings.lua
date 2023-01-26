@@ -45,6 +45,7 @@ opt("o", "cursorcolumn", false)
 opt("o", "cursorline", false)
 opt("o", "undofile", false)
 opt("o", "title", true)
+opt("o", "titlestring", "%{substitute(getcwd(),$HOME,'~','')}") -- set title to cwd for tmux #T
 opt("o", "fileformat", "unix")
 opt("o", "fileformats", "unix,mac,dos")
 opt("o", "pastetoggle", "<F1>")

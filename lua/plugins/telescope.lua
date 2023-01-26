@@ -47,7 +47,7 @@ function M.config()
         "--smart-case",
         "--follow",
         "--vimgrep",
-        -- "--trim",
+        "--trim",
         -- "--no-ignore",
       },
       mappings = {
@@ -59,6 +59,14 @@ function M.config()
           ['<C-d>'] = false,
           -- toggle showing hidden and ignored files while in find_files insert mode
           ["<C-h>"] = require("functions").telescope("find_files", { hidden = true, no_ignore = true }),
+          -- change dir
+          ["<C-j>"] = function(prompt_bufnr)
+            local selection = require('telescope.actions.state').get_selected_entry()
+            local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+            require('telescope.actions').close(prompt_bufnr)
+            vim.cmd(string.format("silent lcd %s", dir)) -- tcd, cd, lcd
+            -- vim.cmd("pwd")
+          end,
         },
       },
       initial_mode = "insert",
