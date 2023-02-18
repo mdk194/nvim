@@ -58,6 +58,7 @@ function M.config()
     ensure_installed = {
       -- LSP
       "bash-language-server",
+      "clangd",
       -- "dockerfile-language-server",
       "json-lsp",
       "typescript-language-server",

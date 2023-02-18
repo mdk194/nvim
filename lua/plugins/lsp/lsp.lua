@@ -30,6 +30,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 local servers = {
   "bashls",
+  "clangd",
   "jsonls",
   "pyright",
   "yamlls",
