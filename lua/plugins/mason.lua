@@ -62,6 +62,7 @@ function M.config()
       -- "dockerfile-language-server",
       "json-lsp",
       "typescript-language-server",
+      "graphql-language-service-cli",
       -- "ltex-ls",
       "lua-language-server",
       "pyright",

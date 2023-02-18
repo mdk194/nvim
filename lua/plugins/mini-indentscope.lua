@@ -11,7 +11,7 @@ function M.config()
     draw = {
       -- Delay (in ms) between event and start of drawing scope indicator
       delay = 100,
-      animation = indentscope.gen_animation('none'),
+      animation = indentscope.gen_animation.none(),
     },
 
     -- Module mappings. Use `''` (empty string) to disable one.

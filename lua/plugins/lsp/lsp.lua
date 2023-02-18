@@ -34,7 +34,8 @@ local servers = {
   "jsonls",
   "pyright",
   "yamlls",
-  "sumneko_lua",
+  "lua_ls",
+  "graphql",
 }
 
 for _, lsp in ipairs(servers) do
