@@ -35,7 +35,6 @@ local servers = {
   "pyright",
   "yamlls",
   "lua_ls",
-  "graphql",
 }
 
 for _, lsp in ipairs(servers) do
@@ -88,4 +87,12 @@ nvim_lsp.tsserver.setup({
   capabilities = capabilities,
   filetypes = { "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
   cmd = { "typescript-language-server", "--stdio" },
+})
+
+nvim_lsp.graphql.setup({
+  on_attach = function(client, bufnr)
+    utils.custom_lsp_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
