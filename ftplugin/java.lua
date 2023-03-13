@@ -178,7 +178,7 @@ config.settings = {
 -- end
 
 -- lombok support
--- curl -LO https://projectlombok.org/downloads/lombok.jar
+-- wget https://projectlombok.org/downloads/lombok.jar
 -- mv lombok.jar $HOME/.local/share/eclipse/
 config.cmd = {
   home .. '/.local/share/nvim/mason/packages/jdtls/bin/jdtls',
