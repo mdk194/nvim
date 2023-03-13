@@ -20,6 +20,7 @@ function M.config()
       nls.builtins.formatting.goimports,
       nls.builtins.formatting.gofumpt,
       nls.builtins.code_actions.shellcheck,
+      nls.builtins.diagnostics.pylint,
       -- nls.builtins.diagnostics.vale,
       -- nls.builtins.diagnostics.commitlint,
       -- nls.builtins.diagnostics.golangci_lint,

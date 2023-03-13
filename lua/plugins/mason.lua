@@ -78,6 +78,7 @@ function M.config()
       "shellcheck",
       "vale",
       "yamllint",
+      "pylint",
       -- DAP
       "debugpy",
     },
