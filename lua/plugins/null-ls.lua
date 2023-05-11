@@ -17,8 +17,8 @@ function M.config()
       nls.builtins.formatting.prettier.with({
         extra_args = { "--single-quote", "true", "--no-bracket-spacing", "false" },
       }),
-      nls.builtins.formatting.goimports,
-      nls.builtins.formatting.gofumpt,
+      -- nls.builtins.formatting.goimports,
+      -- nls.builtins.formatting.gofumpt,
       nls.builtins.code_actions.shellcheck,
       nls.builtins.diagnostics.pylint,
       -- nls.builtins.diagnostics.vale,
