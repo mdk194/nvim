@@ -68,7 +68,7 @@ function M.config()
       "pyright",
       -- "terraform-ls",
       "yaml-language-server",
-      {"jdtls", version = 'v1.18.0'}, -- pin to v1.18.0 due to https://github.com/eclipse/eclipse.jdt.ls/issues/2409
+      {"jdtls", version = 'v1.25.0'},
       -- Formatter
       "gofumpt",
       "prettier",
