@@ -25,15 +25,15 @@ local function runtimes()
     return {
       {
         name = "JavaSE-1.8",
-        path = "/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/",
+        path = home .. "/.sdkman/candidates/java/8.0.382-amzn/",
       },
       {
         name = "JavaSE-11",
-        path = "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/",
+        path = home .. "/.sdkman/candidates/java/11.0.20-tem/",
       },
       {
         name = "JavaSE-17",
-        path = "/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/",
+        path = home .. "/.sdkman/candidates/java/17.0.8-tem/",
       },
     }
   end
