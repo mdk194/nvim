@@ -68,7 +68,7 @@ function M.config()
       "pyright",
       -- "terraform-ls",
       "yaml-language-server",
-      {"jdtls", version = 'v1.25.0'},
+      {"jdtls", version = 'v1.26.0'},
       -- Formatter
       "gofumpt",
       "prettier",
