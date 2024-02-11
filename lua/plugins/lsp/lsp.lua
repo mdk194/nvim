@@ -80,15 +80,6 @@ nvim_lsp.gopls.setup({
   },
 })
 
-nvim_lsp.tsserver.setup({
-  on_attach = function(client, bufnr)
-    utils.custom_lsp_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
-  cmd = { "typescript-language-server", "--stdio" },
-})
-
 nvim_lsp.graphql.setup({
   on_attach = function(client, bufnr)
     utils.custom_lsp_attach(client, bufnr)

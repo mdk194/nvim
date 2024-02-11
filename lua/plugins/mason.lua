@@ -59,16 +59,16 @@ function M.config()
       -- LSP
       "bash-language-server",
       "clangd",
+      "tsserver",
       -- "dockerfile-language-server",
       "json-lsp",
-      "typescript-language-server",
       "graphql-language-service-cli",
       -- "ltex-ls",
       "lua-language-server",
       "pyright",
       -- "terraform-ls",
       "yaml-language-server",
-      {"jdtls", version = 'v1.26.0'},
+      {"jdtls", version = 'v1.32.0'},
       -- Formatter
       "gofumpt",
       "prettier",
