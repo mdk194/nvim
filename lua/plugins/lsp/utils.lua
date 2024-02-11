@@ -49,8 +49,8 @@ function M.custom_lsp_attach(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ar', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', opts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', opts)
+  -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 end
 
 return M

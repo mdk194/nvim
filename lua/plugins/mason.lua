@@ -1,7 +1,15 @@
 -- $HOME/.local/share/nvim/mason/bin
 local M = {
   "williamboman/mason.nvim",
-  cmd = {"Mason", "MasonInstall", "MasonToolsInstall", "MasonToolsUpdate", "MasonUninstall", "MasonUninstallAll", "MasonLog"},
+  cmd = {
+    "Mason",
+    "MasonInstall",
+    "MasonToolsInstall",
+    "MasonToolsUpdate",
+    "MasonUninstall",
+    "MasonUninstallAll",
+    "MasonLog",
+  },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -68,10 +76,12 @@ function M.config()
       "pyright",
       -- "terraform-ls",
       "yaml-language-server",
-      {"jdtls", version = 'v1.32.0'},
+      { "jdtls", version = "v1.32.0" },
       -- Formatter
       "gofumpt",
-      "prettier",
+      "goimports",
+      "google-java-format",
+      "prettierd",
       "stylua",
       -- Linter
       "eslint_d",
