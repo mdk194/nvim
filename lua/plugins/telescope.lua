@@ -50,8 +50,12 @@ function M.config()
         "--trim",
         -- "--no-ignore",
       },
+      preview = {
+        hide_on_startup = false,
+      },
       mappings = {
         i = {
+          ["<f4>"] = require('telescope.actions.layout').toggle_preview,
           ["<esc>"] = actions.close, -- Close on first esc instead of going to normal mode
           ["<C-f>"] = actions.preview_scrolling_up,
           ["<C-b>"] = actions.preview_scrolling_down,
@@ -65,7 +69,7 @@ function M.config()
             local dir = vim.fn.fnamemodify(selection.path, ":p:h")
             require('telescope.actions').close(prompt_bufnr)
             vim.cmd(string.format("silent lcd %s", dir)) -- tcd, cd, lcd
-            -- vim.cmd("pwd")
+            vim.cmd("pwd")
           end,
         },
       },
@@ -75,7 +79,7 @@ function M.config()
       sorting_strategy = "descending",
       layout_strategy = "vertical",
       layout_config = {
-        width = 0.95,
+        width = 0.99,
         height = 0.95,
         preview_cutoff = 1,
         prompt_position = "bottom",
@@ -88,8 +92,8 @@ function M.config()
             end
           end,
         },
-        vertical = { width = 0.95, height = 0.95, preview_height = 0.6 },
-        flex = { horizontal = { preview_width = 0.95 } },
+        vertical = { width = 0.99, height = 0.95, preview_height = 0.6 },
+        flex = { horizontal = { preview_width = 0.99 } },
       },
       winblend = 0,
       border = {},
@@ -104,7 +108,7 @@ function M.config()
   telescope.load_extension("zoxide")
 end
 
-vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('functions').telescope('find_files')()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('functions').telescope('git_files')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('grep_string')()<CR>]], { noremap = true, silent = true })
