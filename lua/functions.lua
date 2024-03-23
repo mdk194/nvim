@@ -9,7 +9,7 @@ function M.P(v)
 end
 
 function M.OS()
-  if os.getenv("BREW_PREFIX") == "/opt/homebrew" then
+  if os.getenv("HOMEBREW_PREFIX") == "/opt/homebrew" then
     return "mac"
   else
     return "linux"
