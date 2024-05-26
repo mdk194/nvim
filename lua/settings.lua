@@ -48,7 +48,6 @@ opt("o", "title", true)
 opt("o", "titlestring", "%{substitute(getcwd(),$HOME,'~','')}") -- set title to cwd for tmux #T
 opt("o", "fileformat", "unix")
 opt("o", "fileformats", "unix,mac,dos")
-opt("o", "pastetoggle", "<F1>")
 opt("o", "autoindent", false)
 opt("o", "updatetime", 250)
 opt("o", "foldlevelstart", 5)
