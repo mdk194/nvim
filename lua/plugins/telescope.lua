@@ -5,6 +5,7 @@ local M = {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     "nvim-telescope/telescope-ui-select.nvim",
     "jvgrootveld/telescope-zoxide",
+    "Marskey/telescope-sg",
   },
 }
 
@@ -23,6 +24,14 @@ function M.config()
       ["ui-select"] = {
         require("telescope.themes").get_cursor(),
       },
+      ast_grep = {
+        command = {
+            "sg",
+            "--json=stream",
+        }, -- must have --json=stream
+        grep_open_files = false, -- search in opened files
+        lang = nil, -- string value, specify language for ast-grep `nil` for default
+      }
     },
     pickers = {
       find_files = {
@@ -113,6 +122,7 @@ vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('functions').telescope(
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('grep_string')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('live_grep')()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>g', [[<cmd>Telescope ast_grep<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
