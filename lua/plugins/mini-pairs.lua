@@ -30,6 +30,9 @@ function M.config()
       ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^\\].', register = { cr = false } },
     },
   })
+
+  -- Override for mini-completion
+  vim.keymap.set('i', '<CR>', 'v:lua._G.cr_action()', { expr = true })
 end
 
 return M
