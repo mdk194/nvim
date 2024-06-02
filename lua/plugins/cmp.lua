@@ -32,7 +32,6 @@ function M.config()
     { "╎", "CmpBorder" },
   }
   local cmp = require("cmp")
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   local luasnip = require("luasnip")
   require("luasnip.loaders.from_vscode").lazy_load()
   -- https://microsoft.github.io/vscode-codicons/dist/codicon.html
@@ -148,8 +147,6 @@ function M.config()
       -- { name = "rg", keyword_length = 5 },
     }),
   })
-
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M

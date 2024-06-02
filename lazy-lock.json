@@ -18,7 +18,7 @@
   "melange-nvim": { "branch": "master", "commit": "b76b906cd6ed3c3152a47924a8eb5dcb35b326d8" },
   "mini.bracketed": { "branch": "main", "commit": "65c7dfb51e832de9e279e5d5b0741e7af6755ab5" },
   "mini.indentscope": { "branch": "stable", "commit": "cf07f19e718ebb0bcc5b00999083ce11c37b8d40" },
-  "nvim-autopairs": { "branch": "master", "commit": "c15de7e7981f1111642e7e53799e1211d4606cb9" },
+  "mini.pairs": { "branch": "main", "commit": "04f58f2545ed80ac3b52dd4826e93f33e15b2af6" },
   "nvim-cmp": { "branch": "main", "commit": "5260e5e8ecadaf13e6b82cf867a909f54e15fd07" },
   "nvim-dap": { "branch": "master", "commit": "fc1f7950c587cb82e048236420ef589419da2909" },
   "nvim-dap-go": { "branch": "main", "commit": "a0c5a2b991d7e9304a9a032cf177e22a4b0acda1" },
