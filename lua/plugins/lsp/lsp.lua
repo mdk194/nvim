@@ -2,8 +2,6 @@ local nvim_lsp = require("lspconfig")
 local utils = require("plugins.lsp.utils")
 local languages = require("plugins.lsp.languages")
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 local lsp_ui = {
   float = {
     focusable = true,
@@ -47,7 +45,6 @@ for _, lsp in ipairs(servers) do
         config.settings.python.pythonPath = utils.get_python_path(config.root_dir)
       end
     end,
-    capabilities = capabilities,
     flags = { debounce_text_changes = 150 },
     settings = {
       Lua = languages.lua,
@@ -62,7 +59,6 @@ nvim_lsp.gopls.setup({
   on_attach = function(client, bufnr)
     utils.custom_lsp_attach(client, bufnr)
   end,
-  capabilities = capabilities,
   filetypes = { "go", "gomod", "gotmpl" },
   message_level = vim.lsp.protocol.MessageType.Error,
   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
@@ -84,6 +80,6 @@ nvim_lsp.graphql.setup({
   on_attach = function(client, bufnr)
     utils.custom_lsp_attach(client, bufnr)
   end,
-  capabilities = capabilities,
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
+

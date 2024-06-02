@@ -40,9 +40,6 @@ local function runtimes()
 end
 
 local function mk_config()
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  capabilities.workspace = { configuration = true }
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
   return {
     flags = {
       debounce_text_changes = 150,
@@ -50,7 +47,6 @@ local function mk_config()
       server_side_fuzzy_completion = true,
     };
     handlers = {},
-    capabilities = capabilities;
     on_attach = function(client, bufnr)
       require("plugins.lsp.utils").custom_lsp_attach(client, bufnr)
 
