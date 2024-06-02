@@ -16,6 +16,12 @@ map("", "<leader>3", ":diffget REMOTE<CR>")
 map("n", "<leader><leader>", "<c-^>")
 map("n", "<leader>w", ":wa<CR>")
 
+-- clean trailing whitespace
+map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
+
+-- Spell check
+map("n", "<F3>", ":set spell!<CR>", { silent = true })
+
 map("n", "<F4>", ":SymbolsOutline<CR><c-w>=")
 map("n", "<F5>", ":w | :e<CR>")
 
@@ -67,12 +73,6 @@ map("n", "J", "mzJ`z")
 -- The normal use of S is covered by cc, so don't worry about shadowing it.
 map("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w")
 
--- clean trailing whitespace
-map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
-
--- Spell check
-map("n", "<F3>", ":set spell!<CR>", { silent = true })
-
 -- Using '<' and '>' in visual mode to shift code by a tab-width left/right by
 -- default exits visual mode. With this mapping we remain in visual mode after
 -- such an operation.
@@ -83,10 +83,6 @@ map("v", ".", ".gv")
 map("n", "(", "^")
 map("n", ")", "$")
 map("v", ")", "g_")
-
--- buffers
-map("n", "<leader>(", ":bp<CR>")
-map("n", "<leader>)", ":bn<CR>")
 
 -- dot work over visual line selections
 map("x", ".", ":norm.<CR>")
