@@ -3,6 +3,7 @@ local M = {
   cmd = 'Telescope',
   dependencies = {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { 'nvim-telescope/telescope-live-grep-args.nvim', version = '^1.0.0' },
     "nvim-telescope/telescope-ui-select.nvim",
     "Marskey/telescope-sg",
   },
@@ -11,6 +12,7 @@ local M = {
 function M.config()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
+  local lga_actions = require("telescope-live-grep-args.actions")
 
   telescope.setup({
     extensions = {
@@ -30,7 +32,19 @@ function M.config()
         }, -- must have --json=stream
         grep_open_files = false, -- search in opened files
         lang = nil, -- string value, specify language for ast-grep `nil` for default
-      }
+      },
+      live_grep_args = {
+        auto_quoting = true, -- enable/disable auto-quoting
+        -- define mappings, e.g.
+        mappings = { -- extend mappings
+          i = {
+            ["<C-k>"] = lga_actions.quote_prompt(),
+            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+            -- freeze the current list and start a fuzzy search in the frozen list
+            ["<C-space>"] = actions.to_fuzzy_refine,
+          },
+        },
+      },
     },
     pickers = {
       find_files = {
@@ -69,6 +83,7 @@ function M.config()
           ["<C-b>"] = actions.preview_scrolling_down,
           ['<C-u>'] = false,
           ['<C-d>'] = false,
+          ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
           -- toggle showing hidden and ignored files while in find_files insert mode
           ["<C-h>"] = require("functions").telescope("find_files", { hidden = true, no_ignore = true }),
           -- change dir
@@ -113,13 +128,15 @@ function M.config()
 
   telescope.load_extension('fzf')
   telescope.load_extension("ui-select")
+  telescope.load_extension("live_grep_args")
 end
 
 vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('functions').telescope('git_files')()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('grep_string')()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('live_grep')()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').telescope('live_grep')()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<space>g', [[<cmd>Telescope ast_grep<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
