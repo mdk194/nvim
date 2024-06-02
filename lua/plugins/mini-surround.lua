@@ -1,6 +1,7 @@
 local M = {
   'echasnovski/mini.surround',
   version = '*',
+  event = 'VeryLazy',
 }
 
 function M.config()

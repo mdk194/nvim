@@ -1,6 +1,7 @@
 local M = {
   'echasnovski/mini.files',
   version = '*',
+  event = 'VeryLazy',
 }
 
 function M.config()
