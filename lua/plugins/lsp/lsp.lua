@@ -30,7 +30,6 @@ local servers = {
   "bashls",
   "clangd",
   "jsonls",
-  "pylsp", -- pip install python-lsp-server python-lsp-isort pylsp-mypy python-lsp-black
   "yamlls",
   "lua_ls",
 }
@@ -47,10 +46,35 @@ for _, lsp in ipairs(servers) do
       json = languages.json,
       redhat = { telemetry = { enabled = false } },
       yaml = languages.yaml,
-      python = languages.python,
     },
   })
 end
+
+nvim_lsp.pylsp.setup({
+  on_attach = function(client, bufnr)
+    utils.custom_lsp_attach(client, bufnr)
+  end,
+  settings = {
+    pylsp = {
+      plugins = {
+        -- formatter options
+        black = { enabled = true },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        -- linter options
+        pylint = { enabled = true, executable = "pylint" },
+        pyflakes = { enabled = false },
+        pycodestyle = { enabled = false },
+        -- type checker
+        pylsp_mypy = { enabled = false },
+        -- auto-completion options
+        jedi_completion = { fuzzy = true },
+        -- import sorting
+        pyls_isort = { enabled = true },
+      },
+    },
+  },
+})
 
 nvim_lsp.gopls.setup({
   on_attach = function(client, bufnr)
