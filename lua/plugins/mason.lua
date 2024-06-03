@@ -73,7 +73,6 @@ function M.config()
       "graphql-language-service-cli",
       -- "ltex-ls",
       "lua-language-server",
-      "pyright",
       -- "terraform-ls",
       "yaml-language-server",
       { "jdtls", version = "v1.32.0" },

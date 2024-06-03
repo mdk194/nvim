@@ -30,7 +30,7 @@ local servers = {
   "bashls",
   "clangd",
   "jsonls",
-  "pyright",
+  "pylsp", -- pip install python-lsp-server python-lsp-isort pylsp-mypy python-lsp-black
   "yamlls",
   "lua_ls",
 }
@@ -40,17 +40,14 @@ for _, lsp in ipairs(servers) do
     on_attach = function(client, bufnr)
       utils.custom_lsp_attach(client, bufnr)
     end,
-    before_init = function(_, config)
-      if lsp == "pyright" then
-        config.settings.python.pythonPath = utils.get_python_path(config.root_dir)
-      end
-    end,
+    before_init = function(_, _) end,
     flags = { debounce_text_changes = 150 },
     settings = {
       Lua = languages.lua,
       json = languages.json,
       redhat = { telemetry = { enabled = false } },
       yaml = languages.yaml,
+      python = languages.python,
     },
   })
 end
