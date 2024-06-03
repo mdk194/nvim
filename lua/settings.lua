@@ -37,6 +37,7 @@ opt("o", "autowrite", true)
 opt("o", "laststatus", 2) -- 2 to show statusline
 opt("o", "cmdheight", 1) -- 0 to disable cmd bar
 opt("o", "clipboard", "unnamed,unnamedplus")
+opt("o", "spell", false)
 opt("o", "spelllang", "en_us")
 opt("o", "synmaxcol", 200)
 opt("o", "ttimeoutlen", 20)
