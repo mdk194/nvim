@@ -7,8 +7,8 @@ return {
     vim.cmd([[highlight IndentGuidesOdd guifg=#524D4A guibg=#2A2520]])
     vim.cmd([[highlight IndentGuidesEven guifg=#2A2520 guibg=#352F2A]])
     vim.cmd([[highlight DiagnosticInfo gui=italic]])
-    vim.cmd([[highlight DiagnosticHint gui=bold,italic]])
-    vim.cmd([[highlight DiagnosticWarn gui=bold,underdotted]])
-    vim.cmd([[highlight DiagnosticError gui=bold,standout]])
+    vim.cmd([[highlight DiagnosticHint gui=italic]])
+    vim.cmd([[highlight DiagnosticWarn gui=bold,italic]])
+    vim.cmd([[highlight DiagnosticError gui=bold,italic]])
   end,
 }
