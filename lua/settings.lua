@@ -62,7 +62,6 @@ opt("b", "iskeyword", "_,-,$,@,%,#")
 
 opt("w", "list", true)
 opt("w", "listchars", "tab:▸ ,nbsp:_,extends:❯,precedes:❮")
-opt("w", "signcolumn", "number")
 opt("w", "number", true)
 opt("w", "relativenumber", false)
 opt("w", "wrap", true)
@@ -98,8 +97,19 @@ function _G.statusline()
 end
 vim.cmd([[set statusline=%!v:lua.statusline()]])
 
-vim.fn.sign_define("DiagnosticSignError", { text = "󰅚 ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "󰀪 ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶 ", texthl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+-- with a dedicated sign icon in status column
+-- vim.opt.statuscolumn = "%s%=%l "
+-- vim.opt.signcolumn = "yes:1" -- number
+-- vim.opt.numberwidth = 3
+-- vim.fn.sign_define("DiagnosticSignError", { text = "󰅚 ", texthl = "DiagnosticSignError", linehl = "", numhl = "DiagnosticSignError" })
+-- vim.fn.sign_define("DiagnosticSignWarn", { text = "󰀪 ", texthl = "DiagnosticSignWarn" , linehl = "", numhl = "DiagnosticSignWarn" })
+-- vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
+-- vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
+
+-- no sign column icon, just text effect
+-- text effects are defined in colorscheme
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" , linehl = "", numhl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
 
