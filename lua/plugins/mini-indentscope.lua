@@ -1,6 +1,6 @@
 local M = {
   'echasnovski/mini.indentscope',
-  branch = 'stable',
+  version = '*',
 }
 
 function M.config()
@@ -12,6 +12,8 @@ function M.config()
       -- Delay (in ms) between event and start of drawing scope indicator
       delay = 100,
       animation = indentscope.gen_animation.none(),
+      -- Symbol priority. Increase to display on top of more symbols.
+      priority = 1,
     },
 
     -- Module mappings. Use `''` (empty string) to disable one.
