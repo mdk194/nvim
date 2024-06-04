@@ -26,15 +26,14 @@ function M.config()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<CR>",
-        scope_incremental = "<CR>",
-        node_incremental = "<TAB>",
+        init_selection = "<a-v>",
+        scope_incremental = "gs",
+        node_incremental = "gn",
         node_decremental = "<BS>",
       },
     },
     endwise = { enable = true },
     indent = { enable = false },
-    autopairs = { enable = true },
     textobjects = {
       select = {
         enable = true,
