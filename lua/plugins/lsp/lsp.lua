@@ -9,8 +9,8 @@ local lsp_ui = {
     border = "rounded",
   },
   diagnostic = {
-    -- virtual_text = false,
-    virtual_text = { spacing = 4, prefix = "●" },
+    virtual_text = false,
+    -- virtual_text = { spacing = 4, prefix = "●" },
     underline = false,
     update_in_insert = false,
     severity_sort = true,
