@@ -7,10 +7,10 @@ function M.config()
   local bracketed = require('mini.bracketed')
   bracketed.setup({
     buffer     = { suffix = 'b', options = {} },
-    comment    = { suffix = 'c', options = {} },
+    comment    = { suffix = '', options = {} },
     conflict   = { suffix = 'x', options = {} },
     diagnostic = { suffix = 'd', options = {} },
-    file       = { suffix = 'f', options = {} },
+    file       = { suffix = 'e', options = {} },
     indent     = { suffix = 'i', options = {} },
     jump       = { suffix = 'j', options = {} },
     location   = { suffix = 'l', options = {} },
