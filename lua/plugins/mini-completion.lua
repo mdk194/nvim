@@ -39,7 +39,7 @@ function M.config()
     -- Fallback action. It will always be run in Insert mode. To use Neovim's
     -- built-in completion (see `:h ins-completion`), supply its mapping as
     -- string. Example: to use 'whole lines' completion, supply '<C-x><C-l>'.
-    fallback_action = '<C-x><C-i>', -- current and included files
+    fallback_action = '<C-x><C-f>', -- file name
 
     -- Module mappings. Use `''` (empty string) to disable one. Some of them
     -- might conflict with system mappings.
