@@ -20,7 +20,7 @@ function M.custom_lsp_attach(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', [[<cmd>lua require('telescope.builtin').lsp_references()<CR>]], opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gic', [[<cmd>lua require('telescope.builtin').lsp_incoming_calls()<CR>]], opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'goc', [[<cmd>lua require('telescope.builtin').lsp_outgoing_calls()<CR>]], opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', [[<cmd>lua require('telescope.builtin').diagnostics()<CR>]], opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)

@@ -27,8 +27,8 @@ function M.config()
       enable = true,
       keymaps = {
         init_selection = "<a-v>",
-        scope_incremental = "gs",
-        node_incremental = "gn",
+        scope_incremental = "gss",
+        node_incremental = "gsn",
         node_decremental = "<BS>",
       },
     },
