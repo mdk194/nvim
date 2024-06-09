@@ -73,7 +73,7 @@ function M.config()
         -- "--no-ignore",
       },
       preview = {
-        hide_on_startup = false,
+        hide_on_startup = true,
       },
       mappings = {
         i = {
