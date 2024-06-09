@@ -1,6 +1,6 @@
 local M = {
   'echasnovski/mini.bracketed',
-  version = '*',
+  version = false,
 }
 
 function M.config()

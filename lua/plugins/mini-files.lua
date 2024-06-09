@@ -1,7 +1,9 @@
 local M = {
   'echasnovski/mini.files',
-  version = '*',
-  event = 'VeryLazy',
+  version = false,
+  keys = {
+    { "<F1>", "<cmd>lua MiniFiles.open()<CR>", desc = "Mini Files" },
+  }
 }
 
 function M.config()
@@ -56,7 +58,6 @@ function M.config()
     },
   })
 
-  vim.api.nvim_set_keymap('n', '<F1>', [[<cmd>lua MiniFiles.open()<CR>]], { noremap = true, silent = true })
 end
 
 

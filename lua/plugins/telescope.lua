@@ -77,7 +77,7 @@ function M.config()
       },
       mappings = {
         i = {
-          ["<f4>"] = require('telescope.actions.layout').toggle_preview,
+          ["<C-t>"] = require('telescope.actions.layout').toggle_preview,
           ["<esc>"] = actions.close, -- Close on first esc instead of going to normal mode
           ["<C-f>"] = actions.preview_scrolling_up,
           ["<C-b>"] = actions.preview_scrolling_down,

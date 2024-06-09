@@ -4,6 +4,7 @@ local M = {
   event = 'BufReadPost',
   -- version = 'v0.8.5.2',
   cond = IS_SMALL_FILE,
+  pin = true,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter-textobjects',

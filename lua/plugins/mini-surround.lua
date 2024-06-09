@@ -1,6 +1,6 @@
 local M = {
   'echasnovski/mini.surround',
-  version = '*',
+  version = false,
   event = 'VeryLazy',
 }
 

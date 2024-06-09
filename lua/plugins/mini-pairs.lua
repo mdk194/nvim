@@ -1,6 +1,7 @@
 local M = {
   'echasnovski/mini.pairs',
-  version = '*',
+  version = false,
+  event = "InsertEnter",
 }
 
 function M.config()

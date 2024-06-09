@@ -1,6 +1,6 @@
 local M = {
   'echasnovski/mini.completion',
-  version = '*',
+  version = false,
 }
 
 function M.config()
