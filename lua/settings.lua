@@ -91,10 +91,10 @@ function _G.statusline()
   local readonly        = '%r'
   local preview         = '%w'
   local align_section   = '%='
-  local column          = '%c '
+  -- local column          = '%c ' -- use g<C-g>
   local file_type       = '%y'
   local not_unix        = [[%{&fileformat!='unix'?[&fileformat]:''}]]
-  return quickfix..paste..buf_fn..modified_status..readonly..preview..align_section..column..file_type..not_unix
+  return quickfix..paste..buf_fn..modified_status..readonly..preview..align_section..file_type..not_unix
 end
 vim.cmd([[set statusline=%!v:lua.statusline()]])
 
