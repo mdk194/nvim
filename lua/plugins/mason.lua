@@ -75,7 +75,8 @@ function M.config()
       "lua-language-server",
       -- "terraform-ls",
       "yaml-language-server",
-      { "jdtls", version = "v1.32.0" },
+      -- { "jdtls", version = "v1.36.0" },
+      "jdtls",
       -- Formatter
       "gofumpt",
       "goimports",
