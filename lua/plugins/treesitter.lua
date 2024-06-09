@@ -1,7 +1,6 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = 'BufReadPost',
   -- version = 'v0.8.5.2',
   cond = IS_SMALL_FILE,
   pin = true,
@@ -99,7 +98,7 @@ function M.config()
 
   require('treesitter-context').setup{
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
+    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
     min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
     line_numbers = true,
     multiline_threshold = 3, -- Maximum number of lines to show for a single context
@@ -114,11 +113,10 @@ function M.config()
 
   -- jump to context
   vim.keymap.set("n", "[s", function() require("treesitter-context").go_to_context(vim.v.count1) end, { silent = true })
+  vim.cmd([[highlight TreesitterContext gui=bold guibg=#203F2A]])
 
   require("nvim-ts-autotag").setup()
 
-  vim.cmd [[set foldmethod=expr]]
-  vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
 end
 
 return M

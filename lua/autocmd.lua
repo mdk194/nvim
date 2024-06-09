@@ -14,6 +14,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- Disable fold for big file
+vim.api.nvim_create_autocmd("BufRead", {
+  callback = function()
+    if vim.api.nvim_buf_line_count(0) > 3000 then
+      vim.opt_local.foldexpr = ''
+      vim.opt_local.foldmethod = 'manual'
+      vim.schedule(function() vim.cmd('normal! zX') end)
+    end
+  end
+})
+
 function Nvim_create_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     vim.api.nvim_command("augroup " .. group_name)
@@ -64,3 +75,4 @@ local autocmds = {
   },
 }
 Nvim_create_augroups(autocmds)
+

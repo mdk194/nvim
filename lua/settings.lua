@@ -52,6 +52,8 @@ opt("o", "fileformats", "unix,mac,dos")
 opt("o", "autoindent", false)
 opt("o", "updatetime", 250)
 opt("o", "foldlevelstart", 5)
+opt("o", "foldmethod", "expr")
+opt("o", "foldexpr", "nvim_treesitter#foldexpr()")
 
 opt("b", "swapfile", false)
 opt("b", "expandtab", true)
