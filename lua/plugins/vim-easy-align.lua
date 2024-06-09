@@ -1,9 +1,8 @@
 local M = {
   'junegunn/vim-easy-align',
-  event = 'VeryLazy',
+  keys = {
+    { 'g=', '<Plug>(EasyAlign)', mode = {'n', 'v'}, desc = "Easy Align" },
+  }
 }
-
-vim.api.nvim_set_keymap('v', 'g=', '<Plug>(EasyAlign)', { noremap = false })
-vim.api.nvim_set_keymap('n', 'g=', '<Plug>(EasyAlign)', { noremap = false })
 
 return M
