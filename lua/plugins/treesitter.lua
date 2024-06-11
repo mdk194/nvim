@@ -86,7 +86,7 @@ function M.config()
       -- using Neovim's built-in LSP in a floating windows
       -- Press shortcut twice to enter the floating window
       lsp_interop = {
-        enable = true,
+        enable = false,
         -- border = 'none',
         peek_definition_code = {
           ["<leader>pf"] = "@function.outer",
