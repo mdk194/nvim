@@ -6,20 +6,20 @@ local M = {
 function M.config()
   local bracketed = require('mini.bracketed')
   bracketed.setup({
-    buffer     = { suffix = 'b', options = {} },
+    buffer     = { suffix = '', options = {} },
     comment    = { suffix = '', options = {} },
     conflict   = { suffix = 'x', options = {} },
-    diagnostic = { suffix = 'd', options = {} },
+    diagnostic = { suffix = '', options = {} },
     file       = { suffix = 'e', options = {} },
     indent     = { suffix = 'i', options = {} },
-    jump       = { suffix = 'j', options = {} },
+    jump       = { suffix = '', options = {} },
     location   = { suffix = 'l', options = {} },
     oldfile    = { suffix = 'o', options = {} },
     quickfix   = { suffix = 'q', options = {} },
     treesitter = { suffix = 't', options = {} },
-    undo       = { suffix = 'u', options = {} },
-    window     = { suffix = 'w', options = {} },
-    yank       = { suffix = 'y', options = {} },
+    undo       = { suffix = '', options = {} },
+    window     = { suffix = '', options = {} },
+    yank       = { suffix = '', options = {} },
   })
 end
 
