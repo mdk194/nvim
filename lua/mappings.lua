@@ -77,7 +77,7 @@ map("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w")
 -- default exits visual mode. With this mapping we remain in visual mode after
 -- such an operation.
 map("v", "<", "<gv")
-map("v", ".", ".gv")
+map("v", ">", ">gv")
 
 -- first, last
 map("n", "(", "^")
