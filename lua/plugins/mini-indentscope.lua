@@ -1,5 +1,6 @@
 local M = {
   'echasnovski/mini.indentscope',
+  event = 'VeryLazy',
   version = false,
 }
 
@@ -13,7 +14,7 @@ function M.config()
       delay = 100,
       animation = indentscope.gen_animation.none(),
       -- Symbol priority. Increase to display on top of more symbols.
-      priority = 1,
+      priority = 2,
     },
 
     -- Module mappings. Use `''` (empty string) to disable one.
@@ -43,6 +44,8 @@ function M.config()
       try_as_border = true,
     },
   })
+
+  -- vim.cmd.highlight('MiniIndentscopeSymbol guifg=#f6fa05')
 end
 
 return M
