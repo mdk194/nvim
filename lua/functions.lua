@@ -57,11 +57,11 @@ function M.get_root()
   return root
 end
 
-function M.telescope(builtin, opts)
+function M.fzf(builtin, opts)
   return function()
     opts = opts or {}
     opts.cwd = M.get_root()
-    require("telescope.builtin")[builtin](opts)
+    require("fzf-lua")[builtin](opts)
   end
 end
 
