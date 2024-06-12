@@ -47,7 +47,6 @@ opt("o", "cursorline", false)
 opt("o", "undofile", false)
 opt("o", "ruler", false)
 opt("o", "title", true)
-opt("o", "titlestring", "%{substitute(getcwd(),$HOME,'~','')}") -- set title to cwd for tmux #T
 opt("o", "fileformat", "unix")
 opt("o", "fileformats", "unix,mac,dos")
 opt("o", "autoindent", false)
@@ -85,6 +84,14 @@ vim.opt.wildignore = [[
 *.swp,.lock,.DS_Store,._*
 */tmp/*,*.so,*.swp,*.zip,**/node_modules/**,**/target/**,**.terraform/**"
 ]]
+
+function _G.titlestring()
+  vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')}"
+end
+_G.titlestring()
+
+-- vim.cmd([[set statusline=%!v:lua.statusline()]])
+-- opt("o", "titlestring", "%{substitute(getcwd(),$HOME,'~','')}") -- set title to cwd for tmux #T
 
 -- opt("o", "fillchars", "stl:-,stlnc: ")
 function _G.statusline()

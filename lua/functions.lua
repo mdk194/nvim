@@ -65,4 +65,20 @@ function M.fzf(builtin, opts)
   end
 end
 
+function M.fzf_dirs(opts)
+  local fzf_lua = require('fzf-lua')
+  local root = M.get_root()
+
+  opts = opts or {}
+  opts.cwd = root
+  opts.prompt = "Dir> "
+  opts.actions = {
+    ['default'] = function(selected)
+      vim.cmd("cd " .. root .. "/" .. selected[1])
+      _G.titlestring()
+    end
+  }
+  fzf_lua.fzf_exec("fd --type d", opts)
+end
+
 return M
