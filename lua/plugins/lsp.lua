@@ -1,6 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
-  -- event = 'BufReadPost',
+  event = { "BufReadPost", "BufNewFile" },
   cond = IS_SMALL_FILE,
 }
 
