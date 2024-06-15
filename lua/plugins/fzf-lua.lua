@@ -37,7 +37,8 @@ function M.config()
         ["ctrl-z"] = "abort",
         -- ["ctrl-a"]         = "beginning-of-line",
         ["ctrl-e"] = "end-of-line",
-        ["ctrl-a"] = "toggle-all",
+        ["shift-tab"] = "toggle-all",
+        ["ctrl-a"] = "select-all+accept", -- select all and send to quickfix list
         ["ctrl-w"] = "toggle-preview-wrap",
         ["ctrl-t"] = "toggle-preview",
         ["ctrl-u"] = "preview-page-up",
