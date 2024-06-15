@@ -1,6 +1,6 @@
 M = {}
 
-function M.custom_lsp_attach(_, bufnr)
+function M.custom_lsp_attach(client, bufnr)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -31,6 +31,23 @@ function M.custom_lsp_attach(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', opts)
   -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
+
+  if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+    vim.keymap.set('n', '<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { buffer = bufnr, silent = true })
+  end
+
+  if client.server_capabilities.codeLensProvider then
+    -- trigger now
+    vim.lsp.codelens.refresh()
+
+    -- trigger refresh on events as well
+    vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
+      buffer = bufnr,
+      callback = vim.lsp.codelens.refresh,
+    })
+
+    vim.keymap.set("n", "<leader>a", vim.lsp.codelens.run, { buffer = bufnr, silent = true })
+  end
 end
 
 return M

@@ -26,6 +26,26 @@ vim.diagnostic.config(lsp_ui.diagnostic)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_ui.float)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_ui.float)
 
+local	capabilities = {
+  textDocument = {
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    },
+    completion = {
+      completionItem = {
+        snippetSupport = false,
+      },
+    },
+  },
+}
+
+local	showMessage = {
+  messageActionItem = {
+    additionalPropertiesSupport = true,
+  },
+}
+
 local servers = {
   "bashls",
   "clangd",
@@ -40,6 +60,8 @@ for _, lsp in ipairs(servers) do
       utils.custom_lsp_attach(client, bufnr)
     end,
     before_init = function(_, _) end,
+    capabilities = capabilities,
+    showMessage = showMessage,
     flags = { debounce_text_changes = 150 },
     settings = {
       Lua = languages.lua,
@@ -54,6 +76,8 @@ nvim_lsp.pylsp.setup({
   on_attach = function(client, bufnr)
     utils.custom_lsp_attach(client, bufnr)
   end,
+  capabilities = capabilities,
+  showMessage = showMessage,
   settings = {
     pylsp = {
       plugins = {
@@ -80,19 +104,44 @@ nvim_lsp.gopls.setup({
   on_attach = function(client, bufnr)
     utils.custom_lsp_attach(client, bufnr)
   end,
+  capabilities = capabilities,
+  showMessage = showMessage,
   filetypes = { "go", "gomod", "gotmpl" },
   message_level = vim.lsp.protocol.MessageType.Error,
   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   settings = {
     gopls = {
+      hints = {
+        rangeVariableTypes = true,
+        parameterNames = true,
+        constantValues = true,
+        assignVariableTypes = false,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = false,
+        functionTypeParameters = true,
+      },
       codelenses = {
         tidy = true,
         upgrade_dependency = true,
-        generate = false,
-        gc_details = false,
-        test = false,
+        generate = true,
+        gc_details = true,
+        test = true,
         vendor = false,
+				regenerate_cgo = true,
+				run_govulncheck = false,
       },
+			analyses = {
+				fieldalignment = true,
+				nilness = true,
+				unusedparams = true,
+				unusedwrite = true,
+				useany = true,
+			},
+			usePlaceholders = true,
+			completeUnimported = true,
+			staticcheck = true,
+			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-.nvim" },
+			semanticTokens = true,
     },
   },
 })
