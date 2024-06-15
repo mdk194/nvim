@@ -26,7 +26,6 @@ map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
 map("n", "<F3>", ":set spell!<CR>", { silent = true })
 
 map("n", "<F4>", ":SymbolsOutline<CR><c-w>=")
-map("n", "<F5>", ":w | :e<CR>")
 
 -- kill windows
 map("n", "K", ":q<CR>")
