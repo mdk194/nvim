@@ -1,9 +1,7 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  -- version = 'v0.8.5.2',
   cond = IS_SMALL_FILE,
-  event = { "BufReadPost", "BufNewFile" },
   pin = true,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',

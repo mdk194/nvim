@@ -94,7 +94,7 @@ map("x", "Q", [[:'<,'>:normal @q<CR>]])
 
 -- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float()]]
 vim.api.nvim_set_keymap("n", "<space>d", [[<cmd>lua vim.diagnostic.open_float()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>copen<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true, silent = true })
 
 -- Completion
 vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
