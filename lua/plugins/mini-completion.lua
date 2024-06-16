@@ -1,5 +1,6 @@
 local M = {
   'echasnovski/mini.completion',
+  event = { "BufReadPost", "BufNewFile" },
   version = false,
 }
 
@@ -22,11 +23,11 @@ function M.config()
     -- Way of how module does LSP completion
     lsp_completion = {
       -- `source_func` should be one of 'completefunc' or 'omnifunc'.
-      source_func = 'completefunc',
+      source_func = 'omnifunc',
 
       -- `auto_setup` should be boolean indicating if LSP completion is set up
       -- on every `BufEnter` event.
-      auto_setup = true,
+      auto_setup = false,
 
       -- `process_items` should be a function which takes LSP
       -- 'textDocument/completion' response items and word to complete. Its
@@ -44,8 +45,8 @@ function M.config()
     -- Module mappings. Use `''` (empty string) to disable one. Some of them
     -- might conflict with system mappings.
     mappings = {
-      force_twostep = '<C-Space>', -- Force two-step completion
-      force_fallback = '<A-Space>', -- Force fallback completion
+      force_twostep = '', -- Force two-step completion
+      force_fallback = '', -- Force fallback completion
     },
 
     -- Whether to set Vim's settings for better experience (modifies

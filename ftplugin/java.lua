@@ -48,8 +48,6 @@ local function mk_config()
     };
     handlers = {},
     on_attach = function(client, bufnr)
-      require("plugins.lsp.utils").custom_lsp_attach(client, bufnr)
-
       local opts = { noremap = true, silent = true }
       vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>di", "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
 

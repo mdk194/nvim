@@ -9,9 +9,6 @@ vim.g.rustaceanvim = {
     },
   },
   server = {
-    on_attach = function(client, bufnr)
-      require("plugins.lsp.utils").custom_lsp_attach(client, bufnr)
-    end,
     default_settings = {
       ['rust-analyzer'] = {
         inlayHints = { locationLinks = false },

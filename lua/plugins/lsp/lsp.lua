@@ -1,5 +1,4 @@
 local nvim_lsp = require("lspconfig")
-local utils = require("plugins.lsp.utils")
 local languages = require("plugins.lsp.languages")
 
 local lsp_ui = {
@@ -56,9 +55,6 @@ local servers = {
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
-    on_attach = function(client, bufnr)
-      utils.custom_lsp_attach(client, bufnr)
-    end,
     before_init = function(_, _) end,
     capabilities = capabilities,
     showMessage = showMessage,
@@ -73,9 +69,6 @@ for _, lsp in ipairs(servers) do
 end
 
 nvim_lsp.pylsp.setup({
-  on_attach = function(client, bufnr)
-    utils.custom_lsp_attach(client, bufnr)
-  end,
   capabilities = capabilities,
   showMessage = showMessage,
   settings = {
@@ -101,9 +94,6 @@ nvim_lsp.pylsp.setup({
 })
 
 nvim_lsp.gopls.setup({
-  on_attach = function(client, bufnr)
-    utils.custom_lsp_attach(client, bufnr)
-  end,
   capabilities = capabilities,
   showMessage = showMessage,
   filetypes = { "go", "gomod", "gotmpl" },
@@ -147,9 +137,6 @@ nvim_lsp.gopls.setup({
 })
 
 nvim_lsp.graphql.setup({
-  on_attach = function(client, bufnr)
-    utils.custom_lsp_attach(client, bufnr)
-  end,
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
 

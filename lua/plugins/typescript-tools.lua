@@ -9,11 +9,7 @@ local M = {
 function M.config()
   local tt = require("typescript-tools")
 
-
   tt.setup({
-    on_attach = function(client, bufnr)
-      require("plugins.lsp.utils").custom_lsp_attach(client, bufnr)
-    end,
     settings = {
       -- spawn additional tsserver instance to calculate diagnostics on it
       separate_diagnostic_server = true,
