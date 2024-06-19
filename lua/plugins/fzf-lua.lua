@@ -20,7 +20,7 @@ function M.config()
         row     = 0.35,
         col     = 0.55,
         border  = "rounded",
-        preview = { default = "bat_native", hidden = "hidden", layout = "horizontal", horizontal = "up:60%" },
+        preview = { default = "bat_native", layout = "horizontal", horizontal = "up:60%" },
       },
     },
     previewers = {
@@ -32,6 +32,7 @@ function M.config()
       builtin = {
         ["<F1>"] = "toggle-help",
         ["<F2>"] = "toggle-fullscreen",
+        ["<C-t>"] = "toggle-preview",
       },
       fzf = {
         ["ctrl-z"] = "abort",
@@ -55,12 +56,14 @@ function M.config()
         ["ctrl-]"]  = actions.file_tabedit,
         ["ctrl-q"]  = actions.file_sel_to_qf,
         ["ctrl-l"]  = actions.file_sel_to_ll,
+        ["ctrl-t"] = "toggle-preview",
       },
       buffers = {
         ["default"] = actions.buf_edit,
         ["ctrl-s"]  = actions.buf_split,
         ["ctrl-v"]  = actions.buf_vsplit,
         ["ctrl-]"]  = actions.buf_tabedit,
+        ["ctrl-t"] = "toggle-preview",
       }
     },
     fzf_opts = {
@@ -77,7 +80,6 @@ function M.config()
       ["--highlight-line"] = true,           -- fzf >= v0.53
     },
     files = {
-      previewer = "bat",
       cwd_header = true,
       cwd_prompt_shorten_len = 32,
       find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
@@ -86,7 +88,8 @@ function M.config()
       actions = {
         ["ctrl-g"] = { actions.toggle_ignore },
         ["ctrl-h"] = { actions.toggle_hidden },
-      }
+      },
+      winopts = { preview = { hidden = "hidden" } },
     },
     grep = {
       rg_opts        = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
@@ -111,7 +114,7 @@ function M.config()
       cwd               = nil,          -- buffers list for a given dir
       actions = {
         ["ctrl-x"]      = { fn = actions.buf_del, reload = true },
-      }
+      },
     },
     quickfix = {
       file_icons        = false,
