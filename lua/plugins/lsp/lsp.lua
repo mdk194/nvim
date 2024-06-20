@@ -25,7 +25,7 @@ vim.diagnostic.config(lsp_ui.diagnostic)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_ui.float)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_ui.float)
 
-local	capabilities = {
+local capabilities = {
   textDocument = {
     foldingRange = {
       dynamicRegistration = false,
@@ -39,7 +39,7 @@ local	capabilities = {
   },
 }
 
-local	showMessage = {
+local showMessage = {
   messageActionItem = {
     additionalPropertiesSupport = true,
   },
@@ -117,21 +117,21 @@ nvim_lsp.gopls.setup({
         gc_details = true,
         test = true,
         vendor = false,
-				regenerate_cgo = true,
-				run_govulncheck = false,
+        regenerate_cgo = true,
+        run_govulncheck = false,
       },
-			analyses = {
-				fieldalignment = true,
-				nilness = true,
-				unusedparams = true,
-				unusedwrite = true,
-				useany = true,
-			},
-			usePlaceholders = true,
-			completeUnimported = true,
-			staticcheck = true,
-			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-.nvim" },
-			semanticTokens = true,
+      analyses = {
+        fieldalignment = true,
+        nilness = true,
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+      },
+      usePlaceholders = true,
+      completeUnimported = true,
+      staticcheck = true,
+      directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-.nvim" },
+      semanticTokens = true,
     },
   },
 })

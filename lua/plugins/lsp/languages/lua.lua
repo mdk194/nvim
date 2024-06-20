@@ -9,7 +9,7 @@ local opts = {
   runtime = {
     version = "LuaJIT",
   },
-  completion = { enable = true, callSnippet = "Replace" },
+  completion = { enable = true },
   diagnostics = {
     enable = true,
     globals = { "vim", "describe" },
