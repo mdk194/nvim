@@ -30,6 +30,7 @@ vim.g.maplocalleader = ","
 require('settings')
 require('mappings')
 require('autocmd')
+require('statusline')
 
 -- load plugins -----------------------------------------------------------------------
 require("lazy").setup("plugins", {

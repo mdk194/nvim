@@ -27,7 +27,7 @@ opt("o", "smarttab", true)
 opt("o", "magic", true)
 opt("o", "dictionary", "/usr/share/dict/words")
 opt("o", "mouse", "a")
-opt("o", "shortmess", "aoOtTIcFWC")
+opt("o", "shortmess", "aoOtTIcFWCsS")
 opt("o", "whichwrap", "b,s,<,>,h,l")
 opt("o", "hlsearch", true)
 opt("o", "ignorecase", true) -- Ignore case when searching (use `\C` to force not doing that)
@@ -91,34 +91,6 @@ function _G.titlestring()
 end
 _G.titlestring()
 
--- vim.cmd([[set statusline=%!v:lua.statusline()]])
--- opt("o", "titlestring", "%{substitute(getcwd(),$HOME,'~','')}") -- set title to cwd for tmux #T
-
--- opt("o", "fillchars", "stl:-,stlnc: ")
-function _G.statusline()
-  local quickfix        = '%q'
-  local paste           = [[%{&paste?'[PASTE] ':''}]]
-  local buf_fn          = '%<%f '
-  local modified_status = '%m'
-  local readonly        = '%r'
-  local preview         = '%w'
-  local align_section   = '%='
-  -- local column          = '%c ' -- use g<C-g>
-  local file_type       = '%y'
-  local not_unix        = [[%{&fileformat!='unix'?[&fileformat]:''}]]
-  return quickfix..paste..buf_fn..modified_status..readonly..preview..align_section..file_type..not_unix
-end
-vim.cmd([[set statusline=%!v:lua.statusline()]])
-
--- with a dedicated sign icon in status column
--- vim.opt.statuscolumn = "%s%=%l "
--- vim.opt.signcolumn = "yes:1" -- number
--- vim.opt.numberwidth = 3
--- vim.fn.sign_define("DiagnosticSignError", { text = "󰅚 ", texthl = "DiagnosticSignError", linehl = "", numhl = "DiagnosticSignError" })
--- vim.fn.sign_define("DiagnosticSignWarn", { text = "󰀪 ", texthl = "DiagnosticSignWarn" , linehl = "", numhl = "DiagnosticSignWarn" })
--- vim.fn.sign_define("DiagnosticSignHint", { text = "󰌶", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
--- vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
-
 -- no sign column icon, just text effect
 -- text effects are defined in colorscheme
 vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "DiagnosticSignError" })
@@ -126,4 +98,6 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWa
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
 
+
+vim.opt.diffopt:append('algorithm:patience,indent-heuristic,vertical')
 vim.opt.fillchars:append('vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·')
