@@ -1,7 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile" },
-  cond = IS_SMALL_FILE,
+  cond = require("functions").is_small_file,
 }
 
 function M.config()

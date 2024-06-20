@@ -81,4 +81,11 @@ function M.fzf_dirs(opts)
   fzf_lua.fzf_exec("fd --type d", opts)
 end
 
+-- file size < 512KiB
+-- use as cond to disable plugins like lsp, null-ls, treesitter
+function M.is_small_file()
+  local fsize = vim.fn.getfsize(vim.fn.expand("%:p:f"))
+  return fsize < 512 * 1024
+end
+
 return M
