@@ -25,6 +25,21 @@ vim.api.nvim_create_autocmd("BufRead", {
   end
 })
 
+-- show, hide relative line numbers on selection
+local relative_line_number = vim.api.nvim_create_augroup('RelativeLineNumber', {})
+vim.api.nvim_create_autocmd('ModeChanged', {
+  group = relative_line_number,
+  pattern = '*:[V\x16]*',
+  callback = function() vim.wo.relativenumber = vim.wo.number end,
+  desc = "show relative line numbers on linewise and blockwise selection",
+})
+vim.api.nvim_create_autocmd('ModeChanged', {
+  group = relative_line_number,
+  pattern = '[V\x16]*:*',
+  callback = function() vim.wo.relativenumber = string.find(vim.fn.mode(), '^[V\22]') ~= nil end,
+  desc = "hide relative line numbers",
+})
+
 function Nvim_create_augroups(definitions)
   for group_name, definition in pairs(definitions) do
     vim.api.nvim_command("augroup " .. group_name)
