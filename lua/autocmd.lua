@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Enable spell checking for certain file types
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = vim.api.nvim_create_augroup("SpellCheckFileType", {}),
   pattern = { "*.tex" },
   callback = function()
     vim.opt.spell = true
@@ -16,10 +17,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- Disable fold for big file
 vim.api.nvim_create_autocmd("BufRead", {
+  group = vim.api.nvim_create_augroup("DisableTreeSitterFold", {}),
   callback = function()
     if vim.api.nvim_buf_line_count(0) > 3000 then
       vim.opt_local.foldexpr = ''
-      vim.opt_local.foldmethod = 'manual'
+      vim.opt_local.foldmethod = 'indent'
       vim.schedule(function() vim.cmd('normal! zX') end)
     end
   end
