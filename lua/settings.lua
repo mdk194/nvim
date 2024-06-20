@@ -7,7 +7,8 @@ local function opt(scope, key, value)
 end
 
 opt("o", "background", "dark")
-opt("o", "completeopt", "menu,menuone,noselect")
+opt("o", "completeopt", "menuone,noinsert,noselect")
+opt("o", "virtualedit", "block") -- Allow going past the end of line in visual block mode
 opt("o", "hidden", true)
 opt("o", "showmode", false)
 opt("o", "scrolloff", 5)
@@ -26,17 +27,17 @@ opt("o", "smarttab", true)
 opt("o", "magic", true)
 opt("o", "dictionary", "/usr/share/dict/words")
 opt("o", "mouse", "a")
-opt("o", "shortmess", "aoOtTIcF")
+opt("o", "shortmess", "aoOtTIcFWC")
 opt("o", "whichwrap", "b,s,<,>,h,l")
 opt("o", "hlsearch", true)
-opt("o", "ignorecase", true)
+opt("o", "ignorecase", true) -- Ignore case when searching (use `\C` to force not doing that)
 opt("o", "smartcase", true)
 opt("o", "incsearch", true)
-opt("o", "formatoptions", "rqnj1")
+opt("o", "formatoptions", "qjl1") -- Don't autoformat comments
 opt("o", "autowrite", true)
 opt("o", "laststatus", 2) -- 2 to show statusline
 opt("o", "cmdheight", 1) -- 0 to disable cmd bar
-opt("o", "clipboard", "unnamed,unnamedplus")
+-- opt("o", "clipboard", "unnamed,unnamedplus")
 opt("o", "spell", false)
 opt("o", "spelllang", "en_us")
 opt("o", "synmaxcol", 200)
@@ -44,7 +45,7 @@ opt("o", "ttimeoutlen", 50)
 opt("o", "backspace", "indent,eol,start")
 opt("o", "cursorcolumn", false)
 opt("o", "cursorline", false)
-opt("o", "undofile", false)
+opt("o", "undofile", true) -- see also :h undodir
 opt("o", "ruler", false)
 opt("o", "title", true)
 opt("o", "fileformat", "unix")
@@ -60,7 +61,8 @@ opt("b", "expandtab", true)
 opt("b", "tabstop", 8)
 opt("b", "shiftwidth", 4)
 opt("b", "softtabstop", 4)
-opt("b", "smartindent", false)
+opt("b", "infercase", true) -- Infer letter cases for the built-in keyword completion
+opt("b", "smartindent", true)
 opt("b", "iskeyword", "_,-,$,@,%,#")
 
 opt("w", "list", true)
@@ -124,3 +126,4 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWa
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
 
+vim.opt.fillchars:append('vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·')

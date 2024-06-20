@@ -96,6 +96,20 @@ map("x", "Q", [[:'<,'>:normal @q<CR>]])
 vim.api.nvim_set_keymap("n", "<space>d", [[<cmd>lua vim.diagnostic.open_float()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true, silent = true })
 
+-- Copy/paste with system clipboard
+vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set(  'n',        'gp', '"+p', { desc = 'Paste from system clipboard' })
+-- Paste in Visual with `P` to not copy selected text (`:h v_P`)
+vim.keymap.set(  'x',        'gp', '"+P', { desc = 'Paste from system clipboard' })
+
+-- Reselect latest changed, put, or yanked text
+vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true, replace_keycodes = false, desc = 'Visually select changed text' })
+
+-- Alternative way to save and exit in Normal mode.
+-- Adding `redraw` helps with `cmdheight=0` if buffer is not modified
+vim.keymap.set(  'n',        '<C-S>', '<Cmd>silent! update | redraw<CR>',      { desc = 'Save' })
+vim.keymap.set({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
+
 -- Completion
 vim.keymap.set('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { expr = true })
 vim.keymap.set('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
