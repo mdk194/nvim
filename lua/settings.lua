@@ -101,3 +101,5 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignIn
 
 vim.opt.diffopt:append('algorithm:patience,indent-heuristic,vertical')
 vim.opt.fillchars:append('vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·')
+
+vim.opt.cmdheight=0
