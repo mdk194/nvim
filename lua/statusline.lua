@@ -26,16 +26,22 @@ return ""
 end
 
 function _G.statusline_search()
-  if vim.v.hlsearch == 1 then
-    -- searchcount can fail e.g. if unbalanced braces in search pattern
-    local ok, count = pcall(vim.fn.searchcount)
-
-    if ok and count["total"] > 0 then
-      return "(" .. count["current"] .. "∕" .. count["total"] .. ") "
-    end
+  if vim.v.hlsearch == 0 then
+    return ""
   end
 
-  return ""
+  local last_search = vim.fn.getreg("/")
+  if not last_search or last_search == "" then
+    return ""
+  end
+
+  local ok, count = pcall(vim.fn.searchcount, { maxcount = 9999 })
+  if not ok then
+    return ""
+  end
+
+  return "(" .. count["current"] .. "∕" .. count["total"] .. ") "
+
 end
 
 function _G.statusline_macro_recording()
