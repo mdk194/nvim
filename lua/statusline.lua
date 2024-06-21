@@ -16,7 +16,7 @@ function _G.statusline_diagnostic()
   end
 
   if #diagnostics_counts > 0 then
-    return "<" .. table.concat(diagnostics_counts, ",") .. "> "
+    return "{" .. table.concat(diagnostics_counts, ",") .. "} "
   end
 
   return ""
@@ -31,7 +31,7 @@ function _G.statusline_search()
     local ok, count = pcall(vim.fn.searchcount)
 
     if ok and count["total"] > 0 then
-      return "[" .. count["current"] .. "∕" .. count["total"] .. "] "
+      return "(" .. count["current"] .. "∕" .. count["total"] .. ") "
     end
   end
 
@@ -59,6 +59,7 @@ statusline = statusline .. '%{v:lua.statusline_diagnostic()}' -- diagnostic coun
 statusline = statusline .. '%{v:lua.statusline_search()}' -- search count
 statusline = statusline .. '%{v:lua.statusline_macro_recording()}' -- recording macro
 statusline = statusline .. [[%{&spell?'[S] ':''}]] -- spell
+statusline = statusline .. '<%c> ' -- column
 statusline = statusline .. '%y' -- file type
 statusline = statusline .. [[%{&fileformat!='unix'?[&fileformat]:''}]] -- not unix warn
 
