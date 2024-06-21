@@ -57,15 +57,15 @@ end
 local statusline = '%q'
 statusline = statusline .. [[%{&paste?'[PASTE] ':''}]]
 statusline = statusline .. '%<%f ' -- filename
+statusline = statusline .. '<%c> ' -- column
 statusline = statusline .. '%m' -- modified status
 statusline = statusline .. '%r' -- readonly
 statusline = statusline .. '%w' -- preview
 statusline = statusline .. '%=' -- align
-statusline = statusline .. '%{v:lua.statusline_diagnostic()}' -- diagnostic count
 statusline = statusline .. '%{v:lua.statusline_search()}' -- search count
 statusline = statusline .. '%{v:lua.statusline_macro_recording()}' -- recording macro
 statusline = statusline .. [[%{&spell?'[S] ':''}]] -- spell
-statusline = statusline .. '<%c> ' -- column
+statusline = statusline .. '%{v:lua.statusline_diagnostic()}' -- diagnostic count
 statusline = statusline .. '%y' -- file type
 statusline = statusline .. [[%{&fileformat!='unix'?[&fileformat]:''}]] -- not unix warn
 

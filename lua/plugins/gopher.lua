@@ -1,6 +1,6 @@
 local M = {
   "olexsmir/gopher.nvim",
-  ft = "go",
+  cmd = { "GoTagAdd", "GoTagRm", "GoTestAdd", "GoTestsAll", "GoTestsExp", "GoGenerate", "GoGet", "GoMod", "GoImpl", "GoCmt", "GoIfErr" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",

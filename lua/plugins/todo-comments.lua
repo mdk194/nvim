@@ -1,6 +1,12 @@
 local M = {
   "folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
+  -- event = 'VeryLazy',
+  keys = {
+    { '<leader>t', '<Cmd>TodoQuickFix<CR>' },
+    -- { ']t', function() require('todo-comments').jump_next() end },
+    -- { '[t', function() require('todo-comments').jump_prev() end },
+  }
 }
 
 function M.config()
@@ -69,9 +75,6 @@ function M.config()
     },
   })
 
-  -- vim.keymap.set("n", "]t", require('todo-comments').jump_next, { desc = "Next todo comment" })
-  -- vim.keymap.set("n", "[t", require('todo-comments').jump_prev, { desc = "Previous todo comment" })
-  vim.keymap.set("n", "<leader>t", "<Cmd>TodoQuickFix<CR>")
 end
 
 return M

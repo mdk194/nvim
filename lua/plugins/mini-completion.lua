@@ -1,6 +1,6 @@
 local M = {
   'echasnovski/mini.completion',
-  event = { "BufReadPost", "BufNewFile" },
+  event = 'InsertEnter',
   version = false,
 }
 

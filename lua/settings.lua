@@ -46,7 +46,7 @@ opt("o", "ttimeoutlen", 50)
 opt("o", "backspace", "indent,eol,start")
 opt("o", "cursorcolumn", false)
 opt("o", "cursorline", false)
-opt("o", "undofile", true) -- see also :h undodir
+opt("o", "undofile", false) -- see also :h undodir
 opt("o", "ruler", false)
 opt("o", "title", true)
 opt("o", "fileformat", "unix")
@@ -88,7 +88,7 @@ vim.opt.wildignore = [[
 ]]
 
 function _G.titlestring()
-  vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')}"
+  vim.o.titlestring = "nvim %{substitute(getcwd(),$HOME,'~','')}"
 end
 _G.titlestring()
 

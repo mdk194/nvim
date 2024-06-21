@@ -1,6 +1,7 @@
 local M = {
   'echasnovski/mini.bracketed',
   version = false,
+  event = 'VeryLazy',
 }
 
 function M.config()

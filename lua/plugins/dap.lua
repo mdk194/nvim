@@ -1,6 +1,5 @@
 local M = {
   "mfussenegger/nvim-dap",
-  ft = { "go", "rust", "java", "python" },
   dependencies = {
     "mfussenegger/nvim-dap-python",
     "leoluz/nvim-dap-go",
@@ -8,6 +7,17 @@ local M = {
     "nvim-neotest/nvim-nio",
     "rcarriga/nvim-dap-ui",
   },
+  keys = {
+    { '<F5>', function() require('dap').continue() end },
+    { '<F6>', function() require('dap').toggle_breakpoint() end },
+    { '<F7>', function() require('dap').step_over() end },
+    { '<F8>', function() require('dap').step_into() end },
+    { '<F9>', function() require('dap').step_out() end },
+    { '<leader>dp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end },
+    { '<leader>dr', function() require('dap').repl.open() end },
+    { '<leader>dl', function() require('dap').run_last() end },
+    { '<leader>dw', function() require('dapui').toggle() end },
+  }
 }
 
 function M.config()
@@ -30,18 +40,6 @@ function M.config()
 
   require("plugins.dap.python").setup()
   require("plugins.dap.go").setup()
-
-  vim.keymap.set('n', '<F5>', require('dap').continue)
-  vim.keymap.set('n', '<F6>', require('dap').toggle_breakpoint)
-  vim.keymap.set('n', '<F7>', require('dap').step_over)
-  vim.keymap.set('n', '<F8>', require('dap').step_into)
-  vim.keymap.set('n', '<F9>', require('dap').step_out)
-  -- vim.keymap.set('n', '<leader>db', require('dap').set_breakpoint)
-  vim.keymap.set('n', '<leader>dp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-  vim.keymap.set('n', '<leader>dr', require('dap').repl.open)
-  vim.keymap.set('n', '<leader>dl', require('dap').run_last)
-
-  vim.keymap.set('n', '<leader>dw', require("dapui").toggle)
 end
 
 return M

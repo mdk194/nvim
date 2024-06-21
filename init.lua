@@ -21,7 +21,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- load plugins -----------------------------------------------------------------------
 require("lazy").setup("plugins", {
-  -- defaults = { lazy = true },
+  defaults = { lazy = true },
   install = {
     missing = true, -- install missing plugins on startup, doesn't increase startup time
   },

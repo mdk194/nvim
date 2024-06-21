@@ -1,6 +1,22 @@
 local M = {
   "ibhagwan/fzf-lua",
-  event = 'VeryLazy',
+  keys = {
+    { '<c-f>', [[<cmd>lua require('fzf-lua').files()<CR>]] },
+    { '<c-p>', [[<cmd>lua require('functions').fzf('files')()<CR>]] },
+
+    { '<leader>f', [[<cmd>lua require('fzf-lua').resume()<CR>]] },
+    { '<leader>b', [[<cmd>lua require('fzf-lua').buffers()<CR>]]},
+    { '<leader>g', [[<cmd>lua require('functions').fzf('live_grep_glob')()<CR>]] },
+    { '<leader>/', [[<cmd>lua require('fzf-lua').blines()<CR>]] },
+    { '<leader>ht', [[<cmd>lua require('fzf-lua').helptags()<CR>]] },
+    { '<leader>o', [[<cmd>lua require('fzf-lua').oldfiles()<CR>]] },
+    { '<leader>c', [[<cmd>lua require('fzf-lua').changes()<CR>]] },
+    { '<leader>m', [[<cmd>lua require('fzf-lua').marks()<CR>]] },
+    { '<leader>j', [[<cmd>lua require('fzf-lua').jumps()<CR>]] },
+    { '<leader>p', [[<cmd>lua require('functions').fzf_dirs()<CR>]] },
+
+    -- { '<space>g', [[<cmd>Telescope ast_grep<CR>]] },
+  },
 }
 
 function M.config()
@@ -149,21 +165,6 @@ function M.config()
     return { winopts = { height = h, width = 0.60, row = 0.40 } }
   end)
 
-  vim.api.nvim_set_keymap('n', '<c-f>', [[<cmd>lua require('fzf-lua').files()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<c-p>', [[<cmd>lua require('functions').fzf('files')()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('fzf-lua').resume()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('fzf-lua').buffers()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>g', [[<cmd>lua require('functions').fzf('live_grep_glob')()<CR>]], { noremap = true, silent = true })
-  -- vim.api.nvim_set_keymap('n', '<space>g', [[<cmd>Telescope ast_grep<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>/', [[<cmd>lua require('fzf-lua').blines()<CR>]], { noremap = true, silent = true })
-  -- vim.api.nvim_set_keymap('n', '<leader>t', [[<cmd>lua require('telescope.builtin').treesitter()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>ht', [[<cmd>lua require('fzf-lua').helptags()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>o', [[<cmd>lua require('fzf-lua').oldfiles()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>c', [[<cmd>lua require('fzf-lua').changes()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>lua require('fzf-lua').marks()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>j', [[<cmd>lua require('fzf-lua').jumps()<CR>]], { noremap = true, silent = true })
-
-  vim.api.nvim_set_keymap('n', '<leader>p', [[<cmd>lua require('functions').fzf_dirs()<CR>]], { noremap = true, silent = true })
 end
 
 return M

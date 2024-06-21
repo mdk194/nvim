@@ -1,6 +1,5 @@
 local M = {
   'iamcco/markdown-preview.nvim',
-  ft = { 'markdown' },
   cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
   build = 'cd app && npm install',
 }
