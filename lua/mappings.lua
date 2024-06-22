@@ -101,6 +101,7 @@ vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true
 
 -- Copy/paste with system clipboard
 vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set(  'n',        'gY', '"+y$')
 vim.keymap.set(  'n',        'gp', '"+p', { desc = 'Paste from system clipboard' })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
 vim.keymap.set(  'x',        'gp', '"+P', { desc = 'Paste from system clipboard' })

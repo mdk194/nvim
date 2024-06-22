@@ -15,7 +15,7 @@ function M.config()
     notification = {
       filter = vim.log.levels.INFO,
       history_size = 32,             -- Number of removed messages to retain in history
-      override_vim_notify = true,   -- Automatically override vim.notify() with Fidget
+      override_vim_notify = false,   -- Automatically override vim.notify() with Fidget
       window = {
         align = 'bottom',
         relative = 'win',
@@ -30,17 +30,6 @@ function M.config()
       },
     }
   })
-
-  -- override global print to fidget notify
-  _G.print = function(...)
-    local print_safe_args = {}
-    local _ = {...}
-    for i=1, #_ do
-        table.insert(print_safe_args, tostring(_[i]))
-    end
-    local message = table.concat(print_safe_args, ' ')
-    fidget.notify(message, vim.log.levels.INFO)
-  end
 
 end
 

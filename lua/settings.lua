@@ -28,7 +28,7 @@ opt("o", "smarttab", true)
 opt("o", "magic", true)
 opt("o", "dictionary", "/usr/share/dict/words")
 opt("o", "mouse", "a")
-opt("o", "shortmess", "aoOtTIcFWCsS")
+opt("o", "shortmess", "aoOtTIcCF")
 opt("o", "whichwrap", "b,s,<,>,h,l")
 opt("o", "hlsearch", true)
 opt("o", "ignorecase", true) -- Ignore case when searching (use `\C` to force not doing that)
@@ -36,7 +36,7 @@ opt("o", "smartcase", true)
 opt("o", "incsearch", true)
 opt("o", "formatoptions", "qjl1") -- Don't autoformat comments
 opt("o", "autowrite", true)
-opt("o", "laststatus", 2) -- 2 to show statusline
+opt("o", "laststatus", 0) -- 2 to show statusline
 opt("o", "cmdheight", 1) -- 0 to disable cmd bar
 -- opt("o", "clipboard", "unnamed,unnamedplus")
 opt("o", "spell", false)
@@ -73,6 +73,8 @@ opt("w", "relativenumber", false)
 opt("w", "wrap", true)
 opt("w", "breakindent", true)
 
+vim.opt.diffopt:append('algorithm:patience,indent-heuristic,vertical')
+
 vim.opt.wildignore = [[
 .git,.hg,.svn
 *.aux,*.out,*.toc
@@ -87,8 +89,9 @@ vim.opt.wildignore = [[
 */tmp/*,*.so,*.swp,*.zip,**/node_modules/**,**/target/**,**.terraform/**"
 ]]
 
+vim.opt.titlelen = 120
 function _G.titlestring()
-  vim.o.titlestring = "nvim %{substitute(getcwd(),$HOME,'~','')}"
+  vim.o.titlestring = "  %{substitute(getcwd(),$HOME,'~','')}  %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
 end
 _G.titlestring()
 
@@ -99,8 +102,3 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWa
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
 
-
-vim.opt.diffopt:append('algorithm:patience,indent-heuristic,vertical')
-vim.opt.fillchars:append('vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·')
-
-vim.opt.cmdheight=0
