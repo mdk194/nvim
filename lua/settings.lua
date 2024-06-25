@@ -47,7 +47,7 @@ opt("o", "backspace", "indent,eol,start")
 opt("o", "cursorcolumn", false)
 opt("o", "cursorline", false)
 opt("o", "undofile", false) -- see also :h undodir
-opt("o", "ruler", false)
+opt("o", "ruler", true)
 opt("o", "title", true)
 opt("o", "fileformat", "unix")
 opt("o", "fileformats", "unix,mac,dos")
@@ -94,6 +94,8 @@ function _G.titlestring()
   vim.o.titlestring = "  %{substitute(getcwd(),$HOME,'~','')}  %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
 end
 _G.titlestring()
+
+vim.o.rulerformat = '%50(%=%{v:lua.statusline_diagnostic()}%m%r%{&spell?"[S]":""} %t%)'
 
 -- no sign column icon, just text effect
 -- text effects are defined in colorscheme
