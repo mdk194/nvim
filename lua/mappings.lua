@@ -64,9 +64,7 @@ map("n", "<c-o>", "<c-o>zz")
 map("c", "<c-j>", "<down>")
 map("c", "<c-k>", "<up>")
 
--- Make D and Y behave
 map("n", "D", "d$")
-map("n", "Y", "y$")
 
 -- Uppercase word
 map("i", "<c-l>", "<esc>mzgUiw`za")
@@ -100,8 +98,9 @@ vim.api.nvim_set_keymap("n", "<space>d", [[<cmd>lua vim.diagnostic.open_float()<
 vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true, silent = true })
 
 -- Copy/paste with system clipboard
-vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Copy to system clipboard' })
-vim.keymap.set(  'n',        'gY', '"+y$')
+vim.keymap.set({ 'n', 'x' }, 'y', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set(  'n',        'Y', '"+y$')
+vim.keymap.set(  'n',        'yy', '"+yy')
 vim.keymap.set(  'n',        'gp', '"+p', { desc = 'Paste from system clipboard' })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
 vim.keymap.set(  'x',        'gp', '"+P', { desc = 'Paste from system clipboard' })
