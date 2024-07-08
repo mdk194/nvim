@@ -74,7 +74,7 @@ function M.config()
       -- "ltex-ls",
       "lua-language-server",
       -- "terraform-ls",
-      "yaml-language-server",
+      -- "yaml-language-server",
       -- { "jdtls", version = "v1.36.0" },
       "jdtls",
       -- Formatter

@@ -49,7 +49,6 @@ local servers = {
   "bashls",
   "clangd",
   "jsonls",
-  "yamlls",
   "lua_ls",
 }
 
@@ -63,7 +62,6 @@ for _, lsp in ipairs(servers) do
       Lua = languages.lua,
       json = languages.json,
       redhat = { telemetry = { enabled = false } },
-      yaml = languages.yaml,
     },
   })
 end
