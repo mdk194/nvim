@@ -45,7 +45,7 @@ function M.config()
     },
   })
 
-  -- vim.cmd.highlight('MiniIndentscopeSymbol guifg=#f6fa05')
+  vim.cmd.highlight('MiniIndentscopeSymbol guifg=#f6fa05')
 end
 
 return M
