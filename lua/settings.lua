@@ -18,7 +18,7 @@ opt("o", "shiftround", true)
 opt("o", "splitbelow", true)
 opt("o", "splitright", true)
 opt("o", "termguicolors", true)
-opt("o", "guicursor", "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50") -- block in normal, visual, beam cursor in insert mode
+opt("o", "guicursor", "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait500-blinkoff500-blinkon500") -- block in normal, visual, beam cursor in insert mode
 opt("o", "showmatch", true)
 opt("o", "wildmenu", true)
 opt("o", "wildmode", "longest,list,full")
