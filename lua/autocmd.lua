@@ -58,7 +58,7 @@ local autocmds = {
   filetype = {
     { "FileType make,gitconfig setlocal noexpandtab sw=8 sts=8 ts=8" },
     { "FileType gitcommit setlocal spell! spelllang=en_us" },
-    { "FileType yaml,json setlocal expandtab sw=2 sts=2 ts=2" },
+    { "FileType json setlocal expandtab sw=2 sts=2 ts=2" },
     { "FileType terraform setlocal expandtab sw=2 sts=2 ts=2" },
     { "FileType javascript,typescript,graphql setlocal expandtab sw=2 sts=2 ts=2" },
     { "FileType java setlocal expandtab sw=4 sts=4 ts=4" },
