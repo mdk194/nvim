@@ -2,9 +2,14 @@ local M = {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile" },
   cond = require("functions").is_small_file,
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+  },
 }
 
 function M.config()
+  require("mason-lspconfig").setup({})
+
   require("plugins.lsp.lsp")
 
   vim.api.nvim_create_autocmd('LspAttach', {
