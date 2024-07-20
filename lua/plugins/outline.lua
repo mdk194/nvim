@@ -10,7 +10,7 @@ function M.config()
   require("outline").setup({
     keymaps = {
       show_help = '?',
-      close = {'<Esc>', 'q'},
+      close = {'<Esc>', 'q', 'K'},
       -- Jump to symbol under cursor.
       -- It can auto close the outline window when triggered, see
       -- 'auto_close' option above.
@@ -25,7 +25,7 @@ function M.config()
       -- Open LSP/provider-dependent symbol hover information
       hover_symbol = '<C-space>',
       -- Preview location code of the symbol under cursor
-      toggle_preview = 'K',
+      toggle_preview = 'M',
       rename_symbol = 'r',
       code_actions = 'a',
       -- These fold actions are collapsing tree nodes, not code folding
@@ -44,6 +44,33 @@ function M.config()
       -- j/k/<down>/<up>.
       down_and_jump = '<C-j>',
       up_and_jump = '<C-k>',
+    },
+    preview_window = {
+      auto_preview = true,
+      -- Automatically open hover_symbol when opening preview (see keymaps for
+      -- hover_symbol).
+      -- If you disable this you can still open hover_symbol using your keymap
+      -- below.
+      open_hover_on_preview = true,
+      width = 50,     -- Percentage or integer of columns
+      min_width = 50, -- This is the number of columns
+      -- Whether width is relative to the total width of nvim.
+      -- When relative_width = true, this means take 50% of the total
+      -- screen width for preview window, ensure the result width is at least 50
+      -- characters wide.
+      relative_width = true,
+      -- Border option for floating preview window.
+      -- Options include: single/double/rounded/solid/shadow or an array of border
+      -- characters.
+      -- See :help nvim_open_win() and search for "border" option.
+      border = 'single',
+      -- winhl options for the preview window, see ':h winhl'
+      winhl = 'NormalFloat:',
+      -- Pseudo-transparency of the preview window, see ':h winblend'
+      winblend = 0,
+      -- Experimental feature that let's you edit the source content live
+      -- in the preview window. Like VS Code's "peek editor".
+      live = false
     },
   })
 end
