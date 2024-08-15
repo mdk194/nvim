@@ -95,7 +95,7 @@ function _G.titlestring()
 end
 _G.titlestring()
 
-vim.o.rulerformat = '%50(%=%{v:lua.statusline_diagnostic()}%m%r%{&spell?"[S]":""} %t%)'
+vim.o.rulerformat = '%50(%=%{v:lua.statusline_diagnostic()}%m%r%{&spell?"[S]":""} %f%)'
 
 -- no sign column icon, just text effect
 -- text effects are defined in colorscheme
