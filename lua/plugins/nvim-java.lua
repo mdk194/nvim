@@ -54,6 +54,7 @@ function M.config()
       -- By assigning an empty function, you can remove the notifications
       -- printed to the cmd
       ["$/progress"] = function(_, result, ctx) end,
+      ['language/status'] = function() end,
     },
     -- cmd_env =  {
     --   JAVA_HOME = j17_home(),
