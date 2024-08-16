@@ -30,23 +30,19 @@ function M.config()
           name = "JavaSE-11",
           path = home .. "/.sdkman/candidates/java/11.0.20-tem/",
         },
-        {
-          name = "JavaSE-17",
-          path = home .. "/.sdkman/candidates/java/17.0.8-tem/",
-        },
       }
     end
   end
 
   local rt = runtimes()
 
-  local function j17_home()
-    for _, p in ipairs(rt) do
-      if p.name == "JavaSE-17" then
-        return p.path
-      end
-    end
-  end
+  -- local function j17_home()
+  --   for _, p in ipairs(rt) do
+  --     if p.name == "JavaSE-17" then
+  --       return p.path
+  --     end
+  --   end
+  -- end
 
   require('java').setup({
     jdk = {
@@ -59,10 +55,10 @@ function M.config()
       -- printed to the cmd
       ["$/progress"] = function(_, result, ctx) end,
     },
-    cmd_env =  {
-      JAVA_HOME = j17_home(),
-      PATH = vim.fn.getenv('PATH') .. ':' .. j17_home() .. "/bin",
-    },
+    -- cmd_env =  {
+    --   JAVA_HOME = j17_home(),
+    --   PATH = vim.fn.getenv('PATH') .. ':' .. j17_home() .. "/bin",
+    -- },
     settings = {
       java = {
         configuration = {
