@@ -64,23 +64,19 @@ function M.config()
         },
       },
       move = {
-        enable = true,
+        enable = false,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           ["]f"] = "@function.outer",
-          ["]]"] = "@class.outer",
         },
         goto_next_end = {
           ["]F"] = "@function.outer",
-          ["]["] = "@class.outer",
         },
         goto_previous_start = {
           ["[f"] = "@function.outer",
-          ["[["] = "@class.outer",
         },
         goto_previous_end = {
           ["[F"] = "@function.outer",
-          ["[]"] = "@class.outer",
         },
       },
       -- show textobject surrounding definition as determined
