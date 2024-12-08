@@ -8,7 +8,12 @@ return {
       notify = true, -- show notification when big file detected
       size = 512 * 1024, -- 512KB
     },
-    notifier = { enabled = true, timeout = 2000 },
+    notifier = {
+      enabled = true,
+      timeout = 2000,
+      top_down = false,
+      style = "compact",
+    },
     quickfile = { enabled = true },
     statuscolumn = { enabled = false },
     words = {
@@ -59,6 +64,20 @@ return {
         Snacks.toggle.treesitter():map("<leader>ut")
         -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>ui")
+      end,
+    })
+    vim.api.nvim_create_autocmd("LspProgress", {
+      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+      callback = function(ev)
+        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+        vim.notify(vim.lsp.status(), "info", {
+          id = "lsp_progress",
+          title = "LSP Progress",
+          opts = function(notif)
+            notif.icon = ev.data.params.value.kind == "end" and " "
+              or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+          end,
+        })
       end,
     })
   end,
