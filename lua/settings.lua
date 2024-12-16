@@ -91,7 +91,8 @@ vim.opt.wildignore = [[
 
 vim.opt.titlelen = 120
 function _G.titlestring()
-  vim.o.titlestring = "  %{substitute(getcwd(),$HOME,'~','')}  %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
+  -- vim.o.titlestring = "  %{substitute(getcwd(),$HOME,'~','')}  %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
+  vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')} - %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
 end
 _G.titlestring()
 
