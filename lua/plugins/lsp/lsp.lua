@@ -119,7 +119,6 @@ nvim_lsp.gopls.setup({
         run_govulncheck = false,
       },
       analyses = {
-        fieldalignment = true,
         nilness = true,
         unusedparams = true,
         unusedwrite = true,
