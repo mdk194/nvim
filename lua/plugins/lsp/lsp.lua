@@ -1,6 +1,16 @@
 local nvim_lsp = require("lspconfig")
 local languages = require("plugins.lsp.languages")
 
+local capabilities = require('blink.cmp').get_lsp_capabilities({
+  textDocument = {
+    completion = { completionItem = { snippetSupport = false } }, -- disable all snippets
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    },
+  },
+})
+
 local lsp_ui = {
   float = {
     focusable = true,
@@ -24,20 +34,6 @@ local lsp_ui = {
 vim.diagnostic.config(lsp_ui.diagnostic)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_ui.float)
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_ui.float)
-
-local capabilities = {
-  textDocument = {
-    foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    },
-    completion = {
-      completionItem = {
-        snippetSupport = false,
-      },
-    },
-  },
-}
 
 local showMessage = {
   messageActionItem = {
@@ -136,4 +132,3 @@ nvim_lsp.gopls.setup({
 nvim_lsp.graphql.setup({
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
-

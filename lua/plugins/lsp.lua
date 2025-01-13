@@ -4,6 +4,7 @@ local M = {
   cond = require("functions").is_small_file,
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
+    "saghen/blink.cmp",
   },
 }
 
