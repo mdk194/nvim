@@ -19,7 +19,7 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'buffer' },
+      default = { 'lsp', 'path' },
     },
 
     completion = {
@@ -57,9 +57,9 @@ return {
         },
       },
       documentation = {
-        -- window = { border = 'single' },
+        window = { border = 'rounded' },
         auto_show = true,
-        auto_show_delay_ms = 500,
+        auto_show_delay_ms = 300,
         treesitter_highlighting = false,
       },
     },
