@@ -16,6 +16,7 @@ local M = {
     { '<leader>p', [[<cmd>lua require('functions').fzf_dirs()<CR>]] },
 
     -- { '<space>g', [[<cmd>Telescope ast_grep<CR>]] },
+    { '<leader>z', [[<cmd>lua require('fzf-lua').zoxide()<CR>]] },
   },
 }
 
@@ -37,6 +38,9 @@ function M.config()
         col     = 0.55,
         border  = "rounded",
         preview = { default = "bat_native", layout = "horizontal", horizontal = "up:60%" },
+        treesitter = {
+          enabled = false,
+        }
       },
     },
     previewers = {
@@ -46,9 +50,11 @@ function M.config()
     },
     keymap = {
       builtin = {
-        ["<F1>"] = "toggle-help",
-        ["<F2>"] = "toggle-fullscreen",
+        ["<F1>"]  = "toggle-help",
+        ["<F2>"]  = "toggle-fullscreen",
         ["<C-t>"] = "toggle-preview",
+        ["<C-d>"] = "preview-page-down",
+        ["<C-u>"] = "preview-page-up",
       },
       fzf = {
         ["ctrl-z"] = "abort",
