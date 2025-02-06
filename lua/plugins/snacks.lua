@@ -3,6 +3,40 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    explorer = {
+      enabled = true,
+    },
+    picker = {
+      sources = {
+        explorer = {
+          win = {
+            list = {
+              keys = {
+                ["<BS>"] = "explorer_up",
+                ["l"] = "confirm",
+                ["h"] = "explorer_close", -- close directory
+                ["a"] = "explorer_add",
+                ["d"] = "explorer_del",
+                ["r"] = "explorer_rename",
+                ["C"] = "explorer_copy",
+                ["m"] = "explorer_move",
+                ["o"] = "explorer_open", -- open with system application
+                ["P"] = "toggle_preview",
+                ["y"] = "explorer_yank",
+                ["u"] = "explorer_update",
+                ["c"] = "tcd",
+                ["."] = "explorer_focus",
+                ["I"] = "toggle_ignored",
+                ["H"] = "toggle_hidden",
+                ["Z"] = "explorer_close_all",
+                ["]g"] = "explorer_git_next",
+                ["[g"] = "explorer_git_prev",
+              },
+            },
+          },
+        }
+      }
+    },
     bigfile = {
       enabled = true,
       notify = true, -- show notification when big file detected
@@ -116,6 +150,7 @@ return {
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    { "<leader>e",  function() Snacks.explorer.open() end, desc = "Explorer", mode = { "n", "t" } },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
