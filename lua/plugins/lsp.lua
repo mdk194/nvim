@@ -18,9 +18,6 @@ function M.config()
     callback = function(event)
       local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-      -- setup mini-completion
-      vim.bo[event.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
-
       local map = function(keys, func, desc)
         vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
       end
