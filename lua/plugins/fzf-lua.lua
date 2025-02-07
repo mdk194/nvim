@@ -11,9 +11,10 @@ local M = {
     { '<leader>ht', [[<cmd>lua require('fzf-lua').helptags()<CR>]] },
     { '<leader>o', [[<cmd>lua require('fzf-lua').oldfiles()<CR>]] },
     { '<leader>c', [[<cmd>lua require('fzf-lua').changes()<CR>]] },
+    { '<leader>:', [[<cmd>lua require('fzf-lua').command_history()<CR>]] },
     { '<leader>m', [[<cmd>lua require('fzf-lua').marks()<CR>]] },
     { '<leader>j', [[<cmd>lua require('fzf-lua').jumps()<CR>]] },
-    { '<leader>p', [[<cmd>lua require('functions').fzf_dirs()<CR>]] },
+    { '<leader>l', [[<cmd>lua require('fzf-lua').lsp_finder()<CR>]] },
 
     -- { '<space>g', [[<cmd>Telescope ast_grep<CR>]] },
     { '<leader>z', [[<cmd>lua require('fzf-lua').zoxide()<CR>]] },
@@ -31,17 +32,46 @@ function M.config()
       git_icons = false,
       file_icons = false,
       winopts = {
-        -- split = "belowright 20new",
-        height  = 0.90,
-        width   = 1,
-        row     = 0.35,
-        col     = 0.55,
-        border  = "rounded",
-        preview = { default = "bat_native", layout = "horizontal", horizontal = "up:60%" },
         treesitter = {
           enabled = false,
+        },
+        row = 1,
+        col = 0,
+        width = 1,
+        height = 0.7,
+        title_pos = "left",
+        border = { "", "─", "", "", "", "", "", "" },
+        preview = {
+          layout = "vertical",
+          vertical = "up:60%",
+          title_pos = "right",
+          border = function(_, m)
+            if m.type == "fzf" then
+              return "single"
+            else
+              assert(m.type == "nvim" and m.name == "prev" and type(m.layout) == "string")
+              local b = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+              if m.layout == "down" then
+                b[1] = "├" --top right
+                b[3] = "┤" -- top left
+              elseif m.layout == "up" then
+                b[7] = "├" -- bottom left
+                b[6] = "" -- remove bottom
+                b[5] = "┤" -- bottom right
+              elseif m.layout == "left" then
+                b[3] = "┬" -- top right
+                b[5] = "┴" -- bottom right
+                b[6] = "" -- remove bottom
+              else -- right
+                b[1] = "┬" -- top left
+                b[7] = "┴" -- bottom left
+                b[6] = "" -- remove bottom
+              end
+              return b
+            end
+          end,
         }
-      },
+      }
     },
     previewers = {
       bat = {
@@ -104,9 +134,9 @@ function M.config()
     files = {
       cwd_header = true,
       cwd_prompt_shorten_len = 32,
-      find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
-      rg_opts   = [[--color=never --files --follow -g "!.git"]],
-      fd_opts   = [[--color=never --type f --follow]],
+      hidden    = false,         -- enable hidden files by default
+      follow    = false,         -- do not follow symlinks by default
+      no_ignore = false,         -- respect ".gitignore"  by default
       actions = {
         ["ctrl-g"] = { actions.toggle_ignore },
         ["ctrl-h"] = { actions.toggle_hidden },
@@ -114,10 +144,12 @@ function M.config()
       winopts = { preview = { hidden = "hidden" } },
     },
     grep = {
-      rg_opts        = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
-      rg_glob        = false,        -- default to glob parsing?
+      rg_glob        = true,         -- default to glob parsing with `rg`
       glob_flag      = "--iglob",    -- for case sensitive globs use '--glob'
       glob_separator = "%s%-%-",     -- query separator pattern (lua): ' --'
+      hidden    = false,             -- disable hidden files by default
+      follow    = false,             -- do not follow symlinks by default
+      no_ignore = false,             -- respect ".gitignore"  by default
       actions = {
         -- this action toggles between 'grep' and 'live_grep'
         ["ctrl-l"] = { actions.grep_lgrep },

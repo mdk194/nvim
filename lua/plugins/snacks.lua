@@ -7,6 +7,7 @@ return {
       enabled = true,
     },
     picker = {
+      enabled = false,
       sources = {
         explorer = {
           win = {
@@ -18,13 +19,13 @@ return {
                 ["a"] = "explorer_add",
                 ["d"] = "explorer_del",
                 ["r"] = "explorer_rename",
-                ["C"] = "explorer_copy",
+                ["c"] = "explorer_copy",
                 ["m"] = "explorer_move",
                 ["o"] = "explorer_open", -- open with system application
                 ["P"] = "toggle_preview",
                 ["y"] = "explorer_yank",
                 ["u"] = "explorer_update",
-                ["c"] = "tcd",
+                ["<CR>"] = "tcd",
                 ["."] = "explorer_focus",
                 ["I"] = "toggle_ignored",
                 ["H"] = "toggle_hidden",
