@@ -20,12 +20,11 @@ return {
 
     sources = {
       default = { 'lsp', 'path' },
+      -- Disable cmdline completions
+      cmdline = {},
     },
 
     completion = {
-      accept = {
-
-      },
       list = {
         selection = {
           preselect = true,
@@ -35,7 +34,7 @@ return {
       menu = {
         -- border = 'single',
         -- Don't show completion menu automatically in cmdline mode
-        auto_show = function(ctx) return ctx.mode ~= 'cmdline' end,
+        -- auto_show = function(ctx) return ctx.mode ~= 'cmdline' end,
 
         draw = {
           -- columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
