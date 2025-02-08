@@ -17,11 +17,24 @@ function M.config()
         adapter = "copilot",
         slash_commands = {
           ["file"] = {
-            callback = "strategies.chat.slash_commands.file",
-            description = "Select a file using snacks",
             opts = {
-              provider = "snacks", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
+              provider = "snacks",
               contains_code = true,
+            },
+          },
+          ["symbols"] = {
+            opts = {
+              provider = "snacks",
+            },
+          },
+          ["buffer"] = {
+            opts = {
+              provider = "snacks",
+            },
+          },
+          ["help"] = {
+            opts = {
+              provider = "snacks",
             },
           },
         },
