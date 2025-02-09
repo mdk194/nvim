@@ -65,6 +65,14 @@ function M.fzf(builtin, opts)
   end
 end
 
+function M.snack_picker(builtin, opts)
+  return function()
+    opts = opts or {}
+    opts.cwd = M.get_root()
+    Snacks.picker[builtin](opts)
+  end
+end
+
 -- file size < 512KiB
 -- use as cond to disable plugins like lsp, null-ls, treesitter
 function M.is_small_file()

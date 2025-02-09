@@ -1,23 +1,23 @@
 local M = {
   "ibhagwan/fzf-lua",
   keys = {
-    { '<c-f>', [[<cmd>lua require('fzf-lua').files()<CR>]] },
-    { '<c-p>', [[<cmd>lua require('functions').fzf('files')()<CR>]] },
+    -- { '<c-f>', [[<cmd>lua require('fzf-lua').files()<CR>]] },
+    -- { '<c-p>', [[<cmd>lua require('functions').fzf('files')()<CR>]] },
 
-    { '<leader>f', [[<cmd>lua require('fzf-lua').resume()<CR>]] },
-    { '<leader>b', [[<cmd>lua require('fzf-lua').buffers()<CR>]]},
-    { '<leader>g', [[<cmd>lua require('functions').fzf('live_grep_glob')()<CR>]] },
-    { '<leader>/', [[<cmd>lua require('fzf-lua').blines()<CR>]] },
-    { '<leader>ht', [[<cmd>lua require('fzf-lua').helptags()<CR>]] },
-    { '<leader>o', [[<cmd>lua require('fzf-lua').oldfiles()<CR>]] },
-    { '<leader>c', [[<cmd>lua require('fzf-lua').changes()<CR>]] },
-    { '<leader>:', [[<cmd>lua require('fzf-lua').command_history()<CR>]] },
-    { '<leader>m', [[<cmd>lua require('fzf-lua').marks()<CR>]] },
-    { '<leader>j', [[<cmd>lua require('fzf-lua').jumps()<CR>]] },
-    { '<leader>l', [[<cmd>lua require('fzf-lua').lsp_finder()<CR>]] },
+    -- { '<leader>f', [[<cmd>lua require('fzf-lua').resume()<CR>]] },
+    -- { '<leader>b', [[<cmd>lua require('fzf-lua').buffers()<CR>]]},
+    -- { '<leader>g', [[<cmd>lua require('functions').fzf('live_grep_glob')()<CR>]] },
+    -- { '<leader>/', [[<cmd>lua require('fzf-lua').blines()<CR>]] },
+    -- { '<leader>ht', [[<cmd>lua require('fzf-lua').helptags()<CR>]] },
+    -- { '<leader>o', [[<cmd>lua require('fzf-lua').oldfiles()<CR>]] },
+    -- { '<leader>c', [[<cmd>lua require('fzf-lua').changes()<CR>]] },
+    -- { '<leader>:', [[<cmd>lua require('fzf-lua').command_history()<CR>]] },
+    -- { '<leader>m', [[<cmd>lua require('fzf-lua').marks()<CR>]] },
+    -- { '<leader>j', [[<cmd>lua require('fzf-lua').jumps()<CR>]] },
+    -- { '<leader>l', [[<cmd>lua require('fzf-lua').lsp_finder()<CR>]] },
 
     -- { '<space>g', [[<cmd>Telescope ast_grep<CR>]] },
-    { '<leader>z', [[<cmd>lua require('fzf-lua').zoxide()<CR>]] },
+    -- { '<leader>z', [[<cmd>lua require('fzf-lua').zoxide()<CR>]] },
   },
 }
 
@@ -192,16 +192,16 @@ function M.config()
     },
   })
 
-  fzf.register_ui_select(function(_, items)
-    local min_h, max_h = 0.15, 0.70
-    local h = (#items + 4) / vim.o.lines
-    if h < min_h then
-      h = min_h
-    elseif h > max_h then
-      h = max_h
-    end
-    return { winopts = { height = h, width = 0.60, row = 0.40 } }
-  end)
+  -- fzf.register_ui_select(function(_, items)
+  --   local min_h, max_h = 0.15, 0.70
+  --   local h = (#items + 4) / vim.o.lines
+  --   if h < min_h then
+  --     h = min_h
+  --   elseif h > max_h then
+  --     h = max_h
+  --   end
+  --   return { winopts = { height = h, width = 0.60, row = 0.40 } }
+  -- end)
 
 end
 
