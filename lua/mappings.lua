@@ -37,11 +37,11 @@ map("n", "K", ":q<CR>")
 map("n", "j", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']], { expr = true })
 map("n", "k", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']], { expr = true })
 
--- moving between windows
-map("n", "<c-h>", "<c-w>h")
-map("n", "<c-l>", "<c-w>l")
-map("n", "<c-k>", "<c-w>k")
-map("n", "<c-j>", "<c-w>j")
+-- -- moving between windows
+-- map("n", "<c-h>", "<c-w>h")
+-- map("n", "<c-l>", "<c-w>l")
+-- map("n", "<c-k>", "<c-w>k")
+-- map("n", "<c-j>", "<c-w>j")
 
 -- Keep search matches in the middle of the window.
 -- zz centers the screen on the cursor, zv unfolds any fold if the cursor

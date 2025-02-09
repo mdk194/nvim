@@ -8,6 +8,10 @@ return {
     },
     picker = {
       enabled = false,
+      -- ui_select = true,
+      -- layout = {
+      --   cycle = false,
+      -- },
       sources = {
         explorer = {
           win = {
