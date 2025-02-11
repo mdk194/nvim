@@ -24,11 +24,20 @@ return {
           width = 0,
           height = 0.6,
           border = "none",
-          { win = "preview", title = "{preview:Preview}", width = 0, height = 0.5, border = "top", title_pos = "left" },
+          {
+            win = "preview", title = "{preview:Preview}", width = 0, height = 0.5, border = "top", title_pos = "left",
+            wo = { winhighlight = "NormalFloat:Normal" },
+          },
           {
             box = "vertical",
-            { win = "list", title_pos = "left", border = "top" },
-            { win = "input", height = 1, border = "top", title = "{title} {live} {flags}", title_pos = "left" },
+            {
+              win = "list", title_pos = "left", border = "top",
+              wo = { winhighlight = "NormalFloat:Normal", number = false },
+            },
+            {
+              win = "input", height = 1, border = "top", title = "{title} {live} {flags}", title_pos = "left",
+              wo = { winhighlight = "NormalFloat:Normal", number = false },
+            },
           }
         },
       },
@@ -174,7 +183,7 @@ return {
         explorer = {
           config = function(opts)
             opts.reverse = false
-            opts.layout = { preset = "sidebar", preview = false }
+            opts.layout = { preset = "sidebar", preview = false, auto_hide = {"input"} }
           end,
           win = {
             list = {
@@ -327,6 +336,7 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>h", function() Snacks.picker.highlights() end, desc = "Highlights" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
