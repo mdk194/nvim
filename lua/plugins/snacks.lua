@@ -53,7 +53,6 @@ return {
             ["<c-x>"] = { "inspect", mode = { "n", "i" } },
             ["<c-f>"] = { "toggle_follow", mode = { "i", "n" } },
             ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
-            ["<a-h>"] = { "toggle_hidden", mode = "t" }, -- hack to disable for smart-splits.nvim
             ["<c-g>"] = { "toggle_ignored", mode = { "i", "n" } },
             ["<c-space>"] = { "toggle_maximize", mode = { "i", "n" } },
             ["<c-t>"] = { "toggle_preview", mode = { "i", "n" } },
@@ -77,6 +76,20 @@ return {
             ["j"] = "preview_scroll_down",
             ["k"] = "preview_scroll_up",
             ["q"] = "close",
+
+            -- disable
+            ["<a-h>"] = false, -- disable
+            ["<a-d>"] = false, -- disable
+            ["<a-f>"] = false, -- disable
+            ["<a-i>"] = false, -- disable
+            ["<a-m>"] = false, -- disable
+            ["<a-p>"] = false, -- disable
+            ["<a-w>"] = false, -- disable
+            ["<c-b>"] = false, -- disable
+            ["<c-w>H"] = false, -- disable
+            ["<c-w>J"] = false, -- disable
+            ["<c-w>K"] = false, -- disable
+            ["<c-w>L"] = false, -- disable
           },
           b = {
             minipairs_disable = true,
@@ -97,7 +110,6 @@ return {
             ["<c-x>"] = "inspect",
             ["<c-f>"] = "toggle_follow",
             ["<c-h>"] = "toggle_hidden",
-            ["<a-h>"] = { "toggle_hidden", mode = "t" }, -- hack to disable for smart-splits.nvim
             ["<c-g>"] = "toggle_ignored",
             ["<c-space>"] = "toggle_maximize",
             ["<c-t>"] = "toggle_preview",
@@ -121,6 +133,20 @@ return {
             ["zb"] = "list_scroll_bottom",
             ["zt"] = "list_scroll_top",
             ["zz"] = "list_scroll_center",
+
+            -- disable
+            ["<a-h>"] = false, -- disable
+            ["<a-d>"] = false, -- disable
+            ["<a-f>"] = false, -- disable
+            ["<a-i>"] = false, -- disable
+            ["<a-m>"] = false, -- disable
+            ["<a-p>"] = false, -- disable
+            ["<a-w>"] = false, -- disable
+            ["<c-b>"] = false, -- disable
+            ["<c-w>H"] = false, -- disable
+            ["<c-w>J"] = false, -- disable
+            ["<c-w>K"] = false, -- disable
+            ["<c-w>L"] = false, -- disable
           },
           wo = {
             conceallevel = 2,
