@@ -174,16 +174,10 @@ return {
           },
         },
       },
-      icons = {
-        ui = {
-          live        = "l",
-        },
-      },
       sources = {
         explorer = {
           config = function(opts)
-            opts.reverse = false
-            opts.layout = { preset = "sidebar", preview = false, auto_hide = {"input"} }
+            opts.layout = { reverse = false, preset = "sidebar", preview = false, auto_hide = {"input"} }
           end,
           win = {
             list = {
@@ -320,6 +314,7 @@ return {
     },
   },
   keys = {
+    { "<leader>uu", function() Snacks.picker.undo() end, desc = "Undo History" },
     { "<leader>uh",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
     -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>ug", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
@@ -336,7 +331,6 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
-    { "<leader>h", function() Snacks.picker.highlights() end, desc = "Highlights" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
