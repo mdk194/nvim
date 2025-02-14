@@ -14,6 +14,11 @@ return {
         grep = false,
         files = false,
       },
+      formatters = {
+        file = {
+          truncate = 90, -- truncate the file path to (roughly) this length
+        },
+      },
       layout = {
         cycle = false,
         reverse = true,
@@ -100,9 +105,6 @@ return {
             ["<c-w>K"] = false, -- disable
             ["<c-w>L"] = false, -- disable
           },
-          b = {
-            minipairs_disable = true,
-          },
         },
         -- result list window
         list = {
@@ -156,10 +158,6 @@ return {
             ["<c-w>J"] = false, -- disable
             ["<c-w>K"] = false, -- disable
             ["<c-w>L"] = false, -- disable
-          },
-          wo = {
-            conceallevel = 2,
-            concealcursor = "nvc",
           },
         },
         -- preview window
@@ -319,8 +317,6 @@ return {
     -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>ug", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-    { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
     { "<leader>e",  function() Snacks.explorer.open() end, desc = "Explorer", mode = { "n", "t" } },
     { "<c-f>",      function() Snacks.picker.files({matcher = {frecency = true, history_bonus = true}}) end, desc = "Find Files" },
     { "<c-p>",      function() require('functions').snack_picker('files', {matcher = {frecency = true, history_bonus = true}})() end, desc = "Find Files" },
