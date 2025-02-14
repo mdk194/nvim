@@ -26,13 +26,13 @@ return {
           border = "none",
           {
             win = "preview", title = "{preview:Preview}", width = 0, height = 0.5, border = "top", title_pos = "left",
-            wo = { winhighlight = "NormalFloat:Normal" },
+            wo = { winhighlight = "NormalFloat:Normal", scrolloff = 0 },
           },
           {
             box = "vertical",
             {
               win = "list", title_pos = "left", border = "top",
-              wo = { winhighlight = "NormalFloat:Normal", number = false },
+              wo = { winhighlight = "NormalFloat:Normal", number = false, scrolloff = 0 },
             },
             {
               win = "input", height = 1, border = "top", title = "{title} {live} {flags}", title_pos = "left",
@@ -331,6 +331,7 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
+    -- { "<leader>l", function() Snacks.picker.lsp_symbols({layout = {reverse = false}}) end, desc = "LSP symbols" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
