@@ -2,7 +2,14 @@ local M = {
   "zbirenbaum/copilot.lua",
   cmd = { "Copilot" },
   keys = {
-    { '<leader>co', [[<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>]] },
+    { '<leader>co', function ()
+        require('copilot.suggestion').toggle_auto_trigger()
+        vim.notify(tostring(vim.b.copilot_suggestion_auto_trigger), "info", {
+          id = "copilot",
+          title = "Copilot auto trigger",
+        })
+      end
+    },
   },
 }
 
@@ -12,8 +19,8 @@ function M.config()
     enabled = false,
     auto_refresh = false,
     keymap = {
-      jump_prev = "<C-b>",
-      jump_next = "<C-f>",
+      jump_prev = "<C-k>",
+      jump_next = "<C-j>",
       accept = "<C-y>",
       refresh = "<leader>r",
       open = "<M-CR>"
@@ -24,23 +31,23 @@ function M.config()
     },
   },
   suggestion = {
-    enabled = true,
+    enabled = false,
     auto_trigger = false,
     hide_during_completion = true,
     debounce = 75,
     keymap = {
       accept = "<C-y>",
       accept_word = false,
-      accept_line = false,
-      next = "<C-f>",
-      prev = "<C-b>",
+      accept_line = "<C-l>",
+      next = "<C-j>",
+      prev = "<C-k>",
       dismiss = "<C-e>",
     },
   },
   filetypes = {
     yaml = false,
-    markdown = false,
-    help = false,
+    markdown = true,
+    help = true,
     gitcommit = false,
     gitrebase = false,
     hgcommit = false,

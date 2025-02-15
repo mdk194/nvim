@@ -3,6 +3,7 @@ return {
   dependencies = {
     -- { 'echasnovski/mini.icons', version = '*' },
     -- { 'rafamadriz/friendly-snippets' },
+    "fang2hou/blink-copilot",
   },
   version = '*',
 
@@ -15,13 +16,28 @@ return {
       -- Useful for when your theme doesn't support blink.cmp
       -- Will be removed in a future release
       use_nvim_cmp_as_default = true,
-      nerd_font_variant = 'mono'
+      nerd_font_variant = 'mono',
+      kind_icons = {
+        Copilot = "",
+      }
     },
 
     sources = {
-      default = { 'lsp', 'path' },
+      default = { 'copilot', 'lsp', 'path' },
       -- Disable cmdline completions
       cmdline = {},
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+          opts = {
+            max_completions = 2,
+            max_attempts = 3, -- max_completions + 1
+          }
+        },
+      },
     },
 
     completion = {
