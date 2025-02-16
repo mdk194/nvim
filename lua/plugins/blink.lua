@@ -22,10 +22,13 @@ return {
       }
     },
 
+    -- Disable cmdline completions
+    cmdline = {
+      enabled = false,
+    },
+
     sources = {
       default = { 'copilot', 'lsp', 'path' },
-      -- Disable cmdline completions
-      cmdline = {},
       providers = {
         copilot = {
           name = "copilot",
