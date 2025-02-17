@@ -32,3 +32,7 @@ require("lazy").setup("plugins", {
   debug = false,
 })
 
+-- -- start snack picker if invoking vim with no name buffer
+-- if vim.api.nvim_buf_get_name(0) == "" then
+--   Snacks.picker.files({matcher = {frecency = true, history_bonus = true}})
+-- end
