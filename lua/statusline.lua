@@ -1,5 +1,5 @@
 function _G.statusline_diagnostic()
-  if not vim.diagnostic.is_disabled() then
+  if vim.diagnostic.is_enabled() then
     local diagnostics_counts = {}
 
     for prefix, severity in pairs({
