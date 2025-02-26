@@ -17,7 +17,6 @@ function M.config()
       -- LSP
       "bash-language-server",
       "clangd",
-      "tsserver",
       -- "dockerfile-language-server",
       "json-lsp",
       "graphql-language-service-cli",
