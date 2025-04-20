@@ -83,28 +83,22 @@ function M.config()
       end
 
       -- fold method
-      if vim.fn.has('nvim-0.11') == 1 then
-        if client:supports_method('textDocument/foldingRange') then
-          local win = vim.api.nvim_get_current_win()
-          vim.wo[win][0].foldmethod = 'expr'
-          vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
-        end
+      if client:supports_method('textDocument/foldingRange') then
+        local win = vim.api.nvim_get_current_win()
+        vim.wo[win][0].foldmethod = 'expr'
+        vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
       end
     end,
   })
 
   -- auto fold import
-  if vim.fn.has('nvim-0.11') == 1 then
-    vim.api.nvim_create_autocmd('LspNotify', {
-      callback = function(args)
-        if args.data.method == 'textDocument/didOpen' then
-          local win = vim.api.nvim_get_current_win()
-          _G.dd(vim.wo[win][0].foldexpr)
-          vim.lsp.foldclose('imports', vim.fn.bufwinid(args.buf))
-        end
-      end,
-    })
-  end
+  vim.api.nvim_create_autocmd('LspNotify', {
+    callback = function(args)
+      if args.data.method == 'textDocument/didOpen' then
+        vim.lsp.foldclose('imports', vim.fn.bufwinid(args.buf))
+      end
+    end,
+  })
 end
 
 return M

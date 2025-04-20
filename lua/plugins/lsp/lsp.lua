@@ -4,10 +4,10 @@ local languages = require("plugins.lsp.languages")
 local capabilities = require('blink.cmp').get_lsp_capabilities({
   textDocument = {
     completion = { completionItem = { snippetSupport = false } }, -- disable all snippets
-    foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    },
+    -- foldingRange = {
+    --   dynamicRegistration = false,
+    --   lineFoldingOnly = true,
+    -- },
   },
 })
 

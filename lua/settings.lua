@@ -73,7 +73,16 @@ opt("w", "relativenumber", false)
 opt("w", "wrap", true)
 opt("w", "breakindent", true)
 
-vim.opt.diffopt:append('algorithm:patience,indent-heuristic,vertical')
+vim.opt.diffopt = {
+  'internal',
+  'filler',
+  'closeoff',
+  'context:12',
+  'algorithm:patience',
+  'linematch:200',
+  'indent-heuristic',
+  'vertical',
+}
 
 vim.opt.wildignore = [[
 .git,.hg,.svn
@@ -100,8 +109,31 @@ vim.o.rulerformat = '%50(%=%{v:lua.statusline_diagnostic()}%m%r%{&spell?"[S]":""
 
 -- no sign column icon, just text effect
 -- text effects are defined in colorscheme
-vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" , linehl = "", numhl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" , linehl = "", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "DiagnosticSignInfo" })
-
+vim.diagnostic.config({
+        signs = {
+                text = {
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN] = "",
+                        [vim.diagnostic.severity.INFO] = "",
+                        [vim.diagnostic.severity.HINT] = "",
+                },
+                texthl = {
+                        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                },
+                linehl = {
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN] = "",
+                        [vim.diagnostic.severity.HINT] = "",
+                        [vim.diagnostic.severity.INFO] = "",
+                },
+                numhl = {
+                        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                },
+        },
+})

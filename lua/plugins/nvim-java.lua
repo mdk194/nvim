@@ -12,8 +12,8 @@ function M.config()
     if functions.OS() == 'linux' then
       return {
         {
-          name = "JavaSE-11",
-          path = "/usr/lib/jvm/java-11-openjdk/",
+          name = "JavaSE-21",
+          path = "/usr/lib/jvm/java-21-openjdk/",
         },
         {
           name = "JavaSE-17",
