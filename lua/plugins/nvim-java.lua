@@ -34,6 +34,10 @@ function M.config()
           name = "JavaSE-17",
           path = home .. "/.sdkman/candidates/java/17.0.8-tem/",
         },
+        {
+          name = "JavaSE-21",
+          path = home .. "/.sdkman/candidates/java/21.0.7-tem/",
+        },
       }
     end
   end
