@@ -3,13 +3,19 @@ local M = {
   event = { "BufReadPost", "BufNewFile" },
   cond = require("functions").is_small_file,
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "saghen/blink.cmp",
   },
 }
 
 function M.config()
-  require("mason-lspconfig").setup({})
+  require("mason-lspconfig").setup({
+    automatic_enable = {
+      exclude = {
+        "ts_ls",
+      }
+    }
+  })
 
   require("plugins.lsp.lsp")
 
