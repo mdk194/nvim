@@ -48,7 +48,8 @@ function M.config()
         return require("codecompanion.adapters").extend("copilot", {
           schema = {
             model = {
-              default = "claude-3.7-sonnet",
+              -- default = "claude-3.7-sonnet",
+              default = "gemini-2.5-pro",
             },
           },
         })
