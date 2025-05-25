@@ -1,16 +1,17 @@
 local M = {
   "zbirenbaum/copilot.lua",
   cmd = { "Copilot" },
-  keys = {
-    { '<leader>co', function ()
-        require('copilot.suggestion').toggle_auto_trigger()
-        vim.notify(tostring(vim.b.copilot_suggestion_auto_trigger), "info", {
-          id = "copilot",
-          title = "Copilot auto trigger",
-        })
-      end
-    },
-  },
+  event = "InsertEnter",
+  -- keys = {
+  --   { '<leader>co', function ()
+  --       require('copilot.suggestion').toggle_auto_trigger()
+  --       vim.notify(tostring(vim.b.copilot_suggestion_auto_trigger), "info", {
+  --         id = "copilot",
+  --         title = "Copilot auto trigger",
+  --       })
+  --     end
+  --   },
+  -- },
 }
 
 function M.config()
