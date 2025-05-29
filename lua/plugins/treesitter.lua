@@ -3,8 +3,7 @@ local M = {
   build = ':TSUpdate',
   cond = require("functions").is_small_file,
   branch = 'master',
-  event = 'VeryLazy',
-  priority = 900,
+  lazy = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter-textobjects',

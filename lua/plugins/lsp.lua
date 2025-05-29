@@ -13,6 +13,14 @@ function M.config()
     automatic_enable = {
       exclude = {
         "ts_ls",
+        "bashls",
+        "clangd",
+        "jsonls",
+        "lua_ls",
+        "gopls",
+        "graphql",
+        "rust-analyzer",
+        "pyrefly",
       }
     }
   })

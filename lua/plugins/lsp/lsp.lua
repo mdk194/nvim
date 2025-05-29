@@ -1,5 +1,6 @@
 local nvim_lsp = require("lspconfig")
 local languages = require("plugins.lsp.languages")
+local configs = require("lspconfig.configs")
 
 local capabilities = require('blink.cmp').get_lsp_capabilities({
   textDocument = {
@@ -62,31 +63,6 @@ for _, lsp in ipairs(servers) do
   })
 end
 
-nvim_lsp.pylsp.setup({
-  capabilities = capabilities,
-  showMessage = showMessage,
-  settings = {
-    pylsp = {
-      plugins = {
-        -- formatter options
-        black = { enabled = true },
-        autopep8 = { enabled = false },
-        yapf = { enabled = false },
-        -- linter options
-        pylint = { enabled = true, executable = "pylint" },
-        pyflakes = { enabled = false },
-        pycodestyle = { enabled = false },
-        -- type checker
-        pylsp_mypy = { enabled = false },
-        -- auto-completion options
-        jedi_completion = { fuzzy = true },
-        -- import sorting
-        pyls_isort = { enabled = true },
-      },
-    },
-  },
-})
-
 nvim_lsp.gopls.setup({
   capabilities = capabilities,
   showMessage = showMessage,
@@ -132,3 +108,18 @@ nvim_lsp.gopls.setup({
 nvim_lsp.graphql.setup({
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
+
+if not configs.pyrefly then
+  configs.pyrefly = {
+    default_config = {
+      cmd = { "uv", "run", "pyrefly", "lsp"},
+      filetypes = { "python" },
+      root_dir = nvim_lsp.util.root_pattern(".git", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt"),
+      single_file_support = true,
+      capabilities = capabilities,
+      settings = {},
+    },
+  }
+end
+
+nvim_lsp.pyrefly.setup({})
