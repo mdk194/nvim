@@ -123,3 +123,13 @@ if not configs.pyrefly then
 end
 
 nvim_lsp.pyrefly.setup({})
+
+nvim_lsp.ruff.setup({
+  init_options = {
+    settings = {
+      ruff = {
+        args = { "--line-length", "120" },
+      },
+    },
+  },
+})

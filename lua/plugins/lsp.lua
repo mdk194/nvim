@@ -21,6 +21,7 @@ function M.config()
         "graphql",
         "rust-analyzer",
         "pyrefly",
+        "ruff",
       }
     }
   })
