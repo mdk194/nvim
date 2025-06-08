@@ -207,7 +207,7 @@ return {
     },
     bigfile = {
       enabled = true,
-      notify = true, -- show notification when big file detected
+      notify = false, -- show notification when big file detected
       size = 512 * 1024, -- 512KB
     },
     notifier = {
