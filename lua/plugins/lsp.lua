@@ -1,6 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile" },
   cond = require("functions").is_small_file,
   dependencies = {
     "mason-org/mason-lspconfig.nvim",
