@@ -47,21 +47,6 @@
   symbol_map U+EA60-U+EBEB Symbols Nerd Font Mono
   ```
 
-## Vale
-
-- Create a default configuration file at `$HOME/.vale.ini`:
-
-  ```ini
-  StylesPath = styles
-
-  MinAlertLevel = suggestion
-
-  Packages = Google, proselint, write-good
-
-  [*]
-  BasedOnStyles = Vale, Google, proselint, write-good
-  ```
-
 ## Go
 
 - Run `:GoInstallDeps`
