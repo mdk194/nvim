@@ -100,12 +100,12 @@ vim.opt.wildignore = [[
 
 vim.opt.titlelen = 120
 function _G.titlestring()
-  -- vim.o.titlestring = "  %{substitute(getcwd(),$HOME,'~','')}  %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
-  vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')} - %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
+  -- vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')} - %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
+  vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')} %{v:lua.statusline_diagnostic()}%w%r%m"
 end
 _G.titlestring()
 
-vim.o.rulerformat = '%50(%=%{v:lua.statusline_diagnostic()}%m%r%{&spell?"[S]":""} %f%)'
+vim.o.rulerformat = '%50(%=%f %{v:lua.statusline_diagnostic()}%m%r%{&spell?"[S]":""}%)'
 
 -- no sign column icon, just text effect
 -- text effects are defined in colorscheme
