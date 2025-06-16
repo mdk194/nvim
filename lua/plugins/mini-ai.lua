@@ -5,11 +5,19 @@ local M = {
 }
 
 function M.config()
-  local ai = require('mini.ai')
-  ai.setup({
+  local spec_treesitter = require('mini.ai').gen_spec.treesitter
+  require('mini.ai').setup({
     -- Table with textobject id as fields, textobject specification as values.
     -- Also use this to disable builtin textobjects. See |MiniAi.config|.
-    custom_textobjects = nil,
+    custom_textobjects = {
+      F = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
+      c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
+      b = spec_treesitter({ a = '@block.outer', i = '@block.inner' }),
+      o = spec_treesitter({
+        a = { '@conditional.outer', '@loop.outer' },
+        i = { '@conditional.inner', '@loop.inner' },
+      }),
+    },
 
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
@@ -35,13 +43,8 @@ function M.config()
     -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
     -- 'cover_or_nearest', 'next', 'previous', 'nearest'.
     search_method = 'cover_or_next',
-
-    -- Whether to disable showing non-error feedback
-    -- This also affects (purely informational) helper messages shown after
-    -- idle time if
   })
 end
 
 return M
-
 
