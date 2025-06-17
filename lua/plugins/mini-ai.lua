@@ -12,10 +12,9 @@ function M.config()
     custom_textobjects = {
       F = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
       c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
-      b = spec_treesitter({ a = '@block.outer', i = '@block.inner' }),
       o = spec_treesitter({
-        a = { '@conditional.outer', '@loop.outer' },
-        i = { '@conditional.inner', '@loop.inner' },
+        a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+        i = { '@block.inner', '@conditional.inner', '@loop.inner' },
       }),
     },
 
