@@ -109,21 +109,6 @@ nvim_lsp.graphql.setup({
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
 
-if not configs.pyrefly then
-  configs.pyrefly = {
-    default_config = {
-      cmd = { "uv", "run", "pyrefly", "lsp"},
-      filetypes = { "python" },
-      root_dir = nvim_lsp.util.root_pattern(".git", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt"),
-      single_file_support = true,
-      capabilities = capabilities,
-      settings = {},
-    },
-  }
-end
-
-nvim_lsp.pyrefly.setup({})
-
 nvim_lsp.ruff.setup({
   init_options = {
     settings = {
@@ -133,3 +118,14 @@ nvim_lsp.ruff.setup({
     },
   },
 })
+
+nvim_lsp.basedpyright.setup {
+  capabilities = capabilities,
+  showMessage = showMessage,
+  settings = {
+    basedpyright = {
+      typeCheckingMode = "standard",
+      logLevel = "error",
+    },
+  },
+}

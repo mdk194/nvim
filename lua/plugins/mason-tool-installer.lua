@@ -14,18 +14,6 @@ function M.config()
     -- a list of all tools you want to ensure are installed upon
     -- start; they should be the names Mason uses for each tool
     ensure_installed = {
-      -- LSP
-      "bash-language-server",
-      "clangd",
-      -- "dockerfile-language-server",
-      "json-lsp",
-      "graphql-language-service-cli",
-      -- "ltex-ls",
-      "lua-language-server",
-      -- "terraform-ls",
-      -- "yaml-language-server",
-      -- { "jdtls", version = "v1.36.0" },
-      "jdtls",
       -- Formatter
       "gofumpt",
       "goimports",

@@ -9,7 +9,11 @@ return {
 
   opts = {
     -- 'default' for mappings similar to built-in completion
-    keymap = { preset = 'super-tab' },
+    keymap = {
+      preset = 'super-tab',
+      ['<C-k>'] = false,
+      ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+    },
 
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -79,7 +83,7 @@ return {
         window = { border = 'rounded' },
         auto_show = true,
         auto_show_delay_ms = 300,
-        treesitter_highlighting = false,
+        treesitter_highlighting = true,
       },
     },
 

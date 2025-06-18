@@ -10,6 +10,19 @@ local M = {
 
 function M.config()
   require("mason-lspconfig").setup({
+    ensure_installed = {
+      "bashls",
+      "clangd",
+      "jsonls",
+      "lua_ls",
+      "gopls",
+      "graphql",
+      "rust_analyzer",
+      "pyrefly",
+      "basedpyright",
+      "ruff",
+      "jdtls",
+    },
     automatic_enable = {
       exclude = {
         "ts_ls",
@@ -19,8 +32,9 @@ function M.config()
         "lua_ls",
         "gopls",
         "graphql",
-        "rust-analyzer",
+        "rust_analyzer",
         "pyrefly",
+        "basedpyright",
         "ruff",
       }
     }
