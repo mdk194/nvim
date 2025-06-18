@@ -84,7 +84,8 @@ function M.config()
     },
   })
 
-  require('treesitter-context').setup{
+  local tsc = require('treesitter-context')
+  tsc.setup{
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
     min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
@@ -98,6 +99,17 @@ function M.config()
     zindex = 20, -- The Z-index of the context window
     on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
   }
+  Snacks.toggle({
+    name = "Treesitter Context",
+    get = tsc.enabled,
+    set = function(state)
+      if state then
+        tsc.enable()
+      else
+        tsc.disable()
+      end
+    end,
+  }):map("<leader>uu")
 
   -- jump to context
   vim.keymap.set("n", "[s", function() require("treesitter-context").go_to_context(vim.v.count1) end, { silent = true })
