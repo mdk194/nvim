@@ -16,6 +16,11 @@ function M.config()
         a = { '@block.outer', '@conditional.outer', '@loop.outer' },
         i = { '@block.inner', '@conditional.inner', '@loop.inner' },
       }),
+      d = { "%f[%d]%d+" }, -- digits
+      e = { -- Word with case
+        { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
+        "^().*()$",
+      },
     },
 
     -- Module mappings. Use `''` (empty string) to disable one.
@@ -36,7 +41,7 @@ function M.config()
     },
 
     -- Number of lines within which textobject is searched
-    n_lines = 50,
+    n_lines = 100,
 
     -- How to search for object (first inside current line, then inside
     -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',

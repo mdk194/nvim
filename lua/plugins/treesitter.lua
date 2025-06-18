@@ -26,9 +26,9 @@ function M.config()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<a-v>",
-        scope_incremental = "gss",
-        node_incremental = "gsn",
+        init_selection = "<C-space>",
+        scope_incremental = false,
+        node_incremental = "<C-space>",
         node_decremental = "<BS>",
       },
     },
@@ -63,20 +63,12 @@ function M.config()
         },
       },
       move = {
-        enable = false,
+        enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = {
-          ["]f"] = "@function.outer",
-        },
-        goto_next_end = {
-          ["]F"] = "@function.outer",
-        },
-        goto_previous_start = {
-          ["[f"] = "@function.outer",
-        },
-        goto_previous_end = {
-          ["[F"] = "@function.outer",
-        },
+        goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+        goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+        goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
+        goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
       },
       -- show textobject surrounding definition as determined
       -- using Neovim's built-in LSP in a floating windows

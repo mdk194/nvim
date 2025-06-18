@@ -1,36 +1,25 @@
--- local M = {
---   "numToStr/Comment.nvim",
---   keys = {
---     { 'gcc', '<Plug>(comment_toggle_linewise_current)' },
---     { 'gc', '<Plug>(comment_toggle_linewise)' },
---     { 'gc', '<Plug>(comment_toggle_linewise_visual)', mode = 'x' },
---   }
--- }
---
--- function M.config()
---   require("Comment").setup({
---     mappings = {
---       basic = false,
---       extra = false,
---     }
---   })
--- end
---
--- return M
-
 local M = {
   'echasnovski/mini.comment',
   version = false,
   event = "VeryLazy",
+  dependencies = {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
 }
 
 function M.config()
+  require('ts_context_commentstring').setup {
+    enable_autocmd = false,
+  }
+
   local comment = require('mini.comment')
   comment.setup({
     -- Options which control module behavior
     options = {
       -- Function to compute custom 'commentstring' (optional)
-      custom_commentstring = nil,
+      custom_commentstring = function()
+        return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+      end,
 
       -- Whether to ignore blank lines when commenting
       ignore_blank_line = false,
