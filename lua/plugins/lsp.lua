@@ -61,8 +61,8 @@ function M.config()
 
       -- map('gr', [[<cmd>lua require('fzf-lua').lsp_references({ jump_to_single_result = true, includeDeclaration = false })<CR>]], '[G]oto [R]eferences')
       map('gr', function() Snacks.picker.lsp_references() end, '[G]oto [R]eferences')
-      map('gic', [[<cmd>lua require('fzf-lua').lsp_incoming_calls()<CR>]], '[G]o to [I]ncoming [C]all')
-      map('goc', [[<cmd>lua require('fzf-lua').lsp_outgoing_calls()<CR>]], '[G]o to [O]utgoing [C]all')
+      -- map('gic', [[<cmd>lua require('fzf-lua').lsp_incoming_calls()<CR>]], '[G]o to [I]ncoming [C]all')
+      -- map('goc', [[<cmd>lua require('fzf-lua').lsp_outgoing_calls()<CR>]], '[G]o to [O]utgoing [C]all')
       map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
       -- map('<leader>d', [[<cmd>lua require('fzf-lua').diagnostics_document()<CR>]], 'Diagnostics document')
