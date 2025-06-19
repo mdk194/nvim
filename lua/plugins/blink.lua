@@ -56,7 +56,7 @@ return {
         },
       },
       menu = {
-        -- border = 'single',
+        border = 'rounded',
         -- Don't show completion menu automatically in cmdline mode
         -- auto_show = function(ctx) return ctx.mode ~= 'cmdline' end,
 
@@ -89,7 +89,7 @@ return {
 
     signature = {
       enabled = true,
-      -- window = { border = 'single' },
+      window = { border = 'single' },
     },
 
   },
