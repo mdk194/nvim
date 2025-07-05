@@ -300,7 +300,14 @@ return {
     },
     lazygit = { enabled = true },
     git = { enabled = true },
-    gitbrowse = { enabled = true },
+    gitbrowse = {
+      enabled = true,
+      open = function(url)
+        vim.fn.setreg("+", url)
+        vim.notify("Copied: " .. url, "info", { id = "gitbrowse" })
+      end,
+      notify = false
+    },
     rename = { enabled = false },
     scratch = { enabled = false },
     terminal = { enabled = false },
