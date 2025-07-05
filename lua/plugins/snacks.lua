@@ -298,8 +298,9 @@ return {
       enabled = false,
       debounce = 250, -- time in ms to wait before updating
     },
-    lazygit = { enabled = false },
-    gitbrowse = { enabled = false },
+    lazygit = { enabled = true },
+    git = { enabled = true },
+    gitbrowse = { enabled = true },
     rename = { enabled = false },
     scratch = { enabled = false },
     terminal = { enabled = false },
@@ -327,6 +328,9 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>hh", function() Snacks.lazygit() end, desc = "LazyGits" },
+    { "<leader>hu", function() Snacks.gitbrowse() end, desc = "Git browse" },
+    { "<leader>hl", function() Snacks.git.blame_line() end, desc = "Git blame line" },
     -- { "<leader>l", function() Snacks.picker.lsp_symbols({layout = {reverse = false}}) end, desc = "LSP symbols" },
   },
   init = function()
