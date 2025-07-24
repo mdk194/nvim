@@ -11,7 +11,7 @@ function M.config()
     -- Also use this to disable builtin textobjects. See |MiniAi.config|.
     custom_textobjects = {
       F = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
-      c = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
+      -- f = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
       o = spec_treesitter({
         a = { '@block.outer', '@conditional.outer', '@loop.outer' },
         i = { '@block.inner', '@conditional.inner', '@loop.inner' },
