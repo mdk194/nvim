@@ -28,6 +28,7 @@ function M.config()
       "pylint",
       -- DAP
       "debugpy",
+      "java-debug-adapter",
     },
 
     -- if set to true this will check each tool for updates. If updates

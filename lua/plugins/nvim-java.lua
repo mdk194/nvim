@@ -56,6 +56,21 @@ function M.config()
     jdk = {
       auto_install = false,
     },
+    spring_boot_tools = {
+      enable = true,
+      version = '1.59.0',
+    },
+    java_test = {
+      enable = true,
+      version = '0.43.1',
+    },
+    java_debug_adapter = {
+      enable = true,
+      version = '0.58.2',
+    },
+    jdtls = {
+      version = 'v1.46.1',
+    },
   })
   require('lspconfig').jdtls.setup({
     handlers = {
