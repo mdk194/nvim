@@ -7,7 +7,10 @@ return {
   },
   config = function()
     require('grug-far').setup({
-      windowCreationCommand = 'vsplit',
+      windowCreationCommand = 'botright split',
+      showCompactInputs = true,
+      showInputsTopPadding = false,
+      showInputsBottomPadding = false,
     });
   end
 }
