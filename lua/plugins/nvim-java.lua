@@ -6,51 +6,9 @@ local M = {
 function M.config()
   local functions = require('functions')
 
-  local home = os.getenv('HOME')
-
-  local function runtimes()
-    if functions.OS() == 'linux' then
-      return {
-        {
-          name = "JavaSE-21",
-          path = "/usr/lib/jvm/java-21-openjdk/",
-        },
-      }
-    else
-      return {
-        {
-          name = "JavaSE-1.8",
-          path = home .. "/.sdkman/candidates/java/8.0.382-amzn/",
-        },
-        {
-          name = "JavaSE-11",
-          path = home .. "/.sdkman/candidates/java/11.0.20-tem/",
-        },
-        {
-          name = "JavaSE-17",
-          path = home .. "/.sdkman/candidates/java/17.0.8-tem/",
-        },
-        {
-          name = "JavaSE-21",
-          path = home .. "/.sdkman/candidates/java/21.0.7-tem/",
-        },
-      }
-    end
-  end
-
-  local rt = runtimes()
-
-  -- local function j17_home()
-  --   for _, p in ipairs(rt) do
-  --     if p.name == "JavaSE-17" then
-  --       return p.path
-  --     end
-  --   end
-  -- end
-
   require('java').setup({
     jdk = {
-      auto_install = false,
+      auto_install = true,
     },
   })
   require('lspconfig').jdtls.setup({
@@ -60,10 +18,6 @@ function M.config()
       ["$/progress"] = function(_, result, ctx) end,
       ['language/status'] = function() end,
     },
-    -- cmd_env =  {
-    --   JAVA_HOME = j17_home(),
-    --   PATH = vim.fn.getenv('PATH') .. ':' .. j17_home() .. "/bin",
-    -- },
     settings = {
       java = {
         configuration = {

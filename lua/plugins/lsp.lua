@@ -21,7 +21,6 @@ function M.config()
       "rust_analyzer",
       "basedpyright",
       "ruff",
-      "jdtls",
     }
   })
 
