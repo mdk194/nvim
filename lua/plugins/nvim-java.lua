@@ -15,10 +15,6 @@ function M.config()
           name = "JavaSE-21",
           path = "/usr/lib/jvm/java-21-openjdk/",
         },
-        {
-          name = "JavaSE-17",
-          path = "/usr/lib/jvm/java-17-openjdk/",
-        },
       }
     else
       return {
@@ -55,21 +51,6 @@ function M.config()
   require('java').setup({
     jdk = {
       auto_install = false,
-    },
-    spring_boot_tools = {
-      enable = true,
-      version = '1.59.0',
-    },
-    java_test = {
-      enable = true,
-      version = '0.43.1',
-    },
-    java_debug_adapter = {
-      enable = true,
-      version = '0.58.2',
-    },
-    jdtls = {
-      version = 'v1.46.1',
     },
   })
   require('lspconfig').jdtls.setup({
