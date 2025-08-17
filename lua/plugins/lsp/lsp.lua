@@ -47,6 +47,7 @@ local servers = {
   "clangd",
   "jsonls",
   "lua_ls",
+  "kotlin_language_server",
 }
 
 for _, lsp in ipairs(servers) do

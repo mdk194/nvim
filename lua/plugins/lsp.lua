@@ -21,6 +21,7 @@ function M.config()
       "rust_analyzer",
       "basedpyright",
       "ruff",
+      "kotlin_language_server",
     }
   })
 
