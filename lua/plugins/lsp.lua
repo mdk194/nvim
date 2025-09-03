@@ -16,7 +16,6 @@ function M.config()
       "clangd",
       "jsonls",
       "lua_ls",
-      "gopls",
       "graphql",
       "rust_analyzer",
       "basedpyright",
