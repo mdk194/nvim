@@ -50,7 +50,6 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-  vim.lsp.enable(lsp)
   vim.lsp.config(lsp, {
     before_init = function(_, _) end,
     capabilities = capabilities,
@@ -62,9 +61,9 @@ for _, lsp in ipairs(servers) do
       redhat = { telemetry = { enabled = false } },
     },
   })
+  vim.lsp.enable(lsp)
 end
 
-vim.lsp.enable("gopls")
 vim.lsp.config("gopls", {
   capabilities = capabilities,
   showMessage = showMessage,
@@ -106,13 +105,13 @@ vim.lsp.config("gopls", {
     },
   },
 })
+vim.lsp.enable("gopls")
 
-vim.lsp.enable("graphql")
 vim.lsp.config("graphql", {
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
+vim.lsp.enable("graphql")
 
-vim.lsp.enable("ruff")
 vim.lsp.config("ruff", {
   init_options = {
     settings = {
@@ -122,8 +121,8 @@ vim.lsp.config("ruff", {
     },
   },
 })
+vim.lsp.enable("ruff")
 
-vim.lsp.enable("basedpyright")
 vim.lsp.config("basedpyright", {
   capabilities = capabilities,
   showMessage = showMessage,
@@ -134,3 +133,4 @@ vim.lsp.config("basedpyright", {
     },
   },
 })
+vim.lsp.enable("basedpyright")
