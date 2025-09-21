@@ -1,4 +1,3 @@
-local nvim_lsp = require("lspconfig")
 local languages = require("plugins.lsp.languages")
 local configs = require("lspconfig.configs")
 
@@ -51,7 +50,8 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({
+  vim.lsp.enable(lsp)
+  vim.lsp.config(lsp, {
     before_init = function(_, _) end,
     capabilities = capabilities,
     showMessage = showMessage,
@@ -64,7 +64,8 @@ for _, lsp in ipairs(servers) do
   })
 end
 
-nvim_lsp.gopls.setup({
+vim.lsp.enable("gopls")
+vim.lsp.config("gopls", {
   capabilities = capabilities,
   showMessage = showMessage,
   filetypes = { "go", "gomod", "gotmpl" },
@@ -106,11 +107,13 @@ nvim_lsp.gopls.setup({
   },
 })
 
-nvim_lsp.graphql.setup({
+vim.lsp.enable("graphql")
+vim.lsp.config("graphql", {
   filetypes = { "graphql", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact" },
 })
 
-nvim_lsp.ruff.setup({
+vim.lsp.enable("ruff")
+vim.lsp.config("ruff", {
   init_options = {
     settings = {
       ruff = {
@@ -120,7 +123,8 @@ nvim_lsp.ruff.setup({
   },
 })
 
-nvim_lsp.basedpyright.setup {
+vim.lsp.enable("basedpyright")
+vim.lsp.config("basedpyright", {
   capabilities = capabilities,
   showMessage = showMessage,
   settings = {
@@ -129,4 +133,4 @@ nvim_lsp.basedpyright.setup {
       logLevel = "error",
     },
   },
-}
+})
