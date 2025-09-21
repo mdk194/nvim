@@ -220,7 +220,7 @@ return {
     indent = { enabled = false, only_scope = true },
     chunk = { enabled = false },
     scope = { enabled = false },
-    quickfile = { enabled = true },
+    quickfile = { enabled = false },
     statuscolumn = { enabled = false },
     words = {
       enabled = false,
