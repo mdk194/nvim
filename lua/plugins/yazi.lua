@@ -6,7 +6,7 @@ return {
   keys = {
     {
       -- Open in the current working directory
-      "<c-y>",
+      "<leader>e",
       "<cmd>Yazi cwd<cr>",
       desc = "Open the file manager in nvim's working directory",
     },

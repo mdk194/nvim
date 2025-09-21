@@ -4,7 +4,7 @@ return {
   lazy = false,
   opts = {
     explorer = {
-      enabled = true,
+      enabled = false,
     },
     picker = {
       enabled = true,
@@ -325,7 +325,7 @@ return {
     -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<leader>ug", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-    { "<leader>e",  function() Snacks.explorer.open() end, desc = "Explorer", mode = { "n", "t" } },
+    -- { "<leader>e",  function() Snacks.explorer.open() end, desc = "Explorer", mode = { "n", "t" } },
     { "<c-f>",      function() Snacks.picker.files({matcher = {frecency = true, history_bonus = true}}) end, desc = "Find Files" },
     { "<c-p>",      function() require('functions').snack_picker('files', {matcher = {frecency = true, history_bonus = true}})() end, desc = "Find Files" },
     { "<leader>b",  function() Snacks.picker.buffers() end, desc = "Buffers" },
