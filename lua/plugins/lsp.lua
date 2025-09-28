@@ -71,7 +71,7 @@ function M.config()
 
       map('<space>a', vim.lsp.buf.code_action, 'Code Action')
       map('<space>s', vim.lsp.buf.signature_help, 'Signature Help')
-      -- map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
+      map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
       -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 
       -- inlay hints
