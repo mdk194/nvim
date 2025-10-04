@@ -19,17 +19,6 @@ function M.config()
   panel = {
     enabled = false,
     auto_refresh = false,
-    keymap = {
-      jump_prev = "<C-k>",
-      jump_next = "<C-j>",
-      accept = "<C-y>",
-      refresh = "<leader>r",
-      open = "<M-CR>"
-    },
-    layout = {
-      position = "bottom", -- | top | left | right | horizontal | vertical
-      ratio = 0.4
-    },
   },
   suggestion = {
     enabled = true,
