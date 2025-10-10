@@ -44,16 +44,18 @@ function M.config()
       },
     },
     adapters = {
-      copilot = function()
-        return require("codecompanion.adapters").extend("copilot", {
-          schema = {
-            model = {
-              -- default = "claude-3.7-sonnet",
-              default = "gemini-2.5-pro",
+      http = {
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            schema = {
+              model = {
+                -- default = "claude-3.7-sonnet",
+                default = "gemini-2.5-pro",
+              },
             },
-          },
-        })
-      end,
+          })
+        end,
+      },
     },
   })
 end
