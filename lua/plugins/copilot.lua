@@ -1,7 +1,7 @@
 local M = {
   "zbirenbaum/copilot.lua",
-  cmd = { "Copilot" },
-  event = "InsertEnter",
+  event = 'VeryLazy',
+  -- cmd = { "Copilot" },
   -- keys = {
   --   { '<leader>co', function ()
   --       require('copilot.suggestion').toggle_auto_trigger()
