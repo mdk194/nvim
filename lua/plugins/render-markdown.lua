@@ -10,7 +10,11 @@ return {
     -- checkbox = { checked = { scope_highlight = '@markup.strikethrough' } },
     sign = { enabled = false },
     heading = { icons = { '󰲡  ', '󰲣  ', '󰲥  ', '󰲧  ', '󰲩  ', '󰲫  ' }, position = 'inline' },
-    code = { sign = false },
+    code = {
+        language_border = ' ',
+        language_left = '',
+        language_right = '',
+    },
     yaml = { enabled = false },
   },
 }
