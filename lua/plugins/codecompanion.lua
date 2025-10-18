@@ -78,8 +78,8 @@ function M.config()
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
               model = {
-                -- default = "claude-3.7-sonnet",
-                default = "gemini-2.5-pro",
+                default = "claude-sonnet-4",
+                -- default = "gemini-2.5-pro",
               },
             },
           })
@@ -127,6 +127,8 @@ function M.config()
     end,
   })
 
+  -- Expand 'cc' into 'CodeCompanion' in the command line
+  vim.cmd([[cab cc CodeCompanion]])
 end
 
 return M
