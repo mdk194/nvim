@@ -59,12 +59,13 @@ function M.config()
 
       -- map('gr', [[<cmd>lua require('fzf-lua').lsp_references({ jump_to_single_result = true, includeDeclaration = false })<CR>]], '[G]oto [R]eferences')
       map('gr', function() Snacks.picker.lsp_references() end, '[G]oto [R]eferences')
-      -- map('gic', [[<cmd>lua require('fzf-lua').lsp_incoming_calls()<CR>]], '[G]o to [I]ncoming [C]all')
-      -- map('goc', [[<cmd>lua require('fzf-lua').lsp_outgoing_calls()<CR>]], '[G]o to [O]utgoing [C]all')
+      map('gic', function() Snacks.picker.lsp_incoming_calls() end, 'Calls [i]ncoming')
+      map('goc', function() Snacks.picker.lsp_outgoing_calls() end, 'Calls [o]utgoing')
       map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
-      -- map('<leader>d', [[<cmd>lua require('fzf-lua').diagnostics_document()<CR>]], 'Diagnostics document')
       map('<leader>d', function() Snacks.picker.diagnostics_buffer() end, 'Diagnostics document')
+      -- map('<leader>ss', function() Snacks.picker.lsp_symbols() end, 'LSP Symbols')
+      -- map('<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, 'LSP Workspace Symbols')
 
       map('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
       map(']d', vim.diagnostic.goto_next, 'Next diagnostic')

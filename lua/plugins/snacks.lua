@@ -266,7 +266,6 @@ return {
     { "<leader>hh", function() Snacks.lazygit() end, desc = "LazyGits" },
     { "<leader>hu", function() Snacks.gitbrowse() end, desc = "Git browse" },
     { "<leader>hl", function() Snacks.git.blame_line() end, desc = "Git blame line" },
-    -- { "<leader>l", function() Snacks.picker.lsp_symbols({layout = {reverse = false}}) end, desc = "LSP symbols" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
