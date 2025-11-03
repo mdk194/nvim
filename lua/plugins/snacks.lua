@@ -209,6 +209,7 @@ return {
       enabled = true,
       notify = false, -- show notification when big file detected
       size = 512 * 1024, -- 512KB
+      line_length = 1000,
     },
     notifier = {
       enabled = true,
@@ -216,7 +217,7 @@ return {
       top_down = false,
       style = "compact",
     },
-    input = {},
+    input = { enabled = true },
     indent = { enabled = false, only_scope = true },
     chunk = { enabled = false },
     scope = { enabled = false },
