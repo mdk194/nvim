@@ -1,6 +1,7 @@
 local M = {
   'mrjones2014/smart-splits.nvim',
   lazy = false,
+  build = "./kitty/install-kittens.bash",
 }
 
 function M.config()
@@ -41,7 +42,7 @@ function M.config()
     -- }
     -- NOTE: `at_edge = 'wrap'` is not supported on Kitty terminal
     -- multiplexer, as there is no way to determine layout via the CLI
-    at_edge = 'wrap',
+    at_edge = 'stop',
     -- Desired behavior when the current window is floating:
     -- 'previous' => Focus previous Vim window and perform action
     -- 'mux' => Always forward action to multiplexer
@@ -88,7 +89,7 @@ function M.config()
     -- and the $KITTY_LISTEN_ON environment variable for Kitty.
     -- You can also set this value by setting `vim.g.smart_splits_multiplexer_integration`
     -- before the plugin is loaded (e.g. for lazy environments).
-    multiplexer_integration = "tmux",
+    multiplexer_integration = nil,
     -- disable multiplexer navigation if current multiplexer pane is zoomed
     -- this functionality is only supported on tmux and Wezterm due to kitty
     -- not having a way to check if a pane is zoomed
