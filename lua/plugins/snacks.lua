@@ -14,39 +14,76 @@ return {
         grep = false,
         files = false,
       },
+      icons = {
+        ui = { live  = "live", },
+      },
       previewers = {
         diff = {style = "fancy"},
       },
       formatters = {
         file = {
           truncate = 90, -- truncate the file path to (roughly) this length
+          filename_first = false,
+        },
+      },
+      layouts = {
+        ivy = {
         },
       },
       layout = {
+        -- cycle = false,
+        -- reverse = true,
+        -- layout = { -- reverse layout
+        --   box = "vertical",
+        --   backdrop = false,
+        --   row = -1,
+        --   width = 0,
+        --   height = 0.7,
+        --   border = "none",
+        --   {
+        --     win = "preview", title = "{preview:Preview}", width = 0, height = 0.4, border = "top", title_pos = "left",
+        --     wo = { winhighlight = "NormalFloat:Normal", scrolloff = 0 },
+        --   },
+        --   {
+        --     box = "vertical",
+        --     {
+        --       win = "list", title_pos = "left", border = "top",
+        --       wo = { winhighlight = "NormalFloat:Normal", number = false, scrolloff = 0 },
+        --     },
+        --     {
+        --       win = "input", height = 1, border = "top", title = "{title} {live} {flags}", title_pos = "left",
+        --       wo = { winhighlight = "NormalFloat:Normal", number = false },
+        --     },
+        --   }
+        --
         cycle = false,
         reverse = true,
-        layout = {
+        layout = { -- ivy bottom input
           box = "vertical",
           backdrop = false,
           row = -1,
           width = 0,
           height = 0.6,
-          border = "none",
-          {
-            win = "preview", title = "{preview:Preview}", width = 0, height = 0.5, border = "top", title_pos = "left",
-            wo = { winhighlight = "NormalFloat:Normal", scrolloff = 0 },
-          },
+          border = "top",
+          boder = "none",
           {
             box = "vertical",
             {
-              win = "list", title_pos = "left", border = "top",
-              wo = { winhighlight = "NormalFloat:Normal", number = false, scrolloff = 0 },
+              box = "horizontal",
+              {
+                win = "list", border = "none",
+                wo = { winhighlight = "NormalFloat:Normal", number = false, scrolloff = 0 },
+              },
+              {
+                win = "preview", title = "{preview}", width = 0.45, border = "left",
+                wo = { winhighlight = "NormalFloat:Normal", scrolloff = 0 },
+              },
             },
             {
-              win = "input", height = 1, border = "top", title = "{title} {live} {flags}", title_pos = "left",
+              win = "input", height = 1, border = "top", title = " {title} {live} {flags}",title_pos = "left",
               wo = { winhighlight = "NormalFloat:Normal", number = false },
             },
-          }
+          },
         },
       },
       win = {
@@ -70,9 +107,9 @@ return {
             ["<c-x>"] = { "inspect", mode = { "n", "i" } },
             ["<c-f>"] = { "toggle_follow", mode = { "i", "n" } },
             ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
-            ["<c-g>"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
             ["<c-space>"] = { "toggle_maximize", mode = { "i", "n" } },
-            ["<c-t>"] = { "toggle_preview", mode = { "i", "n" } },
+            ["<c-g>"] = { "toggle_preview", mode = { "i", "n" } },
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
             ["<c-a>"] = { "select_all", mode = { "n", "i" } },
             ["<c-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
