@@ -303,6 +303,7 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>k", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     { "<leader>hd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
     { "<leader>hh", function() Snacks.lazygit() end, desc = "LazyGits" },
     { "<leader>hu", function() Snacks.gitbrowse() end, desc = "Git browse" },
