@@ -109,7 +109,7 @@ function M.config()
         tsc.disable()
       end
     end,
-  }):map("<leader>uu")
+  }):map("<leader>ut")
 
   -- jump to context
   vim.keymap.set("n", "[s", function() require("treesitter-context").go_to_context(vim.v.count1) end, { silent = true })

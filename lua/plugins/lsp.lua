@@ -75,13 +75,6 @@ function M.config()
       map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
       -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 
-      -- inlay hints
-      if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-        map('<leader>th', function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        end, '[T]oggle Inlay [H]ints')
-      end
-
       -- codelens
       if client.server_capabilities.codeLensProvider then
         -- trigger now

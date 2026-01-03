@@ -14,6 +14,9 @@ return {
         grep = false,
         files = false,
       },
+      previewers = {
+        diff = {style = "fancy"},
+      },
       formatters = {
         file = {
           truncate = 90, -- truncate the file path to (roughly) this length
@@ -252,7 +255,6 @@ return {
     { "<leader>uu", function() Snacks.picker.undo() end, desc = "Undo History" },
     { "<leader>uh",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
     -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-    { "<leader>ug", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     -- { "<leader>e",  function() Snacks.explorer.open() end, desc = "Explorer", mode = { "n", "t" } },
     { "<c-f>",      function() Snacks.picker.files({matcher = {frecency = true, history_bonus = true}}) end, desc = "Find Files" },
@@ -264,6 +266,7 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>hd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
     { "<leader>hh", function() Snacks.lazygit() end, desc = "LazyGits" },
     { "<leader>hu", function() Snacks.gitbrowse() end, desc = "Git browse" },
     { "<leader>hl", function() Snacks.git.blame_line() end, desc = "Git blame line" },
@@ -288,8 +291,6 @@ return {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>uL")
         Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
-        Snacks.toggle.treesitter():map("<leader>ut")
-        -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>ui")
 
         -- _G.dd(Snacks.picker.config.get().win)
