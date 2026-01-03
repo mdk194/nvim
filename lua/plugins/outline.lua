@@ -8,6 +8,9 @@ local M = {
 
 function M.config()
   require("outline").setup({
+    outline_window = {
+      position = 'left',
+    },
     keymaps = {
       show_help = '?',
       close = {'<Esc>', 'q', 'K'},
@@ -21,11 +24,11 @@ function M.config()
       goto_and_close = '<S-Cr>',
       -- Change cursor position of outline window to match current location in code.
       -- 'Opposite' of goto/peek_location.
-      restore_location = '<C-g>',
+      restore_location = 'M',
       -- Open LSP/provider-dependent symbol hover information
       hover_symbol = '<C-space>',
       -- Preview location code of the symbol under cursor
-      toggle_preview = 'M',
+      toggle_preview = '<C-g>',
       rename_symbol = 'r',
       code_actions = 'a',
       -- These fold actions are collapsing tree nodes, not code folding
