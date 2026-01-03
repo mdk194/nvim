@@ -44,7 +44,7 @@ function M.config()
       map('<leader>ws', function() Snacks.picker.lsp_workspace_symbols() end, '[W]orkspace [S]ymbols')
 
       -- map('<leader>s', [[<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>]], 'Document [S]ymbols')
-      map('<leader>s', function() Snacks.picker.lsp_symbols() end, 'Document [S]ymbols')
+      map('<leader>s', function() Snacks.picker.lsp_symbols({tree = false}) end, 'Document [S]ymbols')
 
       -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
       map('gD', function() Snacks.picker.lsp_declarations() end, '[G]oto [D]eclaration')
