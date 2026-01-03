@@ -103,6 +103,10 @@ function M.config()
       -- msg = "[CodeCompanion] " .. request.match:gsub("CodeCompanion", "")
       msg = request.match:gsub("CodeCompanion", "")
 
+      if msg == "ContextChanged" then
+        return
+      end
+
       vim.notify(msg, "info", {
         timeout = 1000,
         keep = function()
