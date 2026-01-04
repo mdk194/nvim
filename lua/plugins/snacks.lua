@@ -26,10 +26,6 @@ return {
           filename_first = false,
         },
       },
-      layouts = {
-        ivy = {
-        },
-      },
       layout = {
         -- cycle = false,
         -- reverse = true,
@@ -104,24 +100,32 @@ return {
             ["<S-Tab>"] = { "select_and_prev", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
             ["<Up>"] = { "list_up", mode = { "i", "n" } },
-            ["<c-x>"] = { "inspect", mode = { "n", "i" } },
             ["<c-f>"] = { "toggle_follow", mode = { "i", "n" } },
             ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
             ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
-            ["<c-space>"] = { "toggle_maximize", mode = { "i", "n" } },
+            ["<c-r>"] = { "toggle_regex", mode = { "i", "n" } },
+            ["<c-l>"] = { "toggle_live", mode = { "i", "n" } },
             ["<c-g>"] = { "toggle_preview", mode = { "i", "n" } },
+            ["<c-space>"] = { "toggle_maximize", mode = { "i", "n" } },
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
             ["<c-a>"] = { "select_all", mode = { "n", "i" } },
             ["<c-k>"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["<c-j>"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["<c-d>"] = { "list_scroll_down", mode = { "i", "n" } },
             ["<c-u>"] = { "list_scroll_up", mode = { "i", "n" } },
-            ["<c-l>"] = { "toggle_live", mode = { "i", "n" } },
             ["<c-n>"] = { "list_down", mode = { "i", "n" } },
             ["<c-p>"] = { "list_up", mode = { "i", "n" } },
             ["<c-q>"] = { "qflist", mode = { "i", "n" } },
             ["<c-s>"] = { "edit_split", mode = { "i", "n" } },
             ["<c-v>"] = { "edit_vsplit", mode = { "i", "n" } },
+            ["<c-x><c-i>"] = { "inspect", mode = { "n", "i" } },
+            ["<c-x>#"] = { "insert_alt", mode = "i" },
+            ["<c-x>%"] = { "insert_filename", mode = "i" },
+            ["<c-x><c-a>"] = { "insert_cWORD", mode = "i" },
+            ["<c-x><c-f>"] = { "insert_file", mode = "i" },
+            ["<c-x><c-l>"] = { "insert_line", mode = "i" },
+            ["<c-x><c-p>"] = { "insert_file_full", mode = "i" },
+            ["<c-x><c-w>"] = { "insert_cword", mode = "i" },
             ["?"] = "toggle_help_input",
             ["G"] = "list_bottom",
             ["gg"] = "list_top",
@@ -132,18 +136,26 @@ return {
             ["q"] = "close",
 
             -- disable
-            ["<a-h>"] = false, -- disable
-            ["<a-d>"] = false, -- disable
-            ["<a-f>"] = false, -- disable
-            ["<a-i>"] = false, -- disable
-            ["<a-m>"] = false, -- disable
-            ["<a-p>"] = false, -- disable
-            ["<a-w>"] = false, -- disable
-            ["<c-b>"] = false, -- disable
-            ["<c-w>H"] = false, -- disable
-            ["<c-w>J"] = false, -- disable
-            ["<c-w>K"] = false, -- disable
-            ["<c-w>L"] = false, -- disable
+            ["<a-h>"] = false,
+            ["<a-d>"] = false,
+            ["<a-f>"] = false,
+            ["<a-i>"] = false,
+            ["<a-m>"] = false,
+            ["<a-p>"] = false,
+            ["<a-w>"] = false,
+            ["<a-r>"] = false,
+            ["<c-b>"] = false,
+            ["<c-w>H"] = false,
+            ["<c-w>J"] = false,
+            ["<c-w>K"] = false,
+            ["<c-w>L"] = false,
+            ["<c-r>#"] = false,
+            ["<c-r>%"] = false,
+            ["<c-r><c-a>"] = false,
+            ["<c-r><c-f>"] = false,
+            ["<c-r><c-l>"] = false,
+            ["<c-r><c-p>"] = false,
+            ["<c-r><c-w>"] = false,
           },
         },
         -- result list window
@@ -158,7 +170,7 @@ return {
             ["<S-Tab>"] = { "select_and_prev", mode = { "n", "x" } },
             ["<Tab>"] = { "select_and_next", mode = { "n", "x" } },
             ["<Up>"] = "list_up",
-            ["<c-x>"] = "inspect",
+            ["<c-x><c-i>"] = "inspect",
             ["<c-f>"] = "toggle_follow",
             ["<c-h>"] = "toggle_hidden",
             ["<c-g>"] = "toggle_ignored",
@@ -290,24 +302,26 @@ return {
   },
   keys = {
     { "<leader>uu", function() Snacks.picker.undo() end, desc = "Undo History" },
-    { "<leader>uh",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
-    -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+    { "<leader>uh", function() Snacks.notifier.show_history() end, desc = "Notification History" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+    -- { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     -- { "<leader>e",  function() Snacks.explorer.open() end, desc = "Explorer", mode = { "n", "t" } },
     { "<c-f>",      function() Snacks.picker.files({matcher = {frecency = true, history_bonus = true}}) end, desc = "Find Files" },
     { "<c-p>",      function() require('functions').snack_picker('files', {matcher = {frecency = true, history_bonus = true}})() end, desc = "Find Files" },
+    { "<c-h>",      function() Snacks.picker.resume() end, desc = "Resume" },
+    { "<c-,>",      function() Snacks.picker() end, desc = "Pickers" },
     { "<leader>b",  function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>g",  function() require('functions').snack_picker('grep')() end, desc = "Grep" },
-    { "<leader>/",  function() Snacks.picker.lines({layout = {reverse = false}}) end, desc = "Buffer Lines" },
-    { "<leader>o", function() Snacks.picker.smart({multi = {"recent", "projects", "zoxide"}}) end, desc = "Recent files + project + zoxide" },
-    { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-    { "<leader>m", function() Snacks.picker.marks() end, desc = "Marks" },
-    { "<leader>j", function() Snacks.picker.jumps() end, desc = "Jumps" },
-    { "<leader>k", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-    { "<leader>hd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-    { "<leader>hh", function() Snacks.lazygit() end, desc = "LazyGits" },
-    { "<leader>hu", function() Snacks.gitbrowse() end, desc = "Git browse" },
-    { "<leader>hl", function() Snacks.git.blame_line() end, desc = "Git blame line" },
+    { "<leader>/",  function() Snacks.picker.grep_buffers({layout = {reverse = false}}) end, desc = "Grep Buffers" },
+    { "<leader>o",  function() Snacks.picker.projects({dev = {"~/src"}}) end, desc = "Projects" },
+    { "<leader>z",  function() Snacks.picker.zoxide() end, desc = "Zoxide" },
+    { "<leader>:",  function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader>m",  function() Snacks.picker.marks() end, desc = "Marks" },
+    { "<leader>j",  function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>kd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+    { "<leader>kk", function() Snacks.lazygit() end, desc = "LazyGits" },
+    { "<leader>ku", function() Snacks.gitbrowse() end, desc = "Git browse" },
+    { "<leader>kl", function() Snacks.git.blame_line() end, desc = "Git blame line" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {

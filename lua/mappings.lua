@@ -20,15 +20,12 @@ map("", "<leader>2", ":diffget BASE<CR>")
 map("", "<leader>3", ":diffget REMOTE<CR>")
 
 map("n", "<leader><leader>", "<c-^>")
-map("n", "<leader>w", ":wa<CR>")
 
 -- clean trailing whitespace
 map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
 
 -- Spell check
 map("n", "<F3>", ":set spell!<CR>", { silent = true })
-
-map("n", "<F4>", ":SymbolsOutline<CR><c-w>=")
 
 -- kill windows
 map("n", "K", ":q<CR>")
@@ -67,7 +64,7 @@ map("c", "<c-k>", "<up>")
 map("n", "D", "d$")
 
 -- Uppercase word
-map("i", "<c-l>", "<esc>mzgUiw`za")
+map("i", "<c-c>", "<esc>mzgUiw`za")
 
 -- Keep the cursor in place while joining lines
 map("n", "J", "mzJ`z")
@@ -110,6 +107,7 @@ vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = 
 
 -- Alternative way to save and exit in Normal mode.
 -- Adding `redraw` helps with `cmdheight=0` if buffer is not modified
+map("n", "<leader>w", ":wa | redraw<CR>")
 vim.keymap.set(  'n',        '<C-S>', '<Cmd>silent! update | redraw<CR>',      { desc = 'Save' })
 vim.keymap.set({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
 
