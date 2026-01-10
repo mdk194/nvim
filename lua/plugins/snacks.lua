@@ -318,9 +318,10 @@ return {
     { "<leader>:",  function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>m",  function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>j",  function() Snacks.picker.jumps() end, desc = "Jumps" },
+    { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     { "<leader>kd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
     { "<leader>kk", function() Snacks.lazygit() end, desc = "LazyGits" },
-    { "<leader>ku", function() Snacks.gitbrowse() end, desc = "Git browse" },
+    { "<leader>ku", function() Snacks.gitbrowse() end, desc = "Git browse url" },
     { "<leader>kl", function() Snacks.git.blame_line() end, desc = "Git blame line" },
   },
   init = function()
