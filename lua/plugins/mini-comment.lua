@@ -1,5 +1,5 @@
 local M = {
-  'echasnovski/mini.comment',
+  'nvim-mini/mini.comment',
   version = false,
   event = "VeryLazy",
   dependencies = {

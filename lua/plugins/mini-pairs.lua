@@ -1,5 +1,5 @@
 local M = {
-  'echasnovski/mini.pairs',
+  'nvim-mini/mini.pairs',
   version = false,
   event = "InsertEnter",
 }

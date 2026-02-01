@@ -1,7 +1,7 @@
 return {
   'saghen/blink.cmp',
   dependencies = {
-    -- { 'echasnovski/mini.icons', version = '*' },
+    -- { 'nvim-mini/mini.icons', version = '*' },
     -- { 'rafamadriz/friendly-snippets' },
     "fang2hou/blink-copilot",
   },
