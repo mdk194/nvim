@@ -57,14 +57,11 @@ function M.config()
       -- map('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
       map('gi', function() Snacks.picker.lsp_implementations() end, '[G]oto [I]mplementation')
 
-      -- map('gr', [[<cmd>lua require('fzf-lua').lsp_references({ jump_to_single_result = true, includeDeclaration = false })<CR>]], '[G]oto [R]eferences')
       map('gr', function() Snacks.picker.lsp_references() end, '[G]oto [R]eferences')
       map('gic', function() Snacks.picker.lsp_incoming_calls() end, 'Calls [i]ncoming')
       map('goc', function() Snacks.picker.lsp_outgoing_calls() end, 'Calls [o]utgoing')
 
       map('<leader>d', function() Snacks.picker.diagnostics_buffer() end, 'Diagnostics document')
-      -- map('<leader>ss', function() Snacks.picker.lsp_symbols() end, 'LSP Symbols')
-      -- map('<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, 'LSP Workspace Symbols')
 
       map('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
       map(']d', vim.diagnostic.goto_next, 'Next diagnostic')

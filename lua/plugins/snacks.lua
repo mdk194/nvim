@@ -225,6 +225,17 @@ return {
         },
       },
       sources = {
+        keymaps = {
+          layout = { preview = false },
+        },
+        select = {
+          config = function(opts)
+            opts.layout = { preset = "select" }
+          end,
+        },
+        command_history = {
+          layout = { preview = false },
+        },
         explorer = {
           config = function(opts)
             opts.layout = { reverse = false, preset = "sidebar", preview = false, auto_hide = {"input"} }
@@ -312,7 +323,7 @@ return {
     { "<c-,>",      function() Snacks.picker() end, desc = "Pickers" },
     { "<leader>b",  function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>g",  function() require('functions').snack_picker('grep')() end, desc = "Grep" },
-    { "<leader>/",  function() Snacks.picker.grep_buffers({layout = {reverse = false}}) end, desc = "Grep Buffers" },
+    { "<leader>/",  function() Snacks.picker.grep_buffers({buf = 0, live = false }) end, desc = "Grep current buffer" },
     { "<leader>o",  function() Snacks.picker.projects({dev = {"~/src"}}) end, desc = "Projects" },
     { "<leader>z",  function() Snacks.picker.zoxide() end, desc = "Zoxide" },
     { "<leader>:",  function() Snacks.picker.command_history() end, desc = "Command History" },
