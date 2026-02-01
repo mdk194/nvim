@@ -3,7 +3,7 @@ return {
   dependencies = {
     -- { 'echasnovski/mini.icons', version = '*' },
     -- { 'rafamadriz/friendly-snippets' },
-    -- "fang2hou/blink-copilot",
+    "fang2hou/blink-copilot",
   },
   version = '*',
 
@@ -32,23 +32,26 @@ return {
     },
 
     sources = {
-      -- default = { 'copilot', 'lsp', 'path' },
-      default = { 'lsp', 'path' },
-      -- providers = {
-      --   copilot = {
-      --     name = "copilot",
-      --     module = "blink-copilot",
-      --     score_offset = 100,
-      --     async = true,
-      --     opts = {
-      --       max_completions = 1,
-      --       max_attempts = 2, -- max_completions + 1
-      --     }
-      --   },
-      -- },
+      -- default = { 'lsp', 'path' },
+      default = { 'copilot', 'lsp', 'path' },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+          opts = {
+            max_completions = 1,
+            max_attempts = 2, -- max_completions + 1
+          }
+        },
+      },
     },
 
     completion = {
+      accept = {
+        auto_brackets = { enabled = true },
+      },
       list = {
         selection = {
           preselect = true,

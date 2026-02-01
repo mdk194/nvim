@@ -21,7 +21,7 @@ function M.config()
     auto_refresh = false,
   },
   suggestion = {
-    enabled = true,
+    enabled = false, -- use blink-copilot
     auto_trigger = true,
     hide_during_completion = true,
     debounce = 75,
