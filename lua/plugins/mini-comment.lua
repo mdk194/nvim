@@ -18,7 +18,11 @@ function M.config()
     options = {
       -- Function to compute custom 'commentstring' (optional)
       custom_commentstring = function()
-        return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+        local ok, cs = pcall(require('ts_context_commentstring').calculate_commentstring)
+        if ok then
+          return cs or vim.bo.commentstring
+        end
+        return vim.bo.commentstring
       end,
 
       -- Whether to ignore blank lines when commenting
