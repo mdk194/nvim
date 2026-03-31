@@ -26,6 +26,41 @@ function M.config()
 
   require("plugins.lsp.lsp")
 
+  -- Patch codelens to display inline (eol) instead of virtual line above
+  local Provider = getmetatable(vim.lsp.codelens._Provider) or {}
+  if not Provider.__index then
+    -- Get the Provider metatable by patching on_win via the module internals
+    local codelens_mod = require('vim.lsp.codelens')
+    -- Monkey-patch nvim_buf_set_extmark for codelens namespaces
+    local orig_set_extmark = vim.api.nvim_buf_set_extmark
+    vim.api.nvim_buf_set_extmark = function(bufnr, ns_id, row, col, opts)
+      if opts and opts.virt_lines and opts.virt_lines_above then
+        local ns_name = ''
+        for name, id in pairs(vim.api.nvim_get_namespaces()) do
+          if id == ns_id then ns_name = name break end
+        end
+        if ns_name:match('vim%.lsp%.codelens') then
+          -- Convert virt_lines to eol virt_text
+          local chunks = {}
+          for _, chunk in ipairs(opts.virt_lines[1] or {}) do
+            if chunk[1] ~= '' and not chunk[1]:match('^%s+$') then
+              table.insert(chunks, chunk)
+            end
+          end
+          if #chunks > 0 then
+            table.insert(chunks, 1, { '  ', 'LspCodeLensSeparator' })
+          end
+          return orig_set_extmark(bufnr, ns_id, row, col, {
+            virt_text = chunks,
+            virt_text_pos = 'eol',
+            hl_mode = 'combine',
+          })
+        end
+      end
+      return orig_set_extmark(bufnr, ns_id, row, col, opts)
+    end
+  end
+
   vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
     callback = function(event)
@@ -72,17 +107,13 @@ function M.config()
       map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
       -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 
-      -- codelens
+      -- codelens (inline at end of line instead of virtual line above)
       if client.server_capabilities.codeLensProvider then
-        -- trigger now
         vim.lsp.codelens.refresh()
-
-        -- trigger refresh on events as well
         vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
           buffer = event.buf,
           callback = vim.lsp.codelens.refresh,
         })
-
         map("<leader>a", vim.lsp.codelens.run, 'Codelen')
       end
 

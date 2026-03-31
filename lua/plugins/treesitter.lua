@@ -2,87 +2,32 @@ local M = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   cond = require("functions").is_small_file,
-  branch = 'master',
+  branch = 'main',
   lazy = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    'RRethy/nvim-treesitter-endwise',
     'windwp/nvim-ts-autotag',
   },
 }
 
 function M.config()
-  require("nvim-treesitter.configs").setup({
+  require("nvim-treesitter").setup({
     ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "gomod", "proto", "http", "hcl", "html", "java", "javascript", "json", "jsdoc", "make", "yaml", "graphql", "css", "diff", "markdown", "markdown_inline", "sql", "toml", "tsx", "typescript", "vue", "regex", "query", "vimdoc" },
-    ignore_install = {},
-    highlight = {
-      enable = true,
-      disable = function(_, bufnr)
-        return vim.api.nvim_buf_line_count(bufnr) > 3000
-      end,
-      additional_vim_regex_highlighting = false,
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<C-space>",
-        scope_incremental = false,
-        node_incremental = "<C-space>",
-        node_decremental = "<BS>",
-      },
-    },
-    endwise = { enable = true },
-    indent = { enable = false },
-    textobjects = {
-      select = {
-        enable = false,
-        -- Automatically jump forward to textobj, similar to targets.vim
-        lookahead = true,
-        keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["al"] = "@loop.outer",
-          ["il"] = "@loop.inner",
-          ["ib"] = "@block.inner",
-          ["ab"] = "@block.outer",
-          ["ir"] = "@parameter.inner",
-          ["ar"] = "@parameter.outer",
-        },
-      },
-      swap = {
-        enable = false,
-        swap_next = {
-          ["<leader>a"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<leader>A"] = "@parameter.inner",
-        },
-      },
-      move = {
-        enable = false,
-        set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-        goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-        goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-        goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-      },
-      -- show textobject surrounding definition as determined
-      -- using Neovim's built-in LSP in a floating windows
-      -- Press shortcut twice to enter the floating window
-      lsp_interop = {
-        enable = false,
-        -- border = 'none',
-        peek_definition_code = {
-          ["<leader>pf"] = "@function.outer",
-          ["<leader>pc"] = "@class.outer",
-        },
-      },
-    },
   })
+
+  -- highlight is enabled by default in nvim 0.12, configure disable for large files
+  vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+      if vim.api.nvim_buf_line_count(args.buf) > 3000 then
+        vim.treesitter.stop(args.buf)
+      end
+    end,
+  })
+
+  -- incremental selection
+  vim.keymap.set("n", "<C-space>", function() require("nvim-treesitter.incremental_selection").init_selection() end, { desc = "Init treesitter selection" })
+  vim.keymap.set("x", "<C-space>", function() require("nvim-treesitter.incremental_selection").node_incremental() end, { desc = "Increment treesitter selection" })
+  vim.keymap.set("x", "<BS>", function() require("nvim-treesitter.incremental_selection").node_decremental() end, { desc = "Decrement treesitter selection" })
 
   local tsc = require('treesitter-context')
   tsc.setup{

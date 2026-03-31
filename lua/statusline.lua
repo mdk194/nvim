@@ -44,6 +44,16 @@ function _G.statusline_search()
 
 end
 
+-- Shorten path: first_dir/.../last_dir/filename (relative to cwd)
+-- e.g. src/very/deep/nested/path/to/file.lua → src/.../to/file.lua
+function _G.statusline_shortpath()
+  local path = vim.fn.expand('%:~:.')
+  if path == '' then return '[No Name]' end
+  local parts = vim.split(path, '/')
+  if #parts <= 3 then return path end
+  return parts[1] .. '/.../' .. parts[#parts - 1] .. '/' .. parts[#parts]
+end
+
 function _G.statusline_macro_recording()
     local recording_register = vim.fn.reg_recording()
 
