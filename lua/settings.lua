@@ -98,10 +98,10 @@ vim.opt.wildignore = [[
 */tmp/*,*.so,*.swp,*.zip,**/node_modules/**,**/target/**,**.terraform/**"
 ]]
 
-vim.opt.titlelen = 120
+vim.opt.titlelen = 200
 function _G.titlestring()
   -- vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')} - %f %{v:lua.statusline_diagnostic()}%w%r%m%y"
-  vim.o.titlestring = "%{substitute(getcwd(),$HOME,'~','')} %{v:lua.statusline_shortpath()} %{v:lua.statusline_diagnostic()}%w%r%m"
+  vim.o.titlestring = "%{expand('%:~:.')}%w%r%m"
 end
 _G.titlestring()
 
