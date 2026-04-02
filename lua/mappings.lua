@@ -28,7 +28,15 @@ map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
 map("n", "<F3>", ":set spell!<CR>", { silent = true })
 
 -- kill windows
-map("n", "K", ":q<CR>")
+vim.keymap.set("n", "K", function()
+  local win = vim.api.nvim_get_current_win()
+  local cfg = vim.api.nvim_win_get_config(win)
+  if cfg.relative ~= "" then
+    vim.api.nvim_win_close(win, true)
+  else
+    vim.cmd("q")
+  end
+end, { noremap = true })
 
 -- Wrapped lines goes down/up to next row, rather than next line in file.
 map("n", "j", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']], { expr = true })
