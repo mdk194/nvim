@@ -70,7 +70,7 @@ function M.config()
         vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
       end
 
-      map('M', vim.lsp.buf.hover, 'Hover Documentation')
+      map('M', function() vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover Documentation')
 
       map('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
       map('<leader>wr', vim.lsp.buf.remove_workspace_folder, 'Remove workspace folder')
@@ -103,17 +103,13 @@ function M.config()
 
       map('<space>r', vim.lsp.buf.rename, '[R]e[n]ame')
       map('<space>a', vim.lsp.buf.code_action, 'Code Action')
-      map('<space>s', vim.lsp.buf.signature_help, 'Signature Help')
+      map('<space>s', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature Help')
       map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
       -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 
       -- codelens (inline at end of line instead of virtual line above)
       if client.server_capabilities.codeLensProvider then
-        vim.lsp.codelens.refresh()
-        vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
-          buffer = event.buf,
-          callback = vim.lsp.codelens.refresh,
-        })
+        vim.lsp.codelens.enable(true, { bufnr = event.buf })
         map("<leader>a", vim.lsp.codelens.run, 'Codelen')
       end
 

@@ -12,11 +12,6 @@ local capabilities = require('blink.cmp').get_lsp_capabilities({
 })
 
 local lsp_ui = {
-  float = {
-    focusable = true,
-    style = "minimal",
-    border = "rounded",
-  },
   diagnostic = {
     virtual_text = false,
     -- virtual_text = { spacing = 4, prefix = "●" },
@@ -32,8 +27,6 @@ local lsp_ui = {
 }
 
 vim.diagnostic.config(lsp_ui.diagnostic)
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_ui.float)
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_ui.float)
 
 local showMessage = {
   messageActionItem = {

@@ -36,8 +36,6 @@ opt("o", "smartcase", true)
 opt("o", "incsearch", true)
 opt("o", "formatoptions", "qjl1") -- Don't autoformat comments
 opt("o", "autowrite", true)
-opt("o", "laststatus", 0) -- 2 to show statusline
-opt("o", "cmdheight", 1) -- 0 to disable cmd bar
 -- opt("o", "clipboard", "unnamed,unnamedplus")
 opt("o", "spell", false)
 opt("o", "spelllang", "en_us")
@@ -72,6 +70,56 @@ opt("w", "number", true)
 opt("w", "relativenumber", false)
 opt("w", "wrap", true)
 opt("w", "breakindent", true)
+
+
+opt("o", "laststatus", 0) -- 2 to show statusline
+opt("o", "cmdheight", 1) -- 0 to disable cmd bar
+require('vim._core.ui2').enable({
+  enable = true,
+  -- msg = {
+  --   targets = {
+  --     [''] = 'msg',
+  --     empty = 'cmd',
+  --     bufwrite = 'msg',
+  --     confirm = 'cmd',
+  --     emsg = 'pager',
+  --     echo = 'msg',
+  --     echomsg = 'msg',
+  --     echoerr = 'pager',
+  --     completion = 'cmd',
+  --     list_cmd = 'pager',
+  --     lua_error = 'pager',
+  --     lua_print = 'msg',
+  --     progress = 'pager',
+  --     rpc_error = 'pager',
+  --     quickfix = 'msg',
+  --     search_cmd = 'cmd',
+  --     search_count = 'cmd',
+  --     shell_cmd = 'pager',
+  --     shell_err = 'pager',
+  --     shell_out = 'pager',
+  --     shell_ret = 'msg',
+  --     undo = 'msg',
+  --     verbase = 'pager',
+  --     wildlist = 'cmd',
+  --     wmsg = 'msg',
+  --     typed_cmd = 'cmd',
+  --   },
+  --   cmd = {
+  --     height = 0.5,
+  --   },
+  --   dialog = {
+  --     height = 0.5,
+  --   },
+  --   msg = {
+  --     height = 0.3,
+  --     timeout = 5000,
+  --   },
+  --   pager = {
+  --     height = 0.5
+  --   },
+  -- },
+})
 
 vim.opt.diffopt = {
   'internal',

@@ -1,8 +1,5 @@
 -- vim.cmd('packadd cfilter')
 
-require('vim._core.ui2').enable({
-  enable = true
-})
 require('settings')
 require('mappings')
 require('autocmd')
