@@ -11,9 +11,10 @@ local M = {
 }
 
 function M.config()
-  require("nvim-treesitter").setup({
-    ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "gomod", "proto", "http", "hcl", "html", "java", "javascript", "json", "jsdoc", "make", "yaml", "graphql", "css", "diff", "markdown", "markdown_inline", "sql", "toml", "tsx", "typescript", "vue", "regex", "query", "vimdoc" },
-  })
+  require("nvim-treesitter").setup()
+
+  local parsers = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "gomod", "proto", "http", "hcl", "html", "java", "javascript", "json", "jsdoc", "make", "yaml", "graphql", "css", "diff", "markdown", "markdown_inline", "sql", "toml", "tsx", "typescript", "vue", "regex", "query", "vimdoc" }
+  require("nvim-treesitter").install(parsers)
 
   -- highlight is enabled by default in nvim 0.12, configure disable for large files
   vim.api.nvim_create_autocmd("FileType", {
