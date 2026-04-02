@@ -1,5 +1,6 @@
 local M = {
   'WhoIsSethDaniel/mason-tool-installer.nvim',
+  dependencies = { "mason-org/mason.nvim" },
   cmd = {
     "MasonToolsInstall",
     "MasonToolsInstallSync",
@@ -14,6 +15,16 @@ function M.config()
     -- a list of all tools you want to ensure are installed upon
     -- start; they should be the names Mason uses for each tool
     ensure_installed = {
+      -- LSP
+      "bash-language-server",
+      "clangd",
+      "json-lsp",
+      "lua-language-server",
+      "graphql-language-service-cli",
+      "rust-analyzer",
+      "ty",
+      "ruff",
+      "kotlin-language-server",
       -- Formatter
       "gofumpt",
       "goimports",

@@ -1,5 +1,5 @@
 return {
-  filetypes = { "go", "gomod", "gotmpl" },
+  filetypes = { "go", "gomod" },
   message_level = vim.lsp.protocol.MessageType.Error,
   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
   settings = {

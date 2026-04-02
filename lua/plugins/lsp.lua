@@ -3,13 +3,15 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
   cond = require("functions").is_small_file,
   dependencies = {
-    "mason-org/mason-lspconfig.nvim",
     "saghen/blink.cmp",
   },
 }
 
 local function server_config()
   local capabilities = require('blink.cmp').get_lsp_capabilities({
+    general = {
+      positionEncodings = { "utf-8" },
+    },
     textDocument = {
       completion = { completionItem = { snippetSupport = false } },
     },
@@ -41,7 +43,7 @@ local function server_config()
     gopls = require("plugins.lsp.gopls"),
     graphql = require("plugins.lsp.graphql"),
     ruff = require("plugins.lsp.ruff"),
-    basedpyright = require("plugins.lsp.basedpyright"),
+    ty = {},
   }
 
   for name, opts in pairs(servers) do
@@ -51,21 +53,6 @@ local function server_config()
 end
 
 function M.config()
-  require("mason-lspconfig").setup({
-    automatic_enable = false,
-    ensure_installed = {
-      "bashls",
-      "clangd",
-      "jsonls",
-      "lua_ls",
-      "graphql",
-      "rust_analyzer",
-      "basedpyright",
-      "ruff",
-      "kotlin_language_server",
-    }
-  })
-
   server_config()
 
   -- Patch codelens to display inline (eol) instead of virtual line above
