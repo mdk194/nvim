@@ -8,6 +8,48 @@ local M = {
   },
 }
 
+local function server_config()
+  local capabilities = require('blink.cmp').get_lsp_capabilities({
+    textDocument = {
+      completion = { completionItem = { snippetSupport = false } },
+    },
+  })
+
+  vim.diagnostic.config({
+    virtual_text = false,
+    underline = false,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+      focusable = true,
+      style = "minimal",
+      border = "rounded",
+    },
+  })
+
+  local defaults = {
+    capabilities = capabilities,
+    showMessage = { messageActionItem = { additionalPropertiesSupport = true } },
+    flags = { debounce_text_changes = 150 },
+  }
+
+  local servers = {
+    bashls = {},
+    clangd = {},
+    lua_ls = require("plugins.lsp.lua"),
+    jsonls = require("plugins.lsp.json"),
+    gopls = require("plugins.lsp.gopls"),
+    graphql = require("plugins.lsp.graphql"),
+    ruff = require("plugins.lsp.ruff"),
+    basedpyright = require("plugins.lsp.basedpyright"),
+  }
+
+  for name, opts in pairs(servers) do
+    vim.lsp.config(name, vim.tbl_deep_extend("force", defaults, opts))
+    vim.lsp.enable(name)
+  end
+end
+
 function M.config()
   require("mason-lspconfig").setup({
     automatic_enable = false,
@@ -24,7 +66,7 @@ function M.config()
     }
   })
 
-  require("plugins.lsp.lsp")
+  server_config()
 
   -- Patch codelens to display inline (eol) instead of virtual line above
   local Provider = getmetatable(vim.lsp.codelens._Provider) or {}
