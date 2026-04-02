@@ -8,9 +8,11 @@ function M.config()
 
   vim.env.JAVA_HOME = vim.env.JAVA_HOME or '/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home'
 
+  vim.env.PATH = vim.env.JAVA_HOME .. '/bin:' .. vim.env.PATH
+
   require('java').setup({
     jdk = {
-      auto_install = true,
+      auto_install = false,
     },
   })
   vim.lsp.enable('jdtls')
