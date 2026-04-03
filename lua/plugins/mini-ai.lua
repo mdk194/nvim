@@ -29,32 +29,35 @@ function M.config()
         local cur_line = curpos[2]
         local cur_col = curpos[5] -- curswant, handles blank lines
 
-        -- Get line indent, handling blank lines like mini.indentscope
+        -- Get line indent, handling blank lines (border = 'both': use min of neighbors)
         local function get_indent(line)
           local prev = vim.fn.prevnonblank(line)
           local prev_indent = vim.fn.indent(prev)
           if line == prev then return prev_indent end
-          -- blank line: use min of surrounding non-blank indents (border = 'both')
           local next_indent = vim.fn.indent(vim.fn.nextnonblank(line))
           return math.min(prev_indent, next_indent)
         end
 
+        -- try_as_border (border = 'both'): adjust reference line if on a border
+        local prev_indent = get_indent(cur_line - 1)
+        local cur_indent = get_indent(cur_line)
+        local next_indent = get_indent(cur_line + 1)
+
+        if not (prev_indent <= cur_indent and next_indent <= cur_indent) then
+          if prev_indent <= next_indent then
+            cur_line = cur_line + 1
+          else
+            cur_line = cur_line - 1
+          end
+        end
+
+        -- Compute indent: min of cursor column and line indent (indent_at_cursor)
         local line_indent = get_indent(cur_line)
-        -- indent_at_cursor: use cursor column if less than line indent
         local indent = math.min(cur_col, line_indent)
         if indent <= 0 then return nil end
 
-        -- try_as_border: if current line has less indent than body below,
-        -- treat it as border and use the body's scope
-        local next_nb = vim.fn.nextnonblank(cur_line + 1)
-        if next_nb > 0 and vim.fn.indent(next_nb) > indent then
-          indent = vim.fn.indent(next_nb)
-          cur_line = next_nb
-        end
-
         -- cast ray up
         local from = cur_line
-        local last_line = vim.fn.line('$')
         for l = cur_line - 1, 1, -1 do
           if get_indent(l) < indent then break end
           from = l
@@ -62,7 +65,7 @@ function M.config()
 
         -- cast ray down
         local to = cur_line
-        for l = cur_line + 1, last_line do
+        for l = cur_line + 1, vim.fn.line('$') do
           if get_indent(l) < indent then break end
           to = l
         end
@@ -82,7 +85,6 @@ function M.config()
           end
         end
 
-        -- Use linewise selection via region_type
         local to_col = vim.fn.col({ to, '$' }) - 1
         if to_col < 1 then to_col = 1 end
 
