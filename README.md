@@ -266,6 +266,3 @@ Leader key: `,`
 
 - Run `:GoInstallDeps`
 
-## Java
-
-- Some manual steps needed, check details in `ftplugin/java.lua`
