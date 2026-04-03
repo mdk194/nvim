@@ -3,7 +3,7 @@ local M = {
   dependencies = { "nvim-lua/plenary.nvim" },
   -- event = 'VeryLazy',
   keys = {
-    { '<leader>t', '<Cmd>TodoQuickFix<CR>' },
+    { '<space>t', '<Cmd>TodoQuickFix<CR>', desc = "todo-comments: Quickfix" },
     -- { ']t', function() require('todo-comments').jump_next() end },
     -- { '[t', function() require('todo-comments').jump_prev() end },
   }

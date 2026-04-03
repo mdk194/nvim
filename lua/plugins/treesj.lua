@@ -7,7 +7,7 @@ return {
       use_default_keymaps = false,
       max_join_length = 150,
     })
-    vim.keymap.set('n', 'gj', require('treesj').join)
-    vim.keymap.set('n', 'gs', require('treesj').split)
+    vim.keymap.set('n', 'gj', require('treesj').join, { desc = 'treesj: Join' })
+    vim.keymap.set('n', 'gs', require('treesj').split, { desc = 'treesj: Split' })
   end,
 }

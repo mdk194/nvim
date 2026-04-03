@@ -2,16 +2,24 @@ local M = {
   'nvim-mini/mini.ai',
   version = false,
   event = 'VeryLazy',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
 }
 
 function M.config()
+  local move = require('nvim-treesitter-textobjects.move')
+  vim.keymap.set({ 'n', 'x', 'o' }, ']f', function() move.goto_next_start('@function.outer') end, { desc = 'ts: Next function' })
+  vim.keymap.set({ 'n', 'x', 'o' }, '[f', function() move.goto_previous_start('@function.outer') end, { desc = 'ts: Prev function' })
+  vim.keymap.set({ 'n', 'x', 'o' }, ']o', function() move.goto_next_start('@block.outer') end, { desc = 'ts: Next block' })
+  vim.keymap.set({ 'n', 'x', 'o' }, '[o', function() move.goto_previous_start('@block.outer') end, { desc = 'ts: Prev block' })
+
   local spec_treesitter = require('mini.ai').gen_spec.treesitter
   require('mini.ai').setup({
     -- Table with textobject id as fields, textobject specification as values.
     -- Also use this to disable builtin textobjects. See |MiniAi.config|.
     custom_textobjects = {
       F = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
-      -- f = spec_treesitter({ a = '@class.outer', i = '@class.inner' }),
       o = spec_treesitter({
         a = { '@block.outer', '@conditional.outer', '@loop.outer' },
         i = { '@block.inner', '@conditional.inner', '@loop.inner' },
@@ -29,11 +37,10 @@ function M.config()
       around = 'a',
       inside = 'i',
 
-      -- Next/last variants
-      around_next = 'an',
-      inside_next = 'in',
-      around_last = 'al',
-      inside_last = 'il',
+      around_next = '',
+      inside_next = '',
+      around_last = '',
+      inside_last = '',
 
       -- Move cursor to corresponding edge of `a` textobject
       goto_left = 'g[',

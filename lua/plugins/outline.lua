@@ -2,7 +2,7 @@ local M = {
   "hedyhli/outline.nvim",
   cmd = "Outline",
   keys = {
-    { "<F4>", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    { "<F4>", "<cmd>Outline<CR>", desc = "outline: Toggle" },
   },
 }
 

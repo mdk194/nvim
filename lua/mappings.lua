@@ -10,22 +10,19 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- clear hlsearch
-map('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = ':Clear hlsearch' })
 
-map("n", "\\", ",")
+map("n", "\\", ",", { desc = "_Reverse char" })
 -- map('n', '<space>', ':')
 
-map("", "<leader>1", ":diffget LOCAL<CR>")
-map("", "<leader>2", ":diffget BASE<CR>")
-map("", "<leader>3", ":diffget REMOTE<CR>")
+map("", "<leader>1", ":diffget LOCAL<CR>", { desc = ":Diffget LOCAL" })
+map("", "<leader>2", ":diffget BASE<CR>", { desc = ":Diffget BASE" })
+map("", "<leader>3", ":diffget REMOTE<CR>", { desc = ":Diffget REMOTE" })
 
-map("n", "<leader><leader>", "<c-^>")
+map("n", "<leader><leader>", "<c-^>", { desc = "_Alternate buffer" })
 
 -- clean trailing whitespace
-map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]])
-
--- Spell check
-map("n", "<F3>", ":set spell!<CR>", { silent = true })
+map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]], { desc = ":Trim whitespace" })
 
 -- kill windows
 vim.keymap.set("n", "K", function()
@@ -36,11 +33,11 @@ vim.keymap.set("n", "K", function()
   else
     vim.cmd("q")
   end
-end, { noremap = true })
+end, { noremap = true, desc = "_Close/quit" })
 
 -- Wrapped lines goes down/up to next row, rather than next line in file.
-map("n", "j", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']], { expr = true })
-map("n", "k", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']], { expr = true })
+map("n", "j", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']], { expr = true, desc = "_Down (wrapped)" })
+map("n", "k", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']], { expr = true, desc = "_Up (wrapped)" })
 
 -- -- moving between windows
 -- map("n", "<c-h>", "<c-w>h")
@@ -51,71 +48,72 @@ map("n", "k", [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']], { 
 -- Keep search matches in the middle of the window.
 -- zz centers the screen on the cursor, zv unfolds any fold if the cursor
 -- suddenly appears inside a fold.
-map("n", "*", "*zzzv")
-map("n", "#", "#zzzv")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+map("n", "*", "*zzzv", { desc = "_Search forward" })
+map("n", "#", "#zzzv", { desc = "_Search backward" })
+map("n", "n", "nzzzv", { desc = "_Next match" })
+map("n", "N", "Nzzzv", { desc = "_Prev match" })
 
 -- Change word under cursor and dot repeat
-map("n", "c*", "*Ncgn")
-map("n", "c#", "#NcgN")
+map("n", "c*", "*Ncgn", { desc = "_Change forward" })
+map("n", "c#", "#NcgN", { desc = "_Change backward" })
 
 -- Also center the screen when jumping through the change list
-map("n", "g;", "g;zz")
-map("n", "g,", "g,zz")
-map("n", "<c-i>", "<c-i>zz")
-map("n", "<c-o>", "<c-o>zz")
+map("n", "g;", "g;zz", { desc = "_Prev change" })
+map("n", "g,", "g,zz", { desc = "_Next change" })
+map("n", "<c-i>", "<c-i>zz", { desc = "_Jump forward" })
+map("n", "<c-o>", "<c-o>zz", { desc = "_Jump backward" })
 
-map("c", "<c-j>", "<down>")
-map("c", "<c-k>", "<up>")
+map("c", "<c-j>", "<down>", { desc = "_Cmd next" })
+map("c", "<c-k>", "<up>", { desc = "_Cmd prev" })
 
-map("n", "D", "d$")
+map("n", "D", "d$", { desc = "_Delete to EOL" })
 
 -- Uppercase word
-map("i", "<c-c>", "<esc>mzgUiw`za")
+map("i", "<c-c>", "<esc>mzgUiw`za", { desc = "_Uppercase word" })
 
 -- Keep the cursor in place while joining lines
-map("n", "J", "mzJ`z")
+map("n", "J", "mzJ`z", { desc = "_Join lines" })
+
 
 -- Split line (sister to [J]oin lines)
 -- The normal use of S is covered by cc, so don't worry about shadowing it.
-map("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w")
+map("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w", { desc = ":Split line" })
 
 -- Using '<' and '>' in visual mode to shift code by a tab-width left/right by
 -- default exits visual mode. With this mapping we remain in visual mode after
 -- such an operation.
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+map("v", "<", "<gv", { desc = "_Indent left" })
+map("v", ">", ">gv", { desc = "_Indent right" })
 
 -- first, last
-map("n", "(", "^")
-map("n", ")", "$")
-map("v", ")", "g_")
+map("n", "(", "^", { desc = "_Line start" })
+map("n", ")", "$", { desc = "_Line end" })
+map("v", ")", "g_", { desc = "_Last non-blank" })
 
 -- dot work over visual line selections
-map("x", ".", ":norm.<CR>")
+map("x", ".", ":norm.<CR>", { desc = ":Dot visual" })
 
 -- macro in visual line selections
-map("x", "Q", [[:'<,'>:normal @q<CR>]])
+map("x", "Q", [[:'<,'>:normal @q<CR>]], { desc = ":Macro on selection" })
 
 -- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float()]]
-vim.api.nvim_set_keymap("n", "<space>d", [[<cmd>lua vim.diagnostic.open_float()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>d", [[<cmd>lua vim.diagnostic.open_float()<CR>]], { noremap = true, silent = true, desc = ":Diagnostic float" })
+vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true, silent = true, desc = ":Toggle quickfix" })
 
 -- Copy/paste with system clipboard
-vim.keymap.set({ 'n', 'x' }, 'y', '"+y', { desc = 'Copy to system clipboard' })
-vim.keymap.set(  'n',        'Y', '"+y$')
-vim.keymap.set(  'n',        'yy', '"+yy')
-vim.keymap.set(  'n',        'gp', '"+p', { desc = 'Paste from system clipboard' })
+vim.keymap.set({ 'n', 'x' }, 'y', '"+y', { desc = '_Copy clipboard' })
+vim.keymap.set(  'n',        'Y', '"+y$', { desc = '_Copy to EOL' })
+vim.keymap.set(  'n',        'yy', '"+yy', { desc = '_Copy line' })
+vim.keymap.set(  'n',        'gp', '"+p', { desc = '_Paste clipboard' })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
-vim.keymap.set(  'x',        'gp', '"+P', { desc = 'Paste from system clipboard' })
+vim.keymap.set(  'x',        'gp', '"+P', { desc = '_Paste clipboard' })
 
 -- Reselect latest changed, put, or yanked text
-vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true, replace_keycodes = false, desc = 'Visually select changed text' })
+vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true, replace_keycodes = false, desc = '_Select changed' })
 
 -- Alternative way to save and exit in Normal mode.
 -- Adding `redraw` helps with `cmdheight=0` if buffer is not modified
-map("n", "<leader>w", ":wa | redraw<CR>")
-vim.keymap.set(  'n',        '<C-S>', '<Cmd>silent! update | redraw<CR>',      { desc = 'Save' })
-vim.keymap.set({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
+map("n", "<leader>w", ":wa | redraw<CR>", { desc = ":Write all" })
+vim.keymap.set(  'n',        '<C-S>', '<Cmd>silent! update | redraw<CR>',      { desc = ':Save' })
+vim.keymap.set({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = ':Save + normal' })
 

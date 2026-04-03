@@ -8,12 +8,12 @@ return {
       -- Open in the current working directory
       "<leader>e",
       "<cmd>Yazi cwd<cr>",
-      desc = "Open the file manager in nvim's working directory",
+      desc = "yazi: Open at cwd",
     },
     {
       "<leader>y",
       "<cmd>Yazi toggle<cr>",
-      desc = "Resume the last yazi session",
+      desc = "yazi: Resume session",
     },
   },
   opts = {

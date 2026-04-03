@@ -53,6 +53,11 @@ local function server_config()
 end
 
 function M.config()
+  -- Remove default LSP keymaps (0.11+) that conflict with custom mappings
+  for _, keys in ipairs({ 'grr', 'grn', 'gra', 'gri', 'grt', 'grx', 'gO' }) do
+    pcall(vim.keymap.del, 'n', keys)
+  end
+
   server_config()
 
   -- Patch codelens to display inline (eol) instead of virtual line above
@@ -96,50 +101,50 @@ function M.config()
       local client = vim.lsp.get_client_by_id(event.data.client_id)
 
       local map = function(keys, func, desc)
-        vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+        vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'lsp: ' .. desc })
       end
 
-      map('M', function() vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover Documentation')
+      map('M', function() vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover')
 
-      map('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
-      map('<leader>wr', vim.lsp.buf.remove_workspace_folder, 'Remove workspace folder')
-      map('<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'List workspace folders')
-      -- map('<leader>sw', [[<cmd>lua require('fzf-lua').lsp_workspace_symbols()<CR>]], '[W]orkspace [S]ymbols')
-      map('<leader>ws', function() Snacks.picker.lsp_workspace_symbols() end, '[W]orkspace [S]ymbols')
+      map('gwa', vim.lsp.buf.add_workspace_folder, 'Add folder')
+      map('gwr', vim.lsp.buf.remove_workspace_folder, 'Remove folder')
+      map('gwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'List folders')
+      -- map('<leader>sw', [[<cmd>lua require('fzf-lua').lsp_workspace_symbols()<CR>]], 'Workspace symbols')
+      map('gws', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace symbols')
 
-      -- map('<leader>s', [[<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>]], 'Document [S]ymbols')
-      map('<leader>s', function() Snacks.picker.lsp_symbols({tree = false}) end, 'Document [S]ymbols')
+      -- map('<leader>s', [[<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>]], 'Document symbols')
+      map('<leader>s', function() Snacks.picker.lsp_symbols({tree = false}) end, 'Document symbols')
 
-      -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-      map('gD', function() Snacks.picker.lsp_declarations() end, '[G]oto [D]eclaration')
+      -- map('gD', vim.lsp.buf.declaration, 'Declaration')
+      map('gD', function() Snacks.picker.lsp_declarations() end, 'Declaration')
 
-      -- map('gd', [[<cmd>lua require('fzf-lua').lsp_definitions({ jump_to_single_result = true })<CR>]], '[G]oto [D]efinition')
-      map('gd', function() Snacks.picker.lsp_definitions() end, '[G]oto [D]efinition')
+      -- map('gd', [[<cmd>lua require('fzf-lua').lsp_definitions({ jump_to_single_result = true })<CR>]], 'Definition')
+      map('gd', function() Snacks.picker.lsp_definitions() end, 'Definition')
 
-      -- map('gt', vim.lsp.buf.type_definition, '[T]ype Definition')
-      map('gt', function() Snacks.picker.lsp_type_definitions() end, '[T]ype Definition')
-      -- map('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-      map('gi', function() Snacks.picker.lsp_implementations() end, '[G]oto [I]mplementation')
+      -- map('gt', vim.lsp.buf.type_definition, 'Type definition')
+      map('gt', function() Snacks.picker.lsp_type_definitions() end, 'Type definition')
+      -- map('gi', vim.lsp.buf.implementation, 'Implementation')
+      map('gii', function() Snacks.picker.lsp_implementations() end, 'Implementation')
 
-      map('gr', function() Snacks.picker.lsp_references() end, '[G]oto [R]eferences')
-      map('gic', function() Snacks.picker.lsp_incoming_calls() end, 'Calls [i]ncoming')
-      map('goc', function() Snacks.picker.lsp_outgoing_calls() end, 'Calls [o]utgoing')
+      map('gr', function() Snacks.picker.lsp_references() end, 'References')
+      map('gic', function() Snacks.picker.lsp_incoming_calls() end, 'Incoming calls')
+      map('goc', function() Snacks.picker.lsp_outgoing_calls() end, 'Outgoing calls')
 
-      map('<leader>d', function() Snacks.picker.diagnostics_buffer() end, 'Diagnostics document')
+      map('<leader>d', function() Snacks.picker.diagnostics_buffer() end, 'Diagnostics')
 
-      map('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
+      map('[d', vim.diagnostic.goto_prev, 'Prev diagnostic')
       map(']d', vim.diagnostic.goto_next, 'Next diagnostic')
 
-      map('<space>r', vim.lsp.buf.rename, '[R]e[n]ame')
-      map('<space>a', vim.lsp.buf.code_action, 'Code Action')
-      map('<space>s', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature Help')
+      map('<space>r', vim.lsp.buf.rename, 'Rename')
+      map('<space>a', vim.lsp.buf.code_action, 'Code action')
+      map('<space>s', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature help')
       map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
       -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 
       -- codelens (inline at end of line instead of virtual line above)
       if client.server_capabilities.codeLensProvider then
         vim.lsp.codelens.enable(true, { bufnr = event.buf })
-        map("<leader>a", vim.lsp.codelens.run, 'Codelen')
+        map("<space>x", vim.lsp.codelens.run, 'Codelens')
       end
 
       -- fold method

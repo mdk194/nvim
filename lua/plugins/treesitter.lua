@@ -25,11 +25,6 @@ function M.config()
     end,
   })
 
-  -- incremental selection
-  vim.keymap.set("n", "<C-space>", function() require("nvim-treesitter.incremental_selection").init_selection() end, { desc = "Init treesitter selection" })
-  vim.keymap.set("x", "<C-space>", function() require("nvim-treesitter.incremental_selection").node_incremental() end, { desc = "Increment treesitter selection" })
-  vim.keymap.set("x", "<BS>", function() require("nvim-treesitter.incremental_selection").node_decremental() end, { desc = "Decrement treesitter selection" })
-
   local tsc = require('treesitter-context')
   tsc.setup{
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -58,7 +53,7 @@ function M.config()
   }):map("<leader>ut")
 
   -- jump to context
-  vim.keymap.set("n", "[s", function() require("treesitter-context").go_to_context(vim.v.count1) end, { silent = true })
+  vim.keymap.set("n", "[s", function() require("treesitter-context").go_to_context(vim.v.count1) end, { silent = true, desc = "ts: Go to context" })
   vim.cmd([[highlight TreesitterContext gui=bold guibg=#203F2A]])
 
   require("nvim-ts-autotag").setup()

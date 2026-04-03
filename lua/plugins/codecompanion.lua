@@ -3,8 +3,8 @@ local M = {
   lazy = false,
   cmd = { "CodeCompanionChat", "CodeCompanionActions" },
   keys = {
-    { '<leader>i', [[<cmd>lua require('codecompanion').chat()<CR>]] },
-    { '<leader>a', [[<cmd>lua require('codecompanion').actions()<CR>]] },
+    { '<leader>i', [[<cmd>lua require('codecompanion').chat()<CR>]], desc = "codecompanion: Chat" },
+    { '<leader>a', [[<cmd>lua require('codecompanion').actions()<CR>]], desc = "codecompanion: Actions" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
