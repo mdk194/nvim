@@ -191,14 +191,14 @@ Leader key: `,`
 | `gwr` | n | Remove workspace folder |
 | `gwl` | n | List workspace folders |
 | `gws` | n | Workspace symbols |
-| `,s` | n | Document symbols |
-| `,d` | n | Buffer diagnostics |
 | `<Space>r` | n | Rename |
 | `<Space>a` | n | Code action |
-| `<Space>s` | n | Signature help |
+| `<Space>s` | n | Document symbols |
+| `<Space>S` | n | Signature help |
 | `<Space>f` | n | Format |
 | `<Space>x` | n | Codelens |
 | `<Space>d` | n | Diagnostic float |
+| `<Space>D` | n | Buffer diagnostics |
 | `<Space>t` | n | Todo quickfix |
 
 ### Test (neotest)
@@ -248,7 +248,7 @@ Leader key: `,`
 | Key | Mode | Description |
 |-----|------|-------------|
 | `,r` | n | Find and replace |
-| `,q` | n | Toggle quickfix |
+| `<C-q>` | n | Toggle quickfix |
 | `<F2>` | n | Trim whitespace |
 | `<F4>` | n | Toggle outline |
 | `ga` | n,v | Easy align |

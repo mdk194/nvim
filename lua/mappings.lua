@@ -98,7 +98,7 @@ map("x", "Q", [[:'<,'>:normal @q<CR>]], { desc = ":Macro on selection" })
 
 -- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float()]]
 vim.api.nvim_set_keymap("n", "<space>d", [[<cmd>lua vim.diagnostic.open_float()<CR>]], { noremap = true, silent = true, desc = ":Diagnostic float" })
-vim.api.nvim_set_keymap('n', '<leader>q', [[<cmd>cwindow<CR>]], { noremap = true, silent = true, desc = ":Toggle quickfix" })
+vim.api.nvim_set_keymap('n', '<C-q>', [[<cmd>cwindow<CR>]], { noremap = true, silent = true, desc = ":Toggle quickfix" })
 
 -- Copy/paste with system clipboard
 vim.keymap.set({ 'n', 'x' }, 'y', '"+y', { desc = '_Copy clipboard' })

@@ -113,7 +113,7 @@ function M.config()
       map('gws', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace symbols')
 
       -- map('<leader>s', [[<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>]], 'Document symbols')
-      map('<leader>s', function() Snacks.picker.lsp_symbols({tree = false}) end, 'Document symbols')
+      map('<space>s', function() Snacks.picker.lsp_symbols({tree = false}) end, 'Document symbols')
 
       -- map('gD', vim.lsp.buf.declaration, 'Declaration')
       map('gD', function() Snacks.picker.lsp_declarations() end, 'Declaration')
@@ -130,14 +130,14 @@ function M.config()
       map('gic', function() Snacks.picker.lsp_incoming_calls() end, 'Incoming calls')
       map('goc', function() Snacks.picker.lsp_outgoing_calls() end, 'Outgoing calls')
 
-      map('<leader>d', function() Snacks.picker.diagnostics_buffer() end, 'Diagnostics')
+      map('<space>D', function() Snacks.picker.diagnostics_buffer() end, 'Buffer diagnostics')
 
       map('[d', vim.diagnostic.goto_prev, 'Prev diagnostic')
       map(']d', vim.diagnostic.goto_next, 'Next diagnostic')
 
       map('<space>r', vim.lsp.buf.rename, 'Rename')
       map('<space>a', vim.lsp.buf.code_action, 'Code action')
-      map('<space>s', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature help')
+      map('<space>S', function() vim.lsp.buf.signature_help({ border = "rounded" }) end, 'Signature help')
       map('<space>f', '<cmd>lua vim.lsp.buf.format { async=true }<CR>', 'Format')
       -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async=true }' ]]
 
