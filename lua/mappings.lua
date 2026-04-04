@@ -23,6 +23,7 @@ map("n", "<leader><leader>", "<c-^>", { desc = "_Alternate buffer" })
 
 -- clean trailing whitespace
 map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]], { desc = ":Trim whitespace" })
+map("n", "<F3>", "<cmd>Undotree<CR>", { desc = ":Undotree" })
 
 -- kill windows
 vim.keymap.set("n", "K", function()

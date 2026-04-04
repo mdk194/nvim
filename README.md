@@ -250,6 +250,7 @@ Leader key: `,`
 | `,r` | n | Find and replace |
 | `<C-q>` | n | Toggle quickfix |
 | `<F2>` | n | Trim whitespace |
+| `<F3>` | n | Undotree |
 | `<F4>` | n | Toggle outline |
 | `ga` | n,v | Easy align |
 | `gj` / `gs` | n | Join/split node |

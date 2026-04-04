@@ -1,5 +1,3 @@
--- vim.cmd('packadd cfilter')
-
 require('settings')
 require('mappings')
 require('autocmd')
@@ -31,6 +29,9 @@ require("lazy").setup("plugins", {
   },
   debug = false,
 })
+
+-- vim.cmd('packadd cfilter')
+vim.cmd('packadd nvim.undotree')
 
 -- -- start snack picker if invoking vim with no name buffer
 -- if vim.api.nvim_buf_get_name(0) == "" then
