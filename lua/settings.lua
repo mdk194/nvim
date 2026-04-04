@@ -62,7 +62,7 @@ opt("b", "shiftwidth", 4)
 opt("b", "softtabstop", 4)
 opt("b", "infercase", true) -- Infer letter cases for the built-in keyword completion
 opt("b", "smartindent", true)
-opt("b", "iskeyword", "_,-,$,@,%,#")
+opt("b", "iskeyword", "@,48-57,_,192-255,-,$,%,#")
 
 opt("w", "list", true)
 opt("w", "listchars", "tab:▸ ,nbsp:_,extends:❯,precedes:❮")

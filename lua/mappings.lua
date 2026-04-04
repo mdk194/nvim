@@ -64,8 +64,8 @@ map("n", "g,", "g,zz", { desc = "_Next change" })
 map("n", "<c-i>", "<c-i>zz", { desc = "_Jump forward" })
 map("n", "<c-o>", "<c-o>zz", { desc = "_Jump backward" })
 
-map("c", "<c-j>", "<down>", { desc = "_Cmd next" })
-map("c", "<c-k>", "<up>", { desc = "_Cmd prev" })
+map("c", "<c-n>", "<down>", { desc = "_Cmd next" })
+map("c", "<c-p>", "<up>", { desc = "_Cmd prev" })
 
 map("n", "D", "d$", { desc = "_Delete to EOL" })
 
