@@ -104,7 +104,7 @@ function M.config()
         vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'lsp: ' .. desc })
       end
 
-      map('M', function() vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover')
+      -- K = hover is neovim 0.11+ default
 
       map('gwa', vim.lsp.buf.add_workspace_folder, 'Add folder')
       map('gwr', vim.lsp.buf.remove_workspace_folder, 'Remove folder')

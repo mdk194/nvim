@@ -26,7 +26,7 @@ map("n", "<F2>", [[mz:%s/\s\+$//<cr>:let @/=''<cr>`z]], { desc = ":Trim whitespa
 map("n", "<F3>", "<cmd>Undotree<CR>", { desc = ":Undotree" })
 
 -- kill windows
-vim.keymap.set("n", "K", function()
+vim.keymap.set("n", "X", function()
   local win = vim.api.nvim_get_current_win()
   local cfg = vim.api.nvim_win_get_config(win)
   if cfg.relative ~= "" then

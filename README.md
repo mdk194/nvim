@@ -104,7 +104,9 @@ Leader key: `,`
 |-----|------|-------------|
 | `<Esc>` | n | Clear hlsearch |
 | `\` | n | Reverse char search |
-| `K` | n | Close float or quit |
+| `X` | n | Close float or quit |
+| `K` | n | Hover (neovim default) |
+| `M` | n | Middle of screen (vim default) |
 | `J` | n | Join lines |
 | `S` | n | Split line |
 | `D` | n | Delete to EOL |
@@ -179,7 +181,6 @@ Leader key: `,`
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `M` | n | Hover |
 | `gd` | n | Definition |
 | `gD` | n | Declaration |
 | `gt` | n | Type definition |
@@ -262,6 +263,51 @@ Leader key: `,`
 |-----|------|-------------|
 | `<A-h/j/k/l>` | n | Move between splits |
 | `<A-S-h/j/k/l>` | n | Resize splits |
+
+## Keys Free
+
+### Uppercase Letters
+
+| Key | Mode | Note |
+|-----|------|------|
+| `R` | n | Built-in: replace mode (niche, keep in visual for block replace) |
+| `U` | n | Built-in: undo whole line (niche, keep in visual for uppercase) |
+
+### Leader (`,`)
+
+| Key | Mode | Note |
+|-----|------|------|
+| `,c` | n,v | |
+| `,d` | n | Freed from buffer diagnostics (now `<Space>D`) |
+| `,f` | n | |
+| `,h` | n | |
+| `,l` | n | |
+| `,n` | n | |
+| `,p` | n,v | |
+| `,q` | n | Freed from quickfix toggle (now `<C-q>`) |
+| `,s` | n | Freed from document symbols (now `<Space>s`) |
+| `,v` | n | |
+| `,x` | n,v | |
+
+### Ctrl (built-in is niche)
+
+| Key | Mode | Note |
+|-----|------|------|
+| `<C-n>` | n | Built-in: down (redundant with `j`) |
+| `<C-g>` | n | Built-in: file info (`:f` or `g<C-g>` also work) |
+| `<C-l>` | n | Built-in: redraw screen (rarely needed) |
+| `<C-t>` | n | Built-in: older tag jump (redundant with `<C-o>` via LSP) |
+| `<C-z>` | n | Built-in: suspend vim (niche) |
+
+### Ctrl (kitty-exclusive)
+
+| Key | Mode | Note |
+|-----|------|------|
+| `<C-m>` | n,i | Kitty distinguishes from Enter |
+| `<C-;>` | n,i | No built-in |
+| `<C-.>` | n,i | No built-in |
+| `<C-/>` | n,i | No built-in |
+| `<C-1>` to `<C-9>` | n | No built-in |
 
 ## Go
 
