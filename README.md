@@ -120,7 +120,7 @@ Leader key: `,`
 | `<` / `>` | v | Indent left/right (stay visual) |
 | `.` | x | Dot repeat in visual |
 | `Q` | x | Run macro on selection |
-| `<C-c>` | i | Uppercase word |
+| `<C-j>` | i | Uppercase word |
 
 ### Clipboard
 
@@ -293,10 +293,11 @@ Leader key: `,`
 
 | Key | Mode | Note |
 |-----|------|------|
-| `<C-n>` | n | Built-in: down (redundant with `j`) |
+| `<C-n>` | n | Built-in: down (redundant with `j`), used for list scrolling in picker/completion |
 | `<C-g>` | n | Built-in: file info (`:f` or `g<C-g>` also work) |
 | `<C-l>` | n | Built-in: redraw screen (rarely needed) |
 | `<C-t>` | n | Built-in: older tag jump (redundant with `<C-o>` via LSP) |
+| `<C-j>` | n | Built-in: down/enter (redundant with `j`/`<CR>`, used in cmdline for history) |
 | `<C-z>` | n | Built-in: suspend vim (niche) |
 
 ### Ctrl (kitty-exclusive)

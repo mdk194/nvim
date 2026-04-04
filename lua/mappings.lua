@@ -70,7 +70,7 @@ map("c", "<c-k>", "<up>", { desc = "_Cmd prev" })
 map("n", "D", "d$", { desc = "_Delete to EOL" })
 
 -- Uppercase word
-map("i", "<c-c>", "<esc>mzgUiw`za", { desc = "_Uppercase word" })
+map("i", "<c-j>", "<esc>mzgUiw`za", { desc = "_Uppercase word" })
 
 -- Keep the cursor in place while joining lines
 map("n", "J", "mzJ`z", { desc = "_Join lines" })
