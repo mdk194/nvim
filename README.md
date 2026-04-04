@@ -69,23 +69,28 @@ Used with operators (`d`, `c`, `y`, `v`, etc.)
 
 ## Motions
 
-### Bracket Motions (`[`/`]`)
+### h/l Motions (`h` = prev, `l` = next)
+
+> `h` and `l` are motion prefixes in normal mode, replacing `[`/`]` bracket motions.
+> This disables single-character h/l movement — use `w`, `b`, `e`, `(`, `)` instead.
 
 | Key | Mode | Description | Source |
 |-----|------|-------------|--------|
-| `[f`/`]f` | n,v,o | Prev/next function | treesitter-textobjects |
-| `[o`/`]o` | n,v,o | Prev/next block | treesitter-textobjects |
-| `[n`/`]n` | v | Prev/next sibling node | nvim 0.12 |
-| `[h`/`]h` | n | Prev/next diff hunk | mini.diff |
-| `[H`/`]H` | n | First/last diff hunk | mini.diff |
-| `[d`/`]d` | n | Prev/next diagnostic | lsp |
-| `[c`/`]c` | n | Prev/next comment | mini.bracketed |
-| `[x`/`]x` | n | Prev/next conflict | mini.bracketed |
-| `[i`/`]i` | n | Prev/next indent | mini.bracketed |
-| `[l`/`]l` | n | Prev/next location | mini.bracketed |
-| `[q`/`]q` | n | Prev/next quickfix | mini.bracketed |
-| `[s` | n | Go to treesitter context | treesitter-context |
-| `[t`/`]t` | n | Prev/next failed test | neotest |
+| `hf`/`lf` | n,x,o | Prev/next function | treesitter-textobjects |
+| `ho`/`lo` | n,x,o | Prev/next block | treesitter-textobjects |
+| `hh`/`lh` | n | Prev/next diff hunk | mini.diff |
+| `hH`/`lH` | n | First/last diff hunk | mini.diff |
+| `hd`/`ld` | n | Prev/next diagnostic | lsp |
+| `hc`/`lc` | n,x,o | Prev/next comment | mini.bracketed |
+| `hx`/`lx` | n,x,o | Prev/next conflict | mini.bracketed |
+| `hi`/`li` | n,x,o | Prev/next indent | mini.bracketed |
+| `hl`/`ll` | n,x,o | Prev/next location | mini.bracketed |
+| `hq`/`lq` | n,x,o | Prev/next quickfix | mini.bracketed |
+| `hs` | n | Go to treesitter context | treesitter-context |
+| `ht`/`lt` | n | Prev/next failed test | neotest |
+| `h<space>`/`l<space>` | n,x,o | Prev/next paragraph | vim `{`/`}` |
+| `h{`/`l}` | n,x,o | Prev/next unmatched `{`/`}` | vim `[{`/`]}` |
+| `h(`/`l)` | n,x,o | Prev/next unmatched `(`/`)` | vim `[(`/`])` |
 
 ### Edge Navigation
 

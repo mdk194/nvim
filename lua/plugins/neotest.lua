@@ -18,8 +18,8 @@ local M = {
     { "<leader>tp", function() require("neotest").output_panel.toggle() end, desc = "neotest: Output panel" },
     { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "neotest: Debug nearest" },
     { "<leader>tl", function() require("neotest").run.run_last() end, desc = "neotest: Run last" },
-    { "[t", function() require("neotest").jump.prev({ status = "failed" }) end, desc = "neotest: Prev failed" },
-    { "]t", function() require("neotest").jump.next({ status = "failed" }) end, desc = "neotest: Next failed" },
+    { "ht", function() require("neotest").jump.prev({ status = "failed" }) end, desc = "neotest: Prev failed" },
+    { "lt", function() require("neotest").jump.next({ status = "failed" }) end, desc = "neotest: Next failed" },
   },
 }
 

@@ -91,6 +91,14 @@ map("n", "(", "^", { desc = "_Line start" })
 map("n", ")", "$", { desc = "_Line end" })
 map("v", ")", "g_", { desc = "_Last non-blank" })
 
+-- h/l motions for built-in vim motions
+vim.keymap.set({ "n", "x", "o" }, "h<space>", "{", { noremap = true, desc = "_Prev paragraph" })
+vim.keymap.set({ "n", "x", "o" }, "l<space>", "}", { noremap = true, desc = "_Next paragraph" })
+vim.keymap.set({ "n", "x", "o" }, "h{", "[{", { noremap = true, desc = "_Prev unmatched {" })
+vim.keymap.set({ "n", "x", "o" }, "l}", "]}", { noremap = true, desc = "_Next unmatched }" })
+vim.keymap.set({ "n", "x", "o" }, "h(", "[(", { noremap = true, desc = "_Prev unmatched (" })
+vim.keymap.set({ "n", "x", "o" }, "l)", "])", { noremap = true, desc = "_Next unmatched )" })
+
 -- dot work over visual line selections
 map("x", ".", ":norm.<CR>", { desc = ":Dot visual" })
 
