@@ -94,6 +94,7 @@ function M.config()
           vis_mode = 'V',
         }
       end,
+      a = spec_treesitter({ a = '@parameter.outer', i = '@parameter.inner' }), -- function argument
       d = { "%f[%d]%d+" }, -- digits
       e = { -- Word with case
         { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
