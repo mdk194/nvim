@@ -48,9 +48,9 @@ function M.config()
       { mode = 'n', keys = 'z' },
       { mode = 'x', keys = 'z' },
 
-      -- h/l motion prefix (prev/next)
-      { mode = 'n', keys = 'h' },
-      { mode = 'n', keys = 'l' },
+      -- (/) motion prefix (prev/next)
+      { mode = 'n', keys = '(' },
+      { mode = 'n', keys = ')' },
 
       -- Surround (mini.surround)
       { mode = 'n', keys = 's' },
@@ -79,36 +79,34 @@ function M.config()
       { mode = 'n', keys = 's', desc = '+Surround' },
       { mode = 'x', keys = 's', desc = '+Surround' },
 
-      -- h/l navigation descriptions (h = prev, l = next)
-      { mode = 'n', keys = 'lh', desc = 'mini.diff: Next hunk' },
-      { mode = 'n', keys = 'hh', desc = 'mini.diff: Prev hunk' },
-      { mode = 'n', keys = 'lH', desc = 'mini.diff: Last hunk' },
-      { mode = 'n', keys = 'hH', desc = 'mini.diff: First hunk' },
-      { mode = 'n', keys = 'ld', desc = 'lsp: Next diagnostic' },
-      { mode = 'n', keys = 'hd', desc = 'lsp: Prev diagnostic' },
-      { mode = 'n', keys = 'hs', desc = 'ts: Go to context' },
+      -- (/) navigation descriptions (( = prev, ) = next)
+      { mode = 'n', keys = ')h', desc = 'mini.diff: Next hunk' },
+      { mode = 'n', keys = '(h', desc = 'mini.diff: Prev hunk' },
+      { mode = 'n', keys = ')H', desc = 'mini.diff: Last hunk' },
+      { mode = 'n', keys = '(H', desc = 'mini.diff: First hunk' },
+      { mode = 'n', keys = ')d', desc = 'lsp: Next diagnostic' },
+      { mode = 'n', keys = '(d', desc = 'lsp: Prev diagnostic' },
+      { mode = 'n', keys = '(s', desc = 'ts: Go to context' },
 
       -- mini.bracketed descriptions
-      { mode = 'n', keys = 'lc', desc = 'mini.bracketed: Next comment' },
-      { mode = 'n', keys = 'hc', desc = 'mini.bracketed: Prev comment' },
-      { mode = 'n', keys = 'lo', desc = 'ts: Next block' },
-      { mode = 'n', keys = 'ho', desc = 'ts: Prev block' },
-      { mode = 'n', keys = 'lx', desc = 'mini.bracketed: Next conflict' },
-      { mode = 'n', keys = 'hx', desc = 'mini.bracketed: Prev conflict' },
-      { mode = 'n', keys = 'li', desc = 'mini.bracketed: Next indent' },
-      { mode = 'n', keys = 'hi', desc = 'mini.bracketed: Prev indent' },
-      { mode = 'n', keys = 'll', desc = 'mini.bracketed: Next location' },
-      { mode = 'n', keys = 'hl', desc = 'mini.bracketed: Prev location' },
-      { mode = 'n', keys = 'lq', desc = 'mini.bracketed: Next quickfix' },
-      { mode = 'n', keys = 'hq', desc = 'mini.bracketed: Prev quickfix' },
+      { mode = 'n', keys = ')c', desc = 'mini.bracketed: Next comment' },
+      { mode = 'n', keys = '(c', desc = 'mini.bracketed: Prev comment' },
+      { mode = 'n', keys = ')o', desc = 'ts: Next block' },
+      { mode = 'n', keys = '(o', desc = 'ts: Prev block' },
+      { mode = 'n', keys = ')x', desc = 'mini.bracketed: Next conflict' },
+      { mode = 'n', keys = '(x', desc = 'mini.bracketed: Prev conflict' },
+      { mode = 'n', keys = ')i', desc = 'mini.bracketed: Next indent' },
+      { mode = 'n', keys = '(i', desc = 'mini.bracketed: Prev indent' },
+      { mode = 'n', keys = ')l', desc = 'mini.bracketed: Next location' },
+      { mode = 'n', keys = '(l', desc = 'mini.bracketed: Prev location' },
+      { mode = 'n', keys = ')q', desc = 'mini.bracketed: Next quickfix' },
+      { mode = 'n', keys = '(q', desc = 'mini.bracketed: Prev quickfix' },
 
       -- vim built-in motions
-      { mode = 'n', keys = 'l<space>', desc = 'Next paragraph' },
-      { mode = 'n', keys = 'h<space>', desc = 'Prev paragraph' },
-      { mode = 'n', keys = 'h{', desc = 'Prev unmatched {' },
-      { mode = 'n', keys = 'l}', desc = 'Next unmatched }' },
-      { mode = 'n', keys = 'h(', desc = 'Prev unmatched (' },
-      { mode = 'n', keys = 'l)', desc = 'Next unmatched )' },
+      { mode = 'n', keys = '({', desc = 'Prev unmatched {' },
+      { mode = 'n', keys = ')}', desc = 'Next unmatched }' },
+      { mode = 'n', keys = '((', desc = 'Prev unmatched (' },
+      { mode = 'n', keys = '))', desc = 'Next unmatched )' },
     },
   })
 end

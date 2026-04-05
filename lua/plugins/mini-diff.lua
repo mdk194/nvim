@@ -31,10 +31,10 @@ function M.config()
       textobject = 'gh',
 
       -- Go to hunk range in corresponding direction
-      goto_first = 'hH',
-      goto_prev = 'hh',
-      goto_next = 'lh',
-      goto_last = 'lH',
+      goto_first = '(H',
+      goto_prev = '(h',
+      goto_next = ')h',
+      goto_last = ')H',
     },
     -- Various options
     options = {

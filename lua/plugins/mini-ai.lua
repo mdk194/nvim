@@ -9,10 +9,10 @@ local M = {
 
 function M.config()
   local move = require('nvim-treesitter-textobjects.move')
-  vim.keymap.set({ 'n', 'x', 'o' }, 'lf', function() move.goto_next_start('@function.outer') end, { desc = 'ts: Next function' })
-  vim.keymap.set({ 'n', 'x', 'o' }, 'hf', function() move.goto_previous_start('@function.outer') end, { desc = 'ts: Prev function' })
-  vim.keymap.set({ 'n', 'x', 'o' }, 'lo', function() move.goto_next_start('@block.outer') end, { desc = 'ts: Next block' })
-  vim.keymap.set({ 'n', 'x', 'o' }, 'ho', function() move.goto_previous_start('@block.outer') end, { desc = 'ts: Prev block' })
+  vim.keymap.set({ 'n', 'x', 'o' }, ')f', function() move.goto_next_start('@function.outer') end, { desc = 'ts: Next function' })
+  vim.keymap.set({ 'n', 'x', 'o' }, '(f', function() move.goto_previous_start('@function.outer') end, { desc = 'ts: Prev function' })
+  vim.keymap.set({ 'n', 'x', 'o' }, ')o', function() move.goto_next_start('@block.outer') end, { desc = 'ts: Next block' })
+  vim.keymap.set({ 'n', 'x', 'o' }, '(o', function() move.goto_previous_start('@block.outer') end, { desc = 'ts: Prev block' })
 
   local spec_treesitter = require('mini.ai').gen_spec.treesitter
   require('mini.ai').setup({

@@ -132,8 +132,8 @@ function M.config()
 
       map('<space>D', function() Snacks.picker.diagnostics_buffer() end, 'Buffer diagnostics')
 
-      map('hd', vim.diagnostic.goto_prev, 'Prev diagnostic')
-      map('ld', vim.diagnostic.goto_next, 'Next diagnostic')
+      map('(d', vim.diagnostic.goto_prev, 'Prev diagnostic')
+      map(')d', vim.diagnostic.goto_next, 'Next diagnostic')
 
       map('<space>r', vim.lsp.buf.rename, 'Rename')
       map('<space>a', vim.lsp.buf.code_action, 'Code action')
