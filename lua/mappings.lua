@@ -12,7 +12,7 @@ end
 -- clear hlsearch
 map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = ':Clear hlsearch' })
 
-map("n", "\\", ",", { desc = "_Reverse char" })
+vim.keymap.set({ "n", "x", "o" }, "'", ",", { noremap = true, desc = "_Reverse char" })
 -- map('n', '<space>', ':')
 
 map("", "<leader>1", ":diffget LOCAL<CR>", { desc = ":Diffget LOCAL" })

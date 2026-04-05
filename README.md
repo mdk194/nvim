@@ -108,7 +108,7 @@ Leader key: `,`
 | Key | Mode | Description |
 |-----|------|-------------|
 | `<Esc>` | n | Clear hlsearch |
-| `\` | n | Reverse char search |
+| `'` | n,x,o | Reverse char search (`;` forward, `'` backward) |
 | `X` | n | Close float or quit |
 | `K` | n | Hover (neovim default) |
 | `M` | n | Middle of screen (vim default) |
