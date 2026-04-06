@@ -86,9 +86,9 @@ map("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w", { desc = ":Spli
 map("v", "<", "<gv", { desc = "_Indent left" })
 map("v", ">", ">gv", { desc = "_Indent right" })
 
--- paragraph navigation
-vim.keymap.set({ "n", "x", "o" }, "H", "{", { noremap = true, desc = "_Prev paragraph" })
-vim.keymap.set({ "n", "x", "o" }, "L", "}", { noremap = true, desc = "_Next paragraph" })
+-- begin/end of line
+vim.keymap.set({ "n", "x", "o" }, "H", "^", { noremap = true, desc = "_Begin of line" })
+vim.keymap.set({ "n", "x", "o" }, "L", "$", { noremap = true, desc = "_End of line" })
 
 -- (/) motions for built-in vim motions (( = prev, ) = next)
 vim.keymap.set({ "n", "x", "o" }, "({", "[{", { noremap = true, desc = "_Prev unmatched {" })

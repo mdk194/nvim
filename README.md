@@ -109,7 +109,7 @@ Leader key: `,`
 | `<Esc>` | n | Clear hlsearch |
 | `'` | n,x,o | Reverse char search (`;` forward, `'` backward) |
 | `X` | n | Close float or quit |
-| `H` / `L` | n,x,o | Prev/next paragraph (`{`/`}`) |
+| `H` / `L` | n,x,o | Begin/end of line (`^`/`$`) |
 | `K` | n | Hover (neovim default) |
 | `M` | n | Middle of screen (vim default) |
 | `J` | n | Join lines |
