@@ -16,12 +16,15 @@ function M.config()
   local parsers = { "bash", "c", "cpp", "cmake", "comment", "lua", "rust", "python", "go", "gomod", "proto", "http", "hcl", "html", "java", "javascript", "json", "jsdoc", "make", "yaml", "graphql", "css", "diff", "markdown", "markdown_inline", "sql", "toml", "tsx", "typescript", "vue", "regex", "query", "vimdoc" }
   require("nvim-treesitter").install(parsers)
 
-  -- highlight is enabled by default in nvim 0.12, configure disable for large files
+  -- enable treesitter highlighting for installed parsers, disable for large files
   vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
       if vim.api.nvim_buf_line_count(args.buf) > 3000 then
         vim.treesitter.stop(args.buf)
+        return
       end
+      local lang = vim.treesitter.language.get_lang(args.match) or args.match
+      if pcall(vim.treesitter.start, args.buf, lang) then return end
     end,
   })
 
