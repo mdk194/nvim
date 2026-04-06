@@ -10,7 +10,9 @@ return {
     vim.cmd([[highlight DiagnosticHint gui=italic]])
     vim.cmd([[highlight DiagnosticWarn gui=bold,italic]])
     vim.cmd([[highlight DiagnosticError gui=bold,italic]])
-    -- transparent background
-    vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
+
+    vim.cmd([[highlight TreesitterContext gui=bold guibg=#203F2A]])
+    vim.cmd([[highlight SnacksPickerMatch guifg=#EBC06D gui=bold]])
+    vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]]) -- transparent background
   end,
 }
