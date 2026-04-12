@@ -154,7 +154,7 @@ hl("Debug",         { fg = red })
 hl("Ignore",        { fg = cyan })
 hl("Error",         { fg = bg, bg = red })
 hl("Todo",          { fg = yellow, bg = cursorline, bold = true })
-hl("Underlined",    { underline = true })
+hl("Underlined",    { fg = blue, underline = true })
 
 -- treesitter
 hl("@variable",                { fg = fg })
@@ -164,6 +164,20 @@ hl("@comment",                { fg = comment, italic = true })
 hl("@lsp.type.variable",      { fg = fg })
 hl("@type.builtin",           { fg = keyword, bold = true })
 hl("@constructor",             { fg = salmon })
+
+-- markdown
+hl("@markup.link",              { fg = blue, underline = true })
+hl("@markup.link.label",        { fg = blue, underline = true })
+hl("@markup.link.url",          { fg = blue, underline = true })
+
+-- markdown headings (render-markdown.nvim)
+hl("RenderMarkdownH1Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownH2Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownH3Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownH4Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownH5Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownH6Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownLink", { fg = blue, underline = true })
 
 -- LSP
 hl("LspReferenceText",  { bg = cursorline })

@@ -156,7 +156,7 @@ hl("Debug",         { fg = accent })
 hl("Ignore",        { fg = dim })
 hl("Error",         { fg = bg, bg = accent })
 hl("Todo",          { fg = accent, bold = true })
-hl("Underlined",    { underline = true })
+hl("Underlined",    { fg = blue, underline = true })
 
 -- treesitter
 hl("@variable",                { fg = fg })
@@ -166,6 +166,20 @@ hl("@comment",                { fg = dim, italic = true })
 hl("@lsp.type.variable",      { fg = fg })
 hl("@type.builtin",           { fg = accent, bold = true })
 hl("@constructor",             { fg = dim })
+
+-- markdown
+hl("@markup.link",              { fg = blue, underline = true })
+hl("@markup.link.label",        { fg = blue, underline = true })
+hl("@markup.link.url",          { fg = blue, underline = true })
+
+-- markdown headings (render-markdown.nvim)
+hl("RenderMarkdownH1Bg", { bold = true })
+hl("RenderMarkdownH2Bg", { bold = true })
+hl("RenderMarkdownH3Bg", { bold = true })
+hl("RenderMarkdownH4Bg", { bold = true })
+hl("RenderMarkdownH5Bg", { bold = true })
+hl("RenderMarkdownH6Bg", { bold = true })
+hl("RenderMarkdownLink", { fg = blue, underline = true })
 
 -- LSP
 hl("LspReferenceText",  { underline = true })
