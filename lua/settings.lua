@@ -52,6 +52,7 @@ opt("o", "fileformat", "unix")
 opt("o", "fileformats", "unix,mac,dos")
 opt("o", "autoindent", false)
 opt("o", "updatetime", 250)
+opt("o", "foldcolumn", "0")
 opt("o", "foldlevelstart", 5)
 opt("o", "foldmethod", "expr")
 opt("o", "foldexpr", "nvim_treesitter#foldexpr()")
@@ -132,6 +133,15 @@ vim.opt.diffopt = {
   'indent-heuristic',
   'vertical',
 }
+vim.api.nvim_create_autocmd({ "DiffUpdated", "BufWinEnter" }, {
+  callback = function()
+    vim.defer_fn(function()
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.wo[win].diff then vim.wo[win].foldcolumn = "0" end
+      end
+    end, 0)
+  end,
+})
 
 vim.opt.wildignore = [[
 .git,.hg,.svn
