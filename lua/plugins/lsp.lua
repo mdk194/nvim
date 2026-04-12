@@ -105,6 +105,7 @@ function M.config()
       end
 
       -- K = hover is neovim 0.11+ default
+      map('K', function() vim.lsp.buf.hover({ border = "rounded" }) end, 'Hover')
 
       map('gwa', vim.lsp.buf.add_workspace_folder, 'Add folder')
       map('gwr', vim.lsp.buf.remove_workspace_folder, 'Remove folder')

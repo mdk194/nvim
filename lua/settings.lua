@@ -7,6 +7,7 @@ local function opt(scope, key, value)
 end
 
 opt("o", "background", "dark")
+vim.cmd([[colorscheme mdk-base16]])
 opt("o", "completeopt", "menuone,noinsert,noselect")
 opt("o", "complete", ".,t") -- ins-completion scan only current buffer and tag
 opt("o", "virtualedit", "block") -- Allow going past the end of line in visual block mode
