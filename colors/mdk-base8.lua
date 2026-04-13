@@ -10,7 +10,7 @@ end
 local bg         = "#232521"
 local cursorline = "#34302C"
 local border     = "#887663"
-local comment    = "#859E89"
+local comment    = "#7A9180"
 local fg         = "#ECE1D7"
 local red        = "#CF5454"
 local yellow     = "#EBC06D"

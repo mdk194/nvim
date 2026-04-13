@@ -9,7 +9,7 @@ end
 -- palette (16 colors)
 local bg       = "#232521"
 local cursorline      = "#34302C"
-local comment  = "#859E89"
+local comment  = "#7A9180"
 local border  = "#887663"
 local fg       = "#ECE1D7"
 local red      = "#CF5454"
