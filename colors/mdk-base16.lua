@@ -7,9 +7,8 @@ local hl = function(name, opts)
 end
 
 -- palette (16 colors)
-local bg       = "#2A2520"
+local bg       = "#232521"
 local cursorline      = "#34302C"
-local visual  = "#756E69"
 local comment  = "#859E89"
 local border  = "#887663"
 local fg       = "#ECE1D7"
@@ -61,14 +60,14 @@ hl("WinBarNC",      { fg = comment, bg = cursorline, bold = true })
 hl("TabLine",       { fg = comment, bg = cursorline })
 hl("TabLineSel",    { fg = blue, bg = cursorline })
 hl("TabLineFill",   { fg = comment, bg = cursorline })
-hl("Visual",        { bg = cursorline })
+hl("Visual",        { bg = "#3E3935" })
 hl("VisualNOS",     { fg = red })
 hl("Search",        { fg = cursorline, bg = yellow })
 hl("IncSearch",     { fg = cursorline, bg = orange })
 hl("CurSearch",     { fg = cursorline, bg = orange })
 hl("Substitute",    { fg = cursorline, bg = yellow })
 hl("MatchParen",    { bg = cursorline, bold = true, underline = true })
-hl("Whitespace",    { fg = visual, bg = bg })
+hl("Whitespace",    { fg = bg })
 hl("NonText",       { fg = comment })
 hl("SpecialKey",    { fg = comment })
 hl("EndOfBuffer",   { fg = comment })

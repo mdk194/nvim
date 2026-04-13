@@ -7,7 +7,7 @@ local hl = function(name, opts)
 end
 
 -- palette (8 colors)
-local bg         = "#2A2520"
+local bg         = "#232521"
 local cursorline = "#34302C"
 local border     = "#887663"
 local comment    = "#859E89"
@@ -63,7 +63,7 @@ hl("IncSearch",     { fg = cursorline, bg = orange })
 hl("CurSearch",     { fg = cursorline, bg = orange })
 hl("Substitute",    { fg = cursorline, bg = yellow })
 hl("MatchParen",    { bg = cursorline, bold = true, underline = true })
-hl("Whitespace",    { fg = visual, bg = bg })
+hl("Whitespace",    { fg = bg })
 hl("NonText",       { fg = comment })
 hl("SpecialKey",    { fg = comment })
 hl("EndOfBuffer",   { fg = comment })

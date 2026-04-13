@@ -7,7 +7,7 @@ local hl = function(name, opts)
 end
 
 -- palette (4 colors)
-local bg      = "#2A2520"
+local bg      = "#232521"
 local dim     = "#867462"
 local fg      = "#ECE1D7"
 local accent  = "#E67E40"
@@ -65,7 +65,7 @@ hl("IncSearch",     { fg = bg, bg = accent })
 hl("CurSearch",     { fg = bg, bg = accent })
 hl("Substitute",    { fg = bg, bg = accent })
 hl("MatchParen",    { bold = true, underline = true })
-hl("Whitespace",    { fg = dim })
+hl("Whitespace",    { fg = bg })
 hl("NonText",       { fg = dim })
 hl("SpecialKey",    { fg = dim })
 hl("EndOfBuffer",   { fg = dim })

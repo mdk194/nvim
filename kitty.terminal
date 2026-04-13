@@ -1,7 +1,8 @@
 # mdk-base16 kitty terminal colors
 # Copy to ~/.config/kitty/kitty.conf
 
-background #2A2520
+background #232521
+# unfocused_background #1C1F1C
 foreground #ECE1D7
 cursor     #ECE1D7
 url_color  #7F91B2
