@@ -328,7 +328,3 @@ Palette source of truth: [`colors/mdk-base16.lua`](colors/mdk-base16.lua).
 - [`dir_colors.terminal`](dir_colors.terminal) — ls/grep truecolor output (load via `eval $(dircolors dir_colors.terminal)`)
 - `export GREP_COLORS='mt=1;7;33'` — grep matched text: bold reverse yellow (kitty color3)
 
-## Go
-
-- Run `:GoInstallDeps`
-
