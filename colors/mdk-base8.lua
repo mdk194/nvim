@@ -9,8 +9,8 @@ end
 -- palette (8 colors)
 local bg         = "#2A2520"
 local cursorline = "#34302C"
-local border     = "#867462"
-local comment    = "#7B9680"
+local border     = "#887663"
+local comment    = "#859E89"
 local fg         = "#ECE1D7"
 local red        = "#CF5454"
 local yellow     = "#EBC06D"

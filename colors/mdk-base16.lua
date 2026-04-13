@@ -9,9 +9,9 @@ end
 -- palette (16 colors)
 local bg       = "#2A2520"
 local cursorline      = "#34302C"
-local visual  = "#524D4A"
-local comment  = "#7B9680"
-local border  = "#867462"
+local visual  = "#756E69"
+local comment  = "#859E89"
+local border  = "#887663"
 local fg       = "#ECE1D7"
 local red      = "#CF5454"
 local yellow   = "#EBC06D"
@@ -21,7 +21,7 @@ local keyword  = "#E67E40"
 local diff_bg  = "#001B29"
 local diff_del = "#3D0100"
 local diff_chg = "#2B2F33"
-local diff_fg  = "#4B96BC"
+local diff_fg  = "#5BA0C2"
 local context  = "#203F2A"
 
 -- aliases

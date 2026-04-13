@@ -314,6 +314,20 @@ Leader key: `,`
 | `<C-/>` | n,i | No built-in |
 | `<C-1>` to `<C-9>` | n | No built-in |
 
+## Colorscheme
+
+Three variants: `mdk-base16` (full), `mdk-base8` (reduced), `mdk-base4` (minimal).
+Palette source of truth: [`colors/mdk-base16.lua`](colors/mdk-base16.lua).
+
+[Preview](https://htmlpreview.github.io/?https://github.com/mdk194/nvim/blob/main/colorscheme.html) — palette swatches, code highlighting (Rust, Python, Go, TypeScript), terminal session, git diff.
+
+### Terminal configs
+
+- [`kitty.terminal`](kitty.terminal) — kitty 16 ANSI colors, foreground, background, cursor
+- [`git.terminal`](git.terminal) — git status, diff, delta colors
+- [`dir_colors.terminal`](dir_colors.terminal) — ls/grep truecolor output (load via `eval $(dircolors dir_colors.terminal)`)
+- `export GREP_COLORS='mt=1;7;33'` — grep matched text: bold reverse yellow (kitty color3)
+
 ## Go
 
 - Run `:GoInstallDeps`

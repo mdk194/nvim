@@ -1,0 +1,36 @@
+# mdk-base16 git/delta colors
+# Add to ~/.gitconfig
+
+[color]
+	ui = true
+[color "status"]
+	added = "#EBC06D"
+	changed = "#5BA0C2"
+	untracked = "#CF5454"
+[color "diff-highlight"]
+	oldNormal = "#CF5454"
+	oldHighlight = "#CF5454" bold
+	newNormal = "#A3A9CE"
+	newHighlight = "#A3A9CE" bold
+[color "diff"]
+	meta = "#EBC06D"
+	frag = "#5BA0C2" bold
+	commit = "#EBC06D" bold
+	old = "#CF5454" bold
+	new = "#A3A9CE" bold
+	whitespace = "#CF5454" reverse
+[delta]
+	navigate = true
+	syntax-theme = Coldark-Dark
+	side-by-side = true
+	file-decoration-style = box
+	hunk-header-decoration-style = omit
+	line-numbers-left-format = "{nm:>4}┊"
+	line-numbers-right-format = "{np:>4}│"
+	line-numbers-minus-style = "#CF5454"
+	line-numbers-zero-style = "#5BA0C2"
+	line-numbers-plus-style = "#A3A9CE" bold
+	minus-style = syntax "#3D0100"
+	minus-emph-style = syntax "#5A1010"
+	plus-style = syntax "#001B29"
+	plus-emph-style = syntax "#002B3F"
