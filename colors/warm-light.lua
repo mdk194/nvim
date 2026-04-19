@@ -14,14 +14,14 @@ local border  = "#766859"
 local fg       = "#3B3530"
 local red      = "#BB4040"
 local yellow   = "#826714"
-local blue     = "#5560A5"
+local blue     = "#4A50B0"
 local tan      = "#7A6248"
 local keyword  = "#A5551E"
 local diff_bg  = "#B2D2E2"
 local diff_del = "#DCADA5"
 local diff_chg = "#E2E0E8"
 local diff_fg  = "#2C7197"
-local context  = "#D2E5D6"
+local context  = "#D0C8C0"
 
 -- aliases
 local orange   = keyword
@@ -32,8 +32,8 @@ local float_bg = cursorline
 -- editor
 hl("Normal",        { fg = fg })
 hl("NormalNC",      {})
-hl("NormalFloat",   { fg = fg, bg = bg })
-hl("FloatBorder",   { fg = orange, bg = bg })
+hl("NormalFloat",   { fg = fg, bg = cursorline })
+hl("FloatBorder",   { fg = orange, bg = cursorline })
 hl("FloatTitle",    { fg = tan, bold = true })
 hl("Cursor",        { fg = bg, bg = fg })
 hl("lCursor",       { fg = bg, bg = fg })
@@ -85,7 +85,7 @@ hl("QuickFixLine",  { bg = cursorline })
 
 -- popup menu
 hl("Pmenu",         { fg = fg, bg = cursorline })
-hl("PmenuSel",      { bg = cursorline })
+hl("PmenuSel",      { bg = context })
 hl("PmenuMatch",    { fg = fg, bold = true })
 hl("PmenuMatchSel", { fg = fg, bold = true, reverse = true })
 hl("PmenuSbar",     { bg = cursorline })
@@ -196,8 +196,8 @@ hl("SnacksPickerMatch",   { fg = yellow, bold = true })
 hl("SnacksIndentScope",   { fg = yellow })
 
 -- blink.cmp
-hl("BlinkCmpMenu",          { bg = bg })
-hl("BlinkCmpMenuBorder",    { fg = orange, bg = bg })
-hl("BlinkCmpMenuSelection", { bg = cursorline })
-hl("BlinkCmpDoc",           { bg = bg })
-hl("BlinkCmpDocBorder",     { fg = orange, bg = bg })
+hl("BlinkCmpMenu",          { bg = cursorline })
+hl("BlinkCmpMenuBorder",    { fg = orange, bg = cursorline })
+hl("BlinkCmpMenuSelection", { bg = context })
+hl("BlinkCmpDoc",           { bg = cursorline })
+hl("BlinkCmpDocBorder",     { fg = orange, bg = cursorline })
