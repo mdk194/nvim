@@ -4,33 +4,33 @@
 [color]
 	ui = true
 [color "status"]
-	added = "#7D6718"
-	changed = "#257096"
-	untracked = "#B24545"
+	added = "#6E5A15"
+	changed = "#206284"
+	untracked = "#9C3C3C"
 [color "diff-highlight"]
-	oldNormal = "#B24545"
-	oldHighlight = "#B24545" bold
-	newNormal = "#4858A0"
-	newHighlight = "#4858A0" bold
+	oldNormal = "#9C3C3C"
+	oldHighlight = "#9C3C3C" bold
+	newNormal = "#4550B0"
+	newHighlight = "#4550B0" bold
 [color "diff"]
-	meta = "#7D6718"
-	frag = "#257096" bold
-	commit = "#7D6718" bold
-	old = "#B24545" bold
-	new = "#4858A0" bold
-	whitespace = "#B24545" reverse
+	meta = "#6E5A15"
+	frag = "#206284" bold
+	commit = "#6E5A15" bold
+	old = "#9C3C3C" bold
+	new = "#4550B0" bold
+	whitespace = "#9C3C3C" reverse
 [delta]
 	navigate = true
 	syntax-theme = Coldark-Cold
 	side-by-side = true
-	file-style = "#A1551F" bold
-	file-decoration-style = "#A1551F" box
+	file-style = "#8D4A1B" bold
+	file-decoration-style = "#8D4A1B" box
 	hunk-header-decoration-style = omit
 	line-numbers-left-format = "{nm:>4}┊"
 	line-numbers-right-format = "{np:>4}│"
-	line-numbers-minus-style = "#B24545"
-	line-numbers-zero-style = "#257096"
-	line-numbers-plus-style = "#4858A0" bold
+	line-numbers-minus-style = "#9C3C3C"
+	line-numbers-zero-style = "#206284"
+	line-numbers-plus-style = "#4550B0" bold
 	minus-style = syntax "#DAAAA0"
 	minus-emph-style = syntax "#C88878"
 	plus-style = syntax "#B0D0E0"

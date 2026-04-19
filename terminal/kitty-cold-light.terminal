@@ -1,33 +1,33 @@
 # cold-light kitty terminal colors
 # Copy to ~/.config/kitty/kitty.conf
 
-background #F0E8DC
-# unfocused_background #E8E0D4
+background #EDEBE8
+# unfocused_background #E4E2DF
 foreground #1C1828
 cursor            #1C1828
-cursor_text_color #F0E8DC
+cursor_text_color #EDEBE8
 url_color  #4858A0
 
 selection_background    #8eeb46
 selection_foreground    #000000
 
-tab_bar_background      #E8E0D4
-inactive_tab_background #E8E0D4
+tab_bar_background      #E4E2DF
+inactive_tab_background #E4E2DF
 inactive_tab_foreground #1C1828
 
 color0  #E4DCD0
-color1  #9A4848
-color2  #6A6480
+color1  #9C3C3C
+color2  #5E5871
 color3  #987830
-color4  #4858A0
+color4  #4550B0
 color5  #7A4878
 color6  #387878
-color7  #886040
-color8  #746476
-color9  #A1551F
+color7  #785438
+color8  #665767
+color9  #8D4A1B
 color10 #3A7A58
-color11 #7D6718
-color12 #4858A0
+color11 #6E5A15
+color12 #4550B0
 color13 #8A5080
-color14 #257096
+color14 #206284
 color15 #1C1828

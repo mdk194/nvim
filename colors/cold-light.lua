@@ -7,20 +7,20 @@ local hl = function(name, opts)
 end
 
 -- palette (16 colors) — desert storm, warm cream light
-local bg       = "#F0E8DC"
-local cursorline      = "#E4DCD0"
-local comment  = "#6A6480"
-local border  = "#746476"
+local bg       = "#EDEBE8"
+local cursorline      = "#E4E2DF"
+local comment  = "#5E5871"
+local border  = "#665767"
 local fg       = "#1C1828"
-local red      = "#B24545"
-local yellow   = "#7D6718"
+local red      = "#9C3C3C"
+local yellow   = "#6E5A15"
 local blue     = "#4550B0"
-local tan      = "#886040"
-local keyword  = "#A1551F"
+local tan      = "#785438"
+local keyword  = "#8D4A1B"
 local diff_bg  = "#B0D0E0"
 local diff_del = "#DAAAA0"
 local diff_chg = "#E0DCE8"
-local diff_fg  = "#257096"
+local diff_fg  = "#206284"
 local context  = "#C8C0C0"
 
 -- aliases
