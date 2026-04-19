@@ -4,7 +4,7 @@ from typing import Any, Dict
 from kitty.boss import Boss
 from kitty.window import Window
 
-TERMINAL_CONF = Path.home() / "nvim" / "terminal" / "kitty-active.terminal"
+TERMINAL_CONF = Path.home() / ".config" / "kitty" / "kitty-active.terminal"
 
 def _read_colors() -> tuple[str, str]:
     focused = "#232521"

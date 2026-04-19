@@ -1,11 +1,14 @@
 #!/bin/bash
 # Toggle colorscheme between dark/light and warm/cold
 # Usage: toggle-theme [light|dark] [warm|cold]
+# Theme state is machine-local (~/.config/nvim-theme), not in the repo.
 set -euo pipefail
 
 NVIM_DIR="$HOME/nvim"
 TERM_DIR="$NVIM_DIR/terminal"
 GITCONFIG="$HOME/dotfiles/gitconfig"
+THEME_FILE="$HOME/.config/nvim-theme"
+KITTY_ACTIVE="$HOME/.config/kitty/kitty-active.terminal"
 
 # portable sed -i (macOS needs '' arg, Linux doesn't)
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -14,8 +17,14 @@ else
     sedi() { sed -i "$@"; }
 fi
 
-# Detect current scheme from settings.lua
-CURRENT=$(sed -n 's/.*colorscheme \([^]]*\)]].*/\1/p' "$NVIM_DIR/lua/settings.lua")
+# ensure local dirs exist
+mkdir -p "$HOME/.config/kitty"
+
+# Detect current scheme from local state file
+CURRENT=""
+[[ -f "$THEME_FILE" ]] && CURRENT=$(cat "$THEME_FILE")
+[[ -z "$CURRENT" ]] && CURRENT="warm"
+
 case "$CURRENT" in
     cold|cold-light) CUR_SCHEME=cold ;;
     *)               CUR_SCHEME=warm ;;
@@ -44,23 +53,25 @@ fi
 [[ "$MODE" == "light" ]] && S="-light" || S=""
 CS="${SCHEME}${S}"
 
-# nvim settings.lua
-sedi \
-    -e 's/background", "[^"]*"/background", "'"$MODE"'"/' \
-    -e 's/colorscheme [^]]*]]/colorscheme '"$CS"']]/' \
-    "$NVIM_DIR/lua/settings.lua"
+# write local theme state (read by nvim settings.lua on startup)
+echo "$CS" > "$THEME_FILE"
 
-# kitty: repoint symlink (kitty.conf includes it, focus script reads it)
-ln -sf "$TERM_DIR/kitty-${SCHEME}${S}.terminal" "$TERM_DIR/kitty-active.terminal"
+# kitty: repoint symlink (kitty.conf includes it, tab_bar/focus scripts read it)
+ln -sf "$TERM_DIR/kitty-${SCHEME}${S}.terminal" "$KITTY_ACTIVE"
 
-# git: include path
+# git: include path (use ~ for portability across machines)
 sedi 's|path = .*/git[^ ]*\.terminal|path = ~/nvim/terminal/git-'"${SCHEME}${S}"'.terminal|' "$GITCONFIG"
 
 # dir_colors: repoint symlink
 ln -sf "$TERM_DIR/dir_colors-${SCHEME}${S}.terminal" "$HOME/.dir_colors"
 
 # live-reload running nvim instances
-for srv in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*/0; do
+if [[ "$(uname)" == "Darwin" ]]; then
+    SOCK_DIR="$TMPDIR"
+else
+    SOCK_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+fi
+for srv in "$SOCK_DIR"/nvim.*/0; do
     [[ -S "$srv" ]] && nvim --server "$srv" --remote-send \
         "<Cmd>set background=$MODE | colorscheme $CS<CR>" 2>/dev/null || true
 done

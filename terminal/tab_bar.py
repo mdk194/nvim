@@ -10,7 +10,7 @@ from kitty.tab_bar import (
 )
 from kitty.boss import get_boss
 
-TERMINAL_CONF = Path.home() / "nvim" / "terminal" / "kitty-active.terminal"
+TERMINAL_CONF = Path.home() / ".config" / "kitty" / "kitty-active.terminal"
 MAX_CWD_LENGTH = 100
 
 

@@ -6,8 +6,15 @@ local function opt(scope, key, value)
   end
 end
 
-opt("o", "background", "light")
-vim.cmd([[colorscheme cold-light]])
+-- theme from machine-local state (~/.config/nvim-theme)
+local _theme = "warm"
+local _tf = vim.fn.expand("~/.config/nvim-theme")
+if vim.fn.filereadable(_tf) == 1 then
+  local l = vim.fn.readfile(_tf)
+  if #l > 0 and l[1] ~= "" then _theme = l[1] end
+end
+opt("o", "background", _theme:match("-light$") and "light" or "dark")
+vim.cmd("colorscheme " .. _theme)
 opt("o", "completeopt", "menuone,noinsert,noselect")
 opt("o", "complete", ".,t") -- ins-completion scan only current buffer and tag
 opt("o", "virtualedit", "block") -- Allow going past the end of line in visual block mode
