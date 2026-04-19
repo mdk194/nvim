@@ -25,15 +25,28 @@ section{max-width:1300px;margin:0 auto;padding:18px 16px}
 .ansi-hex{color:#1C1828;font-size:10px}
 .ansi-ratio{color:#746476;font-size:9px}
 .code-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-pre.code{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre}
+.code-wrap{border:1px solid #c8c0b4;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+pre.code{background:#F0E8DC;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre;flex:1}
 pre.code .lang{display:block;color:#746476;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-pre.term{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre}
-pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre}
-.dctx{color:#1C1828}
-.dmin{display:block;background:#DAAAA0;color:#B24545;margin:0 -12px;padding:0 12px}
-.dpls{display:block;background:#B0D0E0;color:#4858A0;margin:0 -12px;padding:0 12px}
+.term-wrap{border:1px solid #c8c0b4;border-radius:5px;overflow:hidden;display:flex;flex-direction:column}
+.split-container{display:flex;flex:1;min-height:0}
+.split-left{flex:1;overflow:hidden}
+.split-right{flex:1;overflow:hidden}
+.split-border{width:1px;background:#bda04f;flex-shrink:0}
+pre.term{padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre;flex:1}
+@keyframes blink { 0%,49% { background:#1C1828;color:#F0E8DC } 50%,100% { background:transparent;color:inherit } }
+.cur { animation:blink 1s step-end infinite }
+.sel { background:#D8D0C4 }
+.pmenu {position:absolute;background:#F0E8DC;border:1px solid #A1551F;border-radius:3px;font-family:"SF Mono","Fira Code",monospace;font-size:12px;line-height:1.6;padding:2px 0;z-index:5;}
+.pmenu-item {padding:0 8px;color:#1C1828;white-space:nowrap}
+.pmenu-sel {background:#E4DCD0}
+.pmenu-match {color:#7D6718;font-weight:bold}
+.float {position:absolute;background:#F0E8DC;border:1px solid #A1551F;border-radius:3px;font-family:"SF Mono","Fira Code",monospace;font-size:11px;line-height:1.5;padding:6px 10px;z-index:5;;max-width:320px}
+.float-kw {color:#A1551F;font-weight:bold}
+.float-type {color:#7D6718}
+.float-comment {color:#6A6480;font-style:italic}
 </style></head><body>
-<nav><a href="#palette">Palette</a> <a href="#code">Code</a> <a href="#ansi16">ANSI 16</a> <a href="#terminal">Terminal</a> <a href="#diff">Git Diff</a></nav>
+<nav><a href="#palette">Palette</a> <a href="#code">Code</a> <a href="#ansi16">ANSI 16</a> <a href="#terminal">Terminal</a></nav>
 <h1>cold colorscheme (light)<small>cold &middot; nvim &middot; kitty &middot; git &middot; dir_colors</small></h1>
 <section id="palette"><h2>Palette</h2>
 <table class="ptable">
@@ -54,8 +67,10 @@ pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:1
 <tr><td class="pname">diff_fg</td><td class="phex"><code>#257096</code></td><td class="pbg" style="background:#F0E8DC;"><span style="color:#257096;">The quick brown fox</span></td><td class="pratio">4.5:1</td><td class="pbg" style="background:#E8E0D4;"><span style="color:#257096;">The quick brown fox</span></td><td class="pratio">4.2:1</td></tr>
 <tr><td class="pname">context</td><td class="phex"><code>#D0D8E8</code></td><td class="pbg" style="background:#F0E8DC;"><span style="color:#D0D8E8;">The quick brown fox</span></td><td class="pratio">1.2:1</td><td class="pbg" style="background:#E8E0D4;"><span style="color:#D0D8E8;">The quick brown fox</span></td><td class="pratio">1.1:1</td></tr>
 </table></section>
+
 <section id="code"><h2>Code Preview (treesitter)</h2>
 <div class="code-grid">
+<div class="code-wrap">
 <pre class="code"><span class="lang">rust</span><span style="color:#6A6480;font-style:italic;">// A simple HTTP handler</span>
 <span style="color:#A1551F;">use</span> <span style="color:#7D6718;">std</span><span style="color:#1C1828;">::</span><span style="color:#7D6718;">collections</span><span style="color:#1C1828;">::</span><span style="color:#7D6718;">HashMap</span><span style="color:#1C1828;">;</span>
 
@@ -67,13 +82,30 @@ pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:1
 <span style="color:#A1551F;">impl</span> <span style="color:#7D6718;">Config</span> <span style="color:#1C1828;">{</span>
     <span style="color:#A1551F;">pub</span> <span style="color:#A1551F;">fn</span> <span style="color:#886040;">new</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">name</span><span style="color:#1C1828;">:</span> &amp;<span style="color:#7D6718;">str</span><span style="color:#1C1828;">)</span> -&gt; <span style="color:#7D6718;">Self</span> <span style="color:#1C1828;">{</span>
         <span style="color:#7D6718;">Self</span> <span style="color:#1C1828;">{</span>
-            <span style="color:#1C1828;">name</span><span style="color:#1C1828;">:</span> <span style="color:#1C1828;font-weight:bold;">name</span><span style="color:#1C1828;">.</span><span style="color:#886040;">to_string</span><span style="color:#1C1828;">(),</span>
+            <span style="color:#1C1828;">name</span><span style="color:#1C1828;">:</span> <span style="color:#1C1828;font-weight:bold;">name</span><span style="color:#1C1828;">.</span><span style="color:#886040;">to_<span class="cur">s</span></span>
             <span style="color:#1C1828;">port</span><span style="color:#1C1828;">:</span> <span style="color:#A1551F;">8080</span><span style="color:#1C1828;">,</span>
         <span style="color:#1C1828;">}</span>
     <span style="color:#1C1828;">}</span>
-
-<span style="display:block;background:#D8D0C4;">    <span style="color:#A1551F;">pub</span> <span style="color:#A1551F;">fn</span> <span style="color:#886040;">addr</span><span style="color:#1C1828;">(&amp;</span><span style="color:#A1551F;">self</span><span style="color:#1C1828;">)</span> -&gt; <span style="color:#7D6718;">String</span> <span style="color:#1C1828;">{</span></span><span style="display:block;background:#D8D0C4;">        <span style="color:#B24545;">format!</span><span style="color:#1C1828;">(</span><span style="color:#4858A0;">"{}:{}"</span><span style="color:#1C1828;">,</span> <span style="color:#A1551F;">self</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">name</span><span style="color:#1C1828;">,</span> <span style="color:#A1551F;">self</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">port</span><span style="color:#1C1828;">)</span></span>    <span style="color:#1C1828;">}</span>
+<span class="sel">
+    <span style="color:#A1551F;">pub</span> <span style="color:#A1551F;">fn</span> <span style="color:#886040;">addr</span><span style="color:#1C1828;">(&amp;</span><span style="color:#A1551F;">self</span><span style="color:#1C1828;">)</span> -&gt; <span style="color:#7D6718;">String</span> <span style="color:#1C1828;">{</span>
+        <span style="color:#B24545;">format!</span><span style="color:#1C1828;">(</span><span style="color:#4858A0;">"{}:{}"</span><span style="color:#1C1828;">)</span></span>
+    <span style="color:#1C1828;">}</span>
 <span style="color:#1C1828;">}</span></pre>
+<div class="pmenu" style="left:195px;top:205px;">
+<div class="pmenu-item"><span class="pmenu-match">to_s</span>tring</div>
+<div class="pmenu-item pmenu-sel"><span class="pmenu-match">to_s</span>tring_lossy</div>
+<div class="pmenu-item"><span style="color:#6A6480;">to_</span>owned</div>
+<div class="pmenu-item"><span style="color:#6A6480;">to_</span>vec</div>
+</div>
+<div style="background:#E8E0D4;display:flex;align-items:center;font-family:'SF Mono','Fira Code',monospace;font-size:12px;padding:0;height:24px;border-radius:0 0 3px 3px;overflow:hidden;">
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 1 </span>
+<span style="background:#7D6718;color:#F0E8DC;padding:2px 10px;font-weight:bold;"> 2 </span>
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 3 </span>
+<span style="flex:1;"></span>
+<span style="color:#1C1828;padding:0 8px;font-size:11px;">nvim settings.lua</span>
+<span style="background:#1C1828;color:#F0E8DC;padding:2px 10px;font-size:11px;"> ~/nvim </span>
+</div></div>
+<div class="code-wrap">
 <pre class="code"><span class="lang">python</span><span style="color:#6A6480;font-style:italic;"># Data processing pipeline</span>
 <span style="color:#A1551F;">from</span> <span style="color:#7D6718;">dataclasses</span> <span style="color:#A1551F;">import</span> <span style="color:#886040;">dataclass</span>
 <span style="color:#A1551F;">from</span> <span style="color:#7D6718;">typing</span> <span style="color:#A1551F;">import</span> <span style="color:#886040;">Optional</span>
@@ -84,12 +116,27 @@ pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:1
     <span style="color:#1C1828;">value</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">float</span>
     <span style="color:#1C1828;">tag</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">Optional</span><span style="color:#1C1828;">[</span><span style="color:#7D6718;">str</span><span style="color:#1C1828;">]</span> <span style="color:#1C1828;">=</span> <span style="color:#A1551F;">None</span>
 
-<span style="color:#A1551F;">def</span> <span style="color:#886040;">process</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">records</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">list</span><span style="color:#1C1828;">[</span><span style="color:#7D6718;">Record</span><span style="color:#1C1828;">]) -&gt;</span> <span style="color:#7D6718;">dict</span><span style="color:#1C1828;">:</span>
+<span style="color:#A1551F;">def</span> <span style="color:#886040;">process</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">records</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">list</span><span style="color:#1C1828;">[</span><span style="color:#7D6718;">Record</span><span style="color:#1C1828;">]) -&gt;</span> <span style="color:#7D6718;"><span class="cur">d</span>ict</span><span style="color:#1C1828;">:</span>
     <span style="color:#1C1828;">result</span> <span style="color:#1C1828;">=</span> <span style="color:#1C1828;">{}</span>
     <span style="color:#7D6718;">for</span> <span style="color:#1C1828;">rec</span> <span style="color:#7D6718;">in</span> <span style="color:#1C1828;font-weight:bold;">records</span><span style="color:#1C1828;">:</span>
         <span style="color:#A1551F;">if</span> <span style="color:#1C1828;">rec</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">value</span> <span style="color:#1C1828;">&gt;</span> <span style="color:#A1551F;">0</span><span style="color:#1C1828;">:</span>
             <span style="color:#1C1828;">result</span><span style="color:#1C1828;">[</span><span style="color:#1C1828;">rec</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">name</span><span style="color:#1C1828;">]</span> <span style="color:#1C1828;">=</span> <span style="color:#1C1828;">rec</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">value</span>
     <span style="color:#A1551F;">return</span> <span style="color:#1C1828;">result</span></pre>
+<div class="float" style="left:85px;top:185px;">
+<div><span class="float-kw">class</span> <span class="float-type">dict</span>(<span class="float-type">**kwargs</span>)</div>
+<div style="margin-top:4px;"><span class="float-comment">dict() -> new empty dictionary</span></div>
+<div><span class="float-comment">dict(mapping) -> new dictionary</span></div>
+<div><span class="float-comment">initialized from a mapping object</span></div>
+</div>
+<div style="background:#E8E0D4;display:flex;align-items:center;font-family:'SF Mono','Fira Code',monospace;font-size:12px;padding:0;height:24px;border-radius:0 0 3px 3px;overflow:hidden;">
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 1 </span>
+<span style="background:#7D6718;color:#F0E8DC;padding:2px 10px;font-weight:bold;"> 2 </span>
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 3 </span>
+<span style="flex:1;"></span>
+<span style="color:#1C1828;padding:0 8px;font-size:11px;">nvim settings.lua</span>
+<span style="background:#1C1828;color:#F0E8DC;padding:2px 10px;font-size:11px;"> ~/nvim </span>
+</div></div>
+<div class="code-wrap">
 <pre class="code"><span class="lang">go</span><span style="color:#6A6480;font-style:italic;">// Package server provides HTTP handlers</span>
 <span style="color:#A1551F;">package</span> <span style="color:#1C1828;">server</span>
 
@@ -101,24 +148,41 @@ pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:1
 <span style="color:#A1551F;">type</span> <span style="color:#7D6718;">Handler</span> <span style="color:#A1551F;">struct</span> <span style="color:#1C1828;">{</span>
     <span style="color:#1C1828;">Port</span> <span style="color:#7D6718;">int</span>
 <span style="color:#1C1828;">}</span>
-
-<span style="color:#A1551F;">func</span> <span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">h</span> *<span style="color:#7D6718;">Handler</span><span style="color:#1C1828;">)</span> <span style="color:#886040;">ServeHTTP</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">w</span> <span style="color:#7D6718;">http.ResponseWriter</span><span style="color:#1C1828;">,</span> <span style="color:#1C1828;font-weight:bold;">r</span> *<span style="color:#7D6718;">http.Request</span><span style="color:#1C1828;">)</span> <span style="color:#1C1828;">{</span>
-    <span style="color:#B24545;">fmt</span><span style="color:#1C1828;">.</span><span style="color:#886040;">Fprintf</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">w</span><span style="color:#1C1828;">,</span> <span style="color:#4858A0;">"port: %d"</span><span style="color:#1C1828;">,</span> <span style="color:#1C1828;font-weight:bold;">h</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">Port</span><span style="color:#1C1828;">)</span>
+<span class="sel">
+<span style="color:#A1551F;">func</span> <span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">h</span> *<span style="color:#7D6718;">Handler</span><span style="color:#1C1828;">)</span> <span style="color:#886040;">Serve<span class="cur">H</span>TTP</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">w</span> <span style="color:#7D6718;">http.ResponseWriter</span><span style="color:#1C1828;">,</span> <span style="color:#1C1828;font-weight:bold;">r</span> *<span style="color:#7D6718;">http.Request</span><span style="color:#1C1828;">)</span> <span style="color:#1C1828;">{</span>
+    <span style="color:#B24545;">fmt</span><span style="color:#1C1828;">.</span><span style="color:#886040;">Fprintf</span><span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">w</span><span style="color:#1C1828;">,</span> <span style="color:#4858A0;">"port: %d"</span><span style="color:#1C1828;">,</span> <span style="color:#1C1828;font-weight:bold;">h</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">Port</span><span style="color:#1C1828;">)</span></span>
 <span style="color:#1C1828;">}</span></pre>
+<div style="background:#E8E0D4;display:flex;align-items:center;font-family:'SF Mono','Fira Code',monospace;font-size:12px;padding:0;height:24px;border-radius:0 0 3px 3px;overflow:hidden;">
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 1 </span>
+<span style="background:#7D6718;color:#F0E8DC;padding:2px 10px;font-weight:bold;"> 2 </span>
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 3 </span>
+<span style="flex:1;"></span>
+<span style="color:#1C1828;padding:0 8px;font-size:11px;">nvim settings.lua</span>
+<span style="background:#1C1828;color:#F0E8DC;padding:2px 10px;font-size:11px;"> ~/nvim </span>
+</div></div>
+<div class="code-wrap">
 <pre class="code"><span class="lang">typescript</span><span style="color:#6A6480;font-style:italic;">// User management module</span>
 <span style="color:#A1551F;">interface</span> <span style="color:#7D6718;">User</span> <span style="color:#1C1828;">{</span>
   <span style="color:#1C1828;">id</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">number</span><span style="color:#1C1828;">;</span>
   <span style="color:#1C1828;">name</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">string</span><span style="color:#1C1828;">;</span>
   <span style="color:#1C1828;">role</span><span style="color:#1C1828;">:</span> <span style="color:#4858A0;">"admin"</span> <span style="color:#1C1828;">|</span> <span style="color:#4858A0;">"user"</span><span style="color:#1C1828;">;</span>
 <span style="color:#1C1828;">}</span>
-
-<span style="color:#A1551F;">const</span> <span style="color:#886040;">getAdmins</span> <span style="color:#1C1828;">=</span> <span style="color:#A1551F;">async</span> <span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">users</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">User</span><span style="color:#1C1828;">[])</span> : <span style="color:#7D6718;">Promise</span><span style="color:#1C1828;">&lt;</span><span style="color:#7D6718;">User</span><span style="color:#1C1828;">[]&gt;</span> <span style="color:#1C1828;">=&gt;</span> <span style="color:#1C1828;">{</span>
+<span class="sel">
+<span style="color:#A1551F;">const</span> <span style="color:#886040;">getAdmins</span> <span style="color:#1C1828;">=</span> <span style="color:#A1551F;">async</span> <span style="color:#1C1828;">(</span><span style="color:#1C1828;font-weight:bold;">users</span><span style="color:#1C1828;">:</span> <span style="color:#7D6718;">User</span><span style="color:#1C1828;">[])</span> : <span style="color:#7D6718;">Promise</span><span style="color:#1C1828;">&lt;</span><span style="color:#7D6718;">User</span><span style="color:#1C1828;">[]&gt;</span> <span style="color:#1C1828;">=&gt;</span> <span style="color:#1C1828;">{</span></span>
   <span style="color:#A1551F;">const</span> <span style="color:#1C1828;">result</span> <span style="color:#1C1828;">=</span> <span style="color:#1C1828;font-weight:bold;">users</span><span style="color:#1C1828;">.</span><span style="color:#886040;">filter</span><span style="color:#1C1828;">((</span><span style="color:#1C1828;font-weight:bold;">u</span><span style="color:#1C1828;">)</span> <span style="color:#1C1828;">=&gt;</span> <span style="color:#1C1828;">{</span>
     <span style="color:#A1551F;">return</span> <span style="color:#1C1828;font-weight:bold;">u</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">role</span> <span style="color:#1C1828;">===</span> <span style="color:#4858A0;">"admin"</span>
   <span style="color:#1C1828;">})</span>
   <span style="color:#886040;">console</span><span style="color:#1C1828;">.</span><span style="color:#886040;">log</span><span style="color:#1C1828;">(</span><span style="color:#4858A0;">`Found ${</span><span style="color:#1C1828;">result</span><span style="color:#1C1828;">.</span><span style="color:#1C1828;">length</span><span style="color:#4858A0;"} admins`</span><span style="color:#1C1828;">)</span>
-  <span style="color:#A1551F;">return</span> <span style="color:#1C1828;">result</span>
+  <span style="color:#A1551F;">return</span> <span style="color:#1C1828;"><span class="cur">r</span>esult</span>
 <span style="color:#1C1828;">}</span></pre>
+<div style="background:#E8E0D4;display:flex;align-items:center;font-family:'SF Mono','Fira Code',monospace;font-size:12px;padding:0;height:24px;border-radius:0 0 3px 3px;overflow:hidden;">
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 1 </span>
+<span style="background:#7D6718;color:#F0E8DC;padding:2px 10px;font-weight:bold;"> 2 </span>
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 3 </span>
+<span style="flex:1;"></span>
+<span style="color:#1C1828;padding:0 8px;font-size:11px;">nvim settings.lua</span>
+<span style="background:#1C1828;color:#F0E8DC;padding:2px 10px;font-size:11px;"> ~/nvim </span>
+</div></div>
 </div></section>
 <section id="ansi16"><h2>Terminal 16 Colors</h2>
 <table class="atable">
@@ -128,8 +192,11 @@ pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:1
 <table class="atable">
 <tr><th>color8</th><th>color9</th><th>color10</th><th>color11</th><th>color12</th><th>color13</th><th>color14</th><th>color15</th></tr>
 <tr><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#746476;">br black</div><div class="ansi-hex">#746476</div><div class="ansi-ratio">4.5:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#A1551F;">br red</div><div class="ansi-hex">#A1551F</div><div class="ansi-ratio">4.5:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#3A7A58;">br green</div><div class="ansi-hex">#3A7A58</div><div class="ansi-ratio">4.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#7D6718;">br yellow</div><div class="ansi-hex">#7D6718</div><div class="ansi-ratio">4.5:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#4858A0;">br blue</div><div class="ansi-hex">#4858A0</div><div class="ansi-ratio">5.4:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#8A5080;">br magenta</div><div class="ansi-hex">#8A5080</div><div class="ansi-ratio">4.9:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#257096;">br cyan</div><div class="ansi-hex">#257096</div><div class="ansi-ratio">4.5:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#F0E8DC;color:#1C1828;">br white</div><div class="ansi-hex">#1C1828</div><div class="ansi-ratio">14.3:1</div></td></tr></table></section>
-<section id="terminal"><h2>Terminal Session</h2>
-<pre class="term"><span style="color:#746476;">user@host</span><span style="color:#1C1828;">:</span><span style="color:#4858A0;">~/projects</span><span style="color:#1C1828;">$ </span><span style="color:#1C1828;">ls -la</span>
+<section id="terminal"><h2>Terminal &amp; Git Diff</h2>
+<div class="term-wrap">
+<div class="split-container">
+<div class="split-left">
+<pre class="term" style="background:#F0E8DC;height:100%;"><span style="color:#746476;">user@host</span><span style="color:#1C1828;">:</span><span style="color:#4858A0;">~/projects</span><span style="color:#1C1828;">$ </span><span style="color:#1C1828;">ls -la</span>
 <span style="color:#746476;">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:#7D6718;font-weight:bold;">src/</span>
 <span style="color:#746476;">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:#7D6718;font-weight:bold;">docs/</span>
 <span style="color:#746476;">-rw-r--r--  user group  2048 Apr  1 </span><span style="color:#886040;">README.md</span>
@@ -149,35 +216,36 @@ pre.diff{background:#F0E8DC;border:1px solid #c8c0b4;border-radius:5px;padding:1
 <span style="color:#1C1828;">Untracked files:</span>
   <span style="color:#B24545;">src/new_module.rs</span>
 
-<span style="color:#746476;">user@host</span><span style="color:#1C1828;">:</span><span style="color:#4858A0;">~/projects</span><span style="color:#1C1828;">$ </span><span style="color:#1C1828;">grep -rn "TODO" src/</span>
-<span style="color:#7A4878;">src/main.rs</span><span style="color:#387878;">:</span><span style="color:#6A6480;">42</span><span style="color:#387878;">:</span><span style="color:#1C1828;">    // </span><span style="background:#7D6718;color:#F0E8DC;font-weight:bold;">TODO</span><span style="color:#1C1828;">: fix error handling</span>
-<span style="color:#7A4878;">src/config.rs</span><span style="color:#387878;">:</span><span style="color:#6A6480;">17</span><span style="color:#387878;">:</span><span style="color:#1C1828;">    // </span><span style="background:#7D6718;color:#F0E8DC;font-weight:bold;">TODO</span><span style="color:#1C1828;">: add validation</span>
-<span style="color:#7A4878;">src/utils.rs</span><span style="color:#387878;">:</span><span style="color:#6A6480;">8</span><span style="color:#387878;">:</span><span style="color:#1C1828;">     // </span><span style="background:#7D6718;color:#F0E8DC;font-weight:bold;">TODO</span><span style="color:#1C1828;">: optimize allocations</span>
-</pre></section>
-<section id="diff"><h2>Git Diff</h2>
-<pre class="diff"><span style="color:#7D6718;">diff --git a/src/config.rs b/src/config.rs</span>
-<span style="color:#7D6718;">index 3a1b2c4..5d6e7f8 100644</span>
+<span style="color:#746476;">user@host</span><span style="color:#1C1828;">:</span><span style="color:#4858A0;">~/projects</span><span style="color:#1C1828;">$ </span><span class="cur"> </span>
+</pre>
+</div>
+<div class="split-border"></div>
+<div class="split-right">
+<pre class="term" style="background:#E8E0D4;height:100%;"><span style="color:#7D6718;">diff --git a/src/config.rs</span>
+<span style="color:#7D6718;">index 3a1b2c4..5d6e7f8</span>
 <span style="color:#7D6718;">--- a/src/config.rs</span>
 <span style="color:#7D6718;">+++ b/src/config.rs</span>
-<span style="color:#257096;font-weight:bold;">@@ -12,7 +12,9 @@ impl Config {</span>
-<span class="dctx">     pub fn new(name: &amp;str) -&gt; Self {</span>
-<span class="dctx">         Self {</span>
-<span class="dctx">             name: name.to_string(),</span>
-<span class="dmin">-            port: 8080,</span>
-<span class="dpls">+            port: config.port.unwrap_or(8080),</span>
-<span class="dpls">+            host: config.host.clone(),</span>
-<span class="dctx">         }</span>
-<span class="dctx">     }</span>
+<span style="color:#257096;font-weight:bold;">@@ -12,7 +12,9 @@</span>
+<span style="color:#1C1828;">     Self {</span>
+<span style="color:#1C1828;">         name: name.into(),</span>
+<span style="display:block;background:#DAAAA0;color:#B24545;padding:0 4px;">-        port: 8080,</span><span style="display:block;background:#B0D0E0;color:#4858A0;padding:0 4px;">+        port: c.port(8080),</span><span style="display:block;background:#B0D0E0;color:#4858A0;padding:0 4px;">+        host: c.host(),</span><span style="color:#1C1828;">     }</span>
+<span style="color:#1C1828;"> }</span>
 
-<span style="color:#7D6718;">diff --git a/src/main.rs b/src/main.rs</span>
+<span style="color:#7D6718;">diff --git a/src/main.rs</span>
 <span style="color:#7D6718;">--- a/src/main.rs</span>
 <span style="color:#7D6718;">+++ b/src/main.rs</span>
 <span style="color:#257096;font-weight:bold;">@@ -1,5 +1,6 @@</span>
-<span class="dctx"> use std::collections::HashMap;</span>
-<span class="dmin">-use std::env;</span>
-<span class="dpls">+use std::env;</span>
-<span class="dpls">+use std::path::PathBuf;</span>
-<span class="dctx"> </span>
-<span class="dctx"> fn main() {</span></pre>
-</section>
+<span style="color:#1C1828;"> use std::collections::*;</span>
+<span style="display:block;background:#DAAAA0;color:#B24545;padding:0 4px;">-use std::env;</span><span style="display:block;background:#B0D0E0;color:#4858A0;padding:0 4px;">+use std::env;</span><span style="display:block;background:#B0D0E0;color:#4858A0;padding:0 4px;">+use std::path::PathBuf;</span><span style="color:#1C1828;"> fn main() {</span>
+</pre>
+</div>
+</div>
+<div style="background:#E8E0D4;display:flex;align-items:center;font-family:'SF Mono','Fira Code',monospace;font-size:12px;padding:0;height:24px;border-radius:0 0 3px 3px;overflow:hidden;">
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 1 </span>
+<span style="background:#7D6718;color:#F0E8DC;padding:2px 10px;font-weight:bold;"> 2 </span>
+<span style="background:#E8E0D4;color:#1C1828;padding:2px 10px;font-weight:bold;"> 3 </span>
+<span style="flex:1;"></span>
+<span style="color:#1C1828;padding:0 8px;font-size:11px;">nvim settings.lua</span>
+<span style="background:#1C1828;color:#F0E8DC;padding:2px 10px;font-size:11px;"> ~/nvim </span>
+</div></div></section>
 </body></html>

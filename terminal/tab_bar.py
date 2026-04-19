@@ -47,8 +47,6 @@ def _read_tab_colors() -> dict[str, int]:
     yellow = colors.get("color11", "#E8B855")
     cursor = colors.get("cursor", fg)
     inactive_tab_fg = colors.get("inactive_tab_foreground", fg)
-    cwd_bg = colors.get("color6", "#408888")
-
     return {
         "fg": as_rgb(_hex_to_rgb(fg)),
         "bg": as_rgb(_hex_to_rgb(bg)),
@@ -56,7 +54,6 @@ def _read_tab_colors() -> dict[str, int]:
         "yellow": as_rgb(_hex_to_rgb(yellow)),
         "cursor": as_rgb(_hex_to_rgb(cursor)),
         "inactive_tab_fg": as_rgb(_hex_to_rgb(inactive_tab_fg)),
-        "cwd_bg": as_rgb(_hex_to_rgb(cwd_bg)),
     }
 
 
@@ -158,7 +155,7 @@ def draw_title_and_right_status(
 
     if cwd_text:
         screen.cursor.fg = c["bg"]
-        screen.cursor.bg = c["cwd_bg"]
+        screen.cursor.bg = c["fg"]
         screen.draw(cwd_text)
 
 
