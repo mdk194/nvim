@@ -31,7 +31,7 @@
 	line-numbers-minus-style = "#B24545"
 	line-numbers-zero-style = "#257096"
 	line-numbers-plus-style = "#4858A0" bold
-	minus-style = syntax "#F0D8D5"
-	minus-emph-style = syntax "#E8C0B8"
-	plus-style = syntax "#D8ECF0"
-	plus-emph-style = syntax "#C0DCE8"
+	minus-style = syntax "#DAAAA0"
+	minus-emph-style = syntax "#C88878"
+	plus-style = syntax "#B0D0E0"
+	plus-emph-style = syntax "#90C0D4"

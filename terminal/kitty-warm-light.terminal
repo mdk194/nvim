@@ -4,7 +4,8 @@
 background #F0EBE1
 # unfocused_background #E8E3D9
 foreground #3B3530
-cursor     #3B3530
+cursor            #3B3530
+cursor_text_color #F0EBE1
 url_color  #4C608A
 
 selection_background    #8eeb46

@@ -4,6 +4,7 @@
 set -euo pipefail
 
 NVIM_DIR="$HOME/nvim"
+TERM_DIR="$NVIM_DIR/terminal"
 GITCONFIG="$HOME/dotfiles/gitconfig"
 
 # portable sed -i (macOS needs '' arg, Linux doesn't)
@@ -50,13 +51,13 @@ sedi \
     "$NVIM_DIR/lua/settings.lua"
 
 # kitty: repoint symlink (kitty.conf includes it, focus script reads it)
-ln -sf "$NVIM_DIR/kitty-${SCHEME}${S}.terminal" "$NVIM_DIR/kitty-active.terminal"
+ln -sf "$TERM_DIR/kitty-${SCHEME}${S}.terminal" "$TERM_DIR/kitty-active.terminal"
 
 # git: include path
-sedi 's|path = ~/nvim/git[^ ]*\.terminal|path = ~/nvim/git-'"${SCHEME}${S}"'.terminal|' "$GITCONFIG"
+sedi 's|path = .*/git[^ ]*\.terminal|path = ~/nvim/terminal/git-'"${SCHEME}${S}"'.terminal|' "$GITCONFIG"
 
 # dir_colors: repoint symlink
-ln -sf "$NVIM_DIR/dir_colors-${SCHEME}${S}.terminal" "$HOME/.dir_colors"
+ln -sf "$TERM_DIR/dir_colors-${SCHEME}${S}.terminal" "$HOME/.dir_colors"
 
 # live-reload running nvim instances
 for srv in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*/0; do
