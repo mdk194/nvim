@@ -1,5 +1,5 @@
 vim.cmd("highlight clear")
-vim.g.colors_name = "mdk-base16"
+vim.g.colors_name = "mdk"
 vim.o.termguicolors = true
 
 local hl = function(name, opts)

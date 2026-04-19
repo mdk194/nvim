@@ -1,27 +1,31 @@
 vim.cmd("highlight clear")
-vim.g.colors_name = "mdk-base8"
+vim.g.colors_name = "mdk-light"
 vim.o.termguicolors = true
 
 local hl = function(name, opts)
   vim.api.nvim_set_hl(0, name, opts)
 end
 
--- palette (8 colors)
-local bg         = "#232521"
-local cursorline = "#34302C"
-local border     = "#887663"
-local comment    = "#7A9180"
-local fg         = "#ECE1D7"
-local red        = "#CF5454"
-local yellow     = "#EBC06D"
-local keyword    = "#E67E40"
+-- palette (16 colors) — light variant, same hues as dark
+local bg       = "#F0EBE1"
+local cursorline      = "#E5DED2"
+local comment  = "#5D6E67"
+local border  = "#766859"
+local fg       = "#3B3530"
+local red      = "#BB4040"
+local yellow   = "#826714"
+local blue     = "#5560A5"
+local tan      = "#7A6248"
+local keyword  = "#A5551E"
+local diff_bg  = "#D8EDF5"
+local diff_del = "#F5D8D5"
+local diff_chg = "#E2E0E8"
+local diff_fg  = "#2C7197"
+local context  = "#D2E5D6"
 
--- aliases (merged into 8)
-local visual   = cursorline
-local blue     = comment
-local tan      = border
-local cyan     = comment
+-- aliases
 local orange   = keyword
+local cyan     = diff_fg
 local salmon   = red
 local float_bg = cursorline
 
@@ -54,9 +58,9 @@ hl("StatusLineNC",  { fg = comment, bg = cursorline, bold = true, underline = tr
 hl("WinBar",        { fg = border, bg = cursorline, bold = true })
 hl("WinBarNC",      { fg = comment, bg = cursorline, bold = true })
 hl("TabLine",       { fg = comment, bg = cursorline })
-hl("TabLineSel",    { fg = yellow, bg = cursorline })
+hl("TabLineSel",    { fg = blue, bg = cursorline })
 hl("TabLineFill",   { fg = comment, bg = cursorline })
-hl("Visual",        { bg = visual })
+hl("Visual",        { bg = "#D2C8B8" })
 hl("VisualNOS",     { fg = red })
 hl("Search",        { fg = cursorline, bg = yellow })
 hl("IncSearch",     { fg = cursorline, bg = orange })
@@ -88,11 +92,11 @@ hl("PmenuSbar",     { bg = cursorline })
 hl("PmenuThumb",    { bg = fg })
 
 -- diff
-hl("DiffAdd",       { bg = cursorline })
-hl("DiffDelete",    { fg = red, bg = bg, bold = true })
-hl("DiffChange",    { bg = cursorline })
-hl("DiffText",      { fg = yellow, bg = cursorline })
-hl("Added",         { fg = comment })
+hl("DiffAdd",       { bg = diff_bg })
+hl("DiffDelete",    { fg = red, bg = diff_del, bold = true })
+hl("DiffChange",    { bg = diff_chg })
+hl("DiffText",      { fg = diff_fg, bg = diff_bg })
+hl("Added",         { fg = blue })
 hl("Removed",       { fg = red })
 hl("Changed",       { fg = keyword })
 
@@ -107,17 +111,17 @@ hl("DiagnosticError",         { fg = red, bold = true, italic = true })
 hl("DiagnosticWarn",          { fg = keyword, bold = true, italic = true })
 hl("DiagnosticInfo",          { fg = cyan, italic = true })
 hl("DiagnosticHint",          { fg = tan, italic = true })
-hl("DiagnosticOk",            { fg = comment })
+hl("DiagnosticOk",            { fg = blue })
 hl("DiagnosticFloatingError", { fg = red, bg = cursorline })
 hl("DiagnosticFloatingWarn",  { fg = keyword, bg = cursorline })
 hl("DiagnosticFloatingInfo",  { fg = cyan, bg = cursorline })
 hl("DiagnosticFloatingHint",  { fg = tan, bg = cursorline })
-hl("DiagnosticFloatingOk",    { fg = comment, bg = cursorline })
+hl("DiagnosticFloatingOk",    { fg = blue, bg = cursorline })
 hl("DiagnosticUnderlineError",{ underline = true, sp = red })
 hl("DiagnosticUnderlineWarn", { underline = true, sp = keyword })
 hl("DiagnosticUnderlineInfo", { underline = true, sp = cyan })
 hl("DiagnosticUnderlineHint", { underline = true, sp = tan })
-hl("DiagnosticUnderlineOk",   { underline = true, sp = comment })
+hl("DiagnosticUnderlineOk",   { underline = true, sp = blue })
 
 -- syntax
 hl("Comment",       { fg = comment, italic = true })
@@ -126,7 +130,7 @@ hl("Number",        { fg = orange })
 hl("Boolean",       { fg = orange, bold = true })
 hl("Float",         { fg = orange })
 hl("Character",     { fg = red })
-hl("String",        { fg = comment })
+hl("String",        { fg = blue })
 hl("Identifier",    { fg = red })
 hl("Function",      { fg = tan })
 hl("Statement",     { fg = red, bold = true })
@@ -171,12 +175,12 @@ hl("@markup.link.label",        { fg = blue, underline = true })
 hl("@markup.link.url",          { fg = blue, underline = true })
 
 -- markdown headings (render-markdown.nvim)
-hl("RenderMarkdownH1Bg", { bg = cursorline, bold = true })
-hl("RenderMarkdownH2Bg", { bg = cursorline, bold = true })
-hl("RenderMarkdownH3Bg", { bg = cursorline, bold = true })
-hl("RenderMarkdownH4Bg", { bg = cursorline, bold = true })
-hl("RenderMarkdownH5Bg", { bg = cursorline, bold = true })
-hl("RenderMarkdownH6Bg", { bg = cursorline, bold = true })
+hl("RenderMarkdownH1Bg", { bg = context, bold = true })
+hl("RenderMarkdownH2Bg", { bg = context, bold = true })
+hl("RenderMarkdownH3Bg", { bg = context, bold = true })
+hl("RenderMarkdownH4Bg", { bg = context, bold = true })
+hl("RenderMarkdownH5Bg", { bg = context, bold = true })
+hl("RenderMarkdownH6Bg", { bg = context, bold = true })
 hl("RenderMarkdownLink", { fg = blue, underline = true })
 
 -- LSP
@@ -187,7 +191,7 @@ hl("@lsp.mod.deprecated", { fg = red })
 hl("TermCursor",    { reverse = true })
 
 -- custom overrides
-hl("TreesitterContext",    { bold = true, bg = cursorline })
+hl("TreesitterContext",    { bold = true, bg = context })
 hl("SnacksPickerMatch",   { fg = yellow, bold = true })
 hl("SnacksIndentScope",   { fg = yellow })
 

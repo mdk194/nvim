@@ -1,0 +1,41 @@
+#!/bin/bash
+# Toggle mdk colorscheme between dark and light
+# Usage: toggle-theme [light|dark]
+set -euo pipefail
+
+NVIM_DIR="$HOME/nvim"
+GITCONFIG="$HOME/dotfiles/gitconfig"
+
+# Determine target mode
+if [[ "${1:-}" =~ ^(light|dark)$ ]]; then
+    MODE="$1"
+elif grep -q 'colorscheme mdk-light' "$NVIM_DIR/lua/settings.lua"; then
+    MODE="dark"
+else
+    MODE="light"
+fi
+
+[[ "$MODE" == "light" ]] && S="-light" || S=""
+
+# nvim settings.lua
+sed -i \
+    -e 's/background", "[^"]*"/background", "'"$MODE"'"/' \
+    -e 's/colorscheme mdk[^]]*]]/colorscheme mdk'"$S"']]/' \
+    "$NVIM_DIR/lua/settings.lua"
+
+# kitty: repoint symlink (kitty.conf includes it, focus script reads it)
+ln -sf "$NVIM_DIR/kitty$S.terminal" "$NVIM_DIR/kitty-active.terminal"
+
+# git: include path
+sed -i 's|path = ~/nvim/git[^ ]*\.terminal|path = ~/nvim/git'"$S"'.terminal|' "$GITCONFIG"
+
+# dir_colors: repoint symlink
+ln -sf "$NVIM_DIR/dir_colors$S.terminal" "$HOME/.dir_colors"
+
+# live-reload running nvim instances
+for srv in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*/0; do
+    [[ -S "$srv" ]] && nvim --server "$srv" --remote-send \
+        "<Cmd>set background=$MODE | colorscheme mdk$S<CR>" 2>/dev/null || true
+done
+
+echo "$MODE"

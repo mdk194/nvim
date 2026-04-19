@@ -1,0 +1,31 @@
+# mdk-base16-light kitty terminal colors
+# Copy to ~/.config/kitty/kitty.conf
+
+background #F0EBE1
+# unfocused_background #E8E3D9
+foreground #3B3530
+cursor     #3B3530
+url_color  #4C608A
+
+selection_background    #8eeb46
+selection_foreground    #000000
+
+inactive_tab_background #E5DED2
+inactive_tab_foreground #3B3530
+
+color0  #E5DED2
+color1  #9E5558
+color2  #5D6E67
+color3  #86652D
+color4  #4C608A
+color5  #7A4878
+color6  #4A6E6E
+color7  #7A6248
+color8  #766859
+color9  #A8513D
+color10 #3C7653
+color11 #826714
+color12 #5560A5
+color13 #8A5080
+color14 #377379
+color15 #3B3530
