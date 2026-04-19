@@ -10,9 +10,21 @@ def cr(c1, c2):
     return (l1 + 0.05) / (l2 + 0.05)
 def rs(c, bg): return f"{cr(c, bg):.1f}:1"
 
-def gen(sn, var, p, k, uf):
+def parse_dir_color(path, entry="DIR"):
+    """Extract a truecolor RGB from dir_colors file for a given entry, return as hex."""
+    import re
+    with open(path) as f:
+        for line in f:
+            if line.strip().startswith(entry + " "):
+                m = re.search(r'38;2;(\d+);(\d+);(\d+)', line)
+                if m:
+                    return f"#{int(m.group(1)):02X}{int(m.group(2)):02X}{int(m.group(3)):02X}"
+    return None
+
+def gen(sn, var, p, k, uf, dc_overrides=None):
     dk = var == "dark"
     bg=p["bg"];fg=p["fg"];cl=p["cursorline"]
+    if dc_overrides is None: dc_overrides = {}
     cb="#222" if dk else "#ddd";cf="#ccc" if dk else "#333";cbd="#333" if dk else "#c8c0b4"
     nb=cl if dk else "#e8e4dc"
     cub=k.get("cursor",fg);cut=k.get("cursor_text_color",bg)
@@ -20,6 +32,11 @@ def gen(sn, var, p, k, uf):
     itb=tbb;itf=k.get("inactive_tab_foreground",fg)
     cwb=fg;cwf=bg;sb=k.get("active_border_color","#bda04f")
     fb=cl;pb=cl;pbd=p["keyword"];ps=p["context"]
+    dir_c=dc_overrides.get("DIR", p["yellow"])
+    file_c=dc_overrides.get("FILE", p["tan"])
+    normal_c=dc_overrides.get("NORMAL", p["border"])
+    link_c=dc_overrides.get("LINK", p["diff_fg"])
+    exec_c=dc_overrides.get("EXEC", fg)
     pr=""
     for n in ["bg","cursorline","comment","border","fg","red","yellow","blue","tan","keyword","diff_bg","diff_del","diff_chg","diff_fg","context"]:
         c=p[n];r1=rs(c,bg);r2=rs(c,uf)
@@ -112,19 +129,19 @@ def gen(sn, var, p, k, uf):
 <span style="color:{fg};">}}</span></pre>
 {tb}</div></div></section>
 <section id="ansi16"><h2>Terminal 16 Colors</h2><table class="atable"><tr><th>color0</th><th>color1</th><th>color2</th><th>color3</th><th>color4</th><th>color5</th><th>color6</th><th>color7</th></tr><tr>{ar(al,an)}</tr></table><div style="height:12px"></div><table class="atable"><tr><th>color8</th><th>color9</th><th>color10</th><th>color11</th><th>color12</th><th>color13</th><th>color14</th><th>color15</th></tr><tr>{ar(ah,bn)}</tr></table></section>
-<section id="terminal"><h2>Terminal &amp; Git Diff</h2><div class="term-wrap"><div class="split-container"><div class="split-left"><pre class="term" style="background:{bg};height:100%;"><span style="color:{p["border"]};">user@host</span><span style="color:{fg};">:</span><span style="color:{k["color4"]};">~/projects</span><span style="color:{fg};">$ </span><span style="color:{fg};">ls -la</span>
-<span style="color:{p["border"]};">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:{p["yellow"]};font-weight:bold;">src/</span>
-<span style="color:{p["border"]};">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:{p["yellow"]};font-weight:bold;">docs/</span>
-<span style="color:{p["border"]};">-rw-r--r--  user group  2048 Apr  1 </span><span style="color:{p["tan"]};">README.md</span>
-<span style="color:{p["border"]};">-rw-r--r--  user group   512 Apr  1 </span><span style="color:{p["tan"]};">config.toml</span>
-<span style="color:{p["border"]};">-rwxr-xr-x  user group   384 Apr  1 </span><span style="color:{fg};">run.sh</span>
-<span style="color:{p["border"]};">-rw-r--r--  user group   48K Apr  1 </span><span style="color:{p["comment"]};">screenshot.png</span>
-<span style="color:{p["border"]};">-rw-r--r--  user group  120M Apr  1 </span><span style="color:{p["border"]};">video.mp4</span>
-<span style="color:{p["border"]};">-rw-r--r--  user group   32K Apr  1 </span><span style="color:{p["keyword"]};font-weight:bold;font-style:italic;">archive.tar.gz</span>
-<span style="color:{p["border"]};">lrwxrwxrwx  user group    24 Apr  1 </span><span style="color:{p["diff_fg"]};font-weight:bold;">latest -> releases/v2.1</span>
-<span style="color:{p["border"]};">lrwxrwxrwx  user group    18 Apr  1 </span><span style="color:{p["red"]};">broken -> /no/such/path</span>
+<section id="terminal"><h2>Terminal &amp; Git Diff</h2><div class="term-wrap"><div class="split-container"><div class="split-left"><pre class="term" style="background:{bg};height:100%;"><span style="color:{normal_c};">user@host</span><span style="color:{fg};">:</span><span style="color:{k["color4"]};">~/projects</span><span style="color:{fg};">$ </span><span style="color:{fg};">ls -la</span>
+<span style="color:{normal_c};">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:{dir_c};font-weight:bold;">src/</span>
+<span style="color:{normal_c};">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:{dir_c};font-weight:bold;">docs/</span>
+<span style="color:{normal_c};">-rw-r--r--  user group  2048 Apr  1 </span><span style="color:{file_c};">README.md</span>
+<span style="color:{normal_c};">-rw-r--r--  user group   512 Apr  1 </span><span style="color:{file_c};">config.toml</span>
+<span style="color:{normal_c};">-rwxr-xr-x  user group   384 Apr  1 </span><span style="color:{exec_c};">run.sh</span>
+<span style="color:{normal_c};">-rw-r--r--  user group   48K Apr  1 </span><span style="color:{p["comment"]};">screenshot.png</span>
+<span style="color:{normal_c};">-rw-r--r--  user group  120M Apr  1 </span><span style="color:{normal_c};">video.mp4</span>
+<span style="color:{normal_c};">-rw-r--r--  user group   32K Apr  1 </span><span style="color:{p["keyword"]};font-weight:bold;font-style:italic;">archive.tar.gz</span>
+<span style="color:{normal_c};">lrwxrwxrwx  user group    24 Apr  1 </span><span style="color:{link_c};font-weight:bold;">latest -> releases/v2.1</span>
+<span style="color:{normal_c};">lrwxrwxrwx  user group    18 Apr  1 </span><span style="color:{p["red"]};">broken -> /no/such/path</span>
 
-<span style="color:{p["border"]};">user@host</span><span style="color:{fg};">:</span><span style="color:{k["color4"]};">~/projects</span><span style="color:{fg};">$ </span><span style="color:{fg};">git status</span>
+<span style="color:{normal_c};">user@host</span><span style="color:{fg};">:</span><span style="color:{k["color4"]};">~/projects</span><span style="color:{fg};">$ </span><span style="color:{fg};">git status</span>
 <span style="color:{fg};">On branch </span><span style="color:{p["comment"]};">main</span>
 <span style="color:{fg};">Changes not staged for commit:</span>
   <span style="color:{p["diff_fg"]};">modified:   src/main.rs</span>
@@ -132,7 +149,7 @@ def gen(sn, var, p, k, uf):
 <span style="color:{fg};">Untracked files:</span>
   <span style="color:{p["red"]};">src/new_module.rs</span>
 
-<span style="color:{p["border"]};">user@host</span><span style="color:{fg};">:</span><span style="color:{k["color4"]};">~/projects</span><span style="color:{fg};">$ </span><span class="cur"> </span>
+<span style="color:{normal_c};">user@host</span><span style="color:{fg};">:</span><span style="color:{k["color4"]};">~/projects</span><span style="color:{fg};">$ </span><span class="cur"> </span>
 </pre></div><div class="split-border"></div><div class="split-right"><pre class="term" style="background:{uf};height:100%;"><span style="color:{p["yellow"]};">diff --git a/src/config.rs</span>
 <span style="color:{p["yellow"]};">index 3a1b2c4..5d6e7f8</span>
 <span style="color:{p["yellow"]};">--- a/src/config.rs</span>
@@ -151,22 +168,52 @@ def gen(sn, var, p, k, uf):
 {dm("-use std::env;")}{dp("+use std::env;")}{dp("+use std::path::PathBuf;")}<span style="color:{fg};"> fn main() {{</span>
 </pre></div></div>{tb}</div></section></body></html>'''
 
-themes = [
-    ("cold","dark","/home/mdk/nvim/colorscheme-cold.html",
-     {"bg":"#1C1B1F","cursorline":"#292830","comment":"#82849E","border":"#967F8E","fg":"#ECE0D0","red":"#D86060","yellow":"#E8B855","blue":"#8898C8","tan":"#D0A080","keyword":"#E88040","diff_bg":"#184050","diff_del":"#4C3038","diff_chg":"#302E48","diff_fg":"#50A8B8","context":"#564B56","visual":"#333138"},
-     {"color0":"#292830","color1":"#A85050","color2":"#82849E","color3":"#C09838","color4":"#5868A8","color5":"#8A5888","color6":"#408888","color7":"#D0A080","color8":"#967F8E","color9":"#E88040","color10":"#50A8B8","color11":"#E8B855","color12":"#8898C8","color13":"#A878A8","color14":"#50A8B8","color15":"#ECE0D0","cursor":"#ECE0D0","cursor_text_color":"#1C1B1F","tab_bar_background":"#100F0F","inactive_tab_foreground":"#ECE0D0","active_border_color":"#bda04f"},"#100F0F"),
-    ("cold","light","/home/mdk/nvim/colorscheme-cold-light.html",
-     {"bg":"#EDEBE8","cursorline":"#E4E2DF","comment":"#5E5871","border":"#665767","fg":"#1C1828","red":"#9C3C3C","yellow":"#6E5A15","blue":"#4550B0","tan":"#785438","keyword":"#8D4A1B","diff_bg":"#B0D0E0","diff_del":"#DAAAA0","diff_chg":"#E0DCE8","diff_fg":"#206284","context":"#C8C0C0","visual":"#D8D0C4"},
-     {"color0":"#E4E2DF","color1":"#9C3C3C","color2":"#5E5871","color3":"#987830","color4":"#4550B0","color5":"#7A4878","color6":"#387878","color7":"#785438","color8":"#665767","color9":"#8D4A1B","color10":"#3A7A58","color11":"#6E5A15","color12":"#4550B0","color13":"#8A5080","color14":"#206284","color15":"#1C1828","cursor":"#1C1828","cursor_text_color":"#EDEBE8","tab_bar_background":"#E4E2DF","inactive_tab_foreground":"#1C1828","active_border_color":"#bda04f"},"#E4E2DF"),
-    ("warm","dark","/home/mdk/nvim/colorscheme-warm.html",
-     {"bg":"#232521","cursorline":"#34302C","comment":"#7A9180","border":"#887663","fg":"#ECE1D7","red":"#CF5454","yellow":"#EBC06D","blue":"#A3A9CE","tan":"#C1A78E","keyword":"#E67E40","diff_bg":"#001B29","diff_del":"#3D0100","diff_chg":"#2B2F33","diff_fg":"#5BA0C2","context":"#554B40","visual":"#3E3935"},
-     {"color0":"#34302C","color1":"#BD8183","color2":"#7A9180","color3":"#E49B5D","color4":"#7F91B2","color5":"#B380B0","color6":"#7B9695","color7":"#C1A78E","color8":"#887663","color9":"#D47766","color10":"#85B695","color11":"#EBC06D","color12":"#A3A9CE","color13":"#CF9BC2","color14":"#89B3B6","color15":"#ECE1D7","cursor":"#ECE1D7","cursor_text_color":"#232521","tab_bar_background":"#1C1F1C","inactive_tab_foreground":"#ECE1D7","active_border_color":"#bda04f"},"#1C1F1C"),
-    ("warm","light","/home/mdk/nvim/colorscheme-warm-light.html",
-     {"bg":"#F0EBE1","cursorline":"#E5DED2","comment":"#52605A","border":"#685B4E","fg":"#3B3530","red":"#A43838","yellow":"#725A11","blue":"#4A50B0","tan":"#705942","keyword":"#914A1A","diff_bg":"#B2D2E2","diff_del":"#DCADA5","diff_chg":"#E2E0E8","diff_fg":"#266385","context":"#D0C8C0","visual":"#D2C8B8"},
-     {"color0":"#E5DED2","color1":"#A43838","color2":"#52605A","color3":"#86652D","color4":"#4A50B0","color5":"#7A4878","color6":"#4A6E6E","color7":"#705942","color8":"#685B4E","color9":"#914A1A","color10":"#3C7653","color11":"#725A11","color12":"#4A50B0","color13":"#8A5080","color14":"#266385","color15":"#3B3530","cursor":"#3B3530","cursor_text_color":"#F0EBE1","tab_bar_background":"#E8E3D9","inactive_tab_foreground":"#3B3530","active_border_color":"#bda04f"},"#E8E3D9"),
+import re as _re
+from pathlib import Path as _Path
+
+_NVIM_DIR = _Path(__file__).resolve().parent.parent
+_COLORS_DIR = _NVIM_DIR / "colors"
+_TERMINAL_DIR = _NVIM_DIR / "terminal"
+
+def _parse_lua(path):
+    p = {}
+    with open(path) as f:
+        for line in f:
+            m = _re.match(r'\s*local\s+(\w+)\s*=\s*"(#[0-9A-Fa-f]{6})"', line)
+            if m: p[m.group(1)] = m.group(2)
+            m2 = _re.search(r'hl\("Visual".*bg\s*=\s*"(#[0-9A-Fa-f]{6})"', line)
+            if m2: p["visual"] = m2.group(1)
+    return p
+
+def _parse_kitty(path):
+    c = {}
+    with open(path) as f:
+        for line in f:
+            parts = line.split()
+            if len(parts) == 2 and not line.startswith('#'): c[parts[0]] = parts[1]
+            if len(parts) == 3 and parts[0] == '#' and parts[1] == 'unfocused_background': c['unfocused_background'] = parts[2]
+    return c
+
+SCHEMES = [
+    ("cold", "dark", "cold"),
+    ("cold", "light", "cold-light"),
+    ("warm", "dark", "warm"),
+    ("warm", "light", "warm-light"),
 ]
 
-for s, v, path, p, k, uf in themes:
-    with open(path, "w") as f:
-        f.write(gen(s, v, p, k, uf))
-    print(f"wrote {path}")
+for scheme_name, variant, lua_name in SCHEMES:
+    palette = _parse_lua(_COLORS_DIR / f"{lua_name}.lua")
+    kitty = _parse_kitty(_TERMINAL_DIR / f"kitty-{lua_name}.terminal")
+    unfocused = kitty.get("unfocused_background", kitty.get("tab_bar_background", palette["bg"]))
+
+    dc_path = _TERMINAL_DIR / f"dir_colors-{lua_name}.terminal"
+    dc_overrides = {}
+    if dc_path.exists():
+        for entry in ["DIR", "FILE", "NORMAL", "LINK", "EXEC"]:
+            val = parse_dir_color(dc_path, entry)
+            if val: dc_overrides[entry] = val
+
+    out_path = _NVIM_DIR / f"colorscheme-{lua_name}.html"
+    with open(out_path, "w") as f:
+        f.write(gen(scheme_name, variant, palette, kitty, unfocused, dc_overrides))
+    print(f"wrote {out_path}")

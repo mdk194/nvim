@@ -20,7 +20,7 @@ EIGHTBIT 1
 # file types — truecolor (38;2;R;G;B)
 NORMAL             00;38;2;102;87;103        # border
 FILE               00;38;2;120;84;56          # tan
-DIR                01;38;2;110;90;21         # yellow (bold)
+DIR                01;38;2;69;80;176         # blue (bold)
 LINK               01;38;2;32;98;132         # diff_fg (bold)
 FIFO               03;38;2;32;98;132         # diff_fg (italic)
 SOCK               03;38;2;32;98;132         # diff_fg (italic)
