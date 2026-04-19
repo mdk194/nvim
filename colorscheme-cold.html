@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>cold colorscheme (dark) — Full Palette Preview</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#222;color:#ccc;font-family:system-ui,sans-serif;padding:0 0 3rem}
+nav{position:sticky;top:0;z-index:10;background:#292830;border-bottom:1px solid #333;padding:6px 16px;display:flex;gap:16px;font-size:13px}
+nav a{color:#8898C8;text-decoration:none}
+h1{text-align:center;padding:20px 16px 4px;font-size:20px;color:#ECE0D0}
+h1 small{font-size:12px;color:#967F8E;display:block;margin-top:3px}
+h2{color:#E88040;font-size:15px;margin:0 0 10px;padding-bottom:3px;border-bottom:1px solid #333}
+section{max-width:1300px;margin:0 auto;padding:18px 16px}
+.ptable{width:100%;border-collapse:collapse;font-size:12px;font-family:"SF Mono","Fira Code",monospace}
+.ptable th{text-align:left;padding:3px 8px;color:#967F8E;border-bottom:1px solid #333;font-weight:normal;font-size:11px}
+.ptable td{padding:3px 8px;border-bottom:1px solid #292830}
+.pname{color:#D0A080;width:80px}
+.phex{width:70px}
+.phex code{color:#ECE0D0;font-size:11px}
+.pbg{width:200px;padding:4px 10px !important;border-radius:3px;font-size:12px}
+.pratio{color:#967F8E;width:50px;text-align:right;font-size:11px}
+.atable{border-collapse:collapse;width:100%;font-size:11px;font-family:"SF Mono","Fira Code",monospace;table-layout:fixed}
+.atable th{padding:3px;color:#967F8E;font-weight:normal;text-align:center;border-bottom:1px solid #333}
+.ansi-cell{text-align:center;padding:6px 2px;border-bottom:1px solid #292830}
+.ansi-preview{display:inline-block;padding:2px 8px;border-radius:3px;font-size:13px;font-weight:600;margin:3px 0;min-width:50px}
+.ansi-hex{color:#ECE0D0;font-size:10px}
+.ansi-ratio{color:#967F8E;font-size:9px}
+.code-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+pre.code{background:#1C1B1F;border:1px solid #333;border-radius:5px;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre}
+pre.code .lang{display:block;color:#967F8E;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+pre.term{background:#1C1B1F;border:1px solid #333;border-radius:5px;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre}
+pre.diff{background:#1C1B1F;border:1px solid #333;border-radius:5px;padding:10px 12px;overflow-x:auto;font-size:12px;line-height:1.6;font-family:"SF Mono","Fira Code",monospace;margin:0;white-space:pre}
+.dctx{color:#ECE0D0}
+.dmin{display:block;background:#4C3038;color:#D86060;margin:0 -12px;padding:0 12px}
+.dpls{display:block;background:#184050;color:#8898C8;margin:0 -12px;padding:0 12px}
+</style></head><body>
+<nav><a href="#palette">Palette</a> <a href="#code">Code</a> <a href="#ansi16">ANSI 16</a> <a href="#terminal">Terminal</a> <a href="#diff">Git Diff</a></nav>
+<h1>cold colorscheme (dark)<small>cold &middot; nvim &middot; kitty &middot; git &middot; dir_colors</small></h1>
+<section id="palette"><h2>Palette</h2>
+<table class="ptable">
+<tr><th>Name</th><th>Hex</th><th>on focused #1C1B1F</th><th></th><th>on unfocused #100F0F</th><th></th></tr>
+<tr><td class="pname">bg</td><td class="phex"><code>#1C1B1F</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#1C1B1F;">The quick brown fox</span></td><td class="pratio">1.0:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#1C1B1F;">The quick brown fox</span></td><td class="pratio">1.1:1</td></tr>
+<tr><td class="pname">cursorline</td><td class="phex"><code>#292830</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#292830;">The quick brown fox</span></td><td class="pratio">1.2:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#292830;">The quick brown fox</span></td><td class="pratio">1.3:1</td></tr>
+<tr><td class="pname">comment</td><td class="phex"><code>#82849E</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#82849E;">The quick brown fox</span></td><td class="pratio">4.7:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#82849E;">The quick brown fox</span></td><td class="pratio">5.2:1</td></tr>
+<tr><td class="pname">border</td><td class="phex"><code>#967F8E</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#967F8E;">The quick brown fox</span></td><td class="pratio">4.7:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#967F8E;">The quick brown fox</span></td><td class="pratio">5.2:1</td></tr>
+<tr><td class="pname">fg</td><td class="phex"><code>#ECE0D0</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#ECE0D0;">The quick brown fox</span></td><td class="pratio">13.2:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#ECE0D0;">The quick brown fox</span></td><td class="pratio">14.7:1</td></tr>
+<tr><td class="pname">red</td><td class="phex"><code>#D86060</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#D86060;">The quick brown fox</span></td><td class="pratio">4.7:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#D86060;">The quick brown fox</span></td><td class="pratio">5.3:1</td></tr>
+<tr><td class="pname">yellow</td><td class="phex"><code>#E8B855</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#E8B855;">The quick brown fox</span></td><td class="pratio">9.3:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#E8B855;">The quick brown fox</span></td><td class="pratio">10.4:1</td></tr>
+<tr><td class="pname">blue</td><td class="phex"><code>#8898C8</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#8898C8;">The quick brown fox</span></td><td class="pratio">6.0:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#8898C8;">The quick brown fox</span></td><td class="pratio">6.7:1</td></tr>
+<tr><td class="pname">tan</td><td class="phex"><code>#D0A080</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#D0A080;">The quick brown fox</span></td><td class="pratio">7.4:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#D0A080;">The quick brown fox</span></td><td class="pratio">8.2:1</td></tr>
+<tr><td class="pname">keyword</td><td class="phex"><code>#E88040</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#E88040;">The quick brown fox</span></td><td class="pratio">6.2:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#E88040;">The quick brown fox</span></td><td class="pratio">6.9:1</td></tr>
+<tr><td class="pname">diff_bg</td><td class="phex"><code>#184050</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#184050;">The quick brown fox</span></td><td class="pratio">1.5:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#184050;">The quick brown fox</span></td><td class="pratio">1.7:1</td></tr>
+<tr><td class="pname">diff_del</td><td class="phex"><code>#4C3038</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#4C3038;">The quick brown fox</span></td><td class="pratio">1.5:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#4C3038;">The quick brown fox</span></td><td class="pratio">1.6:1</td></tr>
+<tr><td class="pname">diff_chg</td><td class="phex"><code>#302E48</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#302E48;">The quick brown fox</span></td><td class="pratio">1.3:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#302E48;">The quick brown fox</span></td><td class="pratio">1.5:1</td></tr>
+<tr><td class="pname">diff_fg</td><td class="phex"><code>#50A8B8</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#50A8B8;">The quick brown fox</span></td><td class="pratio">6.2:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#50A8B8;">The quick brown fox</span></td><td class="pratio">7.0:1</td></tr>
+<tr><td class="pname">context</td><td class="phex"><code>#262E40</code></td><td class="pbg" style="background:#1C1B1F;"><span style="color:#262E40;">The quick brown fox</span></td><td class="pratio">1.3:1</td><td class="pbg" style="background:#100F0F;"><span style="color:#262E40;">The quick brown fox</span></td><td class="pratio">1.4:1</td></tr>
+</table></section>
+<section id="code"><h2>Code Preview (treesitter)</h2>
+<div class="code-grid">
+<pre class="code"><span class="lang">rust</span><span style="color:#82849E;font-style:italic;">// A simple HTTP handler</span>
+<span style="color:#E88040;">use</span> <span style="color:#E8B855;">std</span><span style="color:#ECE0D0;">::</span><span style="color:#E8B855;">collections</span><span style="color:#ECE0D0;">::</span><span style="color:#E8B855;">HashMap</span><span style="color:#ECE0D0;">;</span>
+
+<span style="color:#E88040;">pub</span> <span style="color:#E88040;">struct</span> <span style="color:#E8B855;">Config</span> <span style="color:#ECE0D0;">{</span>
+    <span style="color:#ECE0D0;">name</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">String</span><span style="color:#ECE0D0;">,</span>
+    <span style="color:#ECE0D0;">port</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">u16</span><span style="color:#ECE0D0;">,</span>
+<span style="color:#ECE0D0;">}</span>
+
+<span style="color:#E88040;">impl</span> <span style="color:#E8B855;">Config</span> <span style="color:#ECE0D0;">{</span>
+    <span style="color:#E88040;">pub</span> <span style="color:#E88040;">fn</span> <span style="color:#D0A080;">new</span><span style="color:#ECE0D0;">(</span><span style="color:#ECE0D0;font-weight:bold;">name</span><span style="color:#ECE0D0;">:</span> &amp;<span style="color:#E8B855;">str</span><span style="color:#ECE0D0;">)</span> -&gt; <span style="color:#E8B855;">Self</span> <span style="color:#ECE0D0;">{</span>
+        <span style="color:#E8B855;">Self</span> <span style="color:#ECE0D0;">{</span>
+            <span style="color:#ECE0D0;">name</span><span style="color:#ECE0D0;">:</span> <span style="color:#ECE0D0;font-weight:bold;">name</span><span style="color:#ECE0D0;">.</span><span style="color:#D0A080;">to_string</span><span style="color:#ECE0D0;">(),</span>
+            <span style="color:#ECE0D0;">port</span><span style="color:#ECE0D0;">:</span> <span style="color:#E88040;">8080</span><span style="color:#ECE0D0;">,</span>
+        <span style="color:#ECE0D0;">}</span>
+    <span style="color:#ECE0D0;">}</span>
+
+<span style="display:block;background:#333138;">    <span style="color:#E88040;">pub</span> <span style="color:#E88040;">fn</span> <span style="color:#D0A080;">addr</span><span style="color:#ECE0D0;">(&amp;</span><span style="color:#E88040;">self</span><span style="color:#ECE0D0;">)</span> -&gt; <span style="color:#E8B855;">String</span> <span style="color:#ECE0D0;">{</span></span><span style="display:block;background:#333138;">        <span style="color:#D86060;">format!</span><span style="color:#ECE0D0;">(</span><span style="color:#8898C8;">"{}:{}"</span><span style="color:#ECE0D0;">,</span> <span style="color:#E88040;">self</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">name</span><span style="color:#ECE0D0;">,</span> <span style="color:#E88040;">self</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">port</span><span style="color:#ECE0D0;">)</span></span>    <span style="color:#ECE0D0;">}</span>
+<span style="color:#ECE0D0;">}</span></pre>
+<pre class="code"><span class="lang">python</span><span style="color:#82849E;font-style:italic;"># Data processing pipeline</span>
+<span style="color:#E88040;">from</span> <span style="color:#E8B855;">dataclasses</span> <span style="color:#E88040;">import</span> <span style="color:#D0A080;">dataclass</span>
+<span style="color:#E88040;">from</span> <span style="color:#E8B855;">typing</span> <span style="color:#E88040;">import</span> <span style="color:#D0A080;">Optional</span>
+
+<span style="color:#E88040;">@</span><span style="color:#D0A080;">dataclass</span>
+<span style="color:#E88040;">class</span> <span style="color:#E8B855;">Record</span><span style="color:#ECE0D0;">:</span>
+    <span style="color:#ECE0D0;">name</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">str</span>
+    <span style="color:#ECE0D0;">value</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">float</span>
+    <span style="color:#ECE0D0;">tag</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">Optional</span><span style="color:#ECE0D0;">[</span><span style="color:#E8B855;">str</span><span style="color:#ECE0D0;">]</span> <span style="color:#ECE0D0;">=</span> <span style="color:#E88040;">None</span>
+
+<span style="color:#E88040;">def</span> <span style="color:#D0A080;">process</span><span style="color:#ECE0D0;">(</span><span style="color:#ECE0D0;font-weight:bold;">records</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">list</span><span style="color:#ECE0D0;">[</span><span style="color:#E8B855;">Record</span><span style="color:#ECE0D0;">]) -&gt;</span> <span style="color:#E8B855;">dict</span><span style="color:#ECE0D0;">:</span>
+    <span style="color:#ECE0D0;">result</span> <span style="color:#ECE0D0;">=</span> <span style="color:#ECE0D0;">{}</span>
+    <span style="color:#E8B855;">for</span> <span style="color:#ECE0D0;">rec</span> <span style="color:#E8B855;">in</span> <span style="color:#ECE0D0;font-weight:bold;">records</span><span style="color:#ECE0D0;">:</span>
+        <span style="color:#E88040;">if</span> <span style="color:#ECE0D0;">rec</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">value</span> <span style="color:#ECE0D0;">&gt;</span> <span style="color:#E88040;">0</span><span style="color:#ECE0D0;">:</span>
+            <span style="color:#ECE0D0;">result</span><span style="color:#ECE0D0;">[</span><span style="color:#ECE0D0;">rec</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">name</span><span style="color:#ECE0D0;">]</span> <span style="color:#ECE0D0;">=</span> <span style="color:#ECE0D0;">rec</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">value</span>
+    <span style="color:#E88040;">return</span> <span style="color:#ECE0D0;">result</span></pre>
+<pre class="code"><span class="lang">go</span><span style="color:#82849E;font-style:italic;">// Package server provides HTTP handlers</span>
+<span style="color:#E88040;">package</span> <span style="color:#ECE0D0;">server</span>
+
+<span style="color:#E88040;">import</span> <span style="color:#ECE0D0;">(</span>
+    <span style="color:#8898C8;">"fmt"</span>
+    <span style="color:#8898C8;">"net/http"</span>
+<span style="color:#ECE0D0;">)</span>
+
+<span style="color:#E88040;">type</span> <span style="color:#E8B855;">Handler</span> <span style="color:#E88040;">struct</span> <span style="color:#ECE0D0;">{</span>
+    <span style="color:#ECE0D0;">Port</span> <span style="color:#E8B855;">int</span>
+<span style="color:#ECE0D0;">}</span>
+
+<span style="color:#E88040;">func</span> <span style="color:#ECE0D0;">(</span><span style="color:#ECE0D0;font-weight:bold;">h</span> *<span style="color:#E8B855;">Handler</span><span style="color:#ECE0D0;">)</span> <span style="color:#D0A080;">ServeHTTP</span><span style="color:#ECE0D0;">(</span><span style="color:#ECE0D0;font-weight:bold;">w</span> <span style="color:#E8B855;">http.ResponseWriter</span><span style="color:#ECE0D0;">,</span> <span style="color:#ECE0D0;font-weight:bold;">r</span> *<span style="color:#E8B855;">http.Request</span><span style="color:#ECE0D0;">)</span> <span style="color:#ECE0D0;">{</span>
+    <span style="color:#D86060;">fmt</span><span style="color:#ECE0D0;">.</span><span style="color:#D0A080;">Fprintf</span><span style="color:#ECE0D0;">(</span><span style="color:#ECE0D0;font-weight:bold;">w</span><span style="color:#ECE0D0;">,</span> <span style="color:#8898C8;">"port: %d"</span><span style="color:#ECE0D0;">,</span> <span style="color:#ECE0D0;font-weight:bold;">h</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">Port</span><span style="color:#ECE0D0;">)</span>
+<span style="color:#ECE0D0;">}</span></pre>
+<pre class="code"><span class="lang">typescript</span><span style="color:#82849E;font-style:italic;">// User management module</span>
+<span style="color:#E88040;">interface</span> <span style="color:#E8B855;">User</span> <span style="color:#ECE0D0;">{</span>
+  <span style="color:#ECE0D0;">id</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">number</span><span style="color:#ECE0D0;">;</span>
+  <span style="color:#ECE0D0;">name</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">string</span><span style="color:#ECE0D0;">;</span>
+  <span style="color:#ECE0D0;">role</span><span style="color:#ECE0D0;">:</span> <span style="color:#8898C8;">"admin"</span> <span style="color:#ECE0D0;">|</span> <span style="color:#8898C8;">"user"</span><span style="color:#ECE0D0;">;</span>
+<span style="color:#ECE0D0;">}</span>
+
+<span style="color:#E88040;">const</span> <span style="color:#D0A080;">getAdmins</span> <span style="color:#ECE0D0;">=</span> <span style="color:#E88040;">async</span> <span style="color:#ECE0D0;">(</span><span style="color:#ECE0D0;font-weight:bold;">users</span><span style="color:#ECE0D0;">:</span> <span style="color:#E8B855;">User</span><span style="color:#ECE0D0;">[])</span> : <span style="color:#E8B855;">Promise</span><span style="color:#ECE0D0;">&lt;</span><span style="color:#E8B855;">User</span><span style="color:#ECE0D0;">[]&gt;</span> <span style="color:#ECE0D0;">=&gt;</span> <span style="color:#ECE0D0;">{</span>
+  <span style="color:#E88040;">const</span> <span style="color:#ECE0D0;">result</span> <span style="color:#ECE0D0;">=</span> <span style="color:#ECE0D0;font-weight:bold;">users</span><span style="color:#ECE0D0;">.</span><span style="color:#D0A080;">filter</span><span style="color:#ECE0D0;">((</span><span style="color:#ECE0D0;font-weight:bold;">u</span><span style="color:#ECE0D0;">)</span> <span style="color:#ECE0D0;">=&gt;</span> <span style="color:#ECE0D0;">{</span>
+    <span style="color:#E88040;">return</span> <span style="color:#ECE0D0;font-weight:bold;">u</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">role</span> <span style="color:#ECE0D0;">===</span> <span style="color:#8898C8;">"admin"</span>
+  <span style="color:#ECE0D0;">})</span>
+  <span style="color:#D0A080;">console</span><span style="color:#ECE0D0;">.</span><span style="color:#D0A080;">log</span><span style="color:#ECE0D0;">(</span><span style="color:#8898C8;">`Found ${</span><span style="color:#ECE0D0;">result</span><span style="color:#ECE0D0;">.</span><span style="color:#ECE0D0;">length</span><span style="color:#8898C8;"} admins`</span><span style="color:#ECE0D0;">)</span>
+  <span style="color:#E88040;">return</span> <span style="color:#ECE0D0;">result</span>
+<span style="color:#ECE0D0;">}</span></pre>
+</div></section>
+<section id="ansi16"><h2>Terminal 16 Colors</h2>
+<table class="atable">
+<tr><th>color0</th><th>color1</th><th>color2</th><th>color3</th><th>color4</th><th>color5</th><th>color6</th><th>color7</th></tr>
+<tr><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#292830;">black</div><div class="ansi-hex">#292830</div><div class="ansi-ratio">1.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#A85050;">red</div><div class="ansi-hex">#A85050</div><div class="ansi-ratio">3.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#82849E;">green</div><div class="ansi-hex">#82849E</div><div class="ansi-ratio">4.7:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#C09838;">yellow</div><div class="ansi-hex">#C09838</div><div class="ansi-ratio">6.4:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#5868A8;">blue</div><div class="ansi-hex">#5868A8</div><div class="ansi-ratio">3.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#8A5888;">magenta</div><div class="ansi-hex">#8A5888</div><div class="ansi-ratio">3.1:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#408888;">cyan</div><div class="ansi-hex">#408888</div><div class="ansi-ratio">4.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#D0A080;">white</div><div class="ansi-hex">#D0A080</div><div class="ansi-ratio">7.4:1</div></td></tr></table>
+<div style="height:12px"></div>
+<table class="atable">
+<tr><th>color8</th><th>color9</th><th>color10</th><th>color11</th><th>color12</th><th>color13</th><th>color14</th><th>color15</th></tr>
+<tr><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#967F8E;">br black</div><div class="ansi-hex">#967F8E</div><div class="ansi-ratio">4.7:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#E88040;">br red</div><div class="ansi-hex">#E88040</div><div class="ansi-ratio">6.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#50A8B8;">br green</div><div class="ansi-hex">#50A8B8</div><div class="ansi-ratio">6.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#E8B855;">br yellow</div><div class="ansi-hex">#E8B855</div><div class="ansi-ratio">9.3:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#8898C8;">br blue</div><div class="ansi-hex">#8898C8</div><div class="ansi-ratio">6.0:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#A878A8;">br magenta</div><div class="ansi-hex">#A878A8</div><div class="ansi-ratio">4.8:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#50A8B8;">br cyan</div><div class="ansi-hex">#50A8B8</div><div class="ansi-ratio">6.2:1</div></td><td class="ansi-cell"><div class="ansi-preview" style="background:#1C1B1F;color:#ECE0D0;">br white</div><div class="ansi-hex">#ECE0D0</div><div class="ansi-ratio">13.2:1</div></td></tr></table></section>
+<section id="terminal"><h2>Terminal Session</h2>
+<pre class="term"><span style="color:#967F8E;">user@host</span><span style="color:#ECE0D0;">:</span><span style="color:#5868A8;">~/projects</span><span style="color:#ECE0D0;">$ </span><span style="color:#ECE0D0;">ls -la</span>
+<span style="color:#967F8E;">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:#E8B855;font-weight:bold;">src/</span>
+<span style="color:#967F8E;">drwxr-xr-x  user group  4096 Apr  1 </span><span style="color:#E8B855;font-weight:bold;">docs/</span>
+<span style="color:#967F8E;">-rw-r--r--  user group  2048 Apr  1 </span><span style="color:#D0A080;">README.md</span>
+<span style="color:#967F8E;">-rw-r--r--  user group   512 Apr  1 </span><span style="color:#D0A080;">config.toml</span>
+<span style="color:#967F8E;">-rwxr-xr-x  user group   384 Apr  1 </span><span style="color:#ECE0D0;">run.sh</span>
+<span style="color:#967F8E;">-rw-r--r--  user group   48K Apr  1 </span><span style="color:#82849E;">screenshot.png</span>
+<span style="color:#967F8E;">-rw-r--r--  user group  120M Apr  1 </span><span style="color:#967F8E;">video.mp4</span>
+<span style="color:#967F8E;">-rw-r--r--  user group   32K Apr  1 </span><span style="color:#E88040;font-weight:bold;font-style:italic;">archive.tar.gz</span>
+<span style="color:#967F8E;">lrwxrwxrwx  user group    24 Apr  1 </span><span style="color:#50A8B8;font-weight:bold;">latest -> releases/v2.1</span>
+<span style="color:#967F8E;">lrwxrwxrwx  user group    18 Apr  1 </span><span style="color:#D86060;">broken -> /no/such/path</span>
+
+<span style="color:#967F8E;">user@host</span><span style="color:#ECE0D0;">:</span><span style="color:#5868A8;">~/projects</span><span style="color:#ECE0D0;">$ </span><span style="color:#ECE0D0;">git status</span>
+<span style="color:#ECE0D0;">On branch </span><span style="color:#82849E;">main</span>
+<span style="color:#ECE0D0;">Changes not staged for commit:</span>
+  <span style="color:#50A8B8;">modified:   src/main.rs</span>
+  <span style="color:#50A8B8;">modified:   src/config.rs</span>
+<span style="color:#ECE0D0;">Untracked files:</span>
+  <span style="color:#D86060;">src/new_module.rs</span>
+
+<span style="color:#967F8E;">user@host</span><span style="color:#ECE0D0;">:</span><span style="color:#5868A8;">~/projects</span><span style="color:#ECE0D0;">$ </span><span style="color:#ECE0D0;">grep -rn "TODO" src/</span>
+<span style="color:#8A5888;">src/main.rs</span><span style="color:#408888;">:</span><span style="color:#82849E;">42</span><span style="color:#408888;">:</span><span style="color:#ECE0D0;">    // </span><span style="background:#E8B855;color:#1C1B1F;font-weight:bold;">TODO</span><span style="color:#ECE0D0;">: fix error handling</span>
+<span style="color:#8A5888;">src/config.rs</span><span style="color:#408888;">:</span><span style="color:#82849E;">17</span><span style="color:#408888;">:</span><span style="color:#ECE0D0;">    // </span><span style="background:#E8B855;color:#1C1B1F;font-weight:bold;">TODO</span><span style="color:#ECE0D0;">: add validation</span>
+<span style="color:#8A5888;">src/utils.rs</span><span style="color:#408888;">:</span><span style="color:#82849E;">8</span><span style="color:#408888;">:</span><span style="color:#ECE0D0;">     // </span><span style="background:#E8B855;color:#1C1B1F;font-weight:bold;">TODO</span><span style="color:#ECE0D0;">: optimize allocations</span>
+</pre></section>
+<section id="diff"><h2>Git Diff</h2>
+<pre class="diff"><span style="color:#E8B855;">diff --git a/src/config.rs b/src/config.rs</span>
+<span style="color:#E8B855;">index 3a1b2c4..5d6e7f8 100644</span>
+<span style="color:#E8B855;">--- a/src/config.rs</span>
+<span style="color:#E8B855;">+++ b/src/config.rs</span>
+<span style="color:#50A8B8;font-weight:bold;">@@ -12,7 +12,9 @@ impl Config {</span>
+<span class="dctx">     pub fn new(name: &amp;str) -&gt; Self {</span>
+<span class="dctx">         Self {</span>
+<span class="dctx">             name: name.to_string(),</span>
+<span class="dmin">-            port: 8080,</span>
+<span class="dpls">+            port: config.port.unwrap_or(8080),</span>
+<span class="dpls">+            host: config.host.clone(),</span>
+<span class="dctx">         }</span>
+<span class="dctx">     }</span>
+
+<span style="color:#E8B855;">diff --git a/src/main.rs b/src/main.rs</span>
+<span style="color:#E8B855;">--- a/src/main.rs</span>
+<span style="color:#E8B855;">+++ b/src/main.rs</span>
+<span style="color:#50A8B8;font-weight:bold;">@@ -1,5 +1,6 @@</span>
+<span class="dctx"> use std::collections::HashMap;</span>
+<span class="dmin">-use std::env;</span>
+<span class="dpls">+use std::env;</span>
+<span class="dpls">+use std::path::PathBuf;</span>
+<span class="dctx"> </span>
+<span class="dctx"> fn main() {</span></pre>
+</section>
+</body></html>

@@ -316,15 +316,25 @@ Leader key: `,`
 
 ## Colorscheme
 
-Three variants: `mdk-base16` (full), `mdk-base8` (reduced), `mdk-base4` (minimal).
-Palette source of truth: [`colors/mdk-base16.lua`](colors/mdk-base16.lua).
+Two schemes, each with dark and light variants:
 
-[Preview](https://htmlpreview.github.io/?https://github.com/mdk194/nvim/blob/main/colorscheme.html) — palette swatches, code highlighting (Rust, Python, Go, TypeScript), terminal session, git diff.
+- **warm** — earthy olive/brown tones ([dark preview](https://htmlpreview.github.io/?https://github.com/mdk194/nvim/blob/main/colorscheme-warm.html), [light preview](https://htmlpreview.github.io/?https://github.com/mdk194/nvim/blob/main/colorscheme-warm-light.html))
+- **cold** — desert storm indigo/purple tones ([dark preview](https://htmlpreview.github.io/?https://github.com/mdk194/nvim/blob/main/colorscheme-cold.html), [light preview](https://htmlpreview.github.io/?https://github.com/mdk194/nvim/blob/main/colorscheme-cold-light.html))
+
+Switch with `toggle-theme`:
+
+```bash
+toggle-theme              # toggle dark/light
+toggle-theme cold         # switch to cold, keep mode
+toggle-theme dark warm    # set both
+```
 
 ### Terminal configs
 
-- [`kitty.terminal`](kitty.terminal) — kitty 16 ANSI colors, foreground, background, cursor
-- [`git.terminal`](git.terminal) — git status, diff, delta colors
-- [`dir_colors.terminal`](dir_colors.terminal) — ls/grep truecolor output (load via `eval $(dircolors dir_colors.terminal)`)
+Each scheme has matching terminal configs:
+
+- `kitty-{warm,cold}[-light].terminal` — kitty 16 ANSI colors, foreground, background, cursor
+- `git-{warm,cold}[-light].terminal` — git status, diff, delta colors
+- `dir_colors-{warm,cold}[-light].terminal` — ls/grep truecolor output
 - `export GREP_COLORS='mt=1;7;33'` — grep matched text: bold reverse yellow (kitty color3)
 

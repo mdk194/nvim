@@ -1,4 +1,4 @@
-# mdk-base16-light git/delta colors
+# warm-light git/delta colors
 # Add to ~/.gitconfig
 
 [color]
@@ -23,7 +23,8 @@
 	navigate = true
 	syntax-theme = Coldark-Cold
 	side-by-side = true
-	file-decoration-style = box
+	file-style = "#A5551E" bold
+	file-decoration-style = "#A5551E" box
 	hunk-header-decoration-style = omit
 	line-numbers-left-format = "{nm:>4}┊"
 	line-numbers-right-format = "{np:>4}│"

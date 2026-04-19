@@ -1,0 +1,37 @@
+# cold git/delta colors (dark)
+# Add to ~/.gitconfig
+
+[color]
+	ui = true
+[color "status"]
+	added = "#E8B855"
+	changed = "#50A8B8"
+	untracked = "#D86060"
+[color "diff-highlight"]
+	oldNormal = "#D86060"
+	oldHighlight = "#D86060" bold
+	newNormal = "#8898C8"
+	newHighlight = "#8898C8" bold
+[color "diff"]
+	meta = "#E8B855"
+	frag = "#50A8B8" bold
+	commit = "#E8B855" bold
+	old = "#D86060" bold
+	new = "#8898C8" bold
+	whitespace = "#D86060" reverse
+[delta]
+	navigate = true
+	syntax-theme = Dracula
+	side-by-side = true
+	file-style = "#E88040" bold
+	file-decoration-style = "#E88040" box
+	hunk-header-decoration-style = omit
+	line-numbers-left-format = "{nm:>4}┊"
+	line-numbers-right-format = "{np:>4}│"
+	line-numbers-minus-style = "#D86060"
+	line-numbers-zero-style = "#50A8B8"
+	line-numbers-plus-style = "#8898C8" bold
+	minus-style = syntax "#4C3038"
+	minus-emph-style = syntax "#5C3C48"
+	plus-style = syntax "#184050"
+	plus-emph-style = syntax "#225060"

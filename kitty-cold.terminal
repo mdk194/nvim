@@ -1,0 +1,32 @@
+# cold kitty terminal colors (dark)
+# Copy to ~/.config/kitty/kitty.conf
+
+background #1C1B1F
+# unfocused_background #100F0F
+foreground #ECE0D0
+cursor     #ECE0D0
+url_color  #4858A0
+
+selection_background    #8eeb46
+selection_foreground    #000000
+
+tab_bar_background      #100F0F
+inactive_tab_background #100F0F
+inactive_tab_foreground #ECE0D0
+
+color0  #292830
+color1  #A85050
+color2  #82849E
+color3  #C09838
+color4  #5868A8
+color5  #8A5888
+color6  #408888
+color7  #D0A080
+color8  #967F8E
+color9  #E88040
+color10 #50A8B8
+color11 #E8B855
+color12 #8898C8
+color13 #A878A8
+color14 #50A8B8
+color15 #ECE0D0

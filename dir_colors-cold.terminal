@@ -1,0 +1,152 @@
+# ----------------------------------------
+# file: $HOME/.dir_colors
+# vim:fenc=utf-8:nu:ai:si:et:ts=4:sw=4:
+# ----------------------------------------
+# Palette: cold dark (synced with nvim/kitty)
+#   tan     #D0A080 = 208;160;128
+#   keyword #E88040 = 232;128;64
+#   diff_fg #50A8B8 = 80;168;184
+#   comment #82849E = 130;132;158
+#   yellow  #E8B855 = 232;184;85
+#   blue    #8898C8 = 136;152;200
+#   border  #967F8E = 150;127;142
+#   red     #D86060 = 216;96;96
+#   fg      #ECE0D0 = 236;224;208
+
+COLOR all
+OPTIONS -F -b -T 0
+EIGHTBIT 1
+
+# file types — truecolor (38;2;R;G;B)
+NORMAL             00;38;2;150;127;142        # border
+FILE               00;38;2;208;160;128        # tan
+DIR                01;38;2;232;184;85         # yellow (bold)
+LINK               01;38;2;80;168;184         # diff_fg (bold)
+FIFO               03;38;2;80;168;184         # diff_fg (italic)
+SOCK               03;38;2;80;168;184         # diff_fg (italic)
+BLK                03;38;2;150;127;142        # border (italic)
+CHR                03;38;2;150;127;142        # border (italic)
+ORPHAN             04;38;2;216;96;96          # red (underline)
+STICKY_OTHER_WRITABLE 01;38;2;236;224;208     # fg (bold)
+OTHER_WRITABLE     38;2;150;127;142           # border
+STICKY             01;38;2;236;224;208        # fg (bold)
+
+EXEC               00;38;2;236;224;208        # fg
+.cmd               00;38;2;236;224;208
+.exe               00;38;2;236;224;208
+.com               00;38;2;236;224;208
+.btm               00;38;2;236;224;208
+.bat               00;38;2;236;224;208
+.sh                00;38;2;236;224;208
+
+.tar               03;01;38;2;232;128;64      # keyword (italic bold)
+.tgz               03;01;38;2;232;184;85
+.zip               03;01;38;2;232;184;85
+.gz                03;01;38;2;232;184;85
+.bz2               03;01;38;2;232;184;85
+.tar.xz            03;01;38;2;232;184;85
+.tar.gz            03;01;38;2;232;184;85
+.tar.zst           03;01;38;2;232;184;85
+.xz                03;01;38;2;232;184;85
+.rar               03;01;38;2;232;184;85
+.zst               03;01;38;2;232;184;85
+.7z                03;01;38;2;232;184;85
+
+.pdf               38;2;130;132;158           # comment
+.jpg               38;2;130;132;158
+.gif               38;2;130;132;158
+.bmp               38;2;130;132;158
+.xbm               38;2;130;132;158
+.xpm               38;2;130;132;158
+.tif               38;2;130;132;158
+.tga               38;2;130;132;158
+.png               38;2;130;132;158
+.jpeg              38;2;130;132;158
+.tiff              38;2;130;132;158
+.xcf               38;2;130;132;158
+.xcf.gz            38;2;130;132;158
+.blend             38;2;130;132;158
+.pcx               38;2;130;132;158
+.ppm               38;2;130;132;158
+.svg               38;2;130;132;158
+.webp              38;2;130;132;158
+.ico               38;2;130;132;158
+.avif              38;2;130;132;158
+
+.mp3               38;2;150;127;142           # border
+.flac              38;2;150;127;142
+.mid               38;2;150;127;142
+.wav               38;2;150;127;142
+.au                38;2;150;127;142
+.ape               38;2;150;127;142
+.avi               38;2;150;127;142
+.flv               38;2;150;127;142
+.mkv               38;2;150;127;142
+.m4v               38;2;150;127;142
+.mp4               38;2;150;127;142
+.mov               38;2;150;127;142
+.mpg               38;2;150;127;142
+.mpeg              38;2;150;127;142
+.ogv               38;2;150;127;142
+.webm              38;2;150;127;142
+.m4a               38;2;150;127;142
+.ogg               38;2;150;127;142
+.opus              38;2;150;127;142
+
+# systemd
+*.mount            01;38;2;236;224;208
+*.path             01;38;2;232;184;85
+*.rules            01;38;2;80;168;184
+*.socket           01;38;2;208;160;128
+*.service          01;38;2;232;184;85
+*.target           01;38;2;236;224;208
+
+TERM Eterm
+TERM ansi
+TERM color-xterm
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM cons25
+TERM console
+TERM dtterm
+TERM eterm-color
+TERM gnome
+TERM gnome-256color
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mach-color
+TERM mlterm
+TERM putty
+TERM rxvt
+TERM rxvt-256color
+TERM rxvt-unicode
+TERM rxvt-unicode-256color
+TERM rxvt-unicode256
+TERM screen
+TERM screen-256color
+TERM screen-256color-bce
+TERM screen-bce
+TERM screen-w
+TERM screen.rxvt
+TERM screen.linux
+TERM terminator
+TERM vt100
+TERM xterm
+TERM xterm-16color
+TERM xterm-256color
+TERM xterm-88color
+TERM xterm-color
+TERM xterm-debian
+TERM xterm-kitty
+TERM kitty

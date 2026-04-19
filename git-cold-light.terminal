@@ -1,0 +1,37 @@
+# cold-light git/delta colors
+# Add to ~/.gitconfig
+
+[color]
+	ui = true
+[color "status"]
+	added = "#7D6718"
+	changed = "#257096"
+	untracked = "#B24545"
+[color "diff-highlight"]
+	oldNormal = "#B24545"
+	oldHighlight = "#B24545" bold
+	newNormal = "#4858A0"
+	newHighlight = "#4858A0" bold
+[color "diff"]
+	meta = "#7D6718"
+	frag = "#257096" bold
+	commit = "#7D6718" bold
+	old = "#B24545" bold
+	new = "#4858A0" bold
+	whitespace = "#B24545" reverse
+[delta]
+	navigate = true
+	syntax-theme = Coldark-Cold
+	side-by-side = true
+	file-style = "#A1551F" bold
+	file-decoration-style = "#A1551F" box
+	hunk-header-decoration-style = omit
+	line-numbers-left-format = "{nm:>4}┊"
+	line-numbers-right-format = "{np:>4}│"
+	line-numbers-minus-style = "#B24545"
+	line-numbers-zero-style = "#257096"
+	line-numbers-plus-style = "#4858A0" bold
+	minus-style = syntax "#F0D8D5"
+	minus-emph-style = syntax "#E8C0B8"
+	plus-style = syntax "#D8ECF0"
+	plus-emph-style = syntax "#C0DCE8"

@@ -1,27 +1,27 @@
 vim.cmd("highlight clear")
-vim.g.colors_name = "mdk-light"
+vim.g.colors_name = "cold-light"
 vim.o.termguicolors = true
 
 local hl = function(name, opts)
   vim.api.nvim_set_hl(0, name, opts)
 end
 
--- palette (16 colors) — light variant, same hues as dark
-local bg       = "#F0EBE1"
-local cursorline      = "#E5DED2"
-local comment  = "#5D6E67"
-local border  = "#766859"
-local fg       = "#3B3530"
-local red      = "#BB4040"
-local yellow   = "#826714"
-local blue     = "#5560A5"
-local tan      = "#7A6248"
-local keyword  = "#A5551E"
-local diff_bg  = "#D8EDF5"
-local diff_del = "#F5D8D5"
-local diff_chg = "#E2E0E8"
-local diff_fg  = "#2C7197"
-local context  = "#D2E5D6"
+-- palette (16 colors) — desert storm, warm cream light
+local bg       = "#F0E8DC"
+local cursorline      = "#E4DCD0"
+local comment  = "#6A6480"
+local border  = "#746476"
+local fg       = "#1C1828"
+local red      = "#B24545"
+local yellow   = "#7D6718"
+local blue     = "#4858A0"
+local tan      = "#886040"
+local keyword  = "#A1551F"
+local diff_bg  = "#D8ECF0"
+local diff_del = "#F0D8D5"
+local diff_chg = "#E0DCE8"
+local diff_fg  = "#257096"
+local context  = "#D0D8E8"
 
 -- aliases
 local orange   = keyword
@@ -60,7 +60,7 @@ hl("WinBarNC",      { fg = comment, bg = cursorline, bold = true })
 hl("TabLine",       { fg = comment, bg = cursorline })
 hl("TabLineSel",    { fg = blue, bg = cursorline })
 hl("TabLineFill",   { fg = comment, bg = cursorline })
-hl("Visual",        { bg = "#D2C8B8" })
+hl("Visual",        { bg = "#D8D0C4" })
 hl("VisualNOS",     { fg = red })
 hl("Search",        { fg = cursorline, bg = yellow })
 hl("IncSearch",     { fg = cursorline, bg = orange })

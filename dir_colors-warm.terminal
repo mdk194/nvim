@@ -2,7 +2,7 @@
 # file: $HOME/.dir_colors
 # vim:fenc=utf-8:nu:ai:si:et:ts=4:sw=4:
 # ----------------------------------------
-# Palette: mdk-base16 (synced with nvim/kitty)
+# Palette: warm dark (synced with nvim/kitty)
 #   tan     #C1A78E = 193;167;142
 #   keyword #E67E40 = 230;126;64
 #   diff_fg #5BA0C2 = 91;160;194

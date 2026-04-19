@@ -1,41 +1,67 @@
 #!/bin/bash
-# Toggle mdk colorscheme between dark and light
-# Usage: toggle-theme [light|dark]
+# Toggle colorscheme between dark/light and warm/cold
+# Usage: toggle-theme [light|dark] [warm|cold]
 set -euo pipefail
 
 NVIM_DIR="$HOME/nvim"
 GITCONFIG="$HOME/dotfiles/gitconfig"
 
-# Determine target mode
-if [[ "${1:-}" =~ ^(light|dark)$ ]]; then
-    MODE="$1"
-elif grep -q 'colorscheme mdk-light' "$NVIM_DIR/lua/settings.lua"; then
-    MODE="dark"
+# portable sed -i (macOS needs '' arg, Linux doesn't)
+if [[ "$(uname)" == "Darwin" ]]; then
+    sedi() { sed -i '' "$@"; }
 else
-    MODE="light"
+    sedi() { sed -i "$@"; }
 fi
 
+# Detect current scheme from settings.lua
+CURRENT=$(sed -n 's/.*colorscheme \([^]]*\)]].*/\1/p' "$NVIM_DIR/lua/settings.lua")
+case "$CURRENT" in
+    cold|cold-light) CUR_SCHEME=cold ;;
+    *)               CUR_SCHEME=warm ;;
+esac
+case "$CURRENT" in
+    *-light) CUR_MODE=light ;;
+    *)       CUR_MODE=dark ;;
+esac
+
+# Parse arguments: accept mode and/or scheme in any order
+MODE="" SCHEME=""
+for arg in "$@"; do
+    case "$arg" in
+        light|dark)  MODE="$arg" ;;
+        warm|cold)   SCHEME="$arg" ;;
+    esac
+done
+
+# Default: toggle mode only when no args given; keep scheme
+if [[ -z "$MODE" && -z "$SCHEME" ]]; then
+    [[ "$CUR_MODE" == "dark" ]] && MODE=light || MODE=dark
+fi
+[[ -z "$MODE" ]]   && MODE="$CUR_MODE"
+[[ -z "$SCHEME" ]] && SCHEME="$CUR_SCHEME"
+
 [[ "$MODE" == "light" ]] && S="-light" || S=""
+CS="${SCHEME}${S}"
 
 # nvim settings.lua
-sed -i \
+sedi \
     -e 's/background", "[^"]*"/background", "'"$MODE"'"/' \
-    -e 's/colorscheme mdk[^]]*]]/colorscheme mdk'"$S"']]/' \
+    -e 's/colorscheme [^]]*]]/colorscheme '"$CS"']]/' \
     "$NVIM_DIR/lua/settings.lua"
 
 # kitty: repoint symlink (kitty.conf includes it, focus script reads it)
-ln -sf "$NVIM_DIR/kitty$S.terminal" "$NVIM_DIR/kitty-active.terminal"
+ln -sf "$NVIM_DIR/kitty-${SCHEME}${S}.terminal" "$NVIM_DIR/kitty-active.terminal"
 
 # git: include path
-sed -i 's|path = ~/nvim/git[^ ]*\.terminal|path = ~/nvim/git'"$S"'.terminal|' "$GITCONFIG"
+sedi 's|path = ~/nvim/git[^ ]*\.terminal|path = ~/nvim/git-'"${SCHEME}${S}"'.terminal|' "$GITCONFIG"
 
 # dir_colors: repoint symlink
-ln -sf "$NVIM_DIR/dir_colors$S.terminal" "$HOME/.dir_colors"
+ln -sf "$NVIM_DIR/dir_colors-${SCHEME}${S}.terminal" "$HOME/.dir_colors"
 
 # live-reload running nvim instances
 for srv in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*/0; do
     [[ -S "$srv" ]] && nvim --server "$srv" --remote-send \
-        "<Cmd>set background=$MODE | colorscheme mdk$S<CR>" 2>/dev/null || true
+        "<Cmd>set background=$MODE | colorscheme $CS<CR>" 2>/dev/null || true
 done
 
-echo "$MODE"
+echo "$SCHEME $MODE"

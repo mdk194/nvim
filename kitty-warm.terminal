@@ -1,4 +1,4 @@
-# mdk-base16 kitty terminal colors
+# warm kitty terminal colors (dark)
 # Copy to ~/.config/kitty/kitty.conf
 
 background #232521
@@ -10,7 +10,8 @@ url_color  #7F91B2
 selection_background    #8eeb46
 selection_foreground    #000000
 
-inactive_tab_background #34302C
+tab_bar_background      #1C1F1C
+inactive_tab_background #1C1F1C
 inactive_tab_foreground #ECE1D7
 
 color0  #34302C
