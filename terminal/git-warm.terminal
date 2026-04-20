@@ -23,8 +23,8 @@
 	navigate = true
 	syntax-theme = Coldark-Dark
 	side-by-side = true
-	file-style = "#E67E40" bold
-	file-decoration-style = "#E67E40" box
+	file-style = "#D98657" bold
+	file-decoration-style = "#D98657" box
 	hunk-header-decoration-style = omit
 	line-numbers-left-format = "{nm:>4}┊"
 	line-numbers-right-format = "{np:>4}│"

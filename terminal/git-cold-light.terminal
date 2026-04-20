@@ -10,14 +10,14 @@
 [color "diff-highlight"]
 	oldNormal = "#9C3C3C"
 	oldHighlight = "#9C3C3C" bold
-	newNormal = "#4550B0"
-	newHighlight = "#4550B0" bold
+	newNormal = "#49559F"
+	newHighlight = "#49559F" bold
 [color "diff"]
 	meta = "#6E5A15"
 	frag = "#206284" bold
 	commit = "#6E5A15" bold
 	old = "#9C3C3C" bold
-	new = "#4550B0" bold
+	new = "#49559F" bold
 	whitespace = "#9C3C3C" reverse
 [delta]
 	navigate = true
@@ -30,7 +30,7 @@
 	line-numbers-right-format = "{np:>4}│"
 	line-numbers-minus-style = "#9C3C3C"
 	line-numbers-zero-style = "#206284"
-	line-numbers-plus-style = "#4550B0" bold
+	line-numbers-plus-style = "#49559F" bold
 	minus-style = syntax "#DAAAA0"
 	minus-emph-style = syntax "#C88878"
 	plus-style = syntax "#B0D0E0"

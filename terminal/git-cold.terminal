@@ -23,8 +23,8 @@
 	navigate = true
 	syntax-theme = Dracula
 	side-by-side = true
-	file-style = "#E88040" bold
-	file-decoration-style = "#E88040" box
+	file-style = "#DB8858" bold
+	file-decoration-style = "#DB8858" box
 	hunk-header-decoration-style = omit
 	line-numbers-left-format = "{nm:>4}┊"
 	line-numbers-right-format = "{np:>4}│"

@@ -8,7 +8,7 @@
 #   diff_fg #206284 = 32;98;132
 #   comment #5E5871 = 94;88;113
 #   yellow  #6E5A15 = 110;90;21
-#   blue    #4550B0 = 69;80;176
+#   blue    #49559F = 73;85;159
 #   border  #665767 = 102;87;103
 #   red     #9C3C3C = 156;60;60
 #   fg      #1C1828 = 28;24;40
@@ -20,7 +20,7 @@ EIGHTBIT 1
 # file types — truecolor (38;2;R;G;B)
 NORMAL             00;38;2;102;87;103        # border
 FILE               00;38;2;120;84;56          # tan
-DIR                01;38;2;69;80;176         # blue (bold)
+DIR                01;38;2;73;85;159         # blue (bold)
 LINK               01;38;2;32;98;132         # diff_fg (bold)
 FIFO               03;38;2;32;98;132         # diff_fg (italic)
 SOCK               03;38;2;32;98;132         # diff_fg (italic)
