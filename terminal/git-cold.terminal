@@ -21,7 +21,7 @@
 	whitespace = "#D86060" reverse
 [delta]
 	navigate = true
-	syntax-theme = Dracula
+	syntax-theme = gruvbox-dark
 	side-by-side = true
 	file-style = "#DB8858" bold
 	file-decoration-style = "#DB8858" box
@@ -31,7 +31,7 @@
 	line-numbers-minus-style = "#D86060"
 	line-numbers-zero-style = "#50A8B8"
 	line-numbers-plus-style = "#8898C8" bold
-	minus-style = syntax "#4C3038"
-	minus-emph-style = syntax "#5C3C48"
+	minus-style = syntax "#452B32"
+	minus-emph-style = syntax "#55353D" bold
 	plus-style = syntax "#184050"
-	plus-emph-style = syntax "#225060"
+	plus-emph-style = syntax "#1E5064" bold

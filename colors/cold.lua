@@ -7,7 +7,7 @@ local hl = function(name, opts)
 end
 
 -- palette (16 colors) — desert storm, dark purple nights
-local bg       = "#1C1B1F"
+local bg       = "#1E1E1E"
 local cursorline      = "#292830"
 local comment  = "#82849E"
 local border  = "#967F8E"
@@ -18,7 +18,7 @@ local blue     = "#8898C8"
 local tan      = "#D0A080"
 local keyword  = "#DB8858"
 local diff_bg  = "#184050"
-local diff_del = "#4C3038"
+local diff_del = "#452B32"
 local diff_chg = "#302E48"
 local diff_fg  = "#50A8B8"
 local context  = "#2F2E37"

@@ -21,7 +21,7 @@
 	whitespace = "#A43838" reverse
 [delta]
 	navigate = true
-	syntax-theme = Coldark-Cold
+	syntax-theme = gruvbox-light
 	side-by-side = true
 	file-style = "#914A1A" bold
 	file-decoration-style = "#914A1A" box
@@ -31,7 +31,7 @@
 	line-numbers-minus-style = "#A43838"
 	line-numbers-zero-style = "#266385"
 	line-numbers-plus-style = "#4D55A0" bold
-	minus-style = syntax "#DCADA5"
-	minus-emph-style = syntax "#CE9585"
-	plus-style = syntax "#B2D2E2"
-	plus-emph-style = syntax "#92C2D6"
+	minus-style = syntax "#E3BEB7"
+	minus-emph-style = syntax "#DCADA5" bold
+	plus-style = syntax "#C5DDE9"
+	plus-emph-style = syntax "#B3D2E2" bold

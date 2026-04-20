@@ -21,7 +21,7 @@
 	whitespace = "#9C3C3C" reverse
 [delta]
 	navigate = true
-	syntax-theme = Coldark-Cold
+	syntax-theme = GitHub
 	side-by-side = true
 	file-style = "#8D4A1B" bold
 	file-decoration-style = "#8D4A1B" box
@@ -31,7 +31,7 @@
 	line-numbers-minus-style = "#9C3C3C"
 	line-numbers-zero-style = "#206284"
 	line-numbers-plus-style = "#49559F" bold
-	minus-style = syntax "#DAAAA0"
-	minus-emph-style = syntax "#C88878"
-	plus-style = syntax "#B0D0E0"
-	plus-emph-style = syntax "#90C0D4"
+	minus-style = syntax "#E1BAB2"
+	minus-emph-style = syntax "#DAAAA0" bold
+	plus-style = syntax "#C2DBE7"
+	plus-emph-style = syntax "#B0D0E0" bold
